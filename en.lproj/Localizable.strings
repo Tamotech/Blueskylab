@@ -1,0 +1,68 @@
+/*
+ Localizable.strings
+ Summer
+ 
+ Created by 武淅 段 on 2017/6/24.
+ Copyright © 2017年 wuxi. All rights reserved.
+ */
+
+"Cancel" = "取消";
+"Confirm" = "确定";
+"Save" = "保存";
+"EditStature" = "编辑身高";
+"EditWeight" = "编辑体重";
+"ProfileTitle" = "个人资料";
+"SelectBirthday" = "请选择生日";
+"SelectGender" = "请选择性别";
+"EditHeight" = "编辑身高";
+"EditWight" = "编辑体重";
+"Male" = "男";
+"Female" = "女";
+"Settings" = "设置";
+"AccessDenied" = "没有权限";
+"PleaseOpenPhotoLibarayAccess" = "请开启访问相册的权限";
+"CameraNotAvailable" = "相机不可用";
+"NoImagesAvailable" = "暂无图片";
+"EditPassword" = "修改密码";
+"PrivacyPolicy" = "隐私政策";
+"AboutUs" = "关于我们";
+"CommenQuestions" = "常见问题";
+"AboutProduct" = "关于产品";
+"AboutAfterSale" = "关于售后";
+"TermsOfUse" = "使用条款";
+"APPUpdate" = "APP更新";
+"NotificationCenter" = "通知中心";
+"LanguageSetting" = "语言偏好设置";
+"MyEquipment" = "我的设备";
+"ClearZero" = "清零";
+"ConfirmClearZeroSteps" = "确认清零步数?";
+"Reset" = "重置";
+"ResetYourFilter" = "当您新更换了滤芯，请重置计时器，\n系统将为您重新计算新滤芯的过滤效果\n确认重置滤芯计时器？";
+"NotificationDetail" = "通知详情";
+"UserHandbook" = "用户指南";
+"VertifyCodeHasSent" = "验证码已发送";
+"JumpOver" = "跳过";
+"OpenBluetoothAlertTitle" = "打开蓝牙允许\"蓝天口罩\"连接配件";
+"OK" = "好";
+"UnfindBluetoothAlertTitle" = "未发现设备，请确保蓝天口罩有点并且贴近设备";
+"Retry" = "重试";
+"Help" = "帮助";
+"DontBind" = "暂不绑定";
+"BindSuccess" = "恭喜您，绑定成功！";
+"HistoryData" = "历史数据";
+"Day" = "日";
+"Week" = "周";
+"Month" = "月";
+"Year" = "年";
+"WrongPhoneNum" = "手机号格式错误！";
+"ChangeFilterTip" = "口罩滤芯已耗尽，请立即更换";
+"SendWindAmount" = "送风量";
+"Sport" = "运动";
+"Default" = "默认";
+"Intelligence" = "智能";
+"Walk" = "步行";
+"Drive" = "开车";
+"Rest" = "休息";
+"Add" = "添加";
+"AddMode" = "添加模式";
+

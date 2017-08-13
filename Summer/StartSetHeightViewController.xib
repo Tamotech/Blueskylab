@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StartSetHeightViewController" customModule="Summer" customModuleProvider="target">
+            <connections>
+                <outlet property="heightLabel" destination="PJ7-c5-iOY" id="wjk-h3-wLN"/>
+                <outlet property="nextButton" destination="EvO-IF-wf5" id="Ext-kz-79F"/>
+                <outlet property="view" destination="LqS-K6-1eJ" id="dmW-oM-iIj"/>
+                <outlet property="weightContainerView" destination="MeL-NW-LaF" id="7vZ-9p-3GH"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="LqS-K6-1eJ">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start-bg" translatesAutoresizingMaskIntoConstraints="NO" id="Zz9-bA-pmz">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请编辑身高" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZv-gL-0fm">
+                    <rect key="frame" x="28" y="88" width="142" height="33.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MeL-NW-LaF">
+                    <rect key="frame" x="0.0" y="253.5" width="375" height="80"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="6HW-zw-3wq"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EvO-IF-wf5" userLabel="next">
+                    <rect key="frame" x="276" y="378.5" width="74" height="74"/>
+                    <state key="normal" image="login-next-on"/>
+                    <connections>
+                        <action selector="handleTapNextBtn:" destination="-1" eventType="touchUpInside" id="vrG-cn-4If"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="178.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJ7-c5-iOY">
+                    <rect key="frame" x="143" y="202" width="90" height="43"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mo2-an-wXT">
+                    <rect key="frame" x="235" y="221.5" width="22.5" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Zz9-bA-pmz" firstAttribute="centerY" secondItem="LqS-K6-1eJ" secondAttribute="centerY" id="1ed-c0-paZ"/>
+                <constraint firstItem="EvO-IF-wf5" firstAttribute="top" secondItem="MeL-NW-LaF" secondAttribute="bottom" constant="45" id="4hO-H3-2mE"/>
+                <constraint firstItem="Zz9-bA-pmz" firstAttribute="centerX" secondItem="LqS-K6-1eJ" secondAttribute="centerX" id="BLp-gH-9iS"/>
+                <constraint firstItem="uZv-gL-0fm" firstAttribute="leading" secondItem="LqS-K6-1eJ" secondAttribute="leading" constant="28" id="H66-LC-5Ds"/>
+                <constraint firstItem="MeL-NW-LaF" firstAttribute="top" secondItem="PJ7-c5-iOY" secondAttribute="bottom" constant="8.5" id="Hf4-uu-Mdi"/>
+                <constraint firstItem="MeL-NW-LaF" firstAttribute="centerX" secondItem="LqS-K6-1eJ" secondAttribute="centerX" id="KA8-qV-TAo"/>
+                <constraint firstItem="Zz9-bA-pmz" firstAttribute="width" secondItem="LqS-K6-1eJ" secondAttribute="width" id="OpZ-Wv-6yf"/>
+                <constraint firstItem="Zz9-bA-pmz" firstAttribute="height" secondItem="LqS-K6-1eJ" secondAttribute="height" id="QQ3-3M-6Xi"/>
+                <constraint firstItem="PJ7-c5-iOY" firstAttribute="centerX" secondItem="MeL-NW-LaF" secondAttribute="centerX" id="Vff-w1-qWz"/>
+                <constraint firstItem="uZv-gL-0fm" firstAttribute="top" secondItem="LqS-K6-1eJ" secondAttribute="top" constant="88" id="cDz-9I-zz0"/>
+                <constraint firstItem="mo2-an-wXT" firstAttribute="leading" secondItem="PJ7-c5-iOY" secondAttribute="trailing" constant="2" id="lKg-7P-0L6"/>
+                <constraint firstItem="MeL-NW-LaF" firstAttribute="centerY" secondItem="LqS-K6-1eJ" secondAttribute="centerY" constant="-40" id="o8D-tX-YBj"/>
+                <constraint firstItem="MeL-NW-LaF" firstAttribute="width" secondItem="LqS-K6-1eJ" secondAttribute="width" id="pTW-Az-Jgz"/>
+                <constraint firstAttribute="trailing" secondItem="EvO-IF-wf5" secondAttribute="trailing" constant="25" id="spV-YG-fej"/>
+                <constraint firstItem="mo2-an-wXT" firstAttribute="bottom" secondItem="PJ7-c5-iOY" secondAttribute="bottom" constant="-4" id="xaU-G3-U84"/>
+            </constraints>
+            <point key="canvasLocation" x="47.5" y="59.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="login-next-on" width="74" height="74"/>
+        <image name="start-bg" width="375" height="667"/>
+    </resources>
+</document>

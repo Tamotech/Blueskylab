@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="175" id="KGk-i7-Jjw" customClass="NotificationCenterCell" customModule="Summer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="177"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="176.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="通知标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkF-CJ-2b1">
+                        <rect key="frame" x="18" y="23" width="284" height="24"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                        <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about-banner" translatesAutoresizingMaskIntoConstraints="NO" id="zxD-W6-f2z">
+                        <rect key="frame" x="18" y="62" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="VK1-rI-RBJ"/>
+                            <constraint firstAttribute="width" constant="60" id="t12-pc-5ml"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="通知内容" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHF-vO-bVE">
+                        <rect key="frame" x="100" y="62" width="202" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17-02-03 星期三 14:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NkN-rC-q3d">
+                        <rect key="frame" x="18" y="136" width="194" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.59607843140000005" green="0.59607843140000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUh-07-1gi">
+                        <rect key="frame" x="222" y="129.5" width="80" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="gdz-NX-WBd"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <state key="normal" title="阅读全文 &gt;">
+                            <color key="titleColor" red="0.0" green="0.61176470589999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="handleTapReadDetailBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="esY-k3-13T"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="FkF-CJ-2b1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="15" id="6YU-Hn-gEv"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="FkF-CJ-2b1" secondAttribute="trailing" constant="10" id="GUq-dR-eAq"/>
+                    <constraint firstItem="FkF-CJ-2b1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="HFD-pR-geT"/>
+                    <constraint firstItem="NkN-rC-q3d" firstAttribute="leading" secondItem="zxD-W6-f2z" secondAttribute="leading" id="HLa-1J-agO"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="cUh-07-1gi" secondAttribute="trailing" constant="10" id="J9m-MX-Ubb"/>
+                    <constraint firstItem="cUh-07-1gi" firstAttribute="leading" secondItem="NkN-rC-q3d" secondAttribute="trailing" constant="10" id="MnD-kA-BaB"/>
+                    <constraint firstItem="CHF-vO-bVE" firstAttribute="trailing" secondItem="FkF-CJ-2b1" secondAttribute="trailing" id="a6b-6d-2WR"/>
+                    <constraint firstItem="cUh-07-1gi" firstAttribute="centerY" secondItem="NkN-rC-q3d" secondAttribute="centerY" id="akn-Mq-5rd"/>
+                    <constraint firstItem="NkN-rC-q3d" firstAttribute="top" secondItem="zxD-W6-f2z" secondAttribute="bottom" constant="14" id="o8A-RB-fSQ"/>
+                    <constraint firstItem="CHF-vO-bVE" firstAttribute="leading" secondItem="zxD-W6-f2z" secondAttribute="trailing" constant="22" id="omy-Fa-Pnf"/>
+                    <constraint firstItem="zxD-W6-f2z" firstAttribute="top" secondItem="FkF-CJ-2b1" secondAttribute="bottom" constant="15" id="oqk-er-MZb"/>
+                    <constraint firstItem="zxD-W6-f2z" firstAttribute="leading" secondItem="FkF-CJ-2b1" secondAttribute="leading" id="prW-Yp-Zkx"/>
+                    <constraint firstItem="CHF-vO-bVE" firstAttribute="top" secondItem="zxD-W6-f2z" secondAttribute="top" id="rIf-tv-X4t"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="contentLb" destination="CHF-vO-bVE" id="bda-dO-dBF"/>
+                <outlet property="dateLb" destination="NkN-rC-q3d" id="6wX-3X-4wa"/>
+                <outlet property="iv" destination="zxD-W6-f2z" id="Tl7-bX-3ML"/>
+                <outlet property="readDetailBtn" destination="cUh-07-1gi" id="5qa-Jq-CD6"/>
+                <outlet property="titleLb" destination="FkF-CJ-2b1" id="72Z-WH-trW"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="147.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="about-banner" width="375" height="210"/>
+    </resources>
+</document>

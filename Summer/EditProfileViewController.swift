@@ -1,0 +1,148 @@
+//
+//  EditProfileViewController.swift
+//  Summer
+//
+//  Created by 武淅 段 on 2017/6/25.
+//  Copyright © 2017年 wuxi. All rights reserved.
+//
+
+import UIKit
+import Presentr
+
+class EditProfileViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    
+    @IBOutlet weak var avartarBtn: UIButton!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var phoneField: UITextField!
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var birthField: UITextField!
+    @IBOutlet weak var genderField: UITextField!
+    @IBOutlet weak var heightField: UITextField!
+    @IBOutlet weak var weightField: UITextField!
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        birthField.isUserInteractionEnabled = false
+        genderField.isUserInteractionEnabled = false
+        heightField.isUserInteractionEnabled = false
+        weightField.isUserInteractionEnabled = false
+        passwordField.isUserInteractionEnabled = false
+        
+        avartarBtn.addTarget(self, action: #selector(handleTapAvatar(_:)), for: .touchUpInside)
+        
+        self.title = NSLocalizedString("ProfileTitle", comment: "")
+        let saveItem = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .plain, target: self, action: #selector(handleTapSaveItem(_:)))
+        self.navigationItem.rightBarButtonItem = saveItem
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    // MARK: - actions
+    
+    @IBAction func handleTapPassword(_ sender: UITapGestureRecognizer) {
+        let EditPsw = EditPasswordViewController()
+        self.navigationController?.pushViewController(EditPsw, animated: true)
+    }
+    
+    @IBAction func handleTapBirthday(_ sender: UITapGestureRecognizer) {
+        let picker = DatePickerView(title: NSLocalizedString("SelectBirthday", comment: ""))
+        picker.pickDateAction = {[weak self] (date: Date) in
+            let dateFormmter = DateFormatter()
+            dateFormmter.dateFormat = "yyyy年MM月dd日"
+            let dateStr = dateFormmter.string(from: date)
+            self?.birthField.text = dateStr
+        }
+        picker.show()
+    }
+    
+    @IBAction func handleTapGender(_ sender: UITapGestureRecognizer) {
+        let picker = GenderPickerView(title: NSLocalizedString("SelectGender", comment: ""), items: [NSLocalizedString("Male", comment: ""), NSLocalizedString("Female", comment: "")])
+        picker.finishSelectGender = {[unowned self] (item: String) in
+            self.genderField.text = item
+        }
+        picker.show()
+    }
+    @IBAction func handleTapHeight(_ sender: UITapGestureRecognizer) {
+        let sheet = BaseRulerSelectorActionView(title: NSLocalizedString("EditHeight", comment: ""), unit: "cm", defaultValue: 170)
+        sheet.finishSelectAction = {[unowned self](value:CGFloat) in
+            self.heightField.text = "\(value) cm"
+        }
+        sheet.show()
+    }
+    @IBAction func handleTapWeight(_ sender: UITapGestureRecognizer) {
+        let sheet = BaseRulerSelectorActionView(title: NSLocalizedString("EditWeight", comment: ""), unit: "kg", defaultValue: 60)
+        sheet.finishSelectAction = {[unowned self] (value:CGFloat) in
+            self.weightField.text = "\(value) kg"
+        }
+        sheet.show()
+    }
+    
+    func handleTapAvatar(_:Any) {
+        
+        let vc = WXImagePickerViewController.init(nibName: "WXImagePickerViewController", bundle: nil)
+        vc.actionCallback = {[weak self](type:String) in
+            if type == "Album" {
+                let picker = UIImagePickerController()
+                picker.allowsEditing = false
+                picker.sourceType = .photoLibrary
+                picker.allowsEditing = false
+                picker.delegate = self
+                self?.present(picker, animated: true, completion: nil)
+            }
+            else if type == "Camera" {
+                let picker = UIImagePickerController()
+                picker.allowsEditing = false
+                picker.sourceType = .camera
+                picker.allowsEditing = false
+                picker.cameraDevice = .rear
+                picker.delegate = self
+                self?.present(picker, animated: true, completion: nil)
+            }
+        }
+        let presenter: Presentr = {
+            let presenter = Presentr(presentationType: .bottomHalf)
+            presenter.transitionType = TransitionType.coverVertical
+            presenter.dismissOnSwipe = true
+            presenter.dismissAnimated = true
+            return presenter
+        }()
+        
+        customPresentViewController(presenter, viewController: vc, animated: true) { 
+            
+        }
+
+    }
+    
+    func handleTapSaveItem(_:Any) {
+        
+    }
+    
+    
+    //MARK: - ImagePickerDelegate
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        picker.dismiss(animated: true) {
+            let img = info[UIImagePickerControllerOriginalImage] as! UIImage?
+            if img != nil {
+                self.avartarBtn.setImage(img, for: .normal)
+            }
+        }
+    }
+    
+    
+}
