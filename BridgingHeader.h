@@ -14,7 +14,8 @@
 #import "WXApi.h"
 #import "WXApiObject.h"
 #import "DES3EncryptUtil.h"
-#import <MBProgressHUD/MBProgressHUD.h>
-#import <SVProgressHUD/SVProgressHUD.h>
+#import "MBProgressHUD.h"
+#import "SVProgressHUD.h"
+#import "UIBezierPath+LxThroughPointsBezier.h"
 
 #endif /* BridgingHeader_h */

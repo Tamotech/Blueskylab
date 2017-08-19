@@ -7,14 +7,16 @@
 //
 
 import UIKit
-import ReactiveCocoa
-import ReactiveSwift
 import Presentr
 import Kingfisher
 
-class LoginViewController: BaseViewController {
+class LoginViewController: BaseViewController, UITextFieldDelegate {
 
     
+    enum LoginMode {
+        case login
+        case regist
+    }
     @IBOutlet weak var phoneField: UITextField!
     
     @IBOutlet weak var photoVertifyCodeField: UITextField!
@@ -24,7 +26,22 @@ class LoginViewController: BaseViewController {
     
     @IBOutlet weak var captureBtn: UIButton!
     
-    var capture :String?        //验证码
+    @IBOutlet weak var phoneCheckMark: UIImageView!
+    
+    @IBOutlet weak var captureCheckMark: UIImageView!
+    
+    @IBOutlet weak var smsCheckMark: UIImageView!
+    @IBOutlet weak var sendSMSBtn: UIButton!
+    var smsCode: String?
+    var captcha: String?
+    var seconds = 60
+    lazy var timer: Timer? = {
+        let t = Timer(timeInterval: 1, target: self, selector: #selector(timerValueChanged(t:)), userInfo: nil, repeats: true)
+        RunLoop.main.add(t, forMode: RunLoopMode.commonModes)
+        return t
+    } ()
+    
+    var mode: LoginMode = .login
     
     
     override func viewDidLoad() {
@@ -32,40 +49,13 @@ class LoginViewController: BaseViewController {
 
         self.shouldClearNavBar = true
         setupView()
-        RXObserve()
         getCapture()
         
     }
     
-    func RXObserve() {
-        nextBtn.setImage(UIImage(named: "login-next-off"), for: .normal)
-        nextBtn.isEnabled = false
-        let phoneTFSignal = phoneField.reactive.continuousTextValues.map({
-            text in
-            return (text?.characters.count)!
-        })
-        
-        let passwordTFSignal = photoVertifyCodeField.reactive.continuousTextValues.map({
-            text in
-            return (text?.characters.count)!
-        })
-        
-        let smsTFSignal = smsCodeField.reactive.continuousTextValues.map({
-            text in
-            return (text?.characters.count)!
-        })
-        
-        Signal.combineLatest(phoneTFSignal, passwordTFSignal, smsTFSignal).map ({ [weak self](length1: Int, length2: Int, length3: Int) -> Bool in
-            if self?.capture != nil && length2 == self?.capture?.characters.count {
-                ///验证图形验证码
-                self?.vertifyCapture()
-            }
-            return length1 > 0 && length2 > 0 && length3 > 0
-        }).observeValues { [weak self](valid) in
-            self?.nextBtn.isEnabled = valid
-            self?.nextBtn.setImage(valid ? UIImage(named: "login-next-on") : UIImage(named: "login-next-off"), for: .normal)
-        }
-        
+    deinit {
+        timer!.invalidate()
+        timer = nil
     }
     
     func setupView() {
@@ -79,17 +69,122 @@ class LoginViewController: BaseViewController {
         placeholderLb1?.textColor = color
         placeholderLb2?.textColor = color
         placeholderLb3?.textColor = color
+        
+        phoneCheckMark.isHidden = true
+        captureCheckMark.isHidden = true
+        smsCheckMark.isHidden = true
+        
+        nextBtn.isEnabled = false
+        phoneField.delegate = self
+        photoVertifyCodeField.delegate = self
+        smsCodeField.delegate = self
 
     }
+    
+    
+    //MARK: - TextfieldDelegate
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newText = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        var phone = phoneField.text ?? ""
+        var captureStr = photoVertifyCodeField.text ?? ""
+        var sms = smsCodeField.text ?? ""
+        if textField == phoneField {
+            phone = newText
+            if phone.characters.count == 11 {
+                checkPhoneNum(phone: phone)
+            }
+            else {
+                phoneCheckMark.isHidden = true
+            }
+        }
+        else if textField == photoVertifyCodeField {
+            captureStr = newText
+            if captureStr.characters.count > 0 && captureStr.characters.count == captcha?.characters.count {
+                vertifyCapture(captureString: captureStr)
+            }
+            else {
+                captureCheckMark.isHidden = true
+                captureBtn.isHidden = false
+            }
+        }
+        else if textField == smsCodeField {
+            sms = newText
+            if sms.characters.count > 0 && sms == self.smsCode {
+                self.smsCheckMark.isHidden = false
+                self.sendSMSBtn.isHidden = true
+            }
+            else if sms.characters.count > 0 && sms.characters.count == self.smsCode?.characters.count && sms != self.smsCode {
+                self.smsCheckMark.isHidden = true
+                self.sendSMSBtn.isHidden = false
+                //输入错误
+                BLHUDBarManager.showErrorWithClose(msg: NSLocalizedString("SMSDigitWrong", comment: ""), descTitle: NSLocalizedString("returnAndReinput", comment: ""))
+            }
+            else {
+                self.smsCheckMark.isHidden = true
+                self.sendSMSBtn.isHidden = false
+            }
+        }
+        
+        if !phoneCheckMark.isHidden && !captureCheckMark.isHidden && !smsCheckMark.isHidden {
+            nextBtn.setImage(#imageLiteral(resourceName: "login-next-on"), for: .normal)
+            nextBtn.isEnabled = true
+        }
+        else {
+            nextBtn.setImage(#imageLiteral(resourceName: "login-next-off"), for: .normal)
+            nextBtn.isEnabled = false
+        }
+        return true
+    }
+    
 
+    ///Timer
+    func timerValueChanged(t: Timer) {
+        seconds = seconds - 1
+        if seconds <= 0 {
+            sendSMSBtn.setTitle(NSLocalizedString("SendSMS", comment: ""), for: .normal)
+            t.invalidate()
+        }
+        else {
+            sendSMSBtn.setTitle(String.init(format: "%ds", seconds), for: .normal)
+        }
+        
+    }
     
     //MARK: - API
     
+    //校验手机号
+    func checkPhoneNum(phone: String) {
+        if !phone.validPhoneNum() {
+            BLHUDBarManager.showErrorWithClose(msg: NSLocalizedString("WrongPhoneNum", comment: ""), descTitle: NSLocalizedString("returnAndReinput", comment: ""))
+            return
+        }
+        
+        APIManager.shareInstance.postRequest(urlString: "/regist/checkMobile.htm", params: ["mobile": phone.trip()]) { [weak self](result, code, msg) in
+            if code == 0 {
+                //手机号校验通过
+                self?.phoneCheckMark.isHidden = false
+                self?.mode = .regist
+            }
+            else if code == -111 {
+                //手机号已注册
+                self?.phoneCheckMark.isHidden = false
+                self?.mode = .login
+                
+            }
+            else {
+                 BLHUDBarManager.showErrorWithClose(msg: msg, descTitle: NSLocalizedString("returnAndReinput", comment: ""))
+            }
+        }
+
+    }
+    
+    //获取图形验证码
     func getCapture() {
-        APIManager.shareInstance.getRequest(urlString: "/captcha/newCaptcha.do?width=60", params: nil) { [weak self](result, code, msg) in
+        APIManager.shareInstance.postRequest(urlString: "/captcha/newCaptcha.htm?width=60", params: nil) { [weak self](result, code, msg) in
             if code == 0 && result != nil {
                 let info = result!["info"].string ?? ""
-                self?.capture = DES3EncryptUtil.decrypt(info)
+                self?.captcha = DES3EncryptUtil.decrypt(info)
                 let url = result!["memo"].string ?? ""
                 
                 self?.captureBtn.kf.setImage(with: ImageResource(downloadURL: URL(string: url)!), for: .normal)
@@ -98,11 +193,15 @@ class LoginViewController: BaseViewController {
     }
     
     //验证图形验证码
-    func vertifyCapture() {
-        let cap = photoVertifyCodeField.text!
-        if capture?.uppercased() == cap.uppercased() {
+    func vertifyCapture(captureString: String) {
+        if captcha?.uppercased() == captureString.uppercased() {
             //通过
-            captureBtn.setImage(#imageLiteral(resourceName: "checkmark"), for: .normal)
+            captureBtn.isHidden = true
+            captureCheckMark.isHidden = false
+            self.sendSMSCode()
+        }
+        else {
+            BLHUDBarManager.showErrorWithClose(msg: NSLocalizedString("CaptureWrong", comment: ""), descTitle: NSLocalizedString("returnAndReinput", comment: ""))
         }
     }
     
@@ -114,12 +213,17 @@ class LoginViewController: BaseViewController {
             BLHUDBarManager.showError(msg: NSLocalizedString("WrongPhoneNum", comment: ""))
             return
         }
-        APIManager.shareInstance.getRequest(urlString: "/regist/sendSms.htm", params: ["mobile": phone]) { [weak self](result, code, msg) in
+        APIManager.shareInstance.postRequest(urlString: "/smscaptcha/sendSms.htm", params: ["mobile": phone]) { [weak self](result, code, msg) in
             if code == 0 && result != nil {
+                
+                let smsCodeStr = result?["memo"].string!
+                self?.smsCode = DES3EncryptUtil.decrypt(smsCodeStr)
                 BLHUDBarManager.showSuccess(msg: NSLocalizedString("VertifyCodeHasSent", comment: ""))
+                self?.smsCodeField.text = self?.smsCode!
+                self?.timer!.fire()
             }
             else {
-                SVProgressHUD.showErrorWithStatus(status: msg)
+                BLHUDBarManager.showErrorWithClose(msg: msg, descTitle: NSLocalizedString("returnAndReinput", comment: ""))
             }
         }
     }
@@ -130,26 +234,42 @@ class LoginViewController: BaseViewController {
     
     @IBAction func handleTapSendSmsCodeBtn(_ sender: UIButton) {
         
-        guard let phone = phoneField.text else {
-            
-            return
-        }
-        if !phone.validPhoneNum() {
-            
-            BLHUDBarManager.showError(msg: NSLocalizedString("WrongPhoneNum", comment: ""))
-            return
-        }
-        
-        APIManager.shareInstance.getRequest(urlString: "/regist/checkMobile.htm", params: ["mobile": phone.trip()]) { (result, code, msg) in
-            
-        }
-        BLHUDBarManager.showSuccess(msg: NSLocalizedString("VertifyCodeHasSent", comment: ""))
+        sendSMSCode()
     }
     
     @IBAction func handleTapNextBtn(_ sender: UIButton) {
+        let phone = phoneField.text!.trip()
+        let captchaStr = smsCodeField.text!.trip()
         
-        let setnameVC = StartSetUsernameViewController(nibName: "StartSetUsernameViewController", bundle: nil)
-        navigationController?.pushViewController(setnameVC, animated: true)
+        if mode == .login {
+            
+            //登录
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+            SessionManager.sharedInstance.login(phone: phone, sms: captchaStr, wxOpenId: "", results: { [weak self](json, code, msg) in
+                if code == 0 {
+                    //成功
+                    DispatchQueue.main.async {
+                        MBProgressHUD.hide(for: (self?.view)!, animated: true)
+                        let sb = UIStoryboard(name: "Main", bundle: nil)
+                        let vc = sb.instantiateViewController(withIdentifier: "startNavigationVC")
+                        UIApplication.shared.keyWindow!.rootViewController = vc
+                    }
+                }
+                else {
+                    MBProgressHUD.hide(for: (self?.view)!, animated: true)
+                    BLHUDBarManager.showErrorWithClose(msg: msg, descTitle: NSLocalizedString("returnAndReinput", comment: ""))
+                    
+                }
+            })
+        }
+        else {
+            //注册
+            SessionManager.sharedInstance.loginInfo.phone = phone
+            SessionManager.sharedInstance.loginInfo.captcha = captchaStr
+            let setnameVC = StartSetUsernameViewController(nibName: "StartSetUsernameViewController", bundle: nil)
+            navigationController?.pushViewController(setnameVC, animated: true)
+        }
+        
     }
     
 }

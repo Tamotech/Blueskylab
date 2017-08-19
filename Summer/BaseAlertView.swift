@@ -48,19 +48,30 @@ class BaseAlertView: BaseView {
         else {
             messageLabel.isHidden = true
         }
+        
+        if actionTitle != nil {
+            descButton.setTitle(actionTitle!, for: .normal)
+        }
         closeButton.isHidden = !needClose
     }
     
-    public func show(autodismiss: Bool, bgAlpha: CGFloat) {
+    public func show(autodismiss: Bool, transparent: Bool) {
         let bgView = UIView()
         bgView.frame = UIScreen.main.bounds
-        bgView.backgroundColor = UIColor(white: 0, alpha: 0)
-        
+        if transparent {
+            bgView.backgroundColor = UIColor.clear
+        }
+        else {
+            bgView.backgroundColor = UIColor(white: 0.2, alpha: 0.5)
+        }
+        self.center = keyWindow!.center
+        bgView.addSubview(self)
+        keyWindow!.addSubview(bgView)
         
     }
     
     public func dismiss() {
-        
+        self.superview?.removeFromSuperview()
     }
     
     @IBAction func handleTapCloseButton(_ sender: UIButton) {
@@ -68,6 +79,6 @@ class BaseAlertView: BaseView {
     }
  
     @IBAction func handleTapDescButton(_ sender: UIButton) {
-        
+        self.dismiss()
     }
 }

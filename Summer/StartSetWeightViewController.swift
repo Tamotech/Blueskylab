@@ -25,7 +25,12 @@ class StartSetWeightViewController: UIViewController {
 
         let totalLength = 1000
         let cellLength = 1
-        ruler = RuleSelectorView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 80), cellLength: cellLength, totalLength: totalLength, cellRuleCount: 10, defaultValue:65, tintColor: UIColor.white)
+        if SessionManager.sharedInstance.loginInfo.gender == "male" {
+            ruler = RuleSelectorView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 80), cellLength: cellLength, totalLength: totalLength, cellRuleCount: 10, defaultValue:75, tintColor: UIColor.white)
+        }
+        else {
+            ruler = RuleSelectorView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 80), cellLength: cellLength, totalLength: totalLength, cellRuleCount: 10, defaultValue:55, tintColor: UIColor.white)
+        }
         weightContainerView.addSubview(ruler)
         ruler.snp.makeConstraints { (make) in
             make.left.right.top.bottom.equalTo(0)
@@ -33,6 +38,7 @@ class StartSetWeightViewController: UIViewController {
         ruler.selectedValueAction = {[weak self](value) in
             
             self?.weightLabel.text = String.init(format: "%.1f", value)
+            SessionManager.sharedInstance.loginInfo.weight = value
         }
     }
 

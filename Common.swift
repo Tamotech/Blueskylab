@@ -21,3 +21,4 @@ let translucentBGColor = UIColor(white: 0, alpha: 0.5)
 let baseURL = "http://www.blueskylab.cn"
 
 let kLoginWechatSuccessNotifi = Notification.Name(rawValue:"Login_Wechat_Success_Notify_key")
+let kAppDidBecomeActiveNotify = Notification.Name("App_did_become_active_key")

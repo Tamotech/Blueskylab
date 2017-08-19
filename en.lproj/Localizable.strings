@@ -65,4 +65,12 @@
 "Rest" = "休息";
 "Add" = "添加";
 "AddMode" = "添加模式";
+"SendSMS" = "发送验证码";
+"CaptureWrong" = "图形验证码错误";
+"SMSDigitWrong" = "短信验证码无效";
+"returnAndReinput" = "返回，请重新输入";
+"CirgaretteNum" = "%d支香烟";
+"Yesterday" = "昨天";
+"Today" = "今天";
+"Tomorrow" = "明天";
 

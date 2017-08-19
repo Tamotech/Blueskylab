@@ -25,6 +25,7 @@ class BLHUDBarManager: NSObject {
         }
         simpleHUD.modalPresentationStyle = .overCurrentContext
         vc.present(simpleHUD, animated: false) {
+            simpleHUD.msgLabel.text = msg
             let seconds: TimeInterval = 2
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+seconds, execute: { 
                 vc.dismiss(animated: false, completion: nil)
@@ -50,5 +51,13 @@ class BLHUDBarManager: NSObject {
         }
         
     }
+    
+    class func showErrorWithClose(msg: String?, descTitle: String) {
+        let alert = BaseAlertView.instanceFromXib() as! BaseAlertView
+        alert.setupView(msg: msg, img: #imageLiteral(resourceName: "fail-emoji"), actionTitle: descTitle, needClose: true)
+        alert.show(autodismiss: false, transparent: false)
+    }
+    
+    
     
 }

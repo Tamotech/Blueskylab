@@ -12,9 +12,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Summer" customModuleProvider="target">
             <connections>
                 <outlet property="captureBtn" destination="ARC-nd-mbp" id="r6M-M9-JST"/>
+                <outlet property="captureCheckMark" destination="f2v-PO-QiF" id="0SF-nd-HGK"/>
                 <outlet property="nextBtn" destination="aaQ-V5-AVa" id="DzU-MX-ePV"/>
+                <outlet property="phoneCheckMark" destination="9cB-Eh-ePw" id="qoA-Rq-smh"/>
                 <outlet property="phoneField" destination="1Em-kt-rCl" id="IgT-7n-J3k"/>
                 <outlet property="photoVertifyCodeField" destination="nYF-dQ-XcP" id="Hpm-5n-na8"/>
+                <outlet property="sendSMSBtn" destination="Dcj-bK-9sc" id="1C8-g1-Fan"/>
+                <outlet property="smsCheckMark" destination="h5x-qz-91I" id="btp-6M-49d"/>
                 <outlet property="smsCodeField" destination="XeC-mK-zpz" id="Qfo-RA-Udk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -50,17 +54,22 @@
                                 <constraint firstAttribute="height" constant="1" id="xH3-2i-8OO"/>
                             </constraints>
                         </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkMark-white" translatesAutoresizingMaskIntoConstraints="NO" id="9cB-Eh-ePw">
+                            <rect key="frame" x="301" y="23.5" width="24" height="18"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="1Em-kt-rCl" firstAttribute="leading" secondItem="rk5-MM-i9f" secondAttribute="leading" id="1I2-gw-cjN"/>
                         <constraint firstAttribute="trailing" secondItem="1Em-kt-rCl" secondAttribute="trailing" id="4sK-5O-1M6"/>
                         <constraint firstItem="tvD-d7-Eqz" firstAttribute="width" secondItem="rk5-MM-i9f" secondAttribute="width" id="FlV-ou-imj"/>
+                        <constraint firstAttribute="trailing" secondItem="9cB-Eh-ePw" secondAttribute="trailing" id="GxY-LC-4F6"/>
                         <constraint firstAttribute="bottom" secondItem="tvD-d7-Eqz" secondAttribute="bottom" id="LYN-vt-9ds"/>
                         <constraint firstItem="tvD-d7-Eqz" firstAttribute="centerX" secondItem="rk5-MM-i9f" secondAttribute="centerX" id="N1e-VZ-fnn"/>
                         <constraint firstAttribute="bottom" secondItem="1Em-kt-rCl" secondAttribute="bottom" id="dOP-TD-keX"/>
                         <constraint firstItem="1Em-kt-rCl" firstAttribute="top" secondItem="rk5-MM-i9f" secondAttribute="top" id="jLm-cH-XMD"/>
                         <constraint firstAttribute="height" constant="66" id="suD-jc-rPO"/>
+                        <constraint firstItem="9cB-Eh-ePw" firstAttribute="centerY" secondItem="rk5-MM-i9f" secondAttribute="centerY" id="xge-gf-7H8"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txD-7l-WP2" userLabel="图片验证码">
@@ -79,7 +88,6 @@
                                 <constraint firstAttribute="height" constant="28" id="gZW-gr-iHY"/>
                                 <constraint firstAttribute="width" constant="86" id="oBA-E6-tU0"/>
                             </constraints>
-                            <state key="normal" image="VerificationCode"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                     <real key="value" value="14"/>
@@ -89,6 +97,9 @@
                                 <action selector="handleTapPhotoCodeBtn:" destination="-1" eventType="touchUpInside" id="dUx-J4-9PY"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkMark-white" translatesAutoresizingMaskIntoConstraints="NO" id="f2v-PO-QiF">
+                            <rect key="frame" x="301" y="23.5" width="24" height="18"/>
+                        </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbo-bT-Ywb" userLabel="line">
                             <rect key="frame" x="-0.5" y="65" width="325" height="1"/>
                             <color key="backgroundColor" white="1" alpha="0.80254265719999995" colorSpace="calibratedWhite"/>
@@ -104,11 +115,13 @@
                         <constraint firstItem="nYF-dQ-XcP" firstAttribute="leading" secondItem="txD-7l-WP2" secondAttribute="leading" id="FtB-gB-VTo"/>
                         <constraint firstAttribute="trailing" secondItem="nYF-dQ-XcP" secondAttribute="trailing" id="KBQ-wB-nre"/>
                         <constraint firstItem="ARC-nd-mbp" firstAttribute="centerY" secondItem="txD-7l-WP2" secondAttribute="centerY" id="MZT-hp-hOp"/>
+                        <constraint firstItem="f2v-PO-QiF" firstAttribute="centerY" secondItem="txD-7l-WP2" secondAttribute="centerY" id="N1L-D8-LMB"/>
                         <constraint firstAttribute="trailing" secondItem="ARC-nd-mbp" secondAttribute="trailing" id="Npp-Za-1KV"/>
                         <constraint firstItem="cbo-bT-Ywb" firstAttribute="centerX" secondItem="txD-7l-WP2" secondAttribute="centerX" id="S6V-w8-WYx"/>
                         <constraint firstItem="cbo-bT-Ywb" firstAttribute="width" secondItem="txD-7l-WP2" secondAttribute="width" id="VLT-Y1-YYV"/>
                         <constraint firstAttribute="bottom" secondItem="nYF-dQ-XcP" secondAttribute="bottom" id="bNr-Ua-BTD"/>
                         <constraint firstAttribute="bottom" secondItem="cbo-bT-Ywb" secondAttribute="bottom" id="lwa-y7-506"/>
+                        <constraint firstAttribute="trailing" secondItem="f2v-PO-QiF" secondAttribute="trailing" id="ngh-yi-PDL"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AD4-Zi-kcc" userLabel="短信验证码">
@@ -144,6 +157,9 @@
                                 <action selector="handleTapSendSmsCodeBtn:" destination="-1" eventType="touchUpInside" id="LZO-5l-0xz"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkMark-white" translatesAutoresizingMaskIntoConstraints="NO" id="h5x-qz-91I">
+                            <rect key="frame" x="301" y="23.5" width="24" height="18"/>
+                        </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6hx-WP-zDo" userLabel="line">
                             <rect key="frame" x="-0.5" y="65" width="325" height="1"/>
                             <color key="backgroundColor" white="1" alpha="0.80254265719999995" colorSpace="calibratedWhite"/>
@@ -158,7 +174,9 @@
                         <constraint firstItem="Dcj-bK-9sc" firstAttribute="centerY" secondItem="AD4-Zi-kcc" secondAttribute="centerY" id="AyX-rv-xVe"/>
                         <constraint firstAttribute="trailing" secondItem="Dcj-bK-9sc" secondAttribute="trailing" id="CbA-LY-9f6"/>
                         <constraint firstAttribute="height" constant="66" id="EUK-as-lQf"/>
+                        <constraint firstItem="h5x-qz-91I" firstAttribute="centerY" secondItem="AD4-Zi-kcc" secondAttribute="centerY" id="ElF-aW-rOt"/>
                         <constraint firstItem="6hx-WP-zDo" firstAttribute="width" secondItem="AD4-Zi-kcc" secondAttribute="width" id="JcT-1X-gA1"/>
+                        <constraint firstAttribute="trailing" secondItem="h5x-qz-91I" secondAttribute="trailing" id="Ljx-ac-Byf"/>
                         <constraint firstAttribute="bottom" secondItem="XeC-mK-zpz" secondAttribute="bottom" id="UYY-EH-DxH"/>
                         <constraint firstItem="6hx-WP-zDo" firstAttribute="centerX" secondItem="AD4-Zi-kcc" secondAttribute="centerX" id="aKB-8x-9DS"/>
                         <constraint firstItem="XeC-mK-zpz" firstAttribute="leading" secondItem="AD4-Zi-kcc" secondAttribute="leading" id="o5r-13-km5"/>
@@ -197,7 +215,7 @@
         </view>
     </objects>
     <resources>
-        <image name="VerificationCode" width="86" height="28"/>
+        <image name="checkMark-white" width="24" height="18"/>
         <image name="login-next-off" width="74" height="74"/>
         <image name="start-bg" width="375" height="667"/>
     </resources>

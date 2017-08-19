@@ -4,8 +4,8 @@ PODS:
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 2.0)
   - AMPopTip (2.1.6)
+  - HandyJSON (1.7.1)
   - Kingfisher (3.9.1)
-  - MBProgressHUD (1.0.0)
   - Moya (8.0.5):
     - Moya/Core (= 8.0.5)
   - Moya/Core (8.0.5):
@@ -20,7 +20,6 @@ PODS:
     - Result (~> 3.2)
   - Result (3.2.3)
   - SnapKit (3.2.0)
-  - SVProgressHUD (2.1.2)
   - SwiftyJSON (3.1.4)
   - WechatOpenSDK (1.7.7)
 
@@ -28,15 +27,14 @@ DEPENDENCIES:
   - Alamofire
   - AlamofireObjectMapper (~> 4.0)
   - AMPopTip
+  - HandyJSON
   - Kingfisher (~> 3.0)
-  - MBProgressHUD (~> 1.0.0)
   - Moya
   - PopupDialog (~> 0.5)
   - Presentr
   - ReactiveCocoa
   - ReactiveSwift
   - SnapKit (~> 3.2.0)
-  - SVProgressHUD
   - SwiftyJSON
   - WechatOpenSDK
 
@@ -44,8 +42,8 @@ SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
   AMPopTip: 81f57556ae12500d30ff595078b1b6d11076ced8
+  HandyJSON: 54b6ce942795f7b2e61b82fe73cf25d9f139d125
   Kingfisher: 6729a0baaa458245bfb8cd5a1296c71c10d6eb6c
-  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Moya: c37eec09a098ba9991b5a963b291fc5704bdb9ef
   ObjectMapper: '042708195cc46c20871cbcbec0453826398273fd'
   PopupDialog: 75cf955693590b0cb2fdde00223fb65d99c57247
@@ -54,10 +52,9 @@ SPEC CHECKSUMS:
   ReactiveSwift: f54ba12c2e799003432930fa55495315ae44f32b
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
-  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   WechatOpenSDK: cbd332148eb792d444ed4eec94f421d98f2046ee
 
-PODFILE CHECKSUM: 6aeee0151bec04874a3097063e2eb44b225c83ba
+PODFILE CHECKSUM: 34f377015e1774c3c401a0534926e2baab788958
 
 COCOAPODS: 1.2.1

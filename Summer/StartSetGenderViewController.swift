@@ -20,11 +20,16 @@ class StartSetGenderViewController: UIViewController, UIImagePickerControllerDel
     
     @IBOutlet weak var nextBtn: UIButton!
     
+    var gender: String = "male"
+    var avatarUrl: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         femaleBtn.alpha = 0.5
+        nextBtn.isEnabled = false
+        cameraBtn.imageView?.contentMode = .scaleAspectFill
     }
     
     
@@ -33,12 +38,13 @@ class StartSetGenderViewController: UIViewController, UIImagePickerControllerDel
     @IBAction func handleTapMaleBtn(_ sender: Any) {
         maleBtn.alpha = 1
         femaleBtn.alpha = 0.5
+        gender = "male"
     }
     
     @IBAction func handleTapFemaleBtn(_ sender: Any) {
         maleBtn.alpha = 0.5
         femaleBtn.alpha = 1
-
+        gender = "female"
     }
     
     @IBAction func handleTapCameraBtn(_ sender: Any) {
@@ -48,7 +54,7 @@ class StartSetGenderViewController: UIViewController, UIImagePickerControllerDel
                 let picker = UIImagePickerController()
                 picker.allowsEditing = false
                 picker.sourceType = .photoLibrary
-                picker.allowsEditing = false
+                picker.allowsEditing = true
                 picker.delegate = self
                 self.present(picker, animated: true, completion: nil)
             }
@@ -96,6 +102,21 @@ class StartSetGenderViewController: UIViewController, UIImagePickerControllerDel
             let img = info[UIImagePickerControllerOriginalImage] as! UIImage?
             if img != nil {
                 self.cameraBtn.setImage(img, for: .normal)
+                let data = UIImageJPEGRepresentation(img!, 0.8)!
+                MBProgressHUD.showAdded(to: self.view, animated: true)
+                APIManager.shareInstance.uploadFile(data: data, result: { [weak self](JSON, code, msg) in
+                    MBProgressHUD.hide(for: (self?.view)!, animated: true)
+                    if code == 0 {
+                        self?.avatarUrl = JSON?["data"]["url"].string ?? ""
+                        SessionManager.sharedInstance.loginInfo.avatarUrl = (self?.avatarUrl)!
+                        SessionManager.sharedInstance.loginInfo.gender = (self?.gender)!
+                        self?.nextBtn.isEnabled = true
+                        self?.nextBtn.setImage(#imageLiteral(resourceName: "login-next-on"), for: .normal)
+                    }
+                    else {
+                        BLHUDBarManager.showError(msg: msg)     
+                    }
+                })
             }
         }
     }

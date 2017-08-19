@@ -34,7 +34,28 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     
     @IBOutlet weak var selectModeView: UIView!
     
+    @IBOutlet weak var aqiNameLabel: UILabel!
     
+    @IBOutlet weak var aqiLevelLabel: UILabel!
+    
+    @IBOutlet weak var pollutionLevelLabel: UILabel!
+    
+    @IBOutlet weak var temperatureLabel: UILabel!
+    
+    @IBOutlet weak var windLevelLabel: UILabel!
+    
+    @IBOutlet weak var cityButton: UIButton!
+    
+    @IBOutlet weak var cigaretteIcon: UIImageView!
+    
+    @IBOutlet weak var pollutionDescLabel: UILabel!
+    
+    @IBOutlet weak var cigaretteNumLabel: UILabel!
+    
+    
+    
+    /// 周数据曲线图
+    @IBOutlet weak var weekDataView: WeekAQIDataView!
     
     lazy var modeControlView: WindModeControllView = {
         let view = WindModeControllView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 246))
@@ -48,6 +69,8 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     var menuView: MainMenuView!
     var edgePanGes:UIScreenEdgePanGestureRecognizer!
     var panGes:UIPanGestureRecognizer!
+    var todayAQIData: CurrentAQI?
+    var recentAQIData: RecentWeekAQI?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,9 +79,9 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         self.setupView()
         self.setupGesture()
         self.setupTimer()
+        self.loadAQIData()
         
-        
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(appDidBecomeActiveNotification(notify:)), name: kAppDidBecomeActiveNotify, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,8 +138,55 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         selectModeView.isHidden = true
     }
     
+    
+    //MARK: - 通知
+    func appDidBecomeActiveNotification(notify: Notification) {
+        
+        self.loadAQIData()
+    }
+    
+    //MARK: - AQI
+    
+    func loadAQIData() {
+        APIRequest.AQIQueryAPI { [weak self](data) in
+            self?.todayAQIData = data as? CurrentAQI
+            self?.updateTodayAQIView(data: (self?.todayAQIData)!)
+            self?.bgImgView.image = self?.todayAQIData?.aqiBGImg()
+            guard let cityID = self?.todayAQIData?.cityID else {
+                return
+            }
+            APIRequest.recentWeekAQIAPI(cityID: cityID, result: { [weak self](recentData) in
+                self?.recentAQIData = recentData as? RecentWeekAQI
+                self?.updateRecentWeekDataView(data: (self?.recentAQIData)!)
+                
+            })
+        }
+        
+    }
+    
+    /// 更新当天的 AQI
+    ///
+    /// - Parameter data: data
+    func updateTodayAQIView(data: CurrentAQI) {
+        cityButton.setTitle("  " + data.city, for: .normal)
+        aqiLevelLabel.text = String(data.aqi)
+        temperatureLabel.text = String(format: "%.0lf°C", data.temperature)
+        windLevelLabel.text = String(format: "%.0f级风",  data.windSpeed)
+        cigaretteNumLabel.text = String(format: NSLocalizedString("CirgaretteNum", comment: ""), data.smokeNum)
+        let smokeIconName = String(format: "icon%dc", data.smokeNum)
+        cigaretteIcon.image = UIImage(named: smokeIconName)
+    }
+    
+    
+    /// 更新最近 AQI 数据曲线图
+    ///
+    /// - Parameter data: 数据源
+    func updateRecentWeekDataView(data: RecentWeekAQI) {
+        weekDataView.updateView(data: data)
+    }
+    
     func setupTimer() {
-        timer = Timer(timeInterval: 3, target: self, selector: #selector(handleTimerEvent(t:)), userInfo: nil, repeats: true)
+        timer = Timer(timeInterval: 60, target: self, selector: #selector(handleTimerEvent(t:)), userInfo: nil, repeats: true)
         timer?.fire()
         RunLoop.main.add(timer!, forMode: .commonModes)
         

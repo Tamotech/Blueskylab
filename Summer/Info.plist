@@ -42,12 +42,12 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>打开蓝牙来允许“蓝天口罩”连接到配件</string>
 	<key>NSCameraUsageDescription</key>
 	<string>need visit your camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>need visit your photo libaray</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>location</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

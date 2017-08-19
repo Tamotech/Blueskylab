@@ -44,6 +44,10 @@ class StartSetUsernameViewController: UIViewController {
 
     //MARK: - actions
     @IBAction func handleTapNextBtn(_ sender: Any) {
+        
+        let name = nameField.text!
+        SessionManager.sharedInstance.loginInfo.name = name
+        
         let vc = StartSetGenderViewController(nibName: "StartSetGenderViewController", bundle: nil)
         navigationController?.pushViewController(vc, animated: true)
     }

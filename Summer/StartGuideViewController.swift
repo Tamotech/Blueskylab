@@ -65,9 +65,13 @@ class StartGuideViewController: UIViewController, UIScrollViewDelegate {
                 if let value = response.result.value {
                     let jsonDic = JSON(value)
 //                    print(jsonDic)
-                    let accessToken = jsonDic["access_token"]
-                    let expires = jsonDic["expires_in"].int
-                    
+                    let accessToken = jsonDic["access_token"].string
+//                    let expires = jsonDic["expires_in"].int
+                    guard let openid = jsonDic["openid"].string else {
+                        return
+                    }
+                    SessionManager.sharedInstance.loginInfo.wxid = openid
+                    SessionManager.sharedInstance.loginInfo.wxAccessToken = accessToken!
                 }
             })
         }

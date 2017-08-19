@@ -36,6 +36,9 @@ class StartSetBirthViewController: UIViewController {
     
     @IBAction func handleTapConfirmBtn(_ sender: Any) {
         
+        let date = datePicker.date
+        let str = date.stringOfDay()
+        SessionManager.sharedInstance.loginInfo.birthday = str
         let vc = StartSetWeightViewController(nibName: "StartSetWeightViewController", bundle: nil)
         navigationController?.pushViewController(vc, animated: true)
     }

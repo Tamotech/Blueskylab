@@ -23,17 +23,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         // Override point for customization after application launch.
         
 
-        if !UserDefaults.standard.bool(forKey: kFirstLoadApp) {
+        //判断登录状态
+        if (SessionManager.sharedInstance.token.characters.count > 0) {
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "startNavigationVC")
+            window?.rootViewController = vc
+        }
+        else if !UserDefaults.standard.bool(forKey: kFirstLoadApp) {
             let guideVc = StartGuideViewController(nibName: "StartGuideViewController", bundle: nil)
             let navVc = BaseNavigationController(rootViewController: guideVc) 
             navVc.setTintColor(tint: .white)
             navVc.setTintColor(tint: UIColor.white)
             window?.rootViewController = navVc
-        }
-        else {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "startNavigationVC")
-            window?.rootViewController = vc
         }
         
         UIApplication.shared.statusBarStyle = .default
@@ -58,10 +59,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        NotificationCenter.default.post(name: kAppDidBecomeActiveNotify, object: nil)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
+        SessionManager.sharedInstance.saveLoginInfo()
     }
     
     
