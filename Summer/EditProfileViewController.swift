@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 import Presentr
 
 class EditProfileViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -38,6 +39,8 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         self.title = NSLocalizedString("ProfileTitle", comment: "")
         let saveItem = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .plain, target: self, action: #selector(handleTapSaveItem(_:)))
         self.navigationItem.rightBarButtonItem = saveItem
+        
+        self.updateView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,6 +48,23 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    //MARK: - updateView
+    
+    func updateView() {
+        guard let userInfo = SessionManager.sharedInstance.userInfo else {
+            return
+        }
+        let img = ImageResource(downloadURL: URL(string: userInfo.headimg.urlStringWithBLS())!)
+        avartarBtn.kf.setImage(with: img, for: .normal)
+        nameField.text = userInfo.name
+        phoneField.text = userInfo.mobile
+        birthField.text = userInfo.birthday
+        genderField.text = userInfo.sex
+        heightField.text = String.init(format: "%.1f", userInfo.height)
+        weightField.text = String.init(format: "%.1f", userInfo.weight)
+    }
 
     // MARK: - actions
     

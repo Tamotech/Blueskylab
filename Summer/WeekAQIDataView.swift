@@ -78,15 +78,10 @@ class WeekAQIDataView: UIView {
             }
             
             var cx: CGFloat = 0
-            if (i == 0) {
-                cx = 0
-            }
-            else if i == 6 {
-                cx = screenWidth
-            }
-            else {
-                cx = screenWidth*(2*CGFloat(i-1)+1)/10.0
-            }
+           
+            
+            cx = screenWidth*(2*CGFloat(i-1)+1)/10.0
+            
             let aqi = data.recentAQIs[i]
             let cy1 = height - 10 - (height-30)*CGFloat(aqi.aqiMax)/maxAQI
             let cy2 = height - 10 - (height-30)*CGFloat(aqi.aqiMin)/maxAQI
@@ -98,13 +93,13 @@ class WeekAQIDataView: UIView {
         
         //绘制最大点与最小点的坐标
         
-        let path1 = UIBezierPath(rect: self.bounds)
+        let path1 = UIBezierPath(rect: CGRect(x: -1, y: -1, width: screenWidth+2, height: self.height+2))
         UIColor.white.setStroke()
         path1.lineWidth = 1
         path1.addBezierThroughPoints(maxPoints)
         path1.stroke()
         
-        let path2 = UIBezierPath(rect: self.bounds)
+        let path2 = UIBezierPath(rect: CGRect(x: -1, y: -1, width: screenWidth+2, height: self.height+2))
         path2.lineWidth = 1
         path2.addBezierThroughPoints(minPoints)
         path2.stroke()

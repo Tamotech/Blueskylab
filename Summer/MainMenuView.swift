@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 enum ItemType {
     case ItemUser
@@ -25,10 +26,31 @@ class MainMenuView: BaseView {
     
     var tapMunueCallback:tapMenuAction?
     
+    @IBOutlet weak var avatarBtn: UIButton!
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    
+    
+    
+    
     override func awakeFromNib() {
         self.frame = UIScreen.main.bounds
+        avatarBtn.imageView?.cornerRadius = 45
+        avatarBtn.imageView?.clipsToBounds = true
     }
     
+    
+    ///更新页面
+    func updateView() {
+        guard let userInfo = SessionManager.sharedInstance.userInfo else {
+            return
+        }
+        
+        let rc = ImageResource(downloadURL: URL(string: userInfo.headimg.urlStringWithBLS())!)
+        avatarBtn.kf.setImage(with: rc, for: .normal, placeholder: #imageLiteral(resourceName: "imgProfile-M"), options: nil, progressBlock: nil, completionHandler: nil)
+        nameLabel.text = userInfo.name
+    }
     
     
     //MARK: tapGesture

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -24,7 +24,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77a-MJ-8Zl" userLabel="avatar">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="211"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLB-qv-5kP">
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLB-qv-5kP">
                                     <rect key="frame" x="74.5" y="60.5" width="90" height="90"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="90" id="0Ot-Yy-oSb"/>
@@ -354,6 +354,10 @@
                 <constraint firstAttribute="bottom" secondItem="3SU-dH-rOt" secondAttribute="bottom" id="KRK-Me-XgJ"/>
                 <constraint firstItem="3SU-dH-rOt" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="3:4" id="jUO-yB-0yf"/>
             </constraints>
+            <connections>
+                <outlet property="avatarBtn" destination="uLB-qv-5kP" id="ZO0-DV-yAe"/>
+                <outlet property="nameLabel" destination="YCl-Hl-Iem" id="bLD-ma-4Nh"/>
+            </connections>
             <point key="canvasLocation" x="40" y="80"/>
         </view>
         <tapGestureRecognizer id="cfG-ro-9jH" userLabel="Tap Gesture Recognizer1">

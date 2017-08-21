@@ -16,6 +16,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     enum LoginMode {
         case login
         case regist
+        case wxRegist
     }
     @IBOutlet weak var phoneField: UITextField!
     
@@ -240,12 +241,33 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     @IBAction func handleTapNextBtn(_ sender: UIButton) {
         let phone = phoneField.text!.trip()
         let captchaStr = smsCodeField.text!.trip()
+        SessionManager.sharedInstance.loginInfo.phone = phone
+        SessionManager.sharedInstance.loginInfo.captcha = captchaStr
         
         if mode == .login {
             
             //登录
             MBProgressHUD.showAdded(to: self.view, animated: true)
-            SessionManager.sharedInstance.login(phone: phone, sms: captchaStr, wxOpenId: "", results: { [weak self](json, code, msg) in
+            SessionManager.sharedInstance.login(results: { [weak self](json, code, msg) in
+                if code == 0 {
+                    //成功
+                    DispatchQueue.main.async {
+                        MBProgressHUD.hide(for: (self?.view)!, animated: true)
+                        let sb = UIStoryboard(name: "Main", bundle: nil)
+                        let vc = sb.instantiateViewController(withIdentifier: "startNavigationVC")
+                        UIApplication.shared.keyWindow!.rootViewController = vc
+                    }
+                }
+                else {
+                    MBProgressHUD.hide(for: (self?.view)!, animated: true)
+                    BLHUDBarManager.showErrorWithClose(msg: msg, descTitle: NSLocalizedString("returnAndReinput", comment: ""))
+                    
+                }
+            })
+        }
+        else if self.mode == .wxRegist {
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+            SessionManager.sharedInstance.regist(results: { [weak self] (JSON, code, msg) in
                 if code == 0 {
                     //成功
                     DispatchQueue.main.async {

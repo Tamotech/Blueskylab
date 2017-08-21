@@ -18,7 +18,8 @@ class APIManager: NSObject {
 
     let baseUrl:String = "http://www.blueskylab.cn"
     var headers: HTTPHeaders = [
-        "device": "app"
+        "device": "app",
+        "X-Requested-With":"XMLHttpRequest"
     ]
  
     

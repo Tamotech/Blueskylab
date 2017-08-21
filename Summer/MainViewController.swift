@@ -82,6 +82,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         self.loadAQIData()
         
         NotificationCenter.default.addObserver(self, selector: #selector(appDidBecomeActiveNotification(notify:)), name: kAppDidBecomeActiveNotify, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userInfoUpdateNotification(noti:)), name: kUserInfoDidUpdateNotify, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -134,7 +135,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         
         modeManageView.addSubview(modeControlView)
         modeControlView.delegate = self
-        modeControlBottom.constant = -303
+        modeControlBottom.constant = -303+55
         selectModeView.isHidden = true
     }
     
@@ -143,6 +144,11 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     func appDidBecomeActiveNotification(notify: Notification) {
         
         self.loadAQIData()
+        SessionManager.sharedInstance.getUserInfo()
+    }
+    
+    func userInfoUpdateNotification(noti: Notification) {
+        menuView.updateView()
     }
     
     //MARK: - AQI
@@ -286,6 +292,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     //MARK: - 菜单出现消失
     
     func showMenu() {
+        
         let borderX = self.view.width*3/4.0
         UIView.animate(withDuration: 0.2, animations: {
             self.navigationController!.view.left = borderX
@@ -331,15 +338,22 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         
     }
     
+    
+    
+    /// 点击底部模式 唤起模式控制器
+    ///
+    /// - Parameter sender:  tapGesture
+    @IBAction func handleTapBottomModeControlView(_ sender: UITapGestureRecognizer) {
+        
+        self.showModeControl(show: true)
+    }
+    
+    @IBAction func handleTapUnfoldModeView(_ sender: UITapGestureRecognizer) {
+        self.showModeControl(show: false)
+    }
+    
     @IBAction func handleTapUpModelBtn(_ sender: UIButton) {
         
-        modeControlBottom.constant = 0
-        self.selectModeView.isHidden = false
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        }) { (success) in
-            
-        }
     }
     
     
@@ -348,15 +362,15 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @IBAction func handleTapModeSettingBtn(_ sender: UIButton) {
+        
+        let vc = ModeSettingController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
     /// 点击收起选择模式
     @IBAction func handleTapFoldSelectModeBtn(_ sender: UIButton) {
         
-        modeControlBottom.constant = -self.selectModeView.height
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        }) {(success) in
-            self.selectModeView.isHidden = true
-        }
+        
     }
     
     //MARK: - WindModeSelectDelegate
@@ -374,6 +388,30 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         bottomView.isHidden = true
         modeControlView.isHidden = false
         bottomModeView.isHidden = false
+        selectModeView.isHidden = false
     }
 
+    
+    //MARK: - private
+    
+    func showModeControl(show: Bool) {
+        if show {
+            modeControlBottom.constant = 0
+            UIView.animate(withDuration: 0.3, animations: {
+                self.bottomModeView.alpha = 0
+                self.view.layoutIfNeeded()
+            }) { (success) in
+                
+            }
+        }
+        else {
+            modeControlBottom.constant = -self.selectModeView.height+55
+            UIView.animate(withDuration: 0.3, animations: {
+                self.bottomModeView.alpha = 1
+                self.view.layoutIfNeeded()
+            }) {(success) in
+                
+            }
+        }
+    }
 }

@@ -40,24 +40,29 @@ class StartSetHeightViewController: UIViewController {
     
     @IBAction func handleTapNextBtn(_ sender: Any) {
         
+        if (SessionManager.sharedInstance.loginInfo.wxid.characters.count > 0) {
+            //微信绑定注册
+            let vc =  LoginViewController(nibName: "LoginViewController", bundle: nil)
+            vc.mode = .wxRegist
+            navigationController?.pushViewController(vc, animated: true)
+            return
+        }
         //注册
         SVProgressHUD.show()
         SessionManager.sharedInstance.regist { (JSON, code, msg) in
             if code == 0 {
-                //成功 登录
-                SessionManager.sharedInstance.login(phone: SessionManager.sharedInstance.loginInfo.phone, sms: SessionManager.sharedInstance.loginInfo.captcha, wxOpenId: "", results: { (JSON, code, msg) in
-                    if code == 1 {
-                        DispatchQueue.main.async {
-                            SVProgressHUD.dismiss()
-                            let sb = UIStoryboard(name: "Main", bundle: nil)
-                            let vc = sb.instantiateViewController(withIdentifier: "startNavigationVC")
-                            UIApplication.shared.keyWindow!.rootViewController = vc
-                        }
+                //注册成功 登录成功成功
+                if code == 1 {
+                    DispatchQueue.main.async {
+                        SVProgressHUD.dismiss()
+                        let sb = UIStoryboard(name: "Main", bundle: nil)
+                        let vc = sb.instantiateViewController(withIdentifier: "startNavigationVC")
+                        UIApplication.shared.keyWindow!.rootViewController = vc
                     }
-                    else {
-                        SVProgressHUD.showError(withStatus: msg)      
-                    }
-                })
+                }
+                else {
+                    SVProgressHUD.showError(withStatus: msg)
+                }
             }
             else {
                 SVProgressHUD.showError(withStatus: msg)

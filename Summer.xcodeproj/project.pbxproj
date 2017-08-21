@@ -55,6 +55,10 @@
 		CC3348D21EF368790084642A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC3348D01EF368790084642A /* Main.storyboard */; };
 		CC3348D41EF368790084642A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC3348D31EF368790084642A /* Assets.xcassets */; };
 		CC3348D71EF368790084642A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC3348D51EF368790084642A /* LaunchScreen.storyboard */; };
+		CC339C061F48951D00EB0516 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC339C051F48951D00EB0516 /* UserInfo.swift */; };
+		CC339C091F4A532B00EB0516 /* ModeSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC339C071F4A532B00EB0516 /* ModeSettingController.swift */; };
+		CC339C0D1F4A546E00EB0516 /* ModeSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC339C0B1F4A546E00EB0516 /* ModeSettingCell.swift */; };
+		CC339C0E1F4A546E00EB0516 /* ModeSettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC339C0C1F4A546E00EB0516 /* ModeSettingCell.xib */; };
 		CC3693811F3612AD00929F24 /* OpenBluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC36937F1F3612AD00929F24 /* OpenBluetoothController.swift */; };
 		CC3693821F3612AD00929F24 /* OpenBluetoothController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC3693801F3612AD00929F24 /* OpenBluetoothController.xib */; };
 		CC3EF2CB1EFEB99E00CE4919 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC3EF2CD1EFEB99E00CE4919 /* Localizable.strings */; };
@@ -185,6 +189,10 @@
 		CC3348D31EF368790084642A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Summer/Assets.xcassets; sourceTree = "<group>"; };
 		CC3348D61EF368790084642A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC3348D81EF368790084642A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Summer/Info.plist; sourceTree = "<group>"; };
+		CC339C051F48951D00EB0516 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		CC339C071F4A532B00EB0516 /* ModeSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeSettingController.swift; sourceTree = "<group>"; };
+		CC339C0B1F4A546E00EB0516 /* ModeSettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeSettingCell.swift; sourceTree = "<group>"; };
+		CC339C0C1F4A546E00EB0516 /* ModeSettingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModeSettingCell.xib; sourceTree = "<group>"; };
 		CC36937F1F3612AD00929F24 /* OpenBluetoothController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenBluetoothController.swift; sourceTree = "<group>"; };
 		CC3693801F3612AD00929F24 /* OpenBluetoothController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenBluetoothController.xib; sourceTree = "<group>"; };
 		CC3EF2CE1EFEB9A600CE4919 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -426,6 +434,7 @@
 			isa = PBXGroup;
 			children = (
 				CC12F9FB1F451CC000533783 /* CurrentAQI.swift */,
+				CC339C051F48951D00EB0516 /* UserInfo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -436,6 +445,9 @@
 				CC196F841F3CABBB006C1D90 /* WindModeControl */,
 				CCFBF71E1F3DFE300025F330 /* AddModeViewController.swift */,
 				CCFBF71F1F3DFE300025F330 /* AddModeViewController.xib */,
+				CC339C071F4A532B00EB0516 /* ModeSettingController.swift */,
+				CC339C0B1F4A546E00EB0516 /* ModeSettingCell.swift */,
+				CC339C0C1F4A546E00EB0516 /* ModeSettingCell.xib */,
 			);
 			name = WindMode;
 			sourceTree = "<group>";
@@ -840,6 +852,7 @@
 				CCE4E2CF1F0932A50085542E /* qrcode.png in Resources */,
 				CC0237801F08ABDC00400F7C /* SettingViewController.xib in Resources */,
 				CC9BDCB51F43409A00AF6DB4 /* SVProgressHUD.bundle in Resources */,
+				CC339C0E1F4A546E00EB0516 /* ModeSettingCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -919,6 +932,7 @@
 				CC6D342E1EF3877A002C4A36 /* Car.swift in Sources */,
 				CC196F8A1F3CB398006C1D90 /* WindModeSportButton.swift in Sources */,
 				CC8D040B1F3FDCF700F9B7FF /* WindModeAjustor.swift in Sources */,
+				CC339C0D1F4A546E00EB0516 /* ModeSettingCell.swift in Sources */,
 				CCE954741F11122D005C755C /* CheckUpdateViewController.swift in Sources */,
 				CC5B32711EFA5D570048FC89 /* WXActionSheetView.swift in Sources */,
 				CC0664AA1EF76A5D00020415 /* BaseViewController.swift in Sources */,
@@ -926,6 +940,7 @@
 				CC2B99D51F0490FA00916069 /* BaseActionSheetView.swift in Sources */,
 				CCE4E2C51F0909800085542E /* PrivacyViewController.swift in Sources */,
 				CC8B17EF1F3038BD00FC5EAE /* BLHUDBarManager.swift in Sources */,
+				CC339C061F48951D00EB0516 /* UserInfo.swift in Sources */,
 				CC2B99D31F04905700916069 /* DatePickerView.swift in Sources */,
 				CC4BA87D1F2DA2AB002B571D /* EquipmentViewController.swift in Sources */,
 				CC03D0811EFEBE9D00CC8B20 /* RuleSelectorView.swift in Sources */,
@@ -954,6 +969,7 @@
 				CC1657BA1F3B6F7F0097FF58 /* BLTipView.swift in Sources */,
 				CC4B66DA1F3838B500772738 /* APIManager.swift in Sources */,
 				CC0664B01EF7BEC800020415 /* BaseNavigationController.swift in Sources */,
+				CC339C091F4A532B00EB0516 /* ModeSettingController.swift in Sources */,
 				CC0664B41EF7C0EB00020415 /* MainMenuView.swift in Sources */,
 				CC05D2CF1F08748600653C71 /* GenderPickerView.swift in Sources */,
 				CC11D6521F30C9BA00B9ADD1 /* StartSetGenderViewController.swift in Sources */,

@@ -60,7 +60,7 @@ class HistoryDataViewController: BaseViewController, UITableViewDelegate, UITabl
         sender.isSelected = !sender.isSelected
         if sender.isSelected {
             UIView.animate(withDuration: 0.4, animations: { 
-                self.tableSuperView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
+                self.tableSuperView.frame = CGRect(x: 0, y: 20, width: screenWidth, height: screenHeight-20)
                 self.navigationController?.setNavigationBarHidden(true, animated: true)
                 self.barView.isHidden = true
             })

@@ -52,6 +52,12 @@ class SettingViewController: BaseViewController {
         
     }
     @IBAction func handleTapLogout(_ sender: Any) {
+        SessionManager.sharedInstance.logoutCurrentUser()
+        let guideVc = StartGuideViewController(nibName: "StartGuideViewController", bundle: nil)
+        let navVc = BaseNavigationController(rootViewController: guideVc)
+        navVc.setTintColor(tint: .white)
+        navVc.setTintColor(tint: UIColor.white)
+        UIApplication.shared.keyWindow?.rootViewController = navVc
         
     }
     

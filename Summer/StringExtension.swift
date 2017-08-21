@@ -28,6 +28,20 @@ extension String {
         return newStr
     }
     
+    
+    /// 转换成以 BLS 开头的 url
+    ///
+    /// - Returns: url
+    func urlStringWithBLS() -> String {
+        
+        if !self.hasPrefix("http://") {
+            if self.hasPrefix("/") {
+                return baseURL+self
+            }
+            return baseURL+"/"+self
+        }
+        return self
+    }
 }
 
 

@@ -72,6 +72,34 @@ class StartGuideViewController: UIViewController, UIScrollViewDelegate {
                     }
                     SessionManager.sharedInstance.loginInfo.wxid = openid
                     SessionManager.sharedInstance.loginInfo.wxAccessToken = accessToken!
+                    
+                    //尝试用 wxid 登录
+                    MBProgressHUD.showAdded(to: self.view, animated: true)
+                    SessionManager.sharedInstance.login(results: { [weak self](json, code, msg) in
+                        if code == 0 {
+                            //成功
+                            DispatchQueue.main.async {
+                                MBProgressHUD.hide(for: (self?.view)!, animated: true)
+                                let sb = UIStoryboard(name: "Main", bundle: nil)
+                                let vc = sb.instantiateViewController(withIdentifier: "startNavigationVC")
+                                UIApplication.shared.keyWindow!.rootViewController = vc
+                            }
+                        }
+                        else if code == -130 {
+                            ///用户不存在
+                            MBProgressHUD.hide(for: (self?.view)!, animated: true)
+                            //去完善资料
+                            let vc = StartSetUsernameViewController(nibName: "StartSetUsernameViewController", bundle: nil)
+                            self?.navigationController?.pushViewController(vc, animated: true)
+                        }
+                        else {
+                            MBProgressHUD.hide(for: (self?.view)!, animated: true)
+                            WXProgressHUD.showError(status: msg)
+                            //BLHUDBarManager.showErrorWithClose(msg: msg, descTitle: NSLocalizedString("returnAndReinput", comment: ""))
+                            
+                        }
+                    })
+                    
                 }
             })
         }
