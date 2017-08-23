@@ -41,12 +41,17 @@ class APIManager: NSObject {
         Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseJSON { (response) in
             
             if let value = response.result.value {
+                
                 let resultDic = JSON(value)
 //                let data = resultDic["data"]
 //                let success = resultDic["success"]
 //                let id = resultDic["id"]
                 let num = resultDic["num"]
                 let info = resultDic["info"]
+                if num.intValue == -1004 {
+                    //token 失效
+                    SessionManager.sharedInstance.logoutCurrentUser()
+                }
                 
                 result(resultDic, num.intValue, info.stringValue)
             }

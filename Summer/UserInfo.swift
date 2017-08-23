@@ -32,4 +32,36 @@ class UserInfo: HandyJSON {
     
     
     required init () {}
+    
+    func updateUserInfo(result: @escaping (_ success: Bool, _ msg: String) -> ()) {
+        let path = "/member/updateUserInfo.htm"
+        let params = ["name": name,
+                      "sex": sex,
+                      "birthday": birthday,
+                      "heading": headimg,
+                      "wxid": wxid,
+                      "height": height,
+                      "weight": weight] as [String : Any]
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                result(true, msg)
+            }
+            else {
+                result(false, msg)
+            }
+        }
+    }
+}
+
+class WXUserInfo: HandyJSON {
+    var openid: String = ""
+    var nickname: String = ""
+    var sex = 1
+    var province: String = ""
+    var city: String = ""
+    var country: String = ""
+    var headimgurl: String = ""
+    var unionid: String = ""
+    
+    required init() {}
 }

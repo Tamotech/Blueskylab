@@ -65,7 +65,7 @@
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="maskM2-1-1" translatesAutoresizingMaskIntoConstraints="NO" id="ora-eY-Nwb">
                                                                         <rect key="frame" x="79" y="-7" width="218" height="264"/>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="连接到设备" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fan-iJ-VTa">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备未连接" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fan-iJ-VTa">
                                                                         <rect key="frame" x="142" y="53" width="92" height="21"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -217,14 +217,14 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face1" translatesAutoresizingMaskIntoConstraints="NO" id="uMZ-xH-f0c">
                                                         <rect key="frame" x="115" y="10" width="145" height="143"/>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="口罩过滤效果" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvS-z7-NT9">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前过滤效果" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvS-z7-NT9">
                                                         <rect key="frame" x="144.5" y="163" width="86" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一级" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcR-hb-39j">
-                                                        <rect key="frame" x="168.5" y="186" width="37" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcR-hb-39j">
+                                                        <rect key="frame" x="178" y="186" width="18.5" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -295,7 +295,7 @@
                                             <constraint firstAttribute="height" constant="44" id="ifr-sp-SXO"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="开始搜索蓝天口罩">
+                                        <state key="normal" title="开始搜索蓝天大气">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -402,7 +402,7 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle-bg" translatesAutoresizingMaskIntoConstraints="NO" id="vkJ-Jl-ge1">
                                                 <rect key="frame" x="20" y="-7" width="70" height="62"/>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-net-select" translatesAutoresizingMaskIntoConstraints="NO" id="2of-PJ-wBb">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_net" translatesAutoresizingMaskIntoConstraints="NO" id="2of-PJ-wBb">
                                                 <rect key="frame" x="35" y="6" width="40" height="40"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="智能模式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biF-04-wsM">
@@ -553,12 +553,12 @@
         <image name="bgWaveM3" width="375" height="308"/>
         <image name="circle-bg" width="70" height="62"/>
         <image name="face1" width="145" height="143"/>
-        <image name="icon-net-select" width="40" height="40"/>
         <image name="icon5c" width="140" height="131"/>
         <image name="iconBlueTeethM2" width="13" height="18"/>
         <image name="iconClockM2" width="22" height="22"/>
         <image name="iconLocation-white" width="13" height="14"/>
         <image name="iconQuestionM2" width="22" height="22"/>
+        <image name="icon_net" width="40" height="40"/>
         <image name="main-bg1.jpg" width="1125" height="2001"/>
         <image name="maskM2-1-1" width="218" height="264"/>
         <image name="mode-setting" width="24" height="24"/>

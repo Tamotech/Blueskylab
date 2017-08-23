@@ -32,13 +32,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKH-MW-C69" userLabel="活动名称">
                     <rect key="frame" x="0.0" y="64" width="375" height="107"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活动名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jzy-bx-0DK">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="模式名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jzy-bx-0DK">
                             <rect key="frame" x="25" y="25.5" width="65.5" height="19.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入活动名称" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="btZ-Dr-fip">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="请输入送风模式的名称" placeholder="请输入活动名称" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="btZ-Dr-fip">
                             <rect key="frame" x="25" y="57" width="325" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="B0a-rI-3yT"/>

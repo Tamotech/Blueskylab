@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import Kingfisher
 
 
 protocol WindModeAjustorDelegate {
-    func selectItem(mode: WindMode)
+    func selectItem(mode: UserWindSpeedConfig)
 }
 
 /// 调节风量的圆环组件
@@ -18,7 +19,7 @@ protocol WindModeAjustorDelegate {
 class WindModeAjustor: UIView {
 
     
-    var mode: WindMode = WindMode.WindModeDefault
+    var mode: UserWindSpeedConfig = UserWindSpeedConfig()
     let iconView: UIImageView = UIImageView()
     let windLevelLabel: UILabel = UILabel()
     let leftLb: UILabel = UILabel()
@@ -33,12 +34,9 @@ class WindModeAjustor: UIView {
     let minLevel: CGFloat = 0
     let maxLevel: CGFloat = 100
     
-    init(frame: CGRect, mode: WindMode) {
+    init(frame: CGRect, mode: UserWindSpeedConfig) {
         super.init(frame: frame)
         self.mode = mode
-        let icon = WindModeModel.modeIcon(mode: mode)
-        let name = WindModeModel.modeName(mode: mode)
-        
         self.addSubview(ovalOutsideView)
         ovalOutsideView.snp.makeConstraints { (make) in
             make.top.left.bottom.right.equalTo(0)
@@ -50,15 +48,21 @@ class WindModeAjustor: UIView {
             make.top.left.bottom.right.equalTo(0)
         }
 
-        
-        iconView.image = icon
+        if mode.isAdd {
+            iconView.image = #imageLiteral(resourceName: "iconAdd_darkblue")
+        }
+        else {
+            let rc = ImageResource(downloadURL: URL(string: mode.icon2)!)
+            iconView.kf.setImage(with: rc)    
+        }
         self.addSubview(iconView)
         iconView.snp.makeConstraints { (make) in
             make.centerX.equalTo(self.snp.centerX)
             make.centerY.equalTo(self.snp.centerY).offset(-20)
+            make.width.height.equalTo(35)
         }
         
-        windLevelLabel.text = "60"
+        windLevelLabel.text = "\(mode.value)"
         windLevelLabel.textColor = UIColor(hexString: "3b74db")
         windLevelLabel.font = UIFont.systemFont(ofSize: 21)
         self.addSubview(windLevelLabel)
@@ -89,7 +93,7 @@ class WindModeAjustor: UIView {
         
         itemLabel.textColor = UIColor(hexString: "3b74db")
         itemLabel.font = UIFont.systemFont(ofSize: 15)
-        itemLabel.text = name
+        itemLabel.text = mode.name
         self.addSubview(itemLabel)
         itemLabel.snp.makeConstraints { (make) in
             make.bottom.equalTo(self.bottom).offset(-18)
@@ -109,11 +113,11 @@ class WindModeAjustor: UIView {
         pointView.addGestureRecognizer(panGes)
         
         
-        if mode == .WindModeAdd {
+        if mode.isAdd {
             rulerView.isHidden = true
             pointView.isHidden = true
             itemLabel.isHidden = true
-            ovalOutsideView.isHidden = true
+//            ovalOutsideView.isHidden = true
             windLevelLabel.isHidden = true
             leftLb.isHidden = true
             rightLb.isHidden = true
@@ -136,8 +140,12 @@ class WindModeAjustor: UIView {
             iconView.snp.remakeConstraints({ (make) in
                 make.centerX.equalTo(self.snp.centerX)
                 make.centerY.equalTo(self.snp.centerY)
+                make.size.equalTo(CGSize(width: 35, height: 35))
             })
-            
+            if mode.icon2.characters.count>0 {
+                let rc = ImageResource(downloadURL: URL(string: mode.icon2)!)
+                iconView.kf.setImage(with: rc)
+            }
             self.windLevelLabel.alpha = 0
             self.leftLb.alpha = 0
             self.rightLb.alpha = 0
@@ -150,7 +158,12 @@ class WindModeAjustor: UIView {
             iconView.snp.remakeConstraints({ (make) in
                 make.centerX.equalTo(self.snp.centerX)
                 make.centerY.equalTo(self.snp.centerY).offset(-20)
+                make.size.equalTo(CGSize(width: 30, height: 30))
             })
+            if mode.icon3.characters.count > 0 {
+                let rc = ImageResource(downloadURL: URL(string: mode.icon3)!)
+                iconView.kf.setImage(with: rc)
+            }
             self.windLevelLabel.alpha = 1
             self.leftLb.alpha = 1
             self.rightLb.alpha = 1

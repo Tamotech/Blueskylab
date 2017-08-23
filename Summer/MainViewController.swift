@@ -8,6 +8,8 @@
 
 import UIKit
 import AMPopTip
+import ReactiveSwift
+import RxSwift
 
 class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSelectDelegate {
 
@@ -51,8 +53,6 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     @IBOutlet weak var pollutionDescLabel: UILabel!
     
     @IBOutlet weak var cigaretteNumLabel: UILabel!
-    
-    
     
     /// 周数据曲线图
     @IBOutlet weak var weekDataView: WeekAQIDataView!
@@ -137,6 +137,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         modeControlView.delegate = self
         modeControlBottom.constant = -303+55
         selectModeView.isHidden = true
+        
     }
     
     
@@ -149,6 +150,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     
     func userInfoUpdateNotification(noti: Notification) {
         menuView.updateView()
+        modeControlView.modeManager.loadData()
     }
     
     //MARK: - AQI
@@ -192,7 +194,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     }
     
     func setupTimer() {
-        timer = Timer(timeInterval: 60, target: self, selector: #selector(handleTimerEvent(t:)), userInfo: nil, repeats: true)
+        timer = Timer(timeInterval: 3, target: self, selector: #selector(handleTimerEvent(t:)), userInfo: nil, repeats: true)
         timer?.fire()
         RunLoop.main.add(timer!, forMode: .commonModes)
         
@@ -250,8 +252,11 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
                 break
             }
         }
-        self.navigationController!.view.superview?.insertSubview(menuView, at: 0)
         
+        ///BUG:此处出现 menu 覆盖在 view 之上的 bug
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.navigationController!.view.superview?.insertSubview(self.menuView, at: 0)
+        }
         
         maskView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         maskView.backgroundColor = UIColor(white: 0, alpha: 0.5)
@@ -345,6 +350,11 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     /// - Parameter sender:  tapGesture
     @IBAction func handleTapBottomModeControlView(_ sender: UITapGestureRecognizer) {
         
+        //如果未登录
+        if SessionManager.sharedInstance.token == "" {
+            showLoginVC()
+            return
+        }
         self.showModeControl(show: true)
     }
     
@@ -365,6 +375,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     @IBAction func handleTapModeSettingBtn(_ sender: UIButton) {
         
         let vc = ModeSettingController()
+        vc.modeManager = modeControlView.modeManager
         navigationController?.pushViewController(vc, animated: true)
     }
     /// 点击收起选择模式

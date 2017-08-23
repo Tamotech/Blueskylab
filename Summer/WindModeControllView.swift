@@ -15,10 +15,10 @@ protocol WindModeSelectDelegate {
 
 class WindModeControllView: UIView, WindModeAjustorDelegate {
     
-    var modes: [WindModeModel] = []
+    var modeManager: WindModeManager = WindModeManager()
     var scrollView: UIScrollView = UIScrollView()
     var childCompoents: [WindModeAjustor] = []
-    var currentMode: WindMode = .WindModeSport
+    var currentMode: UserWindSpeedConfig = UserWindSpeedConfig()
     let leftSpace: CGFloat = 25
     let width1: CGFloat = 62
     let width2: CGFloat = 146
@@ -30,48 +30,9 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         self.addSubview(scrollView)
-        let modes: [WindMode] = [WindMode.WindModeIntelligent,
-                                 WindMode.WindModeWalk,
-                                 WindMode.WindModeSport,
-                                 WindMode.WindModeDrive,
-                                 WindMode.WindModeRest,
-                                 WindMode.WindModeAdd]
-        var i = 0
-        for mode in modes {
-            
-            let ajustor = WindModeAjustor(frame: .zero, mode: mode)
-            ajustor.delegate = self
-            childCompoents.append(ajustor)
-            scrollView.addSubview(ajustor)
-            
-            if i == 0 {
-                ajustor.snp.makeConstraints({ (make) in
-                    make.left.equalTo(leftSpace)
-                    make.centerY.equalTo(self.scrollView.snp.centerY)
-                    make.width.height.equalTo(width1)
-                })
-            }
-            else {
-                let lastView = childCompoents[i-1]
-                ajustor.snp.makeConstraints({ (make) in
-                    make.left.equalTo(lastView.snp.right).offset(leftSpace)
-                    make.centerY.equalTo(self.scrollView.snp.centerY)
-                    make.width.height.equalTo(width1)
-                    if i == modes.count - 1 {
-                        make.right.equalTo(self.scrollView.right).offset(-leftSpace)
-                    }
-                })
-                
-            }
-            i = i + 1
+        modeManager.completeLoadModeConfig = {[weak self]() in
+            self?.refreshItemViews()
         }
-        
-        let scrollSizeWidth = CGFloat(childCompoents.count - 1)*width1+width2+CGFloat(childCompoents.count+1)*leftSpace
-        scrollView.contentSize = CGSize(width: scrollSizeWidth, height: frame.size.height)
-        
-//        //TODO
-        self.refreshItemViews()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -81,9 +42,16 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
     
     //MARK: - ajustorDelegate
     
-    func selectItem(mode: WindMode) {
+    func selectItem(mode: UserWindSpeedConfig) {
         currentMode = mode
-        refreshItemViews()
+        if mode.isAdd {
+            if delegate != nil {
+                delegate?.clickAddMode()
+            }
+        }
+        else {
+            refreshItemViews()
+        }
     }
     
     
@@ -91,33 +59,75 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
     
     func refreshItemViews() {
         
-        if childCompoents.count == 0 {
+        if modeManager.windUserConfigList.count == 0 {
             return
         }
-        if (currentMode == WindMode.WindModeAdd) {
-            // click add
-            if delegate != nil {
-                delegate?.clickAddMode()
+        
+        if childCompoents.count == 0 {
+            
+            for mode in modeManager.windUserConfigList {
+              
+                let ajustor = WindModeAjustor(frame: .zero, mode: mode)
+                ajustor.delegate = self
+                childCompoents.append(ajustor)
+                scrollView.addSubview(ajustor)
+                
             }
             
-            return
+            let addConfig = UserWindSpeedConfig()
+            addConfig.isAdd = true
+            let addAjustor = WindModeAjustor(frame: .zero, mode: addConfig)
+            addAjustor.delegate = self
+            childCompoents.append(addAjustor)
+            scrollView.addSubview(addAjustor)
+
         }
-        for ajustorView in childCompoents {
-            
-            if ajustorView.mode == currentMode {
-                ajustorView.snp.updateConstraints({ (make) in
-                    make.width.height.equalTo(self.width2)
+        
+        var i = 0
+        for ajustor in childCompoents {
+            if i == 0 {
+                ajustor.snp.remakeConstraints({ (make) in
+                    make.left.equalTo(leftSpace)
+                    make.centerY.equalTo(self.scrollView.snp.centerY)
+                    if ajustor.mode.id == currentMode.id {
+                        make.width.height.equalTo(width2)
+                    }
+                    else {
+                        make.width.height.equalTo(width1)
+                    }
                 })
             }
             else {
-                ajustorView.snp.updateConstraints({ (make) in
-                    make.width.height.equalTo(self.width1)
+                let lastView = childCompoents[i-1]
+                ajustor.snp.remakeConstraints({ (make) in
+                    make.left.equalTo(lastView.snp.right).offset(leftSpace)
+                    make.centerY.equalTo(self.scrollView.snp.centerY)
+                    
+                    if i == childCompoents.count - 1 {
+                        make.width.height.equalTo(width1)
+                        make.right.equalTo(self.scrollView.right).offset(-leftSpace)
+                    }
+                    else if ajustor.mode.id == currentMode.id {
+                        make.width.height.equalTo(width2)
+                    }
+                    else {
+                        make.width.height.equalTo(width1)
+                    }
                 })
             }
+            i = i + 1
+            let scrollSizeWidth = CGFloat(childCompoents.count - 1)*width1+width2+CGFloat(childCompoents.count+1)*leftSpace
+            scrollView.contentSize = CGSize(width: scrollSizeWidth, height: frame.size.height)
+
         }
+        
+        if currentMode.id == "" {
+            currentMode = modeManager.windUserConfigList.first!
+        }
+    
         UIView.animate(withDuration: 0.3) {
             for ajustorView in self.childCompoents {
-                ajustorView.transformToSmall(smallMode: (ajustorView.mode != self.currentMode))
+                ajustorView.transformToSmall(smallMode: (ajustorView.mode.id != self.currentMode.id))
             }
             self.layoutIfNeeded()
         }

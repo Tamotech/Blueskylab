@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ModeSettingCell: UITableViewCell {
 
@@ -19,6 +20,7 @@ class ModeSettingCell: UITableViewCell {
     
     @IBOutlet weak var modeSwitch: UISwitch!
     
+    var config: UserWindSpeedConfig?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,5 +31,12 @@ class ModeSettingCell: UITableViewCell {
     @IBAction func modeSwitchValueChange(_ sender: UISwitch) {
     }
     
-    
+    func updateCellWithConfig(config: UserWindSpeedConfig) {
+        self.config = config
+        let rc = ImageResource(downloadURL: URL(string: config.icon1)!)
+        iconView.kf.setImage(with: rc)
+        nameLabel.text = config.name
+        valueLabel.text = "\(config.value)"
+        modeSwitch.setOn(config.hideflag == 0, animated: false)
+    }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import Presentr
+import Kingfisher
 
 class StartSetGenderViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -30,21 +31,28 @@ class StartSetGenderViewController: UIViewController, UIImagePickerControllerDel
         femaleBtn.alpha = 0.5
         nextBtn.isEnabled = false
         cameraBtn.imageView?.contentMode = .scaleAspectFill
+        
+        guard let wxUser =  SessionManager.sharedInstance.wxUserInfo else {
+            return
+        }
+        self.setGender(female: wxUser.sex == 2)
+        let rc = ImageResource(downloadURL: URL(string: wxUser.headimgurl)!)
+        self.cameraBtn.kf.setImage(with: rc, for: .normal)
+        nextBtn.isEnabled = true
+        nextBtn.setImage(#imageLiteral(resourceName: "login-next-on"), for: .normal)
+        SessionManager.sharedInstance.loginInfo.avatarUrl = wxUser.headimgurl
+        SessionManager.sharedInstance.loginInfo.name = wxUser.nickname
     }
     
     
     //MARK: - actions
     
     @IBAction func handleTapMaleBtn(_ sender: Any) {
-        maleBtn.alpha = 1
-        femaleBtn.alpha = 0.5
-        gender = "male"
+        self.setGender(female: false)
     }
     
     @IBAction func handleTapFemaleBtn(_ sender: Any) {
-        maleBtn.alpha = 0.5
-        femaleBtn.alpha = 1
-        gender = "female"
+        self.setGender(female: true)
     }
     
     @IBAction func handleTapCameraBtn(_ sender: Any) {
@@ -83,6 +91,7 @@ class StartSetGenderViewController: UIViewController, UIImagePickerControllerDel
     }
 
     @IBAction func handleTapNextBtn(_ sender: Any) {
+        SessionManager.sharedInstance.loginInfo.gender = gender
         let vc = StartSetBirthViewController(nibName: "StartSetBirthViewController", bundle: nil)
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -121,4 +130,21 @@ class StartSetGenderViewController: UIViewController, UIImagePickerControllerDel
         }
     }
 
+    
+    
+    /// 设置性别
+    ///
+    /// - Parameter female: 是否为女性
+    func setGender(female: Bool) {
+        if !female {
+            maleBtn.alpha = 1
+            femaleBtn.alpha = 0.5
+            gender = "male"
+        }
+        else {
+            maleBtn.alpha = 0.5
+            femaleBtn.alpha = 1
+            gender = "female"
+        }
+    }
 }

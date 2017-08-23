@@ -36,6 +36,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     
     var token:String = ""       //登录令牌
     var userInfo: UserInfo?
+    var wxUserInfo: WXUserInfo?
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation = CLLocation()        ///定位
     var lock = NSLock()

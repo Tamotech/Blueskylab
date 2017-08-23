@@ -11,7 +11,7 @@ import SnapKit
 
 class ModeSettingController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
+    var modeManager: WindModeManager?
     var tableView: UITableView = UITableView(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: screenHeight), style: .grouped)
     
     lazy var headerView: UIView = {
@@ -78,7 +78,10 @@ class ModeSettingController: BaseViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if modeManager != nil {
+            return modeManager!.windUserConfigList.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -95,6 +98,8 @@ class ModeSettingController: BaseViewController, UITableViewDelegate, UITableVie
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ModeSettingCell
+        let config = modeManager?.windUserConfigList[indexPath.row]
+        cell.updateCellWithConfig(config: config!)
         return cell
     }
     

@@ -34,8 +34,6 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         weightField.isUserInteractionEnabled = false
         passwordField.isUserInteractionEnabled = false
         
-        avartarBtn.addTarget(self, action: #selector(handleTapAvatar(_:)), for: .touchUpInside)
-        
         self.title = NSLocalizedString("ProfileTitle", comment: "")
         let saveItem = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .plain, target: self, action: #selector(handleTapSaveItem(_:)))
         self.navigationItem.rightBarButtonItem = saveItem
@@ -56,14 +54,23 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         guard let userInfo = SessionManager.sharedInstance.userInfo else {
             return
         }
-        let img = ImageResource(downloadURL: URL(string: userInfo.headimg.urlStringWithBLS())!)
-        avartarBtn.kf.setImage(with: img, for: .normal)
+        if userInfo.headimg.characters.count>0 {
+            let img = ImageResource(downloadURL: URL(string: userInfo.headimg.urlStringWithBLS())!)
+            avartarBtn.kf.setImage(with: img, for: .normal)
+        }
+        
         nameField.text = userInfo.name
         phoneField.text = userInfo.mobile
         birthField.text = userInfo.birthday
         genderField.text = userInfo.sex
-        heightField.text = String.init(format: "%.1f", userInfo.height)
-        weightField.text = String.init(format: "%.1f", userInfo.weight)
+        heightField.text = String.init(format: "%.1f cm", userInfo.height)
+        weightField.text = String.init(format: "%.1f kg", userInfo.weight)
+        if userInfo.sex == "male" {
+            genderField.text = NSLocalizedString("male", comment: "")
+        }
+        else {
+            genderField.text = NSLocalizedString("female", comment: "")
+        }
     }
 
     // MARK: - actions
@@ -106,7 +113,8 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         sheet.show()
     }
     
-    func handleTapAvatar(_:Any) {
+    
+    @IBAction func handleTapAvatar(_ sender: UITapGestureRecognizer) {
         
         let vc = WXImagePickerViewController.init(nibName: "WXImagePickerViewController", bundle: nil)
         vc.actionCallback = {[weak self](type:String) in
@@ -144,6 +152,31 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
     
     func handleTapSaveItem(_:Any) {
         
+        //更新 user
+        let userInfo = SessionManager.sharedInstance.userInfo
+        userInfo?.name = nameField.text ?? ""
+        userInfo?.sex = genderField.text ?? "male"
+        userInfo?.birthday = birthField.text ?? ""
+        let w = weightField.text
+        let h = heightField.text
+        if w != nil {
+            userInfo?.weight = w!.getFloatFromString()
+        }
+        if h != nil {
+            userInfo?.height = h!.getFloatFromString()
+        }
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        userInfo?.updateUserInfo(result: { [weak self](success, msg) in
+            MBProgressHUD.hide(for: (self?.view)!, animated: true)
+            if success {
+                SVProgressHUD.showSuccess(withStatus: msg)
+                self?.navigationController?.popViewController(animated: true)
+            }
+            else {
+                SVProgressHUD.showError(withStatus: msg)
+            }
+        })
+        
     }
     
     
@@ -159,7 +192,19 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         picker.dismiss(animated: true) {
             let img = info[UIImagePickerControllerOriginalImage] as! UIImage?
             if img != nil {
-                self.avartarBtn.setImage(img, for: .normal)
+            self.avartarBtn.setImage(img!, for: .normal)
+                let data = UIImageJPEGRepresentation(img!, 0.8)!
+                MBProgressHUD.showAdded(to: self.view, animated: true)
+                APIManager.shareInstance.uploadFile(data: data, result: { [weak self](JSON, code, msg) in
+                    MBProgressHUD.hide(for: (self?.view)!, animated: true)
+                    if code == 0 {
+                        let avatarUrl = JSON?["data"]["url"].string ?? ""
+                        SessionManager.sharedInstance.userInfo?.headimg = avatarUrl
+                    }
+                    else {
+                        BLHUDBarManager.showError(msg: msg)
+                    }
+                })
             }
         }
     }

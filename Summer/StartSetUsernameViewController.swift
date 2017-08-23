@@ -38,6 +38,11 @@ class StartSetUsernameViewController: UIViewController {
 
             }
         }
+        
+        guard let wxUsere =  SessionManager.sharedInstance.wxUserInfo else {
+            return
+        }
+        nameField.text = wxUsere.nickname
     }
 
     

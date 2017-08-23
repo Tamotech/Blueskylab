@@ -47,8 +47,6 @@
 		CC1748A71F2ED8A000CE268C /* WXImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1748A51F2ED8A000CE268C /* WXImagePickerViewController.swift */; };
 		CC1748A81F2ED8A000CE268C /* WXImagePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC1748A61F2ED8A000CE268C /* WXImagePickerViewController.xib */; };
 		CC196F861F3CAC91006C1D90 /* WindModeControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC196F851F3CAC91006C1D90 /* WindModeControllView.swift */; };
-		CC196F881F3CAEBF006C1D90 /* WindModeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC196F871F3CAEBF006C1D90 /* WindModeModel.swift */; };
-		CC196F8A1F3CB398006C1D90 /* WindModeSportButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC196F891F3CB398006C1D90 /* WindModeSportButton.swift */; };
 		CC2B99D31F04905700916069 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2B99D21F04905700916069 /* DatePickerView.swift */; };
 		CC2B99D51F0490FA00916069 /* BaseActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2B99D41F0490FA00916069 /* BaseActionSheetView.swift */; };
 		CC3348CB1EF368790084642A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3348CA1EF368790084642A /* AppDelegate.swift */; };
@@ -59,6 +57,8 @@
 		CC339C091F4A532B00EB0516 /* ModeSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC339C071F4A532B00EB0516 /* ModeSettingController.swift */; };
 		CC339C0D1F4A546E00EB0516 /* ModeSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC339C0B1F4A546E00EB0516 /* ModeSettingCell.swift */; };
 		CC339C0E1F4A546E00EB0516 /* ModeSettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC339C0C1F4A546E00EB0516 /* ModeSettingCell.xib */; };
+		CC339C101F4C0E7D00EB0516 /* UserWindSpeedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC339C0F1F4C0E7D00EB0516 /* UserWindSpeedConfig.swift */; };
+		CC339C121F4C12FB00EB0516 /* WindModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC339C111F4C12FB00EB0516 /* WindModeManager.swift */; };
 		CC3693811F3612AD00929F24 /* OpenBluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC36937F1F3612AD00929F24 /* OpenBluetoothController.swift */; };
 		CC3693821F3612AD00929F24 /* OpenBluetoothController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC3693801F3612AD00929F24 /* OpenBluetoothController.xib */; };
 		CC3EF2CB1EFEB99E00CE4919 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC3EF2CD1EFEB99E00CE4919 /* Localizable.strings */; };
@@ -130,7 +130,6 @@
 		CCFAC20B1EFFA16500319BB0 /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCFAC20D1EFFA16500319BB0 /* MainMenuView.xib */; };
 		CCFAC2181EFFA23000319BB0 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFAC2161EFFA23000319BB0 /* EditProfileViewController.swift */; };
 		CCFAC2191EFFA23000319BB0 /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCFAC2171EFFA23000319BB0 /* EditProfileViewController.xib */; };
-		CCFBF71C1F3D45210025F330 /* WindModeBasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBF71B1F3D45210025F330 /* WindModeBasicButton.swift */; };
 		CCFBF7201F3DFE300025F330 /* AddModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBF71E1F3DFE300025F330 /* AddModeViewController.swift */; };
 		CCFBF7211F3DFE300025F330 /* AddModeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCFBF71F1F3DFE300025F330 /* AddModeViewController.xib */; };
 /* End PBXBuildFile section */
@@ -179,8 +178,6 @@
 		CC1748A51F2ED8A000CE268C /* WXImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXImagePickerViewController.swift; sourceTree = "<group>"; };
 		CC1748A61F2ED8A000CE268C /* WXImagePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WXImagePickerViewController.xib; sourceTree = "<group>"; };
 		CC196F851F3CAC91006C1D90 /* WindModeControllView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindModeControllView.swift; sourceTree = "<group>"; };
-		CC196F871F3CAEBF006C1D90 /* WindModeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindModeModel.swift; sourceTree = "<group>"; };
-		CC196F891F3CB398006C1D90 /* WindModeSportButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindModeSportButton.swift; sourceTree = "<group>"; };
 		CC2B99D21F04905700916069 /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		CC2B99D41F0490FA00916069 /* BaseActionSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseActionSheetView.swift; sourceTree = "<group>"; };
 		CC3348C71EF368790084642A /* Summer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Summer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +190,8 @@
 		CC339C071F4A532B00EB0516 /* ModeSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeSettingController.swift; sourceTree = "<group>"; };
 		CC339C0B1F4A546E00EB0516 /* ModeSettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeSettingCell.swift; sourceTree = "<group>"; };
 		CC339C0C1F4A546E00EB0516 /* ModeSettingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModeSettingCell.xib; sourceTree = "<group>"; };
+		CC339C0F1F4C0E7D00EB0516 /* UserWindSpeedConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWindSpeedConfig.swift; sourceTree = "<group>"; };
+		CC339C111F4C12FB00EB0516 /* WindModeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindModeManager.swift; sourceTree = "<group>"; };
 		CC36937F1F3612AD00929F24 /* OpenBluetoothController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenBluetoothController.swift; sourceTree = "<group>"; };
 		CC3693801F3612AD00929F24 /* OpenBluetoothController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenBluetoothController.xib; sourceTree = "<group>"; };
 		CC3EF2CE1EFEB9A600CE4919 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -281,7 +280,6 @@
 		CCFAC2141EFFA19300319BB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		CCFAC2161EFFA23000319BB0 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		CCFAC2171EFFA23000319BB0 /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
-		CCFBF71B1F3D45210025F330 /* WindModeBasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindModeBasicButton.swift; sourceTree = "<group>"; };
 		CCFBF71E1F3DFE300025F330 /* AddModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddModeViewController.swift; sourceTree = "<group>"; };
 		CCFBF71F1F3DFE300025F330 /* AddModeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddModeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -471,10 +469,9 @@
 		CC196F841F3CABBB006C1D90 /* WindModeControl */ = {
 			isa = PBXGroup;
 			children = (
-				CC196F871F3CAEBF006C1D90 /* WindModeModel.swift */,
+				CC339C0F1F4C0E7D00EB0516 /* UserWindSpeedConfig.swift */,
+				CC339C111F4C12FB00EB0516 /* WindModeManager.swift */,
 				CC196F851F3CAC91006C1D90 /* WindModeControllView.swift */,
-				CC196F891F3CB398006C1D90 /* WindModeSportButton.swift */,
-				CCFBF71B1F3D45210025F330 /* WindModeBasicButton.swift */,
 				CC8D040A1F3FDCF700F9B7FF /* WindModeAjustor.swift */,
 			);
 			name = WindModeControl;
@@ -930,7 +927,6 @@
 				CC030B6F1F4145760069634C /* SessionManager.swift in Sources */,
 				CCE9547B1F113260005C755C /* NotificationCenterController.swift in Sources */,
 				CC6D342E1EF3877A002C4A36 /* Car.swift in Sources */,
-				CC196F8A1F3CB398006C1D90 /* WindModeSportButton.swift in Sources */,
 				CC8D040B1F3FDCF700F9B7FF /* WindModeAjustor.swift in Sources */,
 				CC339C0D1F4A546E00EB0516 /* ModeSettingCell.swift in Sources */,
 				CCE954741F11122D005C755C /* CheckUpdateViewController.swift in Sources */,
@@ -943,6 +939,7 @@
 				CC339C061F48951D00EB0516 /* UserInfo.swift in Sources */,
 				CC2B99D31F04905700916069 /* DatePickerView.swift in Sources */,
 				CC4BA87D1F2DA2AB002B571D /* EquipmentViewController.swift in Sources */,
+				CC339C101F4C0E7D00EB0516 /* UserWindSpeedConfig.swift in Sources */,
 				CC03D0811EFEBE9D00CC8B20 /* RuleSelectorView.swift in Sources */,
 				CC4BA8801F2DCA0F002B571D /* ConfirmAlertView.swift in Sources */,
 				CCE4E2D51F0938940085542E /* TermsOfUseController.swift in Sources */,
@@ -955,7 +952,6 @@
 				CC9BDCA81F4336EA00AF6DB4 /* MBProgressHUD.m in Sources */,
 				CC4BA8741F2D9BE2002B571D /* LanguageListController.swift in Sources */,
 				CC12FA001F45DF8E00533783 /* WeekAQIDataView.swift in Sources */,
-				CCFBF71C1F3D45210025F330 /* WindModeBasicButton.swift in Sources */,
 				CC12F9FC1F451CC000533783 /* CurrentAQI.swift in Sources */,
 				CC6D34331EF3A29A002C4A36 /* UIColorExtensions.swift in Sources */,
 				CC11D65E1F30DE8000B9ADD1 /* StartSetHeightViewController.swift in Sources */,
@@ -966,6 +962,7 @@
 				CC1748A71F2ED8A000CE268C /* WXImagePickerViewController.swift in Sources */,
 				CC5A10351F2F77E000A73754 /* StartGuideViewController.swift in Sources */,
 				CC9BDCB71F43409A00AF6DB4 /* SVRadialGradientLayer.m in Sources */,
+				CC339C121F4C12FB00EB0516 /* WindModeManager.swift in Sources */,
 				CC1657BA1F3B6F7F0097FF58 /* BLTipView.swift in Sources */,
 				CC4B66DA1F3838B500772738 /* APIManager.swift in Sources */,
 				CC0664B01EF7BEC800020415 /* BaseNavigationController.swift in Sources */,
@@ -977,7 +974,6 @@
 				CC9BDCB61F43409A00AF6DB4 /* SVProgressHUD.m in Sources */,
 				CC0411D71F37567C00884165 /* HistoryDataViewController.swift in Sources */,
 				CC030E911F1BA4160030145C /* BaseAlertView.swift in Sources */,
-				CC196F881F3CAEBF006C1D90 /* WindModeModel.swift in Sources */,
 				CC0237771F08998D00400F7C /* EditPasswordViewController.swift in Sources */,
 				CC4BA88D1F2DE0F8002B571D /* BottomWechatShareView.swift in Sources */,
 				CC4BA8921F2DFE53002B571D /* UserHandbookController.swift in Sources */,

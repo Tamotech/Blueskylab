@@ -15,6 +15,7 @@ target 'Summer' do
    pod 'HandyJSON'
    pod 'ReactiveCocoa'
    pod 'ReactiveSwift'
+   pod 'RxSwift'
    pod 'SnapKit', '~> 3.2.0'
    pod 'Presentr'
    pod 'PopupDialog', '~> 0.5'

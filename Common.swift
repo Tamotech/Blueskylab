@@ -23,3 +23,21 @@ let baseURL = "http://www.blueskylab.cn"
 let kLoginWechatSuccessNotifi = Notification.Name(rawValue:"Login_Wechat_Success_Notify_key")
 let kAppDidBecomeActiveNotify = Notification.Name("App_did_become_active_key")
 let kUserInfoDidUpdateNotify = Notification.Name("user_info_did_update_noti_key")
+
+
+
+
+
+/// 弹出登录页
+func showLoginVC() {
+    
+    let rootVC = keyWindow?.rootViewController as! BaseNavigationController
+    let guideVc = StartGuideViewController(nibName: "StartGuideViewController", bundle: nil)
+    let navVc = BaseNavigationController(rootViewController: guideVc)
+    navVc.setTintColor(tint: .white)
+    navVc.setTintColor(tint: UIColor.white)
+    rootVC.present(navVc, animated: true, completion: {
+        rootVC.popViewController(animated: false)
+    })
+
+}

@@ -16,7 +16,6 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     enum LoginMode {
         case login
         case regist
-        case wxRegist
     }
     @IBOutlet weak var phoneField: UITextField!
     
@@ -249,25 +248,6 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
             //登录
             MBProgressHUD.showAdded(to: self.view, animated: true)
             SessionManager.sharedInstance.login(results: { [weak self](json, code, msg) in
-                if code == 0 {
-                    //成功
-                    DispatchQueue.main.async {
-                        MBProgressHUD.hide(for: (self?.view)!, animated: true)
-                        let sb = UIStoryboard(name: "Main", bundle: nil)
-                        let vc = sb.instantiateViewController(withIdentifier: "startNavigationVC")
-                        UIApplication.shared.keyWindow!.rootViewController = vc
-                    }
-                }
-                else {
-                    MBProgressHUD.hide(for: (self?.view)!, animated: true)
-                    BLHUDBarManager.showErrorWithClose(msg: msg, descTitle: NSLocalizedString("returnAndReinput", comment: ""))
-                    
-                }
-            })
-        }
-        else if self.mode == .wxRegist {
-            MBProgressHUD.showAdded(to: self.view, animated: true)
-            SessionManager.sharedInstance.regist(results: { [weak self] (JSON, code, msg) in
                 if code == 0 {
                     //成功
                     DispatchQueue.main.async {

@@ -57,8 +57,11 @@ class SettingViewController: BaseViewController {
         let navVc = BaseNavigationController(rootViewController: guideVc)
         navVc.setTintColor(tint: .white)
         navVc.setTintColor(tint: UIColor.white)
-        UIApplication.shared.keyWindow?.rootViewController = navVc
+//        UIApplication.shared.keyWindow?.rootViewController = navVc
         
+        navigationController?.present(navVc, animated: true, completion: { 
+            self.navigationController?.popViewController(animated: false)
+        })
     }
     
 

@@ -42,6 +42,28 @@ extension String {
         }
         return self
     }
+    
+    /// 从字符串中提取 整数数字
+    func getIntFromString() -> Int {
+        let scanner = Scanner(string: self)
+        scanner.scanUpToCharacters(from: CharacterSet.decimalDigits, into: nil)
+        var number :Int = 0
+        
+        scanner.scanInt(&number)
+        
+        return number
+    }
+    
+    /// 从字符串中提取浮点数数字
+    func getFloatFromString() -> CGFloat {
+        let scanner = Scanner(string: self)
+        scanner.scanUpToCharacters(from: CharacterSet.decimalDigits, into: nil)
+        var number : Float = 0
+        
+        scanner.scanFloat(&number)
+        
+        return CGFloat(number)
+    }
 }
 
 

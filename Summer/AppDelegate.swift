@@ -24,18 +24,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         
 
         //判断登录状态
-        if (SessionManager.sharedInstance.token.characters.count > 0) {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "startNavigationVC")
-            window?.rootViewController = vc
-        }
-        else if !UserDefaults.standard.bool(forKey: kFirstLoadApp) {
-            let guideVc = StartGuideViewController(nibName: "StartGuideViewController", bundle: nil)
-            let navVc = BaseNavigationController(rootViewController: guideVc) 
-            navVc.setTintColor(tint: .white)
-            navVc.setTintColor(tint: UIColor.white)
-            window?.rootViewController = navVc
-        }
+//        let sb = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = sb.instantiateViewController(withIdentifier: "startNavigationVC")
+//        window?.rootViewController = vc
+        
+        
+        
+//        if (SessionManager.sharedInstance.token.characters.count > 0) {
+//            let sb = UIStoryboard(name: "Main", bundle: nil)
+//            let vc = sb.instantiateViewController(withIdentifier: "startNavigationVC")
+//            window?.rootViewController = vc
+//        }
+//        else if !UserDefaults.standard.bool(forKey: kFirstLoadApp) {
+//            let guideVc = StartGuideViewController(nibName: "StartGuideViewController", bundle: nil)
+//            let navVc = BaseNavigationController(rootViewController: guideVc) 
+//            navVc.setTintColor(tint: .white)
+//            navVc.setTintColor(tint: UIColor.white)
+//            window?.rootViewController = navVc
+//        }
         
         UIApplication.shared.statusBarStyle = .default
         
@@ -59,6 +65,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        let _:() = {
+            
+            if (SessionManager.sharedInstance.token.characters.count == 0) {
+                let guideVc = StartGuideViewController(nibName: "StartGuideViewController", bundle: nil)
+                let navVc = BaseNavigationController(rootViewController: guideVc)
+                navVc.setTintColor(tint: .white)
+                navVc.setTintColor(tint: UIColor.white)
+                guard let rootVc = window?.rootViewController else {
+                    return
+                }
+                rootVc.present(navVc, animated: false, completion: {
+                    
+                })
+            }
+            
+        }()
         
         NotificationCenter.default.post(name: kAppDidBecomeActiveNotify, object: nil)
     }
