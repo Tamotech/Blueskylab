@@ -219,7 +219,11 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                 let smsCodeStr = result?["memo"].string!
                 self?.smsCode = DES3EncryptUtil.decrypt(smsCodeStr)
                 BLHUDBarManager.showSuccess(msg: NSLocalizedString("VertifyCodeHasSent", comment: ""))
+                
+                //TEST
                 self?.smsCodeField.text = self?.smsCode!
+                self?.setNextButtonEnable(enable: true)
+                
                 self?.timer!.fire()
             }
             else {
@@ -249,12 +253,10 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
             MBProgressHUD.showAdded(to: self.view, animated: true)
             SessionManager.sharedInstance.login(results: { [weak self](json, code, msg) in
                 if code == 0 {
-                    //成功
+                    //注册成功 登录成功
                     DispatchQueue.main.async {
-                        MBProgressHUD.hide(for: (self?.view)!, animated: true)
-                        let sb = UIStoryboard(name: "Main", bundle: nil)
-                        let vc = sb.instantiateViewController(withIdentifier: "startNavigationVC")
-                        UIApplication.shared.keyWindow!.rootViewController = vc
+                        SVProgressHUD.dismiss()
+                        self?.navigationController?.dismiss(animated: true, completion: nil)
                     }
                 }
                 else {
@@ -272,6 +274,20 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
             navigationController?.pushViewController(setnameVC, animated: true)
         }
         
+    }
+    
+    //MARK: - private
+    
+    func setNextButtonEnable(enable: Bool) {
+        if enable {
+            nextBtn.setImage(#imageLiteral(resourceName: "login-next-on"), for: .normal)
+            nextBtn.isEnabled = true
+        }
+        else {
+            nextBtn.setImage(#imageLiteral(resourceName: "login-next-off"), for: .normal)
+            nextBtn.isEnabled = false
+        }
+
     }
     
 }

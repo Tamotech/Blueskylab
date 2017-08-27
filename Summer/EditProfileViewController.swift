@@ -15,9 +15,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
     
     @IBOutlet weak var avartarBtn: UIButton!
     @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var phoneField: UITextField!
-    @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var birthField: UITextField!
     @IBOutlet weak var genderField: UITextField!
     @IBOutlet weak var heightField: UITextField!
@@ -32,7 +30,6 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         genderField.isUserInteractionEnabled = false
         heightField.isUserInteractionEnabled = false
         weightField.isUserInteractionEnabled = false
-        passwordField.isUserInteractionEnabled = false
         
         self.title = NSLocalizedString("ProfileTitle", comment: "")
         let saveItem = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .plain, target: self, action: #selector(handleTapSaveItem(_:)))

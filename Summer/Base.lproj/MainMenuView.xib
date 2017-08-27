@@ -263,7 +263,7 @@
                                             <rect key="frame" x="50.5" y="18" width="22" height="9"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购买新品" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDC-kL-MyT">
-                                            <rect key="frame" x="-0.5" y="72.5" width="94" height="19.5"/>
+                                            <rect key="frame" x="-0.5" y="62.5" width="94" height="19.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -274,7 +274,7 @@
                                     <constraints>
                                         <constraint firstItem="s4Z-3N-2M7" firstAttribute="centerY" secondItem="XQ5-gN-aNW" secondAttribute="top" id="2zD-Fa-Uga"/>
                                         <constraint firstItem="bDC-kL-MyT" firstAttribute="leading" secondItem="Med-zd-A5O" secondAttribute="leading" id="ZcR-wS-wDh"/>
-                                        <constraint firstItem="bDC-kL-MyT" firstAttribute="top" secondItem="XQ5-gN-aNW" secondAttribute="bottom" constant="20" id="a91-62-F2O"/>
+                                        <constraint firstItem="bDC-kL-MyT" firstAttribute="top" secondItem="XQ5-gN-aNW" secondAttribute="bottom" constant="10" id="a91-62-F2O"/>
                                         <constraint firstAttribute="trailing" secondItem="bDC-kL-MyT" secondAttribute="trailing" constant="1" id="p8t-l6-HGu"/>
                                         <constraint firstItem="s4Z-3N-2M7" firstAttribute="centerX" secondItem="XQ5-gN-aNW" secondAttribute="trailing" id="qdN-Gr-cDD"/>
                                         <constraint firstItem="XQ5-gN-aNW" firstAttribute="centerY" secondItem="Med-zd-A5O" secondAttribute="centerY" constant="-10" id="yEM-H9-3r6"/>

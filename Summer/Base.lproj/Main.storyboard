@@ -531,7 +531,7 @@
             <objects>
                 <navigationController storyboardIdentifier="startNavigationVC" automaticallyAdjustsScrollViewInsets="NO" id="vJW-v8-CnU" customClass="BaseNavigationController" customModule="Summer" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="CFd-nU-zx5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CFd-nU-zx5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

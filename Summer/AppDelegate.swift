@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 let wxAppId = "wx5b2c8b3e6df2032d"
 let wxSecretKey = "85b511d48ec0ec0ff6da59baf200f4e9"
@@ -23,25 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         // Override point for customization after application launch.
         
 
-        //判断登录状态
-//        let sb = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = sb.instantiateViewController(withIdentifier: "startNavigationVC")
-//        window?.rootViewController = vc
-        
-        
-        
-//        if (SessionManager.sharedInstance.token.characters.count > 0) {
-//            let sb = UIStoryboard(name: "Main", bundle: nil)
-//            let vc = sb.instantiateViewController(withIdentifier: "startNavigationVC")
-//            window?.rootViewController = vc
-//        }
-//        else if !UserDefaults.standard.bool(forKey: kFirstLoadApp) {
-//            let guideVc = StartGuideViewController(nibName: "StartGuideViewController", bundle: nil)
-//            let navVc = BaseNavigationController(rootViewController: guideVc) 
-//            navVc.setTintColor(tint: .white)
-//            navVc.setTintColor(tint: UIColor.white)
-//            window?.rootViewController = navVc
-//        }
+        //keyboard
+        IQKeyboardManager.sharedManager().enable = true
         
         UIApplication.shared.statusBarStyle = .default
         
@@ -65,23 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
-        let _:() = {
-            
-            if (SessionManager.sharedInstance.token.characters.count == 0) {
-                let guideVc = StartGuideViewController(nibName: "StartGuideViewController", bundle: nil)
-                let navVc = BaseNavigationController(rootViewController: guideVc)
-                navVc.setTintColor(tint: .white)
-                navVc.setTintColor(tint: UIColor.white)
-                guard let rootVc = window?.rootViewController else {
-                    return
-                }
-                rootVc.present(navVc, animated: false, completion: {
-                    
-                })
-            }
-            
-        }()
         
         NotificationCenter.default.post(name: kAppDidBecomeActiveNotify, object: nil)
     }

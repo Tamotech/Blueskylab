@@ -9,6 +9,8 @@
 import UIKit
 import HandyJSON
 
+let maxWindSpeedValue: Int = 100
+
 class UserWindSpeedConfig: HandyJSON {
 
 /*
@@ -50,4 +52,44 @@ class UserWindSpeedConfig: HandyJSON {
     }
     
     required init() {}
+    
+    
+    func add(success: @escaping (Bool, String)->()) {
+        let path = "/maskwindspeedset/addUserCfg.htm"
+        let hideFlagStr = (hideflag == 1 ? "true" : "false")
+        let params = ["customname": name,
+                      "value": value,
+                      "hideflag": hideFlagStr] as [String : Any]
+        
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            self.id = JSON!["id"].stringValue
+            success(code == 0, msg)
+        }
+    }
+    
+    func update(success: @escaping (Bool, String)->()) {
+        let path = "/maskwindspeedset/updateUserCfg.htm"
+        var params = ["id": id,
+                      "value": value,
+                      "defaultflag": defaultflag,
+                      "hideflag": hideflag] as [String : Any]
+        if type != "fixed" {
+            //固定配置 不能修改名称
+            params["customname"] = name
+        }
+        
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            success(code == 0, msg)
+        }
+    }
+
+    func delete(success: @escaping (Bool, String)->()) {
+        let path = "/maskwindspeedset/deleteUserCfg.htm"
+        let params = ["id": id] as [String : Any]
+        
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            success(code == 0, msg)
+        }
+    }
+    
 }

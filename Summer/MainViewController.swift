@@ -83,12 +83,29 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         
         NotificationCenter.default.addObserver(self, selector: #selector(appDidBecomeActiveNotification(notify:)), name: kAppDidBecomeActiveNotify, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userInfoUpdateNotification(noti:)), name: kUserInfoDidUpdateNotify, object: nil)
+        
+        if (SessionManager.sharedInstance.token.characters.count == 0) {
+            let guideVc = StartGuideViewController(nibName: "StartGuideViewController", bundle: nil)
+            let navVc = BaseNavigationController(rootViewController: guideVc)
+            navVc.setTintColor(tint: .white)
+            navVc.setTintColor(tint: UIColor.white)
+            navigationController?.present(navVc, animated: false, completion: {
+                
+            })
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let navVC = self.navigationController as! BaseNavigationController
         navVC.setTintColor(tint: .white)
+        
+        
+        if self.menuView.superview == nil && self.navigationController?.presentingViewController == nil {
+             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.navigationController!.view.superview?.insertSubview(self.menuView, at: 0)
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -103,6 +120,8 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         DispatchQueue.main.asyncAfter(deadline: .now()+3) { 
             popTip.hide()
         }
+        
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -253,10 +272,6 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
             }
         }
         
-        ///BUG:此处出现 menu 覆盖在 view 之上的 bug
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.navigationController!.view.superview?.insertSubview(self.menuView, at: 0)
-        }
         
         maskView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         maskView.backgroundColor = UIColor(white: 0, alpha: 0.5)
@@ -356,6 +371,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
             return
         }
         self.showModeControl(show: true)
+        modeControlView.refreshItemViews()
     }
     
     @IBAction func handleTapUnfoldModeView(_ sender: UITapGestureRecognizer) {
@@ -374,6 +390,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     
     @IBAction func handleTapModeSettingBtn(_ sender: UIButton) {
         
+        self.showModeControl(show: false)
         let vc = ModeSettingController()
         vc.modeManager = modeControlView.modeManager
         navigationController?.pushViewController(vc, animated: true)
@@ -387,6 +404,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     //MARK: - WindModeSelectDelegate
     
     func clickAddMode() {
+        self.showModeControl(show: false)
         let vc = AddModeViewController(nibName: "AddModeViewController", bundle: nil)
         navigationController?.present(vc, animated: true, completion: nil)
     }
@@ -407,6 +425,10 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     
     func showModeControl(show: Bool) {
         if show {
+            
+            if SessionManager.sharedInstance.windModeManager.windUserConfigList.count == 0 {
+                SessionManager.sharedInstance.windModeManager.loadData()
+            }
             modeControlBottom.constant = 0
             UIView.animate(withDuration: 0.3, animations: {
                 self.bottomModeView.alpha = 0

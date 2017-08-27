@@ -39,6 +39,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     var wxUserInfo: WXUserInfo?
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation = CLLocation()        ///定位
+    var windModeManager: WindModeManager = WindModeManager()
     var lock = NSLock()
     
     override init() {
@@ -102,7 +103,10 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     func logoutCurrentUser() {
         self.token = ""
         self.loginInfo.isLogin = false
+        self.loginInfo = LoginInfo()
+        APIManager.shareInstance.headers["token"] = ""
         UserDefaults.standard.removeObject(forKey: kLoginInfo)
+        
     }
     
     //MARK: - private

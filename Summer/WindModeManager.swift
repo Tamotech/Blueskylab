@@ -20,6 +20,10 @@ class WindModeManager: NSObject {
     }
     
     func loadData() {
+        
+        if SessionManager.sharedInstance.token.characters.count == 0 {
+            return
+        }
         APIRequest.getUserWindSpeedConfig { [weak self](data) in
             self?.windUserConfigList = data as! [UserWindSpeedConfig]
             if self?.completeLoadModeConfig != nil {

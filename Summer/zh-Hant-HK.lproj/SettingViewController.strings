@@ -1,0 +1,57 @@
+
+/* Class = "UILabel"; text = "隐私政策"; ObjectID = "9Zb-O9-8Fp"; */
+"9Zb-O9-8Fp.text" = "隐私政策";
+
+/* Class = "UILabel"; text = "关于蓝天实验室"; ObjectID = "EOB-N6-2av"; */
+"EOB-N6-2av.text" = "关于蓝天实验室";
+
+/* Class = "UILabel"; text = "当前版本 V1.0"; ObjectID = "G1G-i8-qNf"; */
+"G1G-i8-qNf.text" = "当前版本 V1.0";
+
+/* Class = "UILabel"; text = "滤芯更换提醒"; ObjectID = "IPl-IZ-wcE"; */
+"IPl-IZ-wcE.text" = "滤芯更换提醒";
+
+/* Class = "UILabel"; text = "严重污染警告"; ObjectID = "K4Z-Jd-gW0"; */
+"K4Z-Jd-gW0.text" = "严重污染警告";
+
+/* Class = "UILabel"; text = "蓝天大气"; ObjectID = "MTt-Q3-6dp"; */
+"MTt-Q3-6dp.text" = "蓝天大气";
+
+/* Class = "UILabel"; text = "退出当前登录"; ObjectID = "O58-H5-3ac"; */
+"O58-H5-3ac.text" = "退出当前登录";
+
+/* Class = "UILabel"; text = "测试空气提醒"; ObjectID = "Vdz-1N-8W6"; */
+"Vdz-1N-8W6.text" = "测试空气提醒";
+
+/* Class = "UILabel"; text = "APP更新"; ObjectID = "aVp-gE-Afw"; */
+"aVp-gE-Afw.text" = "APP更新";
+
+/* Class = "UILabel"; text = "当PM2.5达到重度污染以上时收到佩戴提醒"; ObjectID = "f23-iC-GV4"; */
+"f23-iC-GV4.text" = "当PM2.5达到重度污染以上时收到佩戴提醒";
+
+/* Class = "UILabel"; text = "通用"; ObjectID = "fhg-fL-luK"; */
+"fhg-fL-luK.text" = "通用";
+
+/* Class = "UILabel"; text = "低电量提醒"; ObjectID = "fsN-Ne-ceT"; */
+"fsN-Ne-ceT.text" = "低电量提醒";
+
+/* Class = "UILabel"; text = "第一时间收到新品，活动和促销信息"; ObjectID = "gi9-u1-I1A"; */
+"gi9-u1-I1A.text" = "第一时间收到新品，活动和促销信息";
+
+/* Class = "UILabel"; text = "蓝天实验室"; ObjectID = "gq9-bI-lhz"; */
+"gq9-bI-lhz.text" = "蓝天实验室";
+
+/* Class = "UILabel"; text = "环境"; ObjectID = "lZ5-fS-iin"; */
+"lZ5-fS-iin.text" = "环境";
+
+/* Class = "UILabel"; text = "产品相关信息"; ObjectID = "laD-jd-gTv"; */
+"laD-jd-gTv.text" = "产品相关信息";
+
+/* Class = "UILabel"; text = "使用条款"; ObjectID = "mFc-lZ-7ua"; */
+"mFc-lZ-7ua.text" = "使用条款";
+
+/* Class = "UILabel"; text = "距离上次测试超过两周收到测试提醒"; ObjectID = "ssB-PA-Olm"; */
+"ssB-PA-Olm.text" = "距离上次测试超过两周收到测试提醒";
+
+/* Class = "UILabel"; text = "语言"; ObjectID = "vAz-B5-LMB"; */
+"vAz-B5-LMB.text" = "语言";

@@ -12,6 +12,7 @@ import Kingfisher
 
 protocol WindModeAjustorDelegate {
     func selectItem(mode: UserWindSpeedConfig)
+    func hideItem(item: WindModeAjustor)
 }
 
 /// 调节风量的圆环组件
@@ -52,8 +53,10 @@ class WindModeAjustor: UIView {
             iconView.image = #imageLiteral(resourceName: "iconAdd_darkblue")
         }
         else {
-            let rc = ImageResource(downloadURL: URL(string: mode.icon2)!)
-            iconView.kf.setImage(with: rc)    
+            if mode.icon1.characters.count > 0 {
+                let rc = ImageResource(downloadURL: URL(string: mode.icon2)!)
+                iconView.kf.setImage(with: rc)
+            }
         }
         self.addSubview(iconView)
         iconView.snp.makeConstraints { (make) in
@@ -112,6 +115,8 @@ class WindModeAjustor: UIView {
         pointView.isUserInteractionEnabled = true
         pointView.addGestureRecognizer(panGes)
         
+        let longTap = UILongPressGestureRecognizer(target: self, action: #selector(handleLongTapGes(tap:)))
+        self.addGestureRecognizer(longTap)
         
         if mode.isAdd {
             rulerView.isHidden = true
@@ -123,6 +128,7 @@ class WindModeAjustor: UIView {
             rightLb.isHidden = true
         }
         
+        self.setAngle(value: mode.value)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -207,6 +213,11 @@ class WindModeAjustor: UIView {
         }
     }
     
+    func handleLongTapGes(tap: UIGestureRecognizer) {
+        if delegate != nil {
+            delegate!.hideItem(item: self)
+        }
+    }
     
     //MARK: - private
     func rotateToAngle(angle: CGFloat) {
@@ -223,6 +234,19 @@ class WindModeAjustor: UIView {
         angleDu = angleDu + 10
         let level = angleDu/200*maxLevel
         windLevelLabel.text = String(Int(level))
+        mode.value = Int(angleDu/200*maxLevel)
+    }
+    
+    
+    ///设置角度  0-100
+    func setAngle(value: Int) {
+        var a = 200.0/maxLevel*CGFloat(value)
+        if a < 0 {
+            a = a+360.0
+        }
+        let p = a*CGFloat(Double.pi)/180.0
+        pointView.transform = CGAffineTransform.init(rotationAngle: p)
+        windLevelLabel.text = String(value)
     }
 
 }

@@ -14,6 +14,7 @@
                 <outlet property="cameraBtn" destination="SNS-6O-8bl" id="x84-zp-90g"/>
                 <outlet property="femaleBtn" destination="zkx-x4-Ge8" id="9la-QN-aoa"/>
                 <outlet property="maleBtn" destination="z8y-l4-hcr" id="2fK-Qs-MuV"/>
+                <outlet property="nameLabel" destination="5X4-R7-HBY" id="vgi-PO-6Ja"/>
                 <outlet property="nextBtn" destination="wbZ-Lw-3fT" id="YfV-rh-axf"/>
                 <outlet property="view" destination="C2O-Lb-gDt" id="IHy-Qq-ifJ"/>
             </connections>

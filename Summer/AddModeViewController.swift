@@ -8,8 +8,12 @@
 
 import UIKit
 
+
+
 class AddModeViewController: BaseViewController {
 
+    
+    let padding: CGFloat = 25
     
     @IBOutlet weak var activityNameField: UITextField!
     
@@ -27,7 +31,13 @@ class AddModeViewController: BaseViewController {
     @IBOutlet weak var saveBtnLeading: NSLayoutConstraint!
     @IBOutlet weak var saveBtnTail: NSLayoutConstraint!
     
-    @IBOutlet weak var deleteWidth: UIButton!
+    @IBOutlet weak var deleteButtonWidth: NSLayoutConstraint!
+    
+    lazy var config: UserWindSpeedConfig = {
+        let co = UserWindSpeedConfig()
+        co.type = "custom"
+        return co
+    }()
     
     let minAmount: CGFloat = 0
     let maxAmount: CGFloat = 100
@@ -36,23 +46,102 @@ class AddModeViewController: BaseViewController {
         super.viewDidLoad()
 
         showCloseBtn()
-        showCustomTitle(title: NSLocalizedString("AddMode", comment: ""))
+        if config.name.characters.count > 0 {
+            showCustomTitle(title: NSLocalizedString("EditMode", comment: ""))
+        }
+        else {
+            showCustomTitle(title: NSLocalizedString("AddMode", comment: ""))
+        }
         
+        let width = (screenWidth-padding*3)/2.0
+        if config.type == "custom" {
+            //自定义模式
+            deleteLeading.constant = padding
+            saveBtnLeading.constant = padding
+            deleteButtonWidth.constant = width
+            deleteBtn.isHidden = false
+            activityNameField.isEnabled = true
+        }
+        else {
+            deleteLeading.constant = 0
+            saveBtnLeading.constant = padding
+            deleteButtonWidth.constant = 0
+            deleteBtn.isHidden = true
+            activityNameField.isEnabled = false
+        }
+        
+        activityNameField.text = config.name
+        windAcountSlider.value = Float(config.value)
+        windAmountLabel.text = "\(Int(config.value))"
+        showSwitch.isOn = (config.hideflag == 0)
         
     }
     
-    
-    
     @IBAction func windValueChanged(_ sender: UISlider) {
-        
+        windAmountLabel.text = "\(Int(sender.value))"
+        config.value = Int(sender.value)
     }
     
     @IBAction func didClickDelete(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        
+        config.delete { [weak self](success, msg) in
+            if success {
+                for i in 0..<SessionManager.sharedInstance.windModeManager.windUserConfigList.count {
+                    let item = SessionManager.sharedInstance.windModeManager.windUserConfigList[i]
+                    if item.id == self?.config.id {
+                        SessionManager.sharedInstance.windModeManager.windUserConfigList.remove(at: i)
+                        NotificationCenter.default.post(name: kWindModeConfigDidDeleteNotify, object: ["id": self?.config.id])
+                        break
+                    }
+                }
+                self?.dismiss(animated: true, completion: nil)
+            }
+            else {
+                SVProgressHUD.showError(withStatus: msg)
+            }
+        }
     }
     
     @IBAction func didClickSave(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        
+        config.hideflag = showSwitch.isOn ? 0 : 1
+        config.name = activityNameField.text!
+        
+        if config.name.characters.count == 0 {
+            return
+        }
+        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        if config.id.characters.count > 0 {
+            //修改
+            config.update { [weak self](success, msg) in
+                MBProgressHUD.hide(for: (self?.view)!, animated: true)
+                if success {
+                    self?.dismiss(animated: true, completion: nil)
+                    NotificationCenter.default.post(name: kWindModeConfigDidChangeNotify, object: nil)
+                }
+                else {
+                    SVProgressHUD.showError(withStatus: msg)
+                }
+            }
+        }
+        else {
+            //添加
+            config.add { [weak self](success, msg) in
+                MBProgressHUD.hide(for: (self?.view)!, animated: true)
+                if success {
+                    let manager =  SessionManager.sharedInstance.windModeManager
+                    manager.windUserConfigList.append((self?.config)!)
+                    self?.dismiss(animated: true, completion: nil)
+                    NotificationCenter.default.post(name: kWindModeConfigDidChangeNotify, object: nil)
+                }
+                else {
+                    SVProgressHUD.showError(withStatus: msg)
+                }
+            }
+        }
+        
     }
 
 }

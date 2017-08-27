@@ -13,8 +13,8 @@
             <connections>
                 <outlet property="activityNameField" destination="btZ-Dr-fip" id="b7d-Jk-9Qi"/>
                 <outlet property="deleteBtn" destination="dKh-lY-RaS" id="Zy3-K2-yPa"/>
+                <outlet property="deleteButtonWidth" destination="cRP-6g-Sa8" id="6TH-Sw-iT0"/>
                 <outlet property="deleteLeading" destination="dR5-z4-nYA" id="quv-FD-HnD"/>
-                <outlet property="deleteWidth" destination="dKh-lY-RaS" id="CCL-83-FEY"/>
                 <outlet property="saveBtn" destination="dGf-0h-ijh" id="wYC-7H-Ieg"/>
                 <outlet property="saveBtnLeading" destination="Cu2-ov-Wvg" id="ulU-dD-D9A"/>
                 <outlet property="saveBtnTail" destination="bpm-5L-1kq" id="jzl-dv-yir"/>
@@ -38,12 +38,12 @@
                             <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="请输入送风模式的名称" placeholder="请输入活动名称" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="btZ-Dr-fip">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入送风模式的名称" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="btZ-Dr-fip">
                             <rect key="frame" x="25" y="57" width="325" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="B0a-rI-3yT"/>
                             </constraints>
-                            <color key="textColor" red="0.70980392156862748" green="0.70980392156862748" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -89,7 +89,7 @@
                             <color key="textColor" red="0.0" green="0.61176470589999998" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="W3J-2d-eDO">
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="W3J-2d-eDO">
                             <rect key="frame" x="36" y="51" width="303" height="31"/>
                             <color key="tintColor" red="0.0" green="0.61176470589999998" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -148,7 +148,6 @@
                         </label>
                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9og-dg-HK6">
                             <rect key="frame" x="301" y="19.5" width="51" height="31"/>
-                            <color key="tintColor" red="0.0" green="0.61176470589999998" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="onTintColor" red="0.0" green="0.61176470589999998" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                         </switch>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYQ-fa-JLw">

@@ -23,6 +23,8 @@ let baseURL = "http://www.blueskylab.cn"
 let kLoginWechatSuccessNotifi = Notification.Name(rawValue:"Login_Wechat_Success_Notify_key")
 let kAppDidBecomeActiveNotify = Notification.Name("App_did_become_active_key")
 let kUserInfoDidUpdateNotify = Notification.Name("user_info_did_update_noti_key")
+let kWindModeConfigDidChangeNotify = Notification.Name("wind_mode_config_change_notify_key")
+let kWindModeConfigDidDeleteNotify = Notification.Name("wind_mode_config_delete_notify_key")
 
 
 

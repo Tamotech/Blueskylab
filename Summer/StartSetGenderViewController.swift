@@ -21,6 +21,8 @@ class StartSetGenderViewController: UIViewController, UIImagePickerControllerDel
     
     @IBOutlet weak var nextBtn: UIButton!
     
+    @IBOutlet weak var nameLabel: UILabel!
+    
     var gender: String = "male"
     var avatarUrl: String?
     
@@ -31,6 +33,7 @@ class StartSetGenderViewController: UIViewController, UIImagePickerControllerDel
         femaleBtn.alpha = 0.5
         nextBtn.isEnabled = false
         cameraBtn.imageView?.contentMode = .scaleAspectFill
+        nameLabel.text = SessionManager.sharedInstance.loginInfo.name
         
         guard let wxUser =  SessionManager.sharedInstance.wxUserInfo else {
             return

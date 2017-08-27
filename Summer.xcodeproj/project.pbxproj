@@ -12,7 +12,6 @@
 		CC0237781F08998D00400F7C /* EditPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0237761F08998D00400F7C /* EditPasswordViewController.xib */; };
 		CC02377B1F08A20400400F7C /* BaseSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02377A1F08A20400400F7C /* BaseSegmentControl.swift */; };
 		CC02377F1F08ABDC00400F7C /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02377D1F08ABDC00400F7C /* SettingViewController.swift */; };
-		CC0237801F08ABDC00400F7C /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC02377E1F08ABDC00400F7C /* SettingViewController.xib */; };
 		CC030B6F1F4145760069634C /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC030B6E1F4145760069634C /* SessionManager.swift */; };
 		CC030E911F1BA4160030145C /* BaseAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC030E901F1BA4160030145C /* BaseAlertView.swift */; };
 		CC030E931F1BA42A0030145C /* BaseAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC030E921F1BA42A0030145C /* BaseAlertView.xib */; };
@@ -59,6 +58,10 @@
 		CC339C0E1F4A546E00EB0516 /* ModeSettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC339C0C1F4A546E00EB0516 /* ModeSettingCell.xib */; };
 		CC339C101F4C0E7D00EB0516 /* UserWindSpeedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC339C0F1F4C0E7D00EB0516 /* UserWindSpeedConfig.swift */; };
 		CC339C121F4C12FB00EB0516 /* WindModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC339C111F4C12FB00EB0516 /* WindModeManager.swift */; };
+		CC339C131F4E386C00EB0516 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC339C151F4E386C00EB0516 /* SettingViewController.xib */; };
+		CC339C1B1F4E3B6200EB0516 /* AddModeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC339C1D1F4E3B6200EB0516 /* AddModeViewController.xib */; };
+		CC339C201F4E3DBF00EB0516 /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC339C221F4E3DBF00EB0516 /* EditProfileViewController.xib */; };
+		CC339C251F4E3E1600EB0516 /* EquipmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC339C271F4E3E1600EB0516 /* EquipmentViewController.xib */; };
 		CC3693811F3612AD00929F24 /* OpenBluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC36937F1F3612AD00929F24 /* OpenBluetoothController.swift */; };
 		CC3693821F3612AD00929F24 /* OpenBluetoothController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC3693801F3612AD00929F24 /* OpenBluetoothController.xib */; };
 		CC3EF2CB1EFEB99E00CE4919 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC3EF2CD1EFEB99E00CE4919 /* Localizable.strings */; };
@@ -69,7 +72,6 @@
 		CC4BA8781F2D9C25002B571D /* LanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA8761F2D9C25002B571D /* LanguageCell.swift */; };
 		CC4BA8791F2D9C25002B571D /* LanguageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA8771F2D9C25002B571D /* LanguageCell.xib */; };
 		CC4BA87D1F2DA2AB002B571D /* EquipmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA87B1F2DA2AB002B571D /* EquipmentViewController.swift */; };
-		CC4BA87E1F2DA2AB002B571D /* EquipmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA87C1F2DA2AB002B571D /* EquipmentViewController.xib */; };
 		CC4BA8801F2DCA0F002B571D /* ConfirmAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA87F1F2DCA0F002B571D /* ConfirmAlertView.swift */; };
 		CC4BA8821F2DCA2D002B571D /* ConfirmAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA8811F2DCA2D002B571D /* ConfirmAlertView.xib */; };
 		CC4BA8841F2DDA03002B571D /* about-banner.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA8831F2DDA03002B571D /* about-banner.png */; };
@@ -129,9 +131,7 @@
 		CCFAC1FF1EFF5B4900319BB0 /* BaseRulerSelectorActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFAC1FE1EFF5B4900319BB0 /* BaseRulerSelectorActionView.swift */; };
 		CCFAC20B1EFFA16500319BB0 /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCFAC20D1EFFA16500319BB0 /* MainMenuView.xib */; };
 		CCFAC2181EFFA23000319BB0 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFAC2161EFFA23000319BB0 /* EditProfileViewController.swift */; };
-		CCFAC2191EFFA23000319BB0 /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCFAC2171EFFA23000319BB0 /* EditProfileViewController.xib */; };
 		CCFBF7201F3DFE300025F330 /* AddModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBF71E1F3DFE300025F330 /* AddModeViewController.swift */; };
-		CCFBF7211F3DFE300025F330 /* AddModeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCFBF71F1F3DFE300025F330 /* AddModeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -143,7 +143,6 @@
 		CC0237761F08998D00400F7C /* EditPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditPasswordViewController.xib; sourceTree = "<group>"; };
 		CC02377A1F08A20400400F7C /* BaseSegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSegmentControl.swift; sourceTree = "<group>"; };
 		CC02377D1F08ABDC00400F7C /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		CC02377E1F08ABDC00400F7C /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		CC030B6E1F4145760069634C /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		CC030E901F1BA4160030145C /* BaseAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAlertView.swift; sourceTree = "<group>"; };
 		CC030E921F1BA42A0030145C /* BaseAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseAlertView.xib; sourceTree = "<group>"; };
@@ -192,6 +191,15 @@
 		CC339C0C1F4A546E00EB0516 /* ModeSettingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModeSettingCell.xib; sourceTree = "<group>"; };
 		CC339C0F1F4C0E7D00EB0516 /* UserWindSpeedConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWindSpeedConfig.swift; sourceTree = "<group>"; };
 		CC339C111F4C12FB00EB0516 /* WindModeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindModeManager.swift; sourceTree = "<group>"; };
+		CC339C161F4E387000EB0516 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SettingViewController.xib; sourceTree = "<group>"; };
+		CC339C181F4E38B700EB0516 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/SettingViewController.strings"; sourceTree = "<group>"; };
+		CC339C1A1F4E38BD00EB0516 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingViewController.strings"; sourceTree = "<group>"; };
+		CC339C1C1F4E3B6200EB0516 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddModeViewController.xib; sourceTree = "<group>"; };
+		CC339C1F1F4E3B6600EB0516 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AddModeViewController.strings; sourceTree = "<group>"; };
+		CC339C211F4E3DBF00EB0516 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EditProfileViewController.xib; sourceTree = "<group>"; };
+		CC339C241F4E3DC200EB0516 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/EditProfileViewController.strings; sourceTree = "<group>"; };
+		CC339C261F4E3E1600EB0516 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EquipmentViewController.xib; sourceTree = "<group>"; };
+		CC339C291F4E3E1B00EB0516 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/EquipmentViewController.strings; sourceTree = "<group>"; };
 		CC36937F1F3612AD00929F24 /* OpenBluetoothController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenBluetoothController.swift; sourceTree = "<group>"; };
 		CC3693801F3612AD00929F24 /* OpenBluetoothController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenBluetoothController.xib; sourceTree = "<group>"; };
 		CC3EF2CE1EFEB9A600CE4919 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -203,7 +211,6 @@
 		CC4BA8761F2D9C25002B571D /* LanguageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageCell.swift; sourceTree = "<group>"; };
 		CC4BA8771F2D9C25002B571D /* LanguageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LanguageCell.xib; sourceTree = "<group>"; };
 		CC4BA87B1F2DA2AB002B571D /* EquipmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipmentViewController.swift; sourceTree = "<group>"; };
-		CC4BA87C1F2DA2AB002B571D /* EquipmentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EquipmentViewController.xib; sourceTree = "<group>"; };
 		CC4BA87F1F2DCA0F002B571D /* ConfirmAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmAlertView.swift; sourceTree = "<group>"; };
 		CC4BA8811F2DCA2D002B571D /* ConfirmAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmAlertView.xib; sourceTree = "<group>"; };
 		CC4BA8831F2DDA03002B571D /* about-banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about-banner.png"; sourceTree = "<group>"; };
@@ -279,9 +286,7 @@
 		CCFAC2121EFFA18D00319BB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenuView.strings; sourceTree = "<group>"; };
 		CCFAC2141EFFA19300319BB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		CCFAC2161EFFA23000319BB0 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
-		CCFAC2171EFFA23000319BB0 /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		CCFBF71E1F3DFE300025F330 /* AddModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddModeViewController.swift; sourceTree = "<group>"; };
-		CCFBF71F1F3DFE300025F330 /* AddModeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddModeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,7 +324,7 @@
 			children = (
 				CCE4E2CB1F09266A0085542E /* Resource */,
 				CC02377D1F08ABDC00400F7C /* SettingViewController.swift */,
-				CC02377E1F08ABDC00400F7C /* SettingViewController.xib */,
+				CC339C151F4E386C00EB0516 /* SettingViewController.xib */,
 				CCE4E2BF1F0903760085542E /* AboutViewController.swift */,
 				CCE4E2C31F0909800085542E /* PrivacyViewController.swift */,
 				CCE4E2D41F0938940085542E /* TermsOfUseController.swift */,
@@ -433,6 +438,7 @@
 			children = (
 				CC12F9FB1F451CC000533783 /* CurrentAQI.swift */,
 				CC339C051F48951D00EB0516 /* UserInfo.swift */,
+				CC339C0F1F4C0E7D00EB0516 /* UserWindSpeedConfig.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -442,7 +448,7 @@
 			children = (
 				CC196F841F3CABBB006C1D90 /* WindModeControl */,
 				CCFBF71E1F3DFE300025F330 /* AddModeViewController.swift */,
-				CCFBF71F1F3DFE300025F330 /* AddModeViewController.xib */,
+				CC339C1D1F4E3B6200EB0516 /* AddModeViewController.xib */,
 				CC339C071F4A532B00EB0516 /* ModeSettingController.swift */,
 				CC339C0B1F4A546E00EB0516 /* ModeSettingCell.swift */,
 				CC339C0C1F4A546E00EB0516 /* ModeSettingCell.xib */,
@@ -469,7 +475,6 @@
 		CC196F841F3CABBB006C1D90 /* WindModeControl */ = {
 			isa = PBXGroup;
 			children = (
-				CC339C0F1F4C0E7D00EB0516 /* UserWindSpeedConfig.swift */,
 				CC339C111F4C12FB00EB0516 /* WindModeManager.swift */,
 				CC196F851F3CAC91006C1D90 /* WindModeControllView.swift */,
 				CC8D040A1F3FDCF700F9B7FF /* WindModeAjustor.swift */,
@@ -549,7 +554,7 @@
 			isa = PBXGroup;
 			children = (
 				CC4BA87B1F2DA2AB002B571D /* EquipmentViewController.swift */,
-				CC4BA87C1F2DA2AB002B571D /* EquipmentViewController.xib */,
+				CC339C271F4E3E1600EB0516 /* EquipmentViewController.xib */,
 			);
 			name = MyEquipment;
 			sourceTree = "<group>";
@@ -722,7 +727,7 @@
 				CC2B99D21F04905700916069 /* DatePickerView.swift */,
 				CC05D2CE1F08748600653C71 /* GenderPickerView.swift */,
 				CCFAC2161EFFA23000319BB0 /* EditProfileViewController.swift */,
-				CCFAC2171EFFA23000319BB0 /* EditProfileViewController.xib */,
+				CC339C221F4E3DBF00EB0516 /* EditProfileViewController.xib */,
 				CC0237751F08998D00400F7C /* EditPasswordViewController.swift */,
 				CC0237761F08998D00400F7C /* EditPasswordViewController.xib */,
 			);
@@ -808,7 +813,7 @@
 				CCE4E2C81F091C350085542E /* Privacy.html in Resources */,
 				CCFAC20B1EFFA16500319BB0 /* MainMenuView.xib in Resources */,
 				CC5A103A1F2F8DD000A73754 /* LoginViewController.xib in Resources */,
-				CCFBF7211F3DFE300025F330 /* AddModeViewController.xib in Resources */,
+				CC339C1B1F4E3B6200EB0516 /* AddModeViewController.xib in Resources */,
 				CC11D6531F30C9BA00B9ADD1 /* StartSetGenderViewController.xib in Resources */,
 				CC4BA88F1F2DEB3D002B571D /* BottomWechatShareView.xib in Resources */,
 				CC030E931F1BA42A0030145C /* BaseAlertView.xib in Resources */,
@@ -826,7 +831,7 @@
 				CC4BA8891F2DDBD7002B571D /* NotificationDetailController.xib in Resources */,
 				CC0411DF1F37699300884165 /* HistoryDataCell.xib in Resources */,
 				CC8B18131F30B0E100FC5EAE /* main-bg5.jpg in Resources */,
-				CCFAC2191EFFA23000319BB0 /* EditProfileViewController.xib in Resources */,
+				CC339C201F4E3DBF00EB0516 /* EditProfileViewController.xib in Resources */,
 				CC8B18121F30B0E100FC5EAE /* main-bg4.jpg in Resources */,
 				CC3348D71EF368790084642A /* LaunchScreen.storyboard in Resources */,
 				CC3348D41EF368790084642A /* Assets.xcassets in Resources */,
@@ -839,7 +844,7 @@
 				CCE9547C1F113260005C755C /* NotificationCenterController.xib in Resources */,
 				CCE4E2D31F09380C0085542E /* useItem.html in Resources */,
 				CC1748A81F2ED8A000CE268C /* WXImagePickerViewController.xib in Resources */,
-				CC4BA87E1F2DA2AB002B571D /* EquipmentViewController.xib in Resources */,
+				CC339C251F4E3E1600EB0516 /* EquipmentViewController.xib in Resources */,
 				CC8B18141F30B0E100FC5EAE /* main-bg6.jpg in Resources */,
 				CC4BA88B1F2DDC54002B571D /* notification.html in Resources */,
 				CCE4E2CD1F0932970085542E /* aboutBSL.html in Resources */,
@@ -847,7 +852,7 @@
 				CCE4E2CA1F0925970085542E /* logo.png in Resources */,
 				CC0411D81F37567C00884165 /* HistoryDataViewController.xib in Resources */,
 				CCE4E2CF1F0932A50085542E /* qrcode.png in Resources */,
-				CC0237801F08ABDC00400F7C /* SettingViewController.xib in Resources */,
+				CC339C131F4E386C00EB0516 /* SettingViewController.xib in Resources */,
 				CC9BDCB51F43409A00AF6DB4 /* SVProgressHUD.bundle in Resources */,
 				CC339C0E1F4A546E00EB0516 /* ModeSettingCell.xib in Resources */,
 			);
@@ -1011,6 +1016,43 @@
 			);
 			name = LaunchScreen.storyboard;
 			path = Summer;
+			sourceTree = "<group>";
+		};
+		CC339C151F4E386C00EB0516 /* SettingViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC339C161F4E387000EB0516 /* Base */,
+				CC339C181F4E38B700EB0516 /* zh-Hant-HK */,
+				CC339C1A1F4E38BD00EB0516 /* zh-Hans */,
+			);
+			name = SettingViewController.xib;
+			sourceTree = "<group>";
+		};
+		CC339C1D1F4E3B6200EB0516 /* AddModeViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC339C1C1F4E3B6200EB0516 /* Base */,
+				CC339C1F1F4E3B6600EB0516 /* en */,
+			);
+			name = AddModeViewController.xib;
+			sourceTree = "<group>";
+		};
+		CC339C221F4E3DBF00EB0516 /* EditProfileViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC339C211F4E3DBF00EB0516 /* Base */,
+				CC339C241F4E3DC200EB0516 /* en */,
+			);
+			name = EditProfileViewController.xib;
+			sourceTree = "<group>";
+		};
+		CC339C271F4E3E1600EB0516 /* EquipmentViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC339C261F4E3E1600EB0516 /* Base */,
+				CC339C291F4E3E1B00EB0516 /* en */,
+			);
+			name = EquipmentViewController.xib;
 			sourceTree = "<group>";
 		};
 		CC3EF2CD1EFEB99E00CE4919 /* Localizable.strings */ = {
