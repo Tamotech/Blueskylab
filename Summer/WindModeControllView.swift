@@ -12,6 +12,7 @@ import AMPopTip
 protocol WindModeSelectDelegate {
     
     func clickAddMode()
+    func defaultModeDidChange(mode: UserWindSpeedConfig)
 }
 
 class WindModeControllView: UIView, WindModeAjustorDelegate {
@@ -42,8 +43,12 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
         
         addAjustor.delegate = self
         scrollView.addSubview(addAjustor)
+    
         modeManager.completeLoadModeConfig = {[weak self]() in
             self?.refreshItemViews()
+            if self?.delegate != nil {
+                self?.delegate?.defaultModeDidChange(mode: (self?.modeManager.getDefaultMode())!)
+            }
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleModeDidChangeNoti(n:)), name: kWindModeConfigDidChangeNotify, object: nil)
@@ -136,6 +141,13 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
     func refreshItemViews() {
         
         if modeManager.windUserConfigList.count == 0 {
+            addAjustor.snp.remakeConstraints({ (make) in
+                make.left.equalTo(self.scrollView.snp.left).offset(leftSpace)
+                make.centerY.equalTo(self.scrollView.snp.centerY)
+                make.width.height.equalTo(width1)
+                make.right.equalTo(self.scrollView.snp.right).offset(-leftSpace)
+            })
+            addAjustor.transformToSmall(smallMode: true)
             return
         }
         
@@ -152,6 +164,15 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
             else if mode.hideflag == 1 && self.containsMode(mode: mode) {
                 //移除
                 self.removeComponent(mode: mode)
+            }
+            if mode.id == currentMode.id {
+                mode.defaultflag = 1
+                if delegate != nil {
+                    delegate?.defaultModeDidChange(mode: mode)
+                }
+            }
+            else {
+                mode.defaultflag = 0
             }
             
         }
@@ -192,7 +213,7 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
         }
         
         //addAjustor
-        let lastView = childCompoents[i-1]
+        let lastView = childCompoents.last!
         addAjustor.snp.remakeConstraints({ (make) in
             make.left.equalTo(lastView.snp.right).offset(leftSpace)
             make.centerY.equalTo(self.scrollView.snp.centerY)

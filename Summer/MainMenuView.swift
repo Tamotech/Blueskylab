@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import SwiftyJSON
 
 enum ItemType {
     case ItemUser
@@ -26,6 +27,12 @@ class MainMenuView: BaseView {
     
     var tapMunueCallback:tapMenuAction?
     
+    
+    /// 口罩购买地址
+    var maskBuyUrl: String?
+    /// 滤芯购买地址
+    var filterBuyUrl: String?
+    
     @IBOutlet weak var avatarBtn: UIButton!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -38,6 +45,8 @@ class MainMenuView: BaseView {
         self.frame = UIScreen.main.bounds
         avatarBtn.imageView?.cornerRadius = 45
         avatarBtn.imageView?.clipsToBounds = true
+        
+        self.loadConfigData()
     }
     
     
@@ -86,6 +95,12 @@ class MainMenuView: BaseView {
         }
     }
     
+    @IBAction func handleTapAvatarButton(_ sender: UIButton) {
+        if self.tapMunueCallback != nil {
+            self.tapMunueCallback!(.ItemMyEquipment)
+        }
+    }
+    
     @IBAction func handleTapEquipmentBtn(_ sender: Any) {
         
         if self.tapMunueCallback != nil {
@@ -94,5 +109,12 @@ class MainMenuView: BaseView {
     }
     
     
+    func loadConfigData() {
+        APIRequest.getUserConfig(codes: "u_buy_mask,u_buy_filter") { [weak self](JSONData) in
+            let data = JSONData as! JSON
+            self?.maskBuyUrl = data["u_buy_mask"]["v"].stringValue
+            self?.filterBuyUrl = data["u_buy_mask"]["v"].stringValue
+        }
+    }
     
 }

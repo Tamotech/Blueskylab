@@ -8,9 +8,13 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import UserNotifications
 
 let wxAppId = "wx5b2c8b3e6df2032d"
 let wxSecretKey = "85b511d48ec0ec0ff6da59baf200f4e9"
+let jPushKey = "589e0a3a6fd517b5ea57d081"
+let jPushSecret = "bf3d33eabb679de6cd0e5246"
+
 
 @UIApplicationMain
 
@@ -30,6 +34,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         UIApplication.shared.statusBarStyle = .default
         
         WXApi.registerApp(wxAppId)
+        
+        //注册推送
+        if #available(iOS 10.0, *){
+            let entiity = JPUSHRegisterEntity()
+            entiity.types = Int(UNAuthorizationOptions.alert.rawValue |
+                UNAuthorizationOptions.badge.rawValue |
+                UNAuthorizationOptions.sound.rawValue)
+            JPUSHService.register(forRemoteNotificationConfig: entiity, delegate: self)
+        } else if #available(iOS 8.0, *) {
+            let types = UIUserNotificationType.badge.rawValue |
+                UIUserNotificationType.sound.rawValue |
+                UIUserNotificationType.alert.rawValue
+            JPUSHService.register(forRemoteNotificationTypes: types, categories: nil)
+        }else {
+            let type = UIRemoteNotificationType.badge.rawValue |
+                UIRemoteNotificationType.sound.rawValue |
+                UIRemoteNotificationType.alert.rawValue
+            JPUSHService.register(forRemoteNotificationTypes: type, categories: nil)
+        }
+        
+        JPUSHService.setup(withOption: launchOptions, appKey: jPushKey, channel: "app store", apsForProduction: true)
         return true
     }
 
@@ -45,6 +70,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        application.applicationIconBadgeNumber = 0
+        application.cancelAllLocalNotifications()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -59,6 +86,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         SessionManager.sharedInstance.saveLoginInfo()
     }
     
+    
+    //MARK: - JPUSH Delegate
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        JPUSHService.registerDeviceToken(deviceToken)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+         print("did Fail To Register For Remote Notifications With Error = \(error)")
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        JPUSHService.handleRemoteNotification(userInfo)
+        completionHandler(UIBackgroundFetchResult.newData)
+    }
     
     //MARK: - Wechat
     
@@ -86,6 +128,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         }
     }
 
+
+}
+
+
+extension AppDelegate: JPUSHRegisterDelegate {
+    
+    @available(iOS 10.0, *)
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ((Int) -> Void)!) {
+        print(">JPUSHRegisterDelegate jpushNotificationCenter willPresent");
+        let userInfo = notification.request.content.userInfo
+        if (notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self))!{
+            JPUSHService.handleRemoteNotification(userInfo)
+        }
+        completionHandler(Int(UNAuthorizationOptions.alert.rawValue))// 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+    }
+    
+    @available(iOS 10.0, *)
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, didReceive response: UNNotificationResponse!, withCompletionHandler completionHandler: (() -> Void)!) {
+        print(">JPUSHRegisterDelegate jpushNotificationCenter didReceive");
+        let userInfo = response.notification.request.content.userInfo
+        if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self))!{
+            JPUSHService.handleRemoteNotification(userInfo)
+        }
+        completionHandler()
+    }
 
 }
 

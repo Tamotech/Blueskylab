@@ -27,6 +27,11 @@
 		CC0664AC1EF76A8900020415 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0664AB1EF76A8900020415 /* MainViewController.swift */; };
 		CC0664B01EF7BEC800020415 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0664AF1EF7BEC800020415 /* BaseNavigationController.swift */; };
 		CC0664B41EF7C0EB00020415 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0664B31EF7C0EB00020415 /* MainMenuView.swift */; };
+		CC0D72D61F53EE66000D647C /* ArticleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0D72D51F53EE66000D647C /* ArticleList.swift */; };
+		CC0D72D91F53F235000D647C /* AboutQACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0D72D71F53F235000D647C /* AboutQACell.swift */; };
+		CC0D72DA1F53F235000D647C /* AboutQACell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0D72D81F53F235000D647C /* AboutQACell.xib */; };
+		CC0D72DC1F5409D3000D647C /* ArticleDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0D72DB1F5409D3000D647C /* ArticleDetailController.swift */; };
+		CC0D72DE1F540D13000D647C /* UserMaskConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0D72DD1F540D13000D647C /* UserMaskConfig.swift */; };
 		CC0E30C51F11E1A900F6AFFB /* NotificationCenterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0E30C31F11E1A900F6AFFB /* NotificationCenterCell.swift */; };
 		CC0E30C61F11E1A900F6AFFB /* NotificationCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0E30C41F11E1A900F6AFFB /* NotificationCenterCell.xib */; };
 		CC11D6221F41F11D001E153F /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11D6211F41F11D001E153F /* DateExtension.swift */; };
@@ -115,6 +120,9 @@
 		CC9BDCB51F43409A00AF6DB4 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CC9BDCAE1F43409A00AF6DB4 /* SVProgressHUD.bundle */; };
 		CC9BDCB61F43409A00AF6DB4 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9BDCB01F43409A00AF6DB4 /* SVProgressHUD.m */; };
 		CC9BDCB71F43409A00AF6DB4 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9BDCB21F43409A00AF6DB4 /* SVRadialGradientLayer.m */; };
+		CCCE01621F52EBC500974F6D /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCE01611F52EBC500974F6D /* UserNotifications.framework */; };
+		CCCE01641F52F0EA00974F6D /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCE01631F52F0EA00974F6D /* UIImageExtension.swift */; };
+		CCCE01661F5331F600974F6D /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCE01651F5331F600974F6D /* BaseWebViewController.swift */; };
 		CCE4E2C11F0903760085542E /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE4E2BF1F0903760085542E /* AboutViewController.swift */; };
 		CCE4E2C51F0909800085542E /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE4E2C31F0909800085542E /* PrivacyViewController.swift */; };
 		CCE4E2C81F091C350085542E /* Privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = CCE4E2C71F091C350085542E /* Privacy.html */; };
@@ -158,6 +166,11 @@
 		CC0664AB1EF76A8900020415 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CC0664AF1EF7BEC800020415 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		CC0664B31EF7C0EB00020415 /* MainMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		CC0D72D51F53EE66000D647C /* ArticleList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleList.swift; sourceTree = "<group>"; };
+		CC0D72D71F53F235000D647C /* AboutQACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutQACell.swift; sourceTree = "<group>"; };
+		CC0D72D81F53F235000D647C /* AboutQACell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutQACell.xib; sourceTree = "<group>"; };
+		CC0D72DB1F5409D3000D647C /* ArticleDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDetailController.swift; sourceTree = "<group>"; };
+		CC0D72DD1F540D13000D647C /* UserMaskConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMaskConfig.swift; sourceTree = "<group>"; };
 		CC0E30C31F11E1A900F6AFFB /* NotificationCenterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterCell.swift; sourceTree = "<group>"; };
 		CC0E30C41F11E1A900F6AFFB /* NotificationCenterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCenterCell.xib; sourceTree = "<group>"; };
 		CC11D6211F41F11D001E153F /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -266,6 +279,10 @@
 		CC9BDCB01F43409A00AF6DB4 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		CC9BDCB11F43409A00AF6DB4 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		CC9BDCB21F43409A00AF6DB4 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		CCCE01601F52CA3200974F6D /* Summer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Summer.entitlements; sourceTree = "<group>"; };
+		CCCE01611F52EBC500974F6D /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		CCCE01631F52F0EA00974F6D /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		CCCE01651F5331F600974F6D /* BaseWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
 		CCE4E2BF1F0903760085542E /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		CCE4E2C31F0909800085542E /* PrivacyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		CCE4E2C71F091C350085542E /* Privacy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Privacy.html; sourceTree = "<group>"; };
@@ -294,6 +311,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCCE01621F52EBC500974F6D /* UserNotifications.framework in Frameworks */,
 				CC12F9F71F4516AB00533783 /* CoreLocation.framework in Frameworks */,
 				25F4822315621C66772C57FC /* Pods_Summer.framework in Frameworks */,
 			);
@@ -305,6 +323,7 @@
 		A4DB292F3E62DDC85E32350B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CCCE01611F52EBC500974F6D /* UserNotifications.framework */,
 				CC12F9F61F4516AB00533783 /* CoreLocation.framework */,
 				5C96D22CE689A5323E4BAAB6 /* Pods_Summer.framework */,
 			);
@@ -429,6 +448,7 @@
 				CC0664A71EF76A4F00020415 /* BaseView.swift */,
 				CC0664A91EF76A5D00020415 /* BaseViewController.swift */,
 				CC0664AF1EF7BEC800020415 /* BaseNavigationController.swift */,
+				CCCE01651F5331F600974F6D /* BaseWebViewController.swift */,
 			);
 			name = BaseUI;
 			sourceTree = "<group>";
@@ -439,6 +459,8 @@
 				CC12F9FB1F451CC000533783 /* CurrentAQI.swift */,
 				CC339C051F48951D00EB0516 /* UserInfo.swift */,
 				CC339C0F1F4C0E7D00EB0516 /* UserWindSpeedConfig.swift */,
+				CC0D72D51F53EE66000D647C /* ArticleList.swift */,
+				CC0D72DD1F540D13000D647C /* UserMaskConfig.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -504,6 +526,7 @@
 		CC3348C91EF368790084642A /* Summer */ = {
 			isa = PBXGroup;
 			children = (
+				CCCE01601F52CA3200974F6D /* Summer.entitlements */,
 				CC0664A61EF76A3500020415 /* BaseUI */,
 				CC0664A31EF768FD00020415 /* Network */,
 				CC06649F1EF762EC00020415 /* Toolkit */,
@@ -564,6 +587,9 @@
 			children = (
 				CC4BA8901F2DFE53002B571D /* UserHandbookController.swift */,
 				CC4BA8911F2DFE53002B571D /* UserHandbookController.xib */,
+				CC0D72D71F53F235000D647C /* AboutQACell.swift */,
+				CC0D72D81F53F235000D647C /* AboutQACell.xib */,
+				CC0D72DB1F5409D3000D647C /* ArticleDetailController.swift */,
 			);
 			name = UserGuide;
 			sourceTree = "<group>";
@@ -615,6 +641,7 @@
 				CCE954761F1120FA005C755C /* UIView+IBInspectable.swift */,
 				CC4B66DB1F383F2500772738 /* StringExtension.swift */,
 				CC11D6211F41F11D001E153F /* DateExtension.swift */,
+				CCCE01631F52F0EA00974F6D /* UIImageExtension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -780,6 +807,11 @@
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 437FYPNA4H;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -853,6 +885,7 @@
 				CC0411D81F37567C00884165 /* HistoryDataViewController.xib in Resources */,
 				CCE4E2CF1F0932A50085542E /* qrcode.png in Resources */,
 				CC339C131F4E386C00EB0516 /* SettingViewController.xib in Resources */,
+				CC0D72DA1F53F235000D647C /* AboutQACell.xib in Resources */,
 				CC9BDCB51F43409A00AF6DB4 /* SVProgressHUD.bundle in Resources */,
 				CC339C0E1F4A546E00EB0516 /* ModeSettingCell.xib in Resources */,
 			);
@@ -919,9 +952,11 @@
 				CC3348CB1EF368790084642A /* AppDelegate.swift in Sources */,
 				CC3693811F3612AD00929F24 /* OpenBluetoothController.swift in Sources */,
 				CC807F151F46E33C00C2FE87 /* UIBezierPath+LxThroughPointsBezier.m in Sources */,
+				CC0D72DC1F5409D3000D647C /* ArticleDetailController.swift in Sources */,
 				CC4BA8881F2DDBD7002B571D /* NotificationDetailController.swift in Sources */,
 				CC0E30C51F11E1A900F6AFFB /* NotificationCenterCell.swift in Sources */,
 				CC9BDCB31F43409A00AF6DB4 /* SVIndefiniteAnimatedView.m in Sources */,
+				CC0D72D91F53F235000D647C /* AboutQACell.swift in Sources */,
 				CCFAC1FF1EFF5B4900319BB0 /* BaseRulerSelectorActionView.swift in Sources */,
 				CCFBF7201F3DFE300025F330 /* AddModeViewController.swift in Sources */,
 				CC8D04191F40A5F100F9B7FF /* WXPregressHUD.swift in Sources */,
@@ -931,6 +966,7 @@
 				CC6D342C1EF3731B002C4A36 /* DemoViewController.swift in Sources */,
 				CC030B6F1F4145760069634C /* SessionManager.swift in Sources */,
 				CCE9547B1F113260005C755C /* NotificationCenterController.swift in Sources */,
+				CCCE01661F5331F600974F6D /* BaseWebViewController.swift in Sources */,
 				CC6D342E1EF3877A002C4A36 /* Car.swift in Sources */,
 				CC8D040B1F3FDCF700F9B7FF /* WindModeAjustor.swift in Sources */,
 				CC339C0D1F4A546E00EB0516 /* ModeSettingCell.swift in Sources */,
@@ -950,11 +986,13 @@
 				CCE4E2D51F0938940085542E /* TermsOfUseController.swift in Sources */,
 				CC11D6221F41F11D001E153F /* DateExtension.swift in Sources */,
 				CC196F861F3CAC91006C1D90 /* WindModeControllView.swift in Sources */,
+				CCCE01641F52F0EA00974F6D /* UIImageExtension.swift in Sources */,
 				CC02377B1F08A20400400F7C /* BaseSegmentControl.swift in Sources */,
 				CC0411DB1F375ADB00884165 /* DateSegmentView.swift in Sources */,
 				CC8B17F41F30532300FC5EAE /* SimpleHUDController.swift in Sources */,
 				CC6D34351EF3A669002C4A36 /* Common.swift in Sources */,
 				CC9BDCA81F4336EA00AF6DB4 /* MBProgressHUD.m in Sources */,
+				CC0D72D61F53EE66000D647C /* ArticleList.swift in Sources */,
 				CC4BA8741F2D9BE2002B571D /* LanguageListController.swift in Sources */,
 				CC12FA001F45DF8E00533783 /* WeekAQIDataView.swift in Sources */,
 				CC12F9FC1F451CC000533783 /* CurrentAQI.swift in Sources */,
@@ -984,6 +1022,7 @@
 				CC4BA8921F2DFE53002B571D /* UserHandbookController.swift in Sources */,
 				CC0411DE1F37699300884165 /* HistoryDataCell.swift in Sources */,
 				CC4B66DC1F383F2500772738 /* StringExtension.swift in Sources */,
+				CC0D72DE1F540D13000D647C /* UserMaskConfig.swift in Sources */,
 				CC4BA8781F2D9C25002B571D /* LanguageCell.swift in Sources */,
 				CC0664AC1EF76A8900020415 /* MainViewController.swift in Sources */,
 				CC11D65A1F30D7D300B9ADD1 /* StartSetWeightViewController.swift in Sources */,
@@ -1178,6 +1217,7 @@
 			baseConfigurationReference = 7759AA13FDCD9FF9EA28D118 /* Pods-Summer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Summer/Summer.entitlements;
 				DEVELOPMENT_TEAM = 437FYPNA4H;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1195,7 +1235,10 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SnapKit\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SwiftyJSON\"",
 				);
-				HEADER_SEARCH_PATHS = "$(PODS_ROOT)/WechatOpenSDK/**";
+				HEADER_SEARCH_PATHS = (
+					"$(PODS_ROOT)/WechatOpenSDK/**",
+					"$(PODS_ROOT)/JPUSH/**",
+				);
 				INFOPLIST_FILE = Summer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1212,6 +1255,7 @@
 			baseConfigurationReference = ACB90229D5AF13058AC07C4C /* Pods-Summer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Summer/Summer.entitlements;
 				DEVELOPMENT_TEAM = 437FYPNA4H;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1229,7 +1273,10 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SnapKit\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SwiftyJSON\"",
 				);
-				HEADER_SEARCH_PATHS = "$(PODS_ROOT)/WechatOpenSDK/**";
+				HEADER_SEARCH_PATHS = (
+					"$(PODS_ROOT)/WechatOpenSDK/**",
+					"$(PODS_ROOT)/JPUSH/**",
+				);
 				INFOPLIST_FILE = Summer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -33,6 +33,9 @@ class AddModeViewController: BaseViewController {
     
     @IBOutlet weak var deleteButtonWidth: NSLayoutConstraint!
     
+    @IBOutlet weak var resetButton: UIButton!
+    
+    
     lazy var config: UserWindSpeedConfig = {
         let co = UserWindSpeedConfig()
         co.type = "custom"
@@ -61,6 +64,7 @@ class AddModeViewController: BaseViewController {
             deleteButtonWidth.constant = width
             deleteBtn.isHidden = false
             activityNameField.isEnabled = true
+            resetButton.isHidden = true
         }
         else {
             deleteLeading.constant = 0
@@ -68,6 +72,7 @@ class AddModeViewController: BaseViewController {
             deleteButtonWidth.constant = 0
             deleteBtn.isHidden = true
             activityNameField.isEnabled = false
+            resetButton.isHidden = false
         }
         
         activityNameField.text = config.name
@@ -82,24 +87,45 @@ class AddModeViewController: BaseViewController {
         config.value = Int(sender.value)
     }
     
+    
+    @IBAction func handleTapResetButton(_ sender: UIButton) {
+        
+        config.value = config.defvalue
+        windAcountSlider.value = Float(config.defvalue)
+        windAmountLabel.text = "\(Int(config.defvalue))"
+        
+    }
+    
     @IBAction func didClickDelete(_ sender: UIButton) {
         
-        config.delete { [weak self](success, msg) in
-            if success {
-                for i in 0..<SessionManager.sharedInstance.windModeManager.windUserConfigList.count {
-                    let item = SessionManager.sharedInstance.windModeManager.windUserConfigList[i]
-                    if item.id == self?.config.id {
-                        SessionManager.sharedInstance.windModeManager.windUserConfigList.remove(at: i)
-                        NotificationCenter.default.post(name: kWindModeConfigDidDeleteNotify, object: ["id": self?.config.id])
-                        break
-                    }
-                }
-                self?.dismiss(animated: true, completion: nil)
-            }
-            else {
-                SVProgressHUD.showError(withStatus: msg)
-            }
+        if config.id.characters.count == 0 {
+            dismiss(animated: true, completion: nil)
+            return
         }
+        let alert = ConfirmAlertView.instanceFromXib() as! ConfirmAlertView
+        alert.titleLabel.text = NSLocalizedString("Delete", comment: "")
+        alert.msgLabel.text = NSLocalizedString("DeleteThisMode", comment: "")
+        alert.show()
+        alert.confirmCalback = {[weak self] Void in
+            self?.config.delete { [weak self](success, msg) in
+                if success {
+                    for i in 0..<SessionManager.sharedInstance.windModeManager.windUserConfigList.count {
+                        let item = SessionManager.sharedInstance.windModeManager.windUserConfigList[i]
+                        if item.id == self?.config.id {
+                            SessionManager.sharedInstance.windModeManager.windUserConfigList.remove(at: i)
+                            NotificationCenter.default.post(name: kWindModeConfigDidDeleteNotify, object: ["id": self?.config.id])
+                            break
+                        }
+                    }
+                    self?.dismiss(animated: true, completion: nil)
+                }
+                else {
+                    SVProgressHUD.showError(withStatus: msg)
+                }
+            }
+
+        }
+        
     }
     
     @IBAction func didClickSave(_ sender: UIButton) {

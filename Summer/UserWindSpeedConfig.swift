@@ -92,4 +92,12 @@ class UserWindSpeedConfig: HandyJSON {
         }
     }
     
+    
+    /// 获取文字首字生成的图片
+    ///
+    /// - Parameter color: 文字颜色
+    /// - Returns: 图片
+    func customIcon(color: UIColor) -> UIImage {
+        return UIImage.image(name, size: (50, 50), backColor: UIColor.clear, textColor: color, isCircle: false)!
+    }
 }

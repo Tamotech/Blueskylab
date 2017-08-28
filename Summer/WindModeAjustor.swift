@@ -52,11 +52,13 @@ class WindModeAjustor: UIView {
         if mode.isAdd {
             iconView.image = #imageLiteral(resourceName: "iconAdd_darkblue")
         }
-        else {
-            if mode.icon1.characters.count > 0 {
-                let rc = ImageResource(downloadURL: URL(string: mode.icon2)!)
-                iconView.kf.setImage(with: rc)
-            }
+        else if mode.icon1.characters.count > 0 && mode.type == "fixed" {
+            let rc = ImageResource(downloadURL: URL(string: mode.icon2)!)
+            iconView.kf.setImage(with: rc)
+        }
+        else if mode.type == "custom" {
+            let img = mode.customIcon(color: themeColor!)
+            iconView.image = img
         }
         self.addSubview(iconView)
         iconView.snp.makeConstraints { (make) in
@@ -148,9 +150,13 @@ class WindModeAjustor: UIView {
                 make.centerY.equalTo(self.snp.centerY)
                 make.size.equalTo(CGSize(width: 35, height: 35))
             })
-            if mode.icon2.characters.count>0 {
+            if mode.icon2.characters.count>0 && mode.type == "fixed"{
                 let rc = ImageResource(downloadURL: URL(string: mode.icon2)!)
                 iconView.kf.setImage(with: rc)
+            }
+            else if mode.type == "custom" {
+                let img = mode.customIcon(color: themeColor!)
+                iconView.image = img
             }
             self.windLevelLabel.alpha = 0
             self.leftLb.alpha = 0
@@ -166,9 +172,13 @@ class WindModeAjustor: UIView {
                 make.centerY.equalTo(self.snp.centerY).offset(-20)
                 make.size.equalTo(CGSize(width: 30, height: 30))
             })
-            if mode.icon3.characters.count > 0 {
+            if mode.icon3.characters.count > 0 && mode.type == "fixed" {
                 let rc = ImageResource(downloadURL: URL(string: mode.icon3)!)
                 iconView.kf.setImage(with: rc)
+            }
+            else if mode.type == "custom" {
+                let img = mode.customIcon(color: UIColor.white)
+                iconView.image = img
             }
             self.windLevelLabel.alpha = 1
             self.leftLb.alpha = 1

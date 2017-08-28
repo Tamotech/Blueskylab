@@ -59,17 +59,17 @@ class CurrentAQI: HandyJSON {
         var name = ""
         switch aqiLevelCode {
         case "l1":
-            name = "main-bg01"
+            name = "main-bg1"
         case "l2":
-            name = "main-bg02"
+            name = "main-bg2"
         case "l3":
-            name = "main-bg03"
+            name = "main-bg3"
         case "l4":
-            name = "main-bg04"
+            name = "main-bg4"
         case "l5":
-            name = "main-bg05"
+            name = "main-bg5"
         case "l6":
-            name = "main-bg06"
+            name = "main-bg6"
         default:
             name = ""
         }

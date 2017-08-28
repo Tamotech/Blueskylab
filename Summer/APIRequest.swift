@@ -121,4 +121,60 @@ class APIRequest: NSObject {
             }
         }
     }
+    
+    
+    
+    /// 读取用户配置
+    ///
+    /// - Parameters:
+    ///   - codes: 编码
+    /// http://www.blueskylab.cn/wiki/index.do?wikiid=wiki&navid=8fe3da70-3ffa-4cef-bcd0-1068719e701f
+    ///   - result: data
+    class func getUserConfig(codes: String, result: @escaping JSONResult) {
+        let path = "/config/getCfgByCodes.htm"
+        let params = ["codes": codes]
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                let list = JSON?["data"]
+                result(list)
+            }
+        }
+    }
+    
+    
+    
+    
+    /// 获取文章列表
+    ///
+    /// - Parameters:
+    ///   - channelId: 8:常见问题 9:关于产品 10:关于售后
+    ///   - page: 默认1
+    ///   - rows: 默认5
+    ///   - result: data
+    class func getArticleList(channelId: Int, page: Int, rows: Int, result: @escaping JSONResult) {
+        let path = "/article/list.htm"
+        let params = ["channelid": channelId,
+                      "page": page,
+                      "rows": rows] as [String : Any]
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                let list = JSON?["data"]
+                let articleList = ArticleList.deserialize(from: list?.rawString())
+                result(articleList)
+            }
+        }
+    }
+    
+    
+    /// 获取用户口罩配置信息
+    class func getUserMaskConfig(result: @escaping JSONResult) {
+        let path = "/member/getUserCfg.htm"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                let data = UserMaskConfig.deserialize(from: JSON?["data"].rawString())
+                result(data)
+            }
+        }
+    }
+    
 }

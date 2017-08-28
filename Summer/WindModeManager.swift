@@ -31,4 +31,23 @@ class WindModeManager: NSObject {
             }
         }
     }
+    
+    
+    /// 获取默认的模式
+    ///
+    /// - Returns: 模式
+    func getDefaultMode() -> UserWindSpeedConfig {
+        if windUserConfigList.count == 0 {
+            let config = UserWindSpeedConfig()
+            config.type = "fixed"
+            config.name = "智能模式"
+            return config
+        }
+        for config in windUserConfigList {
+            if config.defaultflag == 1 {
+                return config
+            }
+        }
+        return windUserConfigList.first!
+    }
 }

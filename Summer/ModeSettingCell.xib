@@ -68,6 +68,9 @@
                         <rect key="frame" x="212" y="28.5" width="22" height="22"/>
                         <state key="normal" image="iconStarGreym3-4-1"/>
                         <state key="selected" image="iconStarBlueM3-4-2"/>
+                        <connections>
+                            <action selector="handleSelectStarButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="I8e-iK-U8r"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -93,6 +96,7 @@
                 <outlet property="iconView" destination="wis-NL-PSk" id="Vxc-sM-yFa"/>
                 <outlet property="modeSwitch" destination="v8k-Rb-2zy" id="TMy-rU-BF4"/>
                 <outlet property="nameLabel" destination="7iU-Wq-ls7" id="bSS-NZ-Gag"/>
+                <outlet property="starButton" destination="FEH-8I-VMY" id="WDl-sB-dsP"/>
                 <outlet property="valueLabel" destination="zdY-DK-lbM" id="TT7-i8-TPd"/>
             </connections>
             <point key="canvasLocation" x="146.5" y="43"/>

@@ -518,26 +518,26 @@
                                                 <outletCollection property="gestureRecognizers" destination="hdA-sv-2D2" appends="YES" id="xzR-YC-zzt"/>
                                             </connections>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TdP-kp-YCA" userLabel="App更新">
-                                            <rect key="frame" x="0.0" y="344.5" width="375" height="70"/>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TdP-kp-YCA" userLabel="App更新">
+                                            <rect key="frame" x="0.0" y="344.5" width="375" height="0.0"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="update-icon" translatesAutoresizingMaskIntoConstraints="NO" id="xHl-L2-sX1">
-                                                    <rect key="frame" x="25" y="19.5" width="31" height="31"/>
+                                                    <rect key="frame" x="25" y="-15.5" width="31" height="31"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="APP更新" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVp-gE-Afw">
-                                                    <rect key="frame" x="71" y="24" width="67" height="21"/>
+                                                    <rect key="frame" x="71" y="-11" width="67" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconNext" translatesAutoresizingMaskIntoConstraints="NO" id="lTC-mc-ZDj">
-                                                    <rect key="frame" x="315" y="0.0" width="60" height="70"/>
+                                                    <rect key="frame" x="315" y="0.0" width="60" height="0.0"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="tYw-6N-8PS"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLN-Q0-Nka">
-                                                    <rect key="frame" x="25" y="69" width="325" height="1"/>
+                                                    <rect key="frame" x="25" y="-1" width="325" height="1"/>
                                                     <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="B9m-nr-2Q1"/>
@@ -552,7 +552,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="dLN-Q0-Nka" secondAttribute="bottom" id="6cf-js-97I"/>
                                                 <constraint firstItem="xHl-L2-sX1" firstAttribute="leading" secondItem="TdP-kp-YCA" secondAttribute="leading" constant="25" id="GA1-yR-tBy"/>
                                                 <constraint firstAttribute="bottom" secondItem="lTC-mc-ZDj" secondAttribute="bottom" id="JoQ-B9-Hx1"/>
-                                                <constraint firstAttribute="height" constant="70" id="Pgc-bi-tHG"/>
+                                                <constraint firstAttribute="height" id="Pgc-bi-tHG"/>
                                                 <constraint firstAttribute="trailing" secondItem="lTC-mc-ZDj" secondAttribute="trailing" id="Wob-ds-tIl"/>
                                                 <constraint firstItem="xHl-L2-sX1" firstAttribute="centerY" secondItem="TdP-kp-YCA" secondAttribute="centerY" id="jdR-nP-vh0"/>
                                                 <constraint firstAttribute="trailing" secondItem="dLN-Q0-Nka" secondAttribute="trailing" constant="25" id="nTc-h6-V7K"/>
@@ -564,7 +564,7 @@
                                             </connections>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hi6-rp-hLa" userLabel="退出">
-                                            <rect key="frame" x="0.0" y="414.5" width="375" height="70"/>
+                                            <rect key="frame" x="0.0" y="344.5" width="375" height="70"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退出当前登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O58-H5-3ac">
                                                     <rect key="frame" x="25" y="24" width="104" height="21"/>
@@ -604,7 +604,7 @@
                                             </connections>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XA4-Fy-D3B" userLabel="当前版本">
-                                            <rect key="frame" x="0.0" y="484.5" width="375" height="70"/>
+                                            <rect key="frame" x="0.0" y="414.5" width="375" height="70"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前版本 V1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1G-i8-qNf">
                                                     <rect key="frame" x="25" y="24" width="325" height="21"/>

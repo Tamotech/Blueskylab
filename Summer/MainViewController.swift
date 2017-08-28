@@ -10,6 +10,8 @@ import UIKit
 import AMPopTip
 import ReactiveSwift
 import RxSwift
+import Kingfisher
+
 
 class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSelectDelegate {
 
@@ -57,6 +59,12 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     /// 周数据曲线图
     @IBOutlet weak var weekDataView: WeekAQIDataView!
     
+    @IBOutlet weak var defaultModeIconView: UIImageView!
+    
+    @IBOutlet weak var defaultModeLabel: UILabel!
+    
+    
+    
     lazy var modeControlView: WindModeControllView = {
         let view = WindModeControllView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 246))
         return view
@@ -83,6 +91,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         
         NotificationCenter.default.addObserver(self, selector: #selector(appDidBecomeActiveNotification(notify:)), name: kAppDidBecomeActiveNotify, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userInfoUpdateNotification(noti:)), name: kUserInfoDidUpdateNotify, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userMaskConfigUpdateNoti(noti:)), name: kUserMaskConfigUpdateNoti, object: nil)
         
         if (SessionManager.sharedInstance.token.characters.count == 0) {
             let guideVc = StartGuideViewController(nibName: "StartGuideViewController", bundle: nil)
@@ -159,6 +168,18 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         
     }
     
+    func updateMaskConfigView() {
+        let config = SessionManager.sharedInstance.userMaskConfig
+        let levelData = config.maskFilterLevel()
+        stageLabel.text = levelData.0
+        if levelData.1 != nil {
+            faceIcon.image = levelData.1!
+        }
+        if levelData.2 != nil {
+            bgImgView.image = levelData.2!
+        }
+    }
+    
     
     //MARK: - 通知
     func appDidBecomeActiveNotification(notify: Notification) {
@@ -170,6 +191,10 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     func userInfoUpdateNotification(noti: Notification) {
         menuView.updateView()
         modeControlView.modeManager.loadData()
+    }
+    
+    func userMaskConfigUpdateNoti(noti: Notification) {
+        self.updateMaskConfigView()
     }
     
     //MARK: - AQI
@@ -265,6 +290,22 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
                 break
             case .ItemMyEquipment:
                 let vc = EquipmentViewController(nibName: "EquipmentViewController", bundle: nil)
+                self?.navigationController?.pushViewController(vc, animated: true)
+                break
+            case .ItemBuyMask:
+                guard let url = self?.menuView.maskBuyUrl else {
+                    break
+                }
+                let vc = BaseWebViewController()
+                vc.urlString = url
+                self?.navigationController?.pushViewController(vc, animated: true)
+                break
+            case .ItemBuyFilter:
+                guard let url = self?.menuView.filterBuyUrl else {
+                    break
+                }
+                let vc = BaseWebViewController()
+                vc.urlString = url
                 self?.navigationController?.pushViewController(vc, animated: true)
                 break
             default:
@@ -407,6 +448,18 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         self.showModeControl(show: false)
         let vc = AddModeViewController(nibName: "AddModeViewController", bundle: nil)
         navigationController?.present(vc, animated: true, completion: nil)
+    }
+    
+    func defaultModeDidChange(mode: UserWindSpeedConfig) {
+
+        if mode.icon4.characters.count > 0 {
+            let rc = ImageResource(downloadURL: URL(string: mode.icon4)!)
+            defaultModeIconView.kf.setImage(with: rc)
+        }
+        else {
+            defaultModeIconView.image = mode.customIcon(color: UIColor.white)
+        }
+        defaultModeLabel.text = mode.name
     }
     
     //MARK: - BluetoothDelegate

@@ -15,6 +15,7 @@
                 <outlet property="deleteBtn" destination="dKh-lY-RaS" id="Zy3-K2-yPa"/>
                 <outlet property="deleteButtonWidth" destination="cRP-6g-Sa8" id="6TH-Sw-iT0"/>
                 <outlet property="deleteLeading" destination="dR5-z4-nYA" id="quv-FD-HnD"/>
+                <outlet property="resetButton" destination="ho6-Vu-CtE" id="Ud7-AY-ZjH"/>
                 <outlet property="saveBtn" destination="dGf-0h-ijh" id="wYC-7H-Ieg"/>
                 <outlet property="saveBtnLeading" destination="Cu2-ov-Wvg" id="ulU-dD-D9A"/>
                 <outlet property="saveBtnTail" destination="bpm-5L-1kq" id="jzl-dv-yir"/>
@@ -77,6 +78,26 @@
                             <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ho6-Vu-CtE">
+                            <rect key="frame" x="89" y="21.5" width="50" height="24"/>
+                            <color key="backgroundColor" red="0.0" green="0.61176470589999998" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="VDY-4k-42f"/>
+                                <constraint firstAttribute="width" constant="50" id="ylE-Nk-y8I"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="重置">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="handleTapResetButton:" destination="-1" eventType="touchUpInside" id="lGu-gA-QhJ"/>
+                            </connections>
+                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vc6-Ov-mjG">
                             <rect key="frame" x="295.5" y="20" width="27.5" height="26.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -124,6 +145,8 @@
                         <constraint firstItem="W3J-2d-eDO" firstAttribute="top" secondItem="5Nl-g3-Ewc" secondAttribute="bottom" constant="8" id="52U-zh-O2Q"/>
                         <constraint firstItem="Vc6-Ov-mjG" firstAttribute="centerY" secondItem="5Nl-g3-Ewc" secondAttribute="centerY" id="53B-c1-AGa"/>
                         <constraint firstItem="c7e-cF-Rap" firstAttribute="centerY" secondItem="TrV-VP-2lO" secondAttribute="centerY" id="62i-wi-MCF"/>
+                        <constraint firstItem="ho6-Vu-CtE" firstAttribute="centerY" secondItem="5Nl-g3-Ewc" secondAttribute="centerY" id="Cxh-Zx-U3p"/>
+                        <constraint firstItem="ho6-Vu-CtE" firstAttribute="leading" secondItem="5Nl-g3-Ewc" secondAttribute="trailing" constant="15" id="IY2-YQ-jwh"/>
                         <constraint firstAttribute="trailing" secondItem="96E-NF-lKX" secondAttribute="trailing" constant="25" id="Kfk-jv-fKe"/>
                         <constraint firstItem="5Nl-g3-Ewc" firstAttribute="leading" secondItem="jwQ-9r-lqw" secondAttribute="leading" constant="25" id="NgG-rG-Ytg"/>
                         <constraint firstItem="W3J-2d-eDO" firstAttribute="centerY" secondItem="jwQ-9r-lqw" secondAttribute="centerY" id="PJk-1f-yWl"/>

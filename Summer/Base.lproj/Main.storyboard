@@ -43,12 +43,22 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                     </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qml-Ci-dl2">
+                                                        <rect key="frame" x="127" y="11" width="120" height="20"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="9Fk-df-Heg"/>
+                                                            <constraint firstAttribute="width" constant="120" id="k2t-zJ-QtN"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="imI-CV-l3M" firstAttribute="centerX" secondItem="zeJ-fF-g2h" secondAttribute="centerX" id="9Id-0d-z54"/>
                                                     <constraint firstItem="DZC-ta-k8j" firstAttribute="centerX" secondItem="zeJ-fF-g2h" secondAttribute="centerX" id="HCq-wq-CNS"/>
+                                                    <constraint firstItem="qml-Ci-dl2" firstAttribute="centerX" secondItem="DZC-ta-k8j" secondAttribute="centerX" id="KCV-SX-z0W"/>
                                                     <constraint firstItem="DZC-ta-k8j" firstAttribute="top" secondItem="zeJ-fF-g2h" secondAttribute="top" constant="10" id="WLj-xy-loZ"/>
+                                                    <constraint firstItem="qml-Ci-dl2" firstAttribute="centerY" secondItem="DZC-ta-k8j" secondAttribute="centerY" id="fZt-61-Bfu"/>
                                                     <constraint firstItem="imI-CV-l3M" firstAttribute="top" secondItem="DZC-ta-k8j" secondAttribute="bottom" constant="8" id="hSe-nj-EaK"/>
                                                     <constraint firstAttribute="height" constant="60" id="hpI-Yv-92w"/>
                                                 </constraints>
@@ -404,6 +414,10 @@
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_net" translatesAutoresizingMaskIntoConstraints="NO" id="2of-PJ-wBb">
                                                 <rect key="frame" x="35" y="6" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="VQY-0e-TBe"/>
+                                                    <constraint firstAttribute="height" constant="40" id="hGJ-g9-eGa"/>
+                                                </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="智能模式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biF-04-wsM">
                                                 <rect key="frame" x="98" y="14.5" width="65.5" height="19.5"/>
@@ -497,6 +511,8 @@
                         <outlet property="cigaretteIcon" destination="8Na-gN-pRy" id="W3j-AW-QLe"/>
                         <outlet property="cigaretteNumLabel" destination="mMQ-EA-tFg" id="6yI-mN-2o8"/>
                         <outlet property="cityButton" destination="imI-CV-l3M" id="diL-IZ-7NJ"/>
+                        <outlet property="defaultModeIconView" destination="2of-PJ-wBb" id="hPf-fW-OhY"/>
+                        <outlet property="defaultModeLabel" destination="biF-04-wsM" id="YaX-0o-IJN"/>
                         <outlet property="faceIcon" destination="uMZ-xH-f0c" id="TY6-W8-xOH"/>
                         <outlet property="maskModeView" destination="UxF-mP-NM8" id="kXn-wh-QZM"/>
                         <outlet property="modeControlBottom" destination="z0N-Uy-M3e" id="3OA-wi-Q30"/>
@@ -531,7 +547,7 @@
             <objects>
                 <navigationController storyboardIdentifier="startNavigationVC" automaticallyAdjustsScrollViewInsets="NO" id="vJW-v8-CnU" customClass="BaseNavigationController" customModule="Summer" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CFd-nU-zx5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="CFd-nU-zx5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

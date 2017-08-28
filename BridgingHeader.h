@@ -17,5 +17,6 @@
 #import "MBProgressHUD.h"
 #import "SVProgressHUD.h"
 #import "UIBezierPath+LxThroughPointsBezier.h"
+#import "JPUSHService.h"
 
 #endif /* BridgingHeader_h */

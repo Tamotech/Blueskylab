@@ -33,6 +33,9 @@
 "ChangeFilterTip" = "口罩滤芯已耗尽，请立即更换";
 "filterChangeTip" = "当您更换了滤芯，请重制滤芯数据\n系统将重新计算新滤芯的过滤效果";
 "ResetYourFilter" = "我已更换滤芯，请重新计算滤芯的过滤效果\n确认重置滤芯数据?";
+"FilterLevelI" = "优";
+"FilterLevelII" = "中";
+"FilterLevelIII" = "弱";
 "Retry" = "重试";
 "Help" = "帮助";
 "DontBind" = "暂不绑定";
@@ -61,7 +64,9 @@
 "MyEquipment" = "我的设备";
 "ClearZero" = "清零";
 "ConfirmClearZeroSteps" = "确认清零步数?";
+"DeleteThisMode" = "删除这个模式?";
 "Reset" = "重置";
+"Delete" = "删除";
 "Hide" = "隐藏";
 
 

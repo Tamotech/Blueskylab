@@ -40,7 +40,9 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation = CLLocation()        ///定位
     var windModeManager: WindModeManager = WindModeManager()
+    var userMaskConfig = UserMaskConfig()       //用户口罩配置
     var lock = NSLock()
+
     
     override init() {
         super.init()
@@ -61,6 +63,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
                 self?.token = token!
                 self?.saveLoginInfo()
                 self?.getUserInfo()
+                self?.getUserMaskConfig()
             }
             else {
                 
@@ -82,12 +85,13 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
         if loginInfo.wxid.characters.count > 0 {
             params["wxid"] = loginInfo.wxid
         }
-        APIManager.shareInstance.postRequest(urlString: "/regist/mobileregist.htm", params: params) { (JSON, code, msg) in
+        APIManager.shareInstance.postRequest(urlString: "/regist/mobileregist.htm", params: params) { [weak self](JSON, code, msg) in
             let token = JSON?["memo"].string!
-            self.token = token!
-            self.loginInfo.isLogin = true
+            self?.token = token!
+            self?.loginInfo.isLogin = true
             results(JSON, code, msg)
-            self.getUserInfo()
+            self?.getUserInfo()
+            self?.getUserMaskConfig()
         }
     }
     
@@ -100,6 +104,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    ///登出
     func logoutCurrentUser() {
         self.token = ""
         self.loginInfo.isLogin = false
@@ -108,6 +113,18 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
         UserDefaults.standard.removeObject(forKey: kLoginInfo)
         
     }
+    
+    
+    ///读取用户配置
+    func getUserMaskConfig() {
+        APIRequest.getUserMaskConfig {[weak self] (result) in
+            if result != nil {
+                self?.userMaskConfig = result as! UserMaskConfig
+                NotificationCenter.default.post(name: kUserMaskConfigUpdateNoti, object: nil)
+            }
+        }
+    }
+    
     
     //MARK: - private
     
@@ -123,6 +140,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
             token = info as! String
             APIManager.shareInstance.headers["token"] = self.token
             self.getUserInfo()
+            self.getUserMaskConfig()
         }
     }
     

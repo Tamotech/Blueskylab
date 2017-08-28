@@ -22,4 +22,5 @@ target 'Summer' do
    pod 'AMPopTip'
    pod 'WechatOpenSDK'
    pod 'IQKeyboardManagerSwift', '4.0.10'
+   pod 'JPush'
 end
