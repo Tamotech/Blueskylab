@@ -10,21 +10,32 @@ import UIKit
 
 class NotificationDetailController: BaseViewController {
 
+    
+    
+    var data: NotificationItem?
+    var webView = UIWebView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = NSLocalizedString("NotificationDetail", comment: "");
+        //self.title = NSLocalizedString("NotificationDetail", comment: "");
         let shareItem = UIBarButtonItem(image: UIImage(named:"icon-share"), style: .plain, target: self, action: #selector(handleShareAction(_:)))
         self.navigationItem.rightBarButtonItem = shareItem
-        
-        let path = Bundle.main.bundlePath
-        let baseURL = URL.init(fileURLWithPath: path)
-        let htmlPath = Bundle.main.path(forResource: "notification", ofType: "html")
-        let content = try? String.init(contentsOfFile: htmlPath!, encoding: String.Encoding.utf8)
-        let webview = UIWebView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
-        webview.loadHTMLString(content!, baseURL: baseURL)
-        self.view.addSubview(webview)
+        self.view.addSubview(webView)
+        self.loadData()
     }
+    
+    
+    func loadData() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        APIRequest.getNotificationDetail(id: data!.id) {[weak self] (result) in
+            MBProgressHUD.hide(for: (self?.view)!, animated: true)
+            self?.data = result as? NotificationItem
+            self?.showCustomTitle(title: self?.data?.title ?? "")
+            self?.webView.loadHTMLString(self?.data?.description ?? "", baseURL: nil)
+        }
+    }
+    
     
     func handleShareAction(_ sender:Any) {
         

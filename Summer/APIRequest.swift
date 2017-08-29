@@ -177,4 +177,30 @@ class APIRequest: NSObject {
         }
     }
     
+    
+    
+    /// 通知列表
+    class func getNotificationList(page: Int, rows: Int, result: @escaping JSONResult) {
+        let path = "/member/noticeList.htm"
+        let params = ["page": page,
+        "rows": rows] as [String: Any]
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                let data = NotificationList.deserialize(from: JSON?["data"].rawString())
+                result(data)
+            }
+        }
+    }
+
+    /// 通知详情
+    class func getNotificationDetail(id: String, result: @escaping JSONResult) {
+        let path = "/member/noticeDetail.htm"
+        let params = ["id": id] as [String: Any]
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                let data = NotificationItem.deserialize(from: JSON?["data"].rawString())
+                result(data)
+            }
+        }
+    }
 }

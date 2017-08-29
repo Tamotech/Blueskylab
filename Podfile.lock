@@ -4,6 +4,7 @@ PODS:
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 2.0)
   - AMPopTip (2.1.6)
+  - CRRefresh (1.0.5)
   - HandyJSON (1.7.1)
   - IQKeyboardManagerSwift (4.0.10)
   - JCore (1.1.3)
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - Alamofire
   - AlamofireObjectMapper (~> 4.0)
   - AMPopTip
+  - CRRefresh
   - HandyJSON
   - IQKeyboardManagerSwift (= 4.0.10)
   - JPush
@@ -50,6 +52,7 @@ SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
   AMPopTip: 81f57556ae12500d30ff595078b1b6d11076ced8
+  CRRefresh: 718be57647db922a4a3af3f17fc41289145d8e83
   HandyJSON: 54b6ce942795f7b2e61b82fe73cf25d9f139d125
   IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
   JCore: dff3c50e9a7522a508cd9096ca79165968e1aed3
@@ -67,6 +70,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   WechatOpenSDK: cbd332148eb792d444ed4eec94f421d98f2046ee
 
-PODFILE CHECKSUM: e81fb7d3a661d4363e868fd5cfe7023e5c679d91
+PODFILE CHECKSUM: edfbb2dde00435b2f973507b1999ed2f0a03bad5
 
 COCOAPODS: 1.2.1

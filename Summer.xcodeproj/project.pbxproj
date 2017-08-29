@@ -32,6 +32,7 @@
 		CC0D72DA1F53F235000D647C /* AboutQACell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0D72D81F53F235000D647C /* AboutQACell.xib */; };
 		CC0D72DC1F5409D3000D647C /* ArticleDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0D72DB1F5409D3000D647C /* ArticleDetailController.swift */; };
 		CC0D72DE1F540D13000D647C /* UserMaskConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0D72DD1F540D13000D647C /* UserMaskConfig.swift */; };
+		CC0D72E01F541E1C000D647C /* NotificationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0D72DF1F541E1C000D647C /* NotificationList.swift */; };
 		CC0E30C51F11E1A900F6AFFB /* NotificationCenterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0E30C31F11E1A900F6AFFB /* NotificationCenterCell.swift */; };
 		CC0E30C61F11E1A900F6AFFB /* NotificationCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0E30C41F11E1A900F6AFFB /* NotificationCenterCell.xib */; };
 		CC11D6221F41F11D001E153F /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11D6211F41F11D001E153F /* DateExtension.swift */; };
@@ -171,6 +172,7 @@
 		CC0D72D81F53F235000D647C /* AboutQACell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutQACell.xib; sourceTree = "<group>"; };
 		CC0D72DB1F5409D3000D647C /* ArticleDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDetailController.swift; sourceTree = "<group>"; };
 		CC0D72DD1F540D13000D647C /* UserMaskConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMaskConfig.swift; sourceTree = "<group>"; };
+		CC0D72DF1F541E1C000D647C /* NotificationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationList.swift; sourceTree = "<group>"; };
 		CC0E30C31F11E1A900F6AFFB /* NotificationCenterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterCell.swift; sourceTree = "<group>"; };
 		CC0E30C41F11E1A900F6AFFB /* NotificationCenterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCenterCell.xib; sourceTree = "<group>"; };
 		CC11D6211F41F11D001E153F /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 				CC339C0F1F4C0E7D00EB0516 /* UserWindSpeedConfig.swift */,
 				CC0D72D51F53EE66000D647C /* ArticleList.swift */,
 				CC0D72DD1F540D13000D647C /* UserMaskConfig.swift */,
+				CC0D72DF1F541E1C000D647C /* NotificationList.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1014,6 +1017,7 @@
 				CC05D2CF1F08748600653C71 /* GenderPickerView.swift in Sources */,
 				CC11D6521F30C9BA00B9ADD1 /* StartSetGenderViewController.swift in Sources */,
 				CC0664A81EF76A4F00020415 /* BaseView.swift in Sources */,
+				CC0D72E01F541E1C000D647C /* NotificationList.swift in Sources */,
 				CC9BDCB61F43409A00AF6DB4 /* SVProgressHUD.m in Sources */,
 				CC0411D71F37567C00884165 /* HistoryDataViewController.swift in Sources */,
 				CC030E911F1BA4160030145C /* BaseAlertView.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class NotificationCenterCell: UITableViewCell {
 
@@ -25,6 +26,16 @@ class NotificationCenterCell: UITableViewCell {
         // Initialization code
         
     }
+    
+    func updateCell(data: NotificationItem) {
+        titleLb.text = data.title
+        if data.img.characters.count > 0 {
+            let rc = ImageResource(downloadURL: URL(string: data.img)!)
+            iv.kf.setImage(with: rc)
+        }
+        contentLb.text = data.description
+        dateLb.text = data.dateStr()
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -33,5 +44,6 @@ class NotificationCenterCell: UITableViewCell {
     }
     
     @IBAction func handleTapReadDetailBtn(_ sender: UIButton) {
+        
     }
 }

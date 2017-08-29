@@ -14,7 +14,6 @@ class ArticleModel: HandyJSON {
     var id: String = ""
     var title: String = ""
     var description: String = ""
-    var rows: Int = 0
     var publishdate: Int = 0
     
     required init(){}
@@ -24,6 +23,7 @@ class ArticleList: HandyJSON {
 
     var total: Int = 0
     var page: Int = 0
+    var rows: Int = 0
     var list: [ArticleModel] = []
     
     required init(){}

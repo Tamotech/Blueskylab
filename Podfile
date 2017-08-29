@@ -23,4 +23,5 @@ target 'Summer' do
    pod 'WechatOpenSDK'
    pod 'IQKeyboardManagerSwift', '4.0.10'
    pod 'JPush'
+   pod 'CRRefresh'
 end
