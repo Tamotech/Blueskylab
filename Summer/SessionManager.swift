@@ -29,14 +29,30 @@ struct LoginInfo {
     var idfv: String = ""
 }
 
+struct PushMessage {
+    //1、changefilter：更换滤芯
+    //2、lowbattery：电量不足
+    //3、pollutionalert：污染警告
+    //4、article：产品信息
+    //5、article：新闻动态
+    var type: String = ""
+    //zh_CN 简体 zh_TW 繁体 en_US 英文
+    var language: String = "zh_CN"
+    var pid: Int = -1   //详情 通知详情id
+    var cityid: Int = -1        //城市 id
+    
+}
+
 class SessionManager: NSObject, CLLocationManagerDelegate {
 
     static let sharedInstance: SessionManager = SessionManager()
     var loginInfo: LoginInfo = LoginInfo()
     
     var token:String = ""       //登录令牌
+    var userId: String = ""     //用户 Id
     var userInfo: UserInfo?
     var wxUserInfo: WXUserInfo?
+    var pushMessage = PushMessage()
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation = CLLocation()        ///定位
     var windModeManager: WindModeManager = WindModeManager()
@@ -61,6 +77,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
                 self?.loginInfo.isLogin = true
                 APIManager.shareInstance.headers["token"] = token
                 self?.token = token!
+                self?.userId = result?["id"].string ?? ""
                 self?.saveLoginInfo()
                 self?.getUserInfo()
                 self?.getUserMaskConfig()
@@ -130,14 +147,22 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     
     //保存登录信息到本地
     func saveLoginInfo() {
-        
-        UserDefaults.standard.setValue(token, forKey: kLoginInfo)
+        let loginInfo = ["userId": userId,
+                         "token": token]
+        UserDefaults.standard.setValue(loginInfo, forKey: kLoginInfo)
     }
     
     func readLoginInfo() {
-        let info = UserDefaults.standard.value(forKey: kLoginInfo)
+        let info = UserDefaults.standard.value(forKey: kLoginInfo) as? [String: String]
         if info != nil {
-            token = info as! String
+            token = info!["token"] ?? ""
+            userId = info!["userId"] ?? ""
+            
+            if (userId.characters.count > 0) {
+                //绑定别名
+                JPUSHService.setTags(Set(["DefaultTag"]), aliasInbackground: userId)
+            }
+            
             APIManager.shareInstance.headers["token"] = self.token
             self.getUserInfo()
             self.getUserMaskConfig()

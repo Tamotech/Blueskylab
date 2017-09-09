@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 
-protocol WindModeAjustorDelegate {
+protocol WindModeAjustorDelegate: class {
     func selectItem(mode: UserWindSpeedConfig)
     func hideItem(item: WindModeAjustor)
 }
@@ -30,7 +30,7 @@ class WindModeAjustor: UIView {
     let pointView: UIImageView = UIImageView(image: #imageLiteral(resourceName: "windModePoint"))
     let itemLabel: UILabel = UILabel()
     
-    var delegate: WindModeAjustorDelegate?
+    weak var delegate: WindModeAjustorDelegate?
     
     let minLevel: CGFloat = 0
     let maxLevel: CGFloat = 100
@@ -133,6 +133,38 @@ class WindModeAjustor: UIView {
         self.setAngle(value: mode.value)
     }
     
+    
+    
+    ///更新页面
+    func updateView(config: UserWindSpeedConfig) {
+        mode = config
+        if mode.isAdd {
+            iconView.image = #imageLiteral(resourceName: "iconAdd_darkblue")
+        }
+        else if mode.icon1.characters.count > 0 && mode.type == "fixed" {
+            let rc = ImageResource(downloadURL: URL(string: mode.icon2)!)
+            iconView.kf.setImage(with: rc)
+        }
+        else if mode.type == "custom" {
+            let img = mode.customIcon(color: themeColor!)
+            iconView.image = img
+        }
+        
+        windLevelLabel.text = "\(mode.value)"
+        itemLabel.text = mode.name
+        if mode.isAdd {
+            rulerView.isHidden = true
+            pointView.isHidden = true
+            itemLabel.isHidden = true
+            //            ovalOutsideView.isHidden = true
+            windLevelLabel.isHidden = true
+            leftLb.isHidden = true
+            rightLb.isHidden = true
+        }
+        
+        self.setAngle(value: mode.value)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -214,6 +246,12 @@ class WindModeAjustor: UIView {
             rotateToAngle(angle: startAngle - angle)
             
             
+        }
+        else if pan.state == .ended {
+            //更新数据
+            mode.update(success: { (success, msg) in
+                
+            })
         }
     }
     

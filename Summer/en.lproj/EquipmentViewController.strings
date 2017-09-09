@@ -6,7 +6,7 @@
 "2xL-7y-JM0.normalTitle" = "清零";
 
 /* Class = "UILabel"; text = "00:14:34"; ObjectID = "4I2-Ql-QmG"; */
-"4I2-Ql-QmG.text" = "00:14:34";
+"4I2-Ql-QmG.text" = "00:00:00";
 
 /* Class = "UILabel"; text = "km/h"; ObjectID = "Avi-HF-nV9"; */
 "Avi-HF-nV9.text" = "km/h";
@@ -30,16 +30,16 @@
 "S1c-qR-0ib.text" = "当前速度";
 
 /* Class = "UILabel"; text = "1090cal"; ObjectID = "U6C-zU-vGB"; */
-"U6C-zU-vGB.text" = "1090cal";
+"U6C-zU-vGB.text" = "0cal";
 
 /* Class = "UILabel"; text = "32"; ObjectID = "WCZ-qh-8vf"; */
-"WCZ-qh-8vf.text" = "32";
+"WCZ-qh-8vf.text" = "0";
 
 /* Class = "UILabel"; text = "1090步"; ObjectID = "Z3r-T0-oJV"; */
-"Z3r-T0-oJV.text" = "1090步";
+"Z3r-T0-oJV.text" = "0步";
 
 /* Class = "UILabel"; text = "17"; ObjectID = "aj3-UM-ltm"; */
-"aj3-UM-ltm.text" = "17";
+"aj3-UM-ltm.text" = "0";
 
 /* Class = "UIButton"; normalTitle = "新滤芯数据重置"; ObjectID = "b3p-yq-KlV"; */
 "b3p-yq-KlV.normalTitle" = "新滤芯数据重置";
@@ -66,7 +66,7 @@
 "icp-wa-D0M.normalTitle" = "解绑 ";
 
 /* Class = "UILabel"; text = "60"; ObjectID = "wWT-ru-Vnz"; */
-"wWT-ru-Vnz.text" = "60";
+"wWT-ru-Vnz.text" = "0";
 
 /* Class = "UILabel"; text = "净化时间"; ObjectID = "zwc-5v-fv3"; */
 "zwc-5v-fv3.text" = "净化时间";

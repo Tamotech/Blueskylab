@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EquipmentViewController: BaseViewController {
+class EquipmentViewController: BaseViewController, MotionDataDelegate {
 
     
     @IBOutlet weak var speedLabel: UILabel!
@@ -16,10 +16,21 @@ class EquipmentViewController: BaseViewController {
     @IBOutlet weak var windLevelLabel: UILabel!
     @IBOutlet weak var moveDistanceLabel: UILabel!
     @IBOutlet weak var clearTimeLabel: UILabel!
+    
+    @IBOutlet weak var stepCountLabel: UILabel!
+    
+    @IBOutlet weak var caloriesLabel: UILabel!
+    
+    @IBOutlet weak var connectStatusLabel: UILabel!
+    
+    @IBOutlet weak var filterLevelLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = NSLocalizedString("MyEquipment", comment: "")
+        
+        HealthDataManager.sharedInstance.delegate = self
+        HealthDataManager.sharedInstance.startPedometerUpdates()
     }
     
 
@@ -48,4 +59,24 @@ class EquipmentViewController: BaseViewController {
         alert.show()
     }
     
+    
+    //MARK: - MotionDelegate
+    
+    func motionDataUpdate(distance: Float, speed: Float, stepCount: Int) {
+        DispatchQueue.main.async {
+            self.speedLabel.text = String.init(format: "%.0f", speed*72)
+            self.moveDistanceLabel.text = String.init(format: "%.1f", distance/1000)
+            self.stepCountLabel.text = "\(stepCount)步"
+            let kcal = (SessionManager.sharedInstance.userInfo?.getWeight())!*CGFloat(distance/1000)*1.036
+            self.caloriesLabel.text = String.init(format: "%.0fkcal", kcal)
+    
+        }
+    }
+    
+    func timerStrUpdate(timeStr: String) {
+        DispatchQueue.main.async {
+            self.clearTimeLabel.text = timeStr
+        }
+        
+    }
 }

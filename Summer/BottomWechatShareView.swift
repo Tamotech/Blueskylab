@@ -8,10 +8,18 @@
 
 import UIKit
 
+protocol BottomShareViewDelegate: class {
+    func didTapWechat()
+    func didTapWechatCircle()
+}
+
 class BottomWechatShareView: BaseView {
 
     
     let containerHeight:CGFloat = 186
+    
+    weak var delegate: BottomShareViewDelegate?
+    
     @IBOutlet weak var bottonConsttaint: NSLayoutConstraint!
     
     override func awakeFromNib() {
@@ -42,10 +50,16 @@ class BottomWechatShareView: BaseView {
     
     @IBAction func handleTapWechatBtn(_ sender: Any) {
         self.dismiss()
+        if self.delegate != nil {
+            self.delegate!.didTapWechat()
+        }
     }
     
     @IBAction func handleTapWechatCircleBtn(_ sender: Any) {
         self.dismiss()
+        if self.delegate != nil {
+            self.delegate!.didTapWechatCircle()
+        }
     }
     
     @IBAction func handleCancelBtn(_ sender: Any) {

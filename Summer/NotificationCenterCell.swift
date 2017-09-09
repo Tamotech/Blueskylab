@@ -20,6 +20,7 @@ class NotificationCenterCell: UITableViewCell {
     @IBOutlet weak var dateLb: UILabel!
     @IBOutlet weak var readDetailBtn: UIButton!
     
+    @IBOutlet weak var notificationNewTagView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +36,7 @@ class NotificationCenterCell: UITableViewCell {
         }
         contentLb.text = data.description
         dateLb.text = data.dateStr()
+        notificationNewTagView.isHidden = (data.readflag == 1)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

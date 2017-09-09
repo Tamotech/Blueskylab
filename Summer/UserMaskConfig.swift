@@ -42,19 +42,19 @@ class UserMaskConfig: HandyJSON {
     func maskFilterLevel() -> (String, UIImage?, UIImage?) {
         switch filtereffect {
         case "l1":
-            let path = Bundle.main.path(forResource: "main-bg1", ofType: "jpg")
+            let path = Bundle.main.path(forResource: "main-bg1", ofType: "png")
             let img = UIImage(contentsOfFile: path!)
             return (NSLocalizedString("FilterLevelI", comment: ""),
                     #imageLiteral(resourceName: "face1"),
                     img)
         case "l2":
-            let path = Bundle.main.path(forResource: "main-bg5", ofType: "jpg")
+            let path = Bundle.main.path(forResource: "main-bg5", ofType: "png")
             let img = UIImage(contentsOfFile: path!)
             return (NSLocalizedString("FilterLevelII", comment: ""),
                     #imageLiteral(resourceName: "face2"),
                     img)
         case "l3":
-            let path = Bundle.main.path(forResource: "main-bg6", ofType: "jpg")
+            let path = Bundle.main.path(forResource: "main-bg6", ofType: "png")
             let img = UIImage(contentsOfFile: path!)
             return (NSLocalizedString("FilterLevelIII", comment: ""),
                     #imageLiteral(resourceName: "face3"),

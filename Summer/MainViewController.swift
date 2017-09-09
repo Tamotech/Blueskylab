@@ -13,7 +13,7 @@ import RxSwift
 import Kingfisher
 
 
-class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSelectDelegate {
+class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSelectDelegate, BottomShareViewDelegate {
 
     
     @IBOutlet weak var bgImgView: UIImageView!
@@ -50,11 +50,11 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     
     @IBOutlet weak var cityButton: UIButton!
     
-    @IBOutlet weak var cigaretteIcon: UIImageView!
-    
-    @IBOutlet weak var pollutionDescLabel: UILabel!
-    
-    @IBOutlet weak var cigaretteNumLabel: UILabel!
+//    @IBOutlet weak var cigaretteIcon: UIImageView!
+//    
+//    @IBOutlet weak var pollutionDescLabel: UILabel!
+//    
+//    @IBOutlet weak var cigaretteNumLabel: UILabel!
     
     /// 周数据曲线图
     @IBOutlet weak var weekDataView: WeekAQIDataView!
@@ -102,6 +102,9 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
                 
             })
         }
+        
+//        let demoView = CircleDemoView(frame: CGRect(x: 20, y: 100, width: 260, height: 260))
+//        self.view.addSubview(demoView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -224,9 +227,9 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         aqiLevelLabel.text = String(data.aqi)
         temperatureLabel.text = String(format: "%.0lf°C", data.temperature)
         windLevelLabel.text = String(format: "%.0f级风",  data.windSpeed)
-        cigaretteNumLabel.text = String(format: NSLocalizedString("CirgaretteNum", comment: ""), data.smokeNum)
-        let smokeIconName = String(format: "icon%dc", data.smokeNum)
-        cigaretteIcon.image = UIImage(named: smokeIconName)
+        //cigaretteNumLabel.text = String(format: NSLocalizedString("CirgaretteNum", comment: ""), data.smokeNum)
+        //let smokeIconName = String(format: "icon%dc", data.smokeNum)
+        //cigaretteIcon.image = UIImage(named: smokeIconName)
     }
     
     
@@ -251,7 +254,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     func gotoNextPage(_:Any?) {
         var currentIndex = Int(scrollView.contentOffset.x/screenWidth)
         currentIndex = currentIndex+1
-        if currentIndex >= 3 {
+        if currentIndex >= 2 {
             currentIndex = 0
         }
         
@@ -307,6 +310,11 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
                 let vc = BaseWebViewController()
                 vc.urlString = url
                 self?.navigationController?.pushViewController(vc, animated: true)
+                break
+            case .ItemShare:
+                let sheet = BottomWechatShareView.instanceFromXib() as! BottomWechatShareView
+                sheet.delegate = self
+                sheet.show()
                 break
             default:
                 break
@@ -396,7 +404,8 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     }
     
     @IBAction func handleTapQuestionBtn(_ sender: Any) {
-        
+        let vc = UserHandbookController(nibName: "UserHandbookController", bundle: nil)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     
@@ -499,5 +508,23 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
                 
             }
         }
+    }
+    
+    
+    ///App 分享
+    
+    func didTapWechat() {
+        guard let downloadUrl = menuView.appDownloadUrl else {
+            return
+        }
+        BSLShareManager.shareToWechat(link: downloadUrl, title: "蓝天实验室", msg: "", thumb: "", type: 0)
+    }
+    
+    func didTapWechatCircle() {
+        guard let downloadUrl = menuView.appDownloadUrl else {
+            return
+        }
+        BSLShareManager.shareToWechat(link: downloadUrl, title: "蓝天实验室", msg: "", thumb: "", type: 1)
+        
     }
 }

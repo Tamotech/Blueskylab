@@ -32,6 +32,8 @@ class MainMenuView: BaseView {
     var maskBuyUrl: String?
     /// 滤芯购买地址
     var filterBuyUrl: String?
+    /// App下载地址
+    var appDownloadUrl: String?
     
     @IBOutlet weak var avatarBtn: UIButton!
     
@@ -58,7 +60,8 @@ class MainMenuView: BaseView {
         
         let rc = ImageResource(downloadURL: URL(string: userInfo.headimg.urlStringWithBLS())!)
         avatarBtn.kf.setImage(with: rc, for: .normal, placeholder: #imageLiteral(resourceName: "imgProfile-M"), options: nil, progressBlock: nil, completionHandler: nil)
-        nameLabel.text = userInfo.name
+//        nameLabel.text = userInfo.name
+        nameLabel.text = NSLocalizedString("MyAir", comment: "")
     }
     
     
@@ -110,10 +113,11 @@ class MainMenuView: BaseView {
     
     
     func loadConfigData() {
-        APIRequest.getUserConfig(codes: "u_buy_mask,u_buy_filter") { [weak self](JSONData) in
+        APIRequest.getUserConfig(codes: "u_buy_mask,u_buy_filter,u_app_download_page") { [weak self](JSONData) in
             let data = JSONData as! JSON
             self?.maskBuyUrl = data["u_buy_mask"]["v"].stringValue
             self?.filterBuyUrl = data["u_buy_mask"]["v"].stringValue
+            self?.appDownloadUrl = data["u_app_download_page"]["v"].stringValue
         }
     }
     

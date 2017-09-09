@@ -40,7 +40,7 @@ class NotificationCenterController: BaseViewController, UITableViewDelegate, UIT
             })
         }
     }
-    
+        
     deinit {
         self.tableView.cr.removeHeader()
         self.tableView.cr.removeFooter()
@@ -50,6 +50,7 @@ class NotificationCenterController: BaseViewController, UITableViewDelegate, UIT
         super.viewWillAppear(animated)
         let navVC = self.navigationController as! BaseNavigationController
         navVC.setTintColor(tint: gray72!)
+        tableView.reloadData()
     }
     
     
@@ -110,6 +111,7 @@ class NotificationCenterController: BaseViewController, UITableViewDelegate, UIT
         let data = nData.list[indexPath.row]
         let vc = NotificationDetailController()
         vc.data = data
+        data.readflag = 1
         navigationController?.pushViewController(vc, animated: true)
     }
     

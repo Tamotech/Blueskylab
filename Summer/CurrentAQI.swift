@@ -26,6 +26,7 @@ class CurrentAQI: HandyJSON {
     var aqi = -1
     var cityID = -1
     var city = ""
+    var cityname_en = ""
     var aqiUrl = ""
     var updateTime = ""
     var pm25 = ""
@@ -36,7 +37,8 @@ class CurrentAQI: HandyJSON {
     var smokeNum = 0        //0-5
     
     func mapping(mapper: HelpingMapper) {
-        mapper.specify(property: &cityID, name: "idx")
+        mapper.specify(property: &cityID, name: "cityid")
+        mapper.specify(property: &city, name: "cityname")
         mapper.specify(property: &aqiUrl, name: "url")
         mapper.specify(property: &updateTime, name: "time")
         mapper.specify(property: &temperature, name: "t")
@@ -71,10 +73,10 @@ class CurrentAQI: HandyJSON {
         case "l6":
             name = "main-bg6"
         default:
-            name = ""
+            name = "main-bg1"
         }
         
-        let path = Bundle.main.path(forResource: name, ofType: "jpg")
+        let path = Bundle.main.path(forResource: name, ofType: "png")
         let img = UIImage(contentsOfFile: path!)
         return img
     }

@@ -91,6 +91,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         JPUSHService.registerDeviceToken(deviceToken)
+        if (SessionManager.sharedInstance.userId.characters.count > 0) {
+            //绑定别名
+            JPUSHService.setTags(Set(["DefaultTag"]), aliasInbackground: SessionManager.sharedInstance.userId)
+        }
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -134,6 +138,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
 
 extension AppDelegate: JPUSHRegisterDelegate {
     
+    
     @available(iOS 10.0, *)
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ((Int) -> Void)!) {
         print(">JPUSHRegisterDelegate jpushNotificationCenter willPresent");
@@ -146,8 +151,31 @@ extension AppDelegate: JPUSHRegisterDelegate {
     
     @available(iOS 10.0, *)
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, didReceive response: UNNotificationResponse!, withCompletionHandler completionHandler: (() -> Void)!) {
-        print(">JPUSHRegisterDelegate jpushNotificationCenter didReceive");
+        
+        // 取得 APNs 标准信息内容
         let userInfo = response.notification.request.content.userInfo
+        let aps = userInfo["aps"] as! [String:Any?]
+        let content = aps["alert"] ?? ""
+        let badge = aps["badge"] ?? ""
+        
+        //extra 信息
+        if userInfo["language"] != nil {
+            SessionManager.sharedInstance.pushMessage.language = userInfo["language"] as! String
+        }
+        if userInfo["type"] != nil {
+            SessionManager.sharedInstance.pushMessage.type = userInfo["type"] as! String
+        }
+        if userInfo["pid"] != nil {
+            SessionManager.sharedInstance.pushMessage.pid = userInfo["pid"] as! Int
+        }
+        if userInfo["cityid"] != nil {
+            SessionManager.sharedInstance.pushMessage.cityid = userInfo["cityid"] as! Int
+        }
+        print("content: \(String(describing: content)), badge: \(String(describing: badge))")
+        
+        
+        print(">JPUSHRegisterDelegate jpushNotificationCenter didReceive");
+        
         if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self))!{
             JPUSHService.handleRemoteNotification(userInfo)
         }

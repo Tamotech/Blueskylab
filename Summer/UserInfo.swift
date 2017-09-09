@@ -30,6 +30,29 @@ class UserInfo: HandyJSON {
     var mobile: String = ""
     var wxid: String = ""
     
+    func getWeight() -> CGFloat {
+        if weight == 0 {
+            if sex == "male" {
+                return 60
+            }
+            else {
+                return 45
+            }
+        }
+        return weight
+    }
+    
+    func getHeight() -> CGFloat {
+        if height == 0 {
+            if sex == "male" {
+                return 180
+            }
+            else {
+                return 165
+            }
+        }
+        return height
+    }
     
     required init () {}
     

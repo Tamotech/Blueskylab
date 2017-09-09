@@ -27,14 +27,14 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start-bg" translatesAutoresizingMaskIntoConstraints="NO" id="87g-MR-NOB">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择您的性别" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obo-JA-RZW">
-                    <rect key="frame" x="25" y="88" width="199" height="33.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="完善信息，让我为您定制”空气“" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Obo-JA-RZW">
+                    <rect key="frame" x="25" y="88" width="324.5" height="27.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="个人信息将用于AtmoBlue为您个性化定制净化模式" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FV5-fm-ZOW">
-                    <rect key="frame" x="25" y="152.5" width="325" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择您的性别" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FV5-fm-ZOW">
+                    <rect key="frame" x="25" y="146.5" width="325" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -166,6 +166,7 @@
                 <constraint firstItem="fIT-6B-YsZ" firstAttribute="centerY" secondItem="C2O-Lb-gDt" secondAttribute="centerY" constant="-50" id="gt8-HJ-Vyh"/>
                 <constraint firstItem="SNS-6O-8bl" firstAttribute="top" secondItem="fIT-6B-YsZ" secondAttribute="bottom" constant="66" id="h7E-bg-LSE"/>
                 <constraint firstItem="FV5-fm-ZOW" firstAttribute="leading" secondItem="Obo-JA-RZW" secondAttribute="leading" id="kh2-XE-X3F"/>
+                <constraint firstAttribute="trailing" secondItem="Obo-JA-RZW" secondAttribute="trailing" constant="25" id="r85-np-8M6"/>
                 <constraint firstItem="RdC-wf-yb7" firstAttribute="height" secondItem="eTe-iB-H22" secondAttribute="height" id="tFg-LB-P10"/>
                 <constraint firstItem="87g-MR-NOB" firstAttribute="centerX" secondItem="C2O-Lb-gDt" secondAttribute="centerX" id="vSm-TX-JwR"/>
                 <constraint firstItem="87g-MR-NOB" firstAttribute="height" secondItem="C2O-Lb-gDt" secondAttribute="height" id="wJ7-Xm-JXp"/>

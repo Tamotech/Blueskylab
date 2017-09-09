@@ -40,8 +40,8 @@
                                         <action selector="handleTapAvatarButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="i2k-ks-A4M"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCl-Hl-Iem">
-                                    <rect key="frame" x="91" y="175.5" width="58.5" height="27"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请登录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCl-Hl-Iem">
+                                    <rect key="frame" x="87" y="175.5" width="67" height="27"/>
                                     <constraints>
                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="d3C-qj-r8X"/>
                                     </constraints>
@@ -50,7 +50,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4v-pS-sEg">
-                                    <rect key="frame" x="91" y="174" width="78.5" height="30"/>
+                                    <rect key="frame" x="87" y="174" width="87" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="owr-Gv-b6i"/>
                                     </constraints>

@@ -22,6 +22,7 @@ class ModeSettingCell: UITableViewCell {
     
     @IBOutlet weak var starButton: UIButton!
     
+    @IBOutlet weak var currentModeLabel: UILabel!
     
     var config: UserWindSpeedConfig?
     
@@ -33,6 +34,9 @@ class ModeSettingCell: UITableViewCell {
     
     @IBAction func modeSwitchValueChange(_ sender: UISwitch) {
         config?.hideflag = sender.isOn ? 0 : 1
+        config!.update { (success, msg) in
+            
+        }
     }
     
     func updateCellWithConfig(config: UserWindSpeedConfig) {
@@ -47,6 +51,9 @@ class ModeSettingCell: UITableViewCell {
         }
         nameLabel.text = config.name
         valueLabel.text = "\(config.value)"
+        let isCurrentMode = SessionManager.sharedInstance.windModeManager.getCurrentMode().id == config.id
+        currentModeLabel.isHidden = !isCurrentMode
+        modeSwitch.isHidden = !currentModeLabel.isHidden
         modeSwitch.setOn(config.hideflag == 0, animated: false)
         starButton.isSelected = (config.defaultflag == 1)
     }
@@ -54,15 +61,14 @@ class ModeSettingCell: UITableViewCell {
     
     @IBAction func handleSelectStarButton(_ sender: UIButton) {
         
-        sender.isSelected = true
-        config?.defaultflag = 1
-        for co in SessionManager.sharedInstance.windModeManager.windUserConfigList {
-            if co.id != config?.id {
-                co.defaultflag = 0
-            }
-        }
+        SessionManager.sharedInstance.windModeManager.bringToTop(config: config!)
+        NotificationCenter.default.post(name: kWindModeConfigDidChangeOrderNotify, object: nil)
+        self.starButton.isSelected = true
         let owner = self.ownerController() as! ModeSettingController
-        owner.tableView.reloadData()
+        let topCell = owner.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! ModeSettingCell
+        topCell.starButton.isSelected = false
+        let indexPath = owner.tableView.indexPath(for: self)
+        owner.tableView.moveRow(at: indexPath!, to: IndexPath(row: 0, section: 0))
     }
     
 }

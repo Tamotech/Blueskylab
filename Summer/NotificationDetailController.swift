@@ -8,19 +8,20 @@
 
 import UIKit
 
-class NotificationDetailController: BaseViewController {
+class NotificationDetailController: BaseViewController, BottomShareViewDelegate {
 
     
     
     var data: NotificationItem?
     var webView = UIWebView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
+    var shareItem: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //self.title = NSLocalizedString("NotificationDetail", comment: "");
-        let shareItem = UIBarButtonItem(image: UIImage(named:"icon-share"), style: .plain, target: self, action: #selector(handleShareAction(_:)))
-        self.navigationItem.rightBarButtonItem = shareItem
+        shareItem = UIBarButtonItem(image: UIImage(named:"icon-share"), style: .plain, target: self, action: #selector(handleShareAction(_:)))
+//        self.navigationItem.rightBarButtonItem = shareItem
         self.view.addSubview(webView)
         self.loadData()
     }
@@ -32,6 +33,12 @@ class NotificationDetailController: BaseViewController {
             MBProgressHUD.hide(for: (self?.view)!, animated: true)
             self?.data = result as? NotificationItem
             self?.showCustomTitle(title: self?.data?.title ?? "")
+            if (self?.data?.link.characters.count)! > 0 {
+                self?.navigationItem.rightBarButtonItem = self?.shareItem
+            }
+            else {
+                self?.navigationItem.rightBarButtonItem = nil
+            }
             self?.webView.loadHTMLString(self?.data?.description ?? "", baseURL: nil)
         }
     }
@@ -40,7 +47,16 @@ class NotificationDetailController: BaseViewController {
     func handleShareAction(_ sender:Any) {
         
         let sheet = BottomWechatShareView.instanceFromXib() as! BottomWechatShareView
+        sheet.delegate = self
         sheet.show()
     }
 
+    func didTapWechat() {
+        BSLShareManager.shareToWechat(link: data!.link, title: data!.title, msg: data!.description, thumb: data!.img, type: 0)
+    }
+    
+    func didTapWechatCircle() {
+        BSLShareManager.shareToWechat(link: data!.link, title: data!.title, msg: data!.description, thumb: data!.img, type: 1)
+
+    }
 }

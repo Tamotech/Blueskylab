@@ -48,13 +48,20 @@
 	<string>location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>need visit your photo libaray</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>need read your health data</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>访问蓝牙</string>
+	<key>NSMotionUsageDescription</key>
+	<string>访问运动</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
+		<string>healthkit</string>
 	</array>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleBlackTranslucent</string>

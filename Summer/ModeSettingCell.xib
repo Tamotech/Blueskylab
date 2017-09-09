@@ -72,9 +72,16 @@
                             <action selector="handleSelectStarButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="I8e-iK-U8r"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前模式" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHH-Km-h1e">
+                        <rect key="frame" x="246" y="30" width="65.5" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.0" green="0.61176470589999998" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="KbY-sU-EOP" firstAttribute="leading" secondItem="7iU-Wq-ls7" secondAttribute="leading" id="2Gp-Sa-TBm"/>
+                    <constraint firstItem="lHH-Km-h1e" firstAttribute="centerY" secondItem="v8k-Rb-2zy" secondAttribute="centerY" id="2fd-RN-G2d"/>
                     <constraint firstItem="hkJ-jS-tWF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6at-Pc-xHR"/>
                     <constraint firstItem="PiH-b1-gOP" firstAttribute="leading" secondItem="zdY-DK-lbM" secondAttribute="trailing" id="77R-7z-JtS"/>
                     <constraint firstItem="7iU-Wq-ls7" firstAttribute="leading" secondItem="hkJ-jS-tWF" secondAttribute="trailing" constant="15" id="90d-ai-N2M"/>
@@ -84,6 +91,7 @@
                     <constraint firstItem="v8k-Rb-2zy" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="VyL-Uf-n7c"/>
                     <constraint firstItem="hkJ-jS-tWF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="WB9-Ei-dTA"/>
                     <constraint firstItem="wis-NL-PSk" firstAttribute="centerY" secondItem="hkJ-jS-tWF" secondAttribute="centerY" id="aoO-0S-VdO"/>
+                    <constraint firstItem="lHH-Km-h1e" firstAttribute="centerX" secondItem="v8k-Rb-2zy" secondAttribute="centerX" id="bER-R1-ebF"/>
                     <constraint firstItem="v8k-Rb-2zy" firstAttribute="leading" secondItem="FEH-8I-VMY" secondAttribute="trailing" constant="20" id="lfV-CO-xdU"/>
                     <constraint firstItem="zdY-DK-lbM" firstAttribute="centerY" secondItem="KbY-sU-EOP" secondAttribute="centerY" id="rPL-s4-1xo"/>
                     <constraint firstItem="KbY-sU-EOP" firstAttribute="bottom" secondItem="hkJ-jS-tWF" secondAttribute="bottom" constant="-6" id="uxo-VU-hnI"/>
@@ -93,6 +101,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="currentModeLabel" destination="lHH-Km-h1e" id="LZe-Et-smz"/>
                 <outlet property="iconView" destination="wis-NL-PSk" id="Vxc-sM-yFa"/>
                 <outlet property="modeSwitch" destination="v8k-Rb-2zy" id="TMy-rU-BF4"/>
                 <outlet property="nameLabel" destination="7iU-Wq-ls7" id="bSS-NZ-Gag"/>

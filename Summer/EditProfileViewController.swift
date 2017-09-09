@@ -59,14 +59,19 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         nameField.text = userInfo.name
         phoneField.text = userInfo.mobile
         birthField.text = userInfo.birthday
-        genderField.text = userInfo.sex
-        heightField.text = String.init(format: "%.1f cm", userInfo.height)
-        weightField.text = String.init(format: "%.1f kg", userInfo.weight)
+        if userInfo.height < 10 {
+            userInfo.height = 170
+        }
+        if userInfo.weight < 10 {
+            userInfo.weight = 60
+        }
+        heightField.text = String.init(format: "%.1f cm", userInfo.getHeight())
+        weightField.text = String.init(format: "%.1f kg", userInfo.getWeight())
         if userInfo.sex == "male" {
-            genderField.text = NSLocalizedString("male", comment: "")
+            genderField.text = NSLocalizedString("Male", comment: "")
         }
         else {
-            genderField.text = NSLocalizedString("female", comment: "")
+            genderField.text = NSLocalizedString("Female", comment: "")
         }
     }
 
@@ -78,7 +83,15 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
     }
     
     @IBAction func handleTapBirthday(_ sender: UITapGestureRecognizer) {
+        let dateFormmter = DateFormatter()
+        dateFormmter.dateFormat = "yyyy年MM月dd日"
+        let dateStr = birthField.text ?? ""
+        var date = dateFormmter.date(from: "1990年01月01日")
+        if dateStr.contains("年") && dateStr.contains("月") && dateStr.contains("日") {
+            date = dateFormmter.date(from: dateStr)
+        }
         let picker = DatePickerView(title: NSLocalizedString("SelectBirthday", comment: ""))
+        picker.picker.date = date!
         picker.pickDateAction = {[weak self] (date: Date) in
             let dateFormmter = DateFormatter()
             dateFormmter.dateFormat = "yyyy年MM月dd日"
@@ -96,14 +109,30 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         picker.show()
     }
     @IBAction func handleTapHeight(_ sender: UITapGestureRecognizer) {
-        let sheet = BaseRulerSelectorActionView(title: NSLocalizedString("EditHeight", comment: ""), unit: "cm", defaultValue: 170)
+        var defaultValue: CGFloat = 170
+        let str = heightField.text ?? ""
+        if str.contains("cm") {
+            defaultValue = str.getFloatFromString()
+        }
+        if defaultValue == 0 {
+            defaultValue = 170
+        }
+        let sheet = BaseRulerSelectorActionView(title: NSLocalizedString("EditHeight", comment: ""), unit: "cm", defaultValue: defaultValue)
         sheet.finishSelectAction = {[unowned self](value:CGFloat) in
             self.heightField.text = "\(value) cm"
         }
         sheet.show()
     }
     @IBAction func handleTapWeight(_ sender: UITapGestureRecognizer) {
-        let sheet = BaseRulerSelectorActionView(title: NSLocalizedString("EditWeight", comment: ""), unit: "kg", defaultValue: 60)
+        var defaultValue: CGFloat = 60
+        let str = weightField.text ?? ""
+        if str.contains("kg") {
+            defaultValue = str.getFloatFromString()
+        }
+        if defaultValue == 0 {
+            defaultValue = 60
+        }
+        let sheet = BaseRulerSelectorActionView(title: NSLocalizedString("EditWeight", comment: ""), unit: "kg", defaultValue: defaultValue)
         sheet.finishSelectAction = {[unowned self] (value:CGFloat) in
             self.weightField.text = "\(value) kg"
         }

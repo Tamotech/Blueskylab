@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main-bg1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="XOi-Un-cu8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main-bg1.png" translatesAutoresizingMaskIntoConstraints="NO" id="XOi-Un-cu8">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTf-ZA-9B2">
@@ -67,7 +67,7 @@
                                                 <rect key="frame" x="-0.5" y="60" width="375" height="250"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02z-pA-NmU" userLabel="contentView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="1125" height="250"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="750" height="250"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D1l-Ks-hZ3" userLabel="view1">
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
@@ -164,50 +164,16 @@
                                                                     <constraint firstItem="Wed-hU-23p" firstAttribute="centerY" secondItem="4IV-1n-1Qo" secondAttribute="centerY" id="xU5-Pn-krE"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WBi-8e-emp" userLabel="view3">
-                                                                <rect key="frame" x="750" y="0.0" width="375" height="250"/>
-                                                                <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon5c" translatesAutoresizingMaskIntoConstraints="NO" id="8Na-gN-pRy">
-                                                                        <rect key="frame" x="117.5" y="10" width="140" height="131"/>
-                                                                    </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前所处环境的PM2.5污染相当于正在同时吸" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKf-m4-BGU">
-                                                                        <rect key="frame" x="20" y="161" width="335" height="14.5"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2支香烟" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMQ-EA-tFg">
-                                                                        <rect key="frame" x="156.5" y="188" width="62" height="21"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="8Na-gN-pRy" firstAttribute="centerX" secondItem="WBi-8e-emp" secondAttribute="centerX" id="3mW-4G-AUQ"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="sKf-m4-BGU" secondAttribute="trailing" constant="20" id="Bog-wn-Vhd"/>
-                                                                    <constraint firstItem="8Na-gN-pRy" firstAttribute="top" secondItem="WBi-8e-emp" secondAttribute="top" constant="10" id="LoN-c1-78G"/>
-                                                                    <constraint firstItem="sKf-m4-BGU" firstAttribute="top" secondItem="8Na-gN-pRy" secondAttribute="bottom" constant="20" id="XSA-Ya-Kki"/>
-                                                                    <constraint firstItem="sKf-m4-BGU" firstAttribute="leading" secondItem="WBi-8e-emp" secondAttribute="leading" constant="20" id="ft5-MJ-bUF"/>
-                                                                    <constraint firstItem="mMQ-EA-tFg" firstAttribute="top" secondItem="sKf-m4-BGU" secondAttribute="bottom" constant="12.5" id="gSu-I0-dWa"/>
-                                                                    <constraint firstItem="mMQ-EA-tFg" firstAttribute="centerX" secondItem="sKf-m4-BGU" secondAttribute="centerX" id="xgn-Jy-Lcb"/>
-                                                                </constraints>
-                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="D1l-Ks-hZ3" firstAttribute="top" secondItem="02z-pA-NmU" secondAttribute="top" id="2eR-ko-XeC"/>
-                                                            <constraint firstItem="WBi-8e-emp" firstAttribute="leading" secondItem="4IV-1n-1Qo" secondAttribute="trailing" id="91U-tY-yNX"/>
                                                             <constraint firstAttribute="bottom" secondItem="D1l-Ks-hZ3" secondAttribute="bottom" id="Ibk-VC-WUm"/>
                                                             <constraint firstItem="4IV-1n-1Qo" firstAttribute="leading" secondItem="D1l-Ks-hZ3" secondAttribute="trailing" id="NbJ-7d-HMi"/>
-                                                            <constraint firstItem="WBi-8e-emp" firstAttribute="bottom" secondItem="4IV-1n-1Qo" secondAttribute="bottom" id="OdJ-kQ-nGP"/>
                                                             <constraint firstItem="4IV-1n-1Qo" firstAttribute="top" secondItem="D1l-Ks-hZ3" secondAttribute="top" id="ZGD-9Z-zNz"/>
+                                                            <constraint firstAttribute="trailing" secondItem="4IV-1n-1Qo" secondAttribute="trailing" id="ck1-9b-HD0"/>
                                                             <constraint firstItem="D1l-Ks-hZ3" firstAttribute="leading" secondItem="02z-pA-NmU" secondAttribute="leading" id="jlp-ja-tCr"/>
-                                                            <constraint firstItem="WBi-8e-emp" firstAttribute="width" secondItem="4IV-1n-1Qo" secondAttribute="width" id="lP6-Bg-sfo"/>
-                                                            <constraint firstItem="WBi-8e-emp" firstAttribute="top" secondItem="4IV-1n-1Qo" secondAttribute="top" id="nT4-cq-yuP"/>
                                                             <constraint firstItem="4IV-1n-1Qo" firstAttribute="width" secondItem="D1l-Ks-hZ3" secondAttribute="width" id="pce-TY-KgN"/>
-                                                            <constraint firstAttribute="trailing" secondItem="WBi-8e-emp" secondAttribute="trailing" id="smH-1U-Oi6"/>
                                                             <constraint firstItem="4IV-1n-1Qo" firstAttribute="bottom" secondItem="D1l-Ks-hZ3" secondAttribute="bottom" id="tWW-oG-Z6y"/>
                                                         </constraints>
                                                     </view>
@@ -305,7 +271,7 @@
                                             <constraint firstAttribute="height" constant="44" id="ifr-sp-SXO"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="开始搜索蓝天大气">
+                                        <state key="normal" title="开始连接蓝天大气">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -337,6 +303,10 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4KK-Rs-U21">
                                         <rect key="frame" x="333" y="16.5" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="CPR-bF-lvi"/>
+                                            <constraint firstAttribute="width" constant="22" id="VZ6-nE-DHh"/>
+                                        </constraints>
                                         <state key="normal" image="iconQuestionM2"/>
                                         <connections>
                                             <action selector="handleTapQuestionBtn:" destination="9pv-A4-QxB" eventType="touchUpInside" id="GCv-5O-JkP"/>
@@ -397,7 +367,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tzw-H9-Dls">
                                         <rect key="frame" x="0.0" y="55" width="375" height="1"/>
-                                        <color key="backgroundColor" red="0.14901960784313725" green="0.50980392156862742" blue="0.79607843137254897" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.14901960784313725" green="0.50980392156862742" blue="0.80392156862745101" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="EYY-en-de1"/>
                                         </constraints>
@@ -508,8 +478,6 @@
                         <outlet property="bgImgView" destination="XOi-Un-cu8" id="0x5-am-pk9"/>
                         <outlet property="bottomModeView" destination="qjS-bT-Gr0" id="s9u-7s-sRb"/>
                         <outlet property="bottomView" destination="Ru7-R9-hqO" id="bo1-r5-eH7"/>
-                        <outlet property="cigaretteIcon" destination="8Na-gN-pRy" id="W3j-AW-QLe"/>
-                        <outlet property="cigaretteNumLabel" destination="mMQ-EA-tFg" id="6yI-mN-2o8"/>
                         <outlet property="cityButton" destination="imI-CV-l3M" id="diL-IZ-7NJ"/>
                         <outlet property="defaultModeIconView" destination="2of-PJ-wBb" id="hPf-fW-OhY"/>
                         <outlet property="defaultModeLabel" destination="biF-04-wsM" id="YaX-0o-IJN"/>
@@ -517,7 +485,6 @@
                         <outlet property="maskModeView" destination="UxF-mP-NM8" id="kXn-wh-QZM"/>
                         <outlet property="modeControlBottom" destination="z0N-Uy-M3e" id="3OA-wi-Q30"/>
                         <outlet property="modeManageView" destination="ATy-Da-jLb" id="pUb-RA-gzk"/>
-                        <outlet property="pollutionDescLabel" destination="sKf-m4-BGU" id="gB0-Ll-5zC"/>
                         <outlet property="pollutionLevelLabel" destination="12g-8G-9VX" id="yKh-8g-Wqg"/>
                         <outlet property="scrollView" destination="n82-pD-pJg" id="4Xj-ic-kK0"/>
                         <outlet property="searchBtn" destination="hbY-SA-qLO" id="jnl-wB-aAg"/>
@@ -547,7 +514,7 @@
             <objects>
                 <navigationController storyboardIdentifier="startNavigationVC" automaticallyAdjustsScrollViewInsets="NO" id="vJW-v8-CnU" customClass="BaseNavigationController" customModule="Summer" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="CFd-nU-zx5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CFd-nU-zx5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -569,13 +536,12 @@
         <image name="bgWaveM3" width="375" height="308"/>
         <image name="circle-bg" width="70" height="62"/>
         <image name="face1" width="145" height="143"/>
-        <image name="icon5c" width="140" height="131"/>
         <image name="iconBlueTeethM2" width="13" height="18"/>
         <image name="iconClockM2" width="22" height="22"/>
         <image name="iconLocation-white" width="13" height="14"/>
         <image name="iconQuestionM2" width="22" height="22"/>
         <image name="icon_net" width="40" height="40"/>
-        <image name="main-bg1.jpg" width="1125" height="2001"/>
+        <image name="main-bg1.png" width="1080" height="1920"/>
         <image name="maskM2-1-1" width="218" height="264"/>
         <image name="mode-setting" width="24" height="24"/>
         <image name="oval-circle" width="210" height="210"/>

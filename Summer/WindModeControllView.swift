@@ -9,7 +9,7 @@
 import UIKit
 import AMPopTip
 
-protocol WindModeSelectDelegate {
+protocol WindModeSelectDelegate: class {
     
     func clickAddMode()
     func defaultModeDidChange(mode: UserWindSpeedConfig)
@@ -20,11 +20,11 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
     var modeManager: WindModeManager = WindModeManager()
     var scrollView: UIScrollView = UIScrollView()
     var childCompoents: [WindModeAjustor] = []
-    var currentMode: UserWindSpeedConfig = UserWindSpeedConfig()
+    //var currentMode: UserWindSpeedConfig = UserWindSpeedConfig()
     let leftSpace: CGFloat = 25
     let width1: CGFloat = 62
     let width2: CGFloat = 146
-    var delegate: WindModeSelectDelegate?
+    weak var delegate: WindModeSelectDelegate?
     lazy var addAjustor: WindModeAjustor = {
         
         let addConfig = UserWindSpeedConfig()
@@ -47,12 +47,13 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
         modeManager.completeLoadModeConfig = {[weak self]() in
             self?.refreshItemViews()
             if self?.delegate != nil {
-                self?.delegate?.defaultModeDidChange(mode: (self?.modeManager.getDefaultMode())!)
+                self?.delegate?.defaultModeDidChange(mode: (self?.modeManager.getCurrentMode())!)
             }
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleModeDidChangeNoti(n:)), name: kWindModeConfigDidChangeNotify, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleReceiveDeleteModeNoti(n:)), name: kWindModeConfigDidDeleteNotify, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleChangeCommenMode(n:)), name: kWindModeConfigDidChangeOrderNotify, object: nil)
 
         SessionManager.sharedInstance.windModeManager = modeManager
     }
@@ -68,7 +69,7 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
     //MARK: - ajustorDelegate
     
     func selectItem(mode: UserWindSpeedConfig) {
-        currentMode = mode
+        modeManager.currentMode = mode
         if mode.isAdd {
             if delegate != nil {
                 delegate?.clickAddMode()
@@ -82,7 +83,7 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
     func hideItem(item: WindModeAjustor) {
         
         
-        if currentMode.id != item.mode.id {
+        if modeManager.getCurrentMode().id != item.mode.id {
             
             //防止重复弹窗
             for v in self.subviews {
@@ -102,7 +103,19 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
                 //隐藏
                 let index = self?.childCompoents.index(of: item)
                 item.removeFromSuperview()
+                ///Notice: 此处 item.mode 与 modemanager 中的 mode 可能数据源不匹配,因为 modeManager 数据更新后没有同步到 Ajustor 中
                 item.mode.hideflag = 1
+                for m in (self?.modeManager.windUserConfigList)! {
+                    if m.id == item.mode.id {
+                        m.hideflag = 1
+                        break
+                    }
+                }
+                
+                if item.mode.id == self?.modeManager.getCurrentMode().id {
+                    //重新选择一个默认模式
+                    self?.modeManager.resetCurrentMode()
+                }
                 self?.childCompoents.remove(at: index!)
                 self?.refreshItemViews()
             }
@@ -132,6 +145,20 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
                 }
                 index = index+1
             }
+        }
+    }
+    
+    ///改变常用模式
+    func handleChangeCommenMode(n: Notification) {
+        //常用模式提前
+        if modeManager.windUserConfigList.first?.id != childCompoents.first?.mode.id && modeManager.windUserConfigList.first?.defaultflag == 1 {
+            for (i, co) in childCompoents.enumerated() {
+                if co.mode.defaultflag == 1 && i != 0 {
+                    swap(&childCompoents[i], &childCompoents[0])
+                    break
+                }
+            }
+            refreshItemViews()
         }
     }
     
@@ -165,18 +192,21 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
                 //移除
                 self.removeComponent(mode: mode)
             }
-            if mode.id == currentMode.id {
-                mode.defaultflag = 1
+            else {
+                //更新模式视图
+                for ajustor in childCompoents {
+                    if ajustor.mode.id == mode.id {
+                        ajustor.updateView(config: mode)
+                    }
+                }
+            }
+            if mode.id == modeManager.getCurrentMode().id {
                 if delegate != nil {
                     delegate?.defaultModeDidChange(mode: mode)
                 }
             }
-            else {
-                mode.defaultflag = 0
-            }
             
         }
-        
         
         var i = 0
         for ajustor in childCompoents {
@@ -184,7 +214,7 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
                 ajustor.snp.remakeConstraints({ (make) in
                     make.left.equalTo(leftSpace)
                     make.centerY.equalTo(self.scrollView.snp.centerY)
-                    if ajustor.mode.id == currentMode.id {
+                    if ajustor.mode.id == modeManager.getCurrentMode().id {
                         make.width.height.equalTo(width2)
                     }
                     else {
@@ -198,7 +228,7 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
                     make.left.equalTo(lastView.snp.right).offset(leftSpace)
                     make.centerY.equalTo(self.scrollView.snp.centerY)
                     
-                    if ajustor.mode.id == currentMode.id {
+                    if ajustor.mode.id == modeManager.getCurrentMode().id {
                         make.width.height.equalTo(width2)
                     }
                     else {
@@ -225,13 +255,10 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
         let scrollSizeWidth = CGFloat(childCompoents.count)*width1+width2+CGFloat(childCompoents.count+2)*leftSpace
         scrollView.contentSize = CGSize(width: scrollSizeWidth, height: frame.size.height)
         
-        if currentMode.id == "" {
-            currentMode = modeManager.windUserConfigList.first!
-        }
     
         UIView.animate(withDuration: 0.3) {
             for ajustorView in self.childCompoents {
-                ajustorView.transformToSmall(smallMode: (ajustorView.mode.id != self.currentMode.id))
+                ajustorView.transformToSmall(smallMode: (ajustorView.mode.id != self.modeManager.getCurrentMode().id))
             }
             self.layoutIfNeeded()
         }

@@ -81,7 +81,7 @@ class BaseRulerSelectorActionView: UIView {
         
         self.valueLabel = UILabel()
         self.valueLabel.textColor = gray72
-        self.valueLabel.text = defaultValue.description
+        self.valueLabel.text = String.init(format: "%.1f", defaultValue)
         self.valueLabel.font = UIFont.boldSystemFont(ofSize: 36)
         self.valueLabel.textAlignment = .center
         self.containerView.addSubview(self.valueLabel)

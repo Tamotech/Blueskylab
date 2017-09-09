@@ -54,7 +54,7 @@ class APIRequest: NSObject {
     class func recentWeekAQIAPI(cityID: Int, result: @escaping JSONResult) {
         
         let path = "/aqi/getRecentAqiMinMax.htm"
-        let params = ["idx": cityID]
+        let params = ["cityid": cityID]
         APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
             if code == 0 {
                 let data = RecentWeekAQI.deserialize(from: JSON?["data"].rawString())
