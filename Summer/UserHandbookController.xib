@@ -30,7 +30,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X16-hQ-tNq" userLabel="contentView">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="handbook-banner" translatesAutoresizingMaskIntoConstraints="NO" id="zXF-wp-OD2">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zXF-wp-OD2">
                             <rect key="frame" x="0.0" y="64" width="375" height="210"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="zXF-wp-OD2" secondAttribute="height" multiplier="375:210" id="9nj-hF-T4B"/>
@@ -124,7 +124,6 @@
         </view>
     </objects>
     <resources>
-        <image name="handbook-banner" width="375" height="210"/>
         <image name="video_play" width="70" height="70"/>
     </resources>
 </document>

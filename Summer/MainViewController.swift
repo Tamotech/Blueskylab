@@ -50,6 +50,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     
     @IBOutlet weak var cityButton: UIButton!
     
+    @IBOutlet weak var ovalCircleView: UIImageView!
 //    @IBOutlet weak var cigaretteIcon: UIImageView!
 //    
 //    @IBOutlet weak var pollutionDescLabel: UILabel!
@@ -103,8 +104,8 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
             })
         }
         
-//        let demoView = CircleDemoView(frame: CGRect(x: 20, y: 100, width: 260, height: 260))
-//        self.view.addSubview(demoView)
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -159,15 +160,17 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         layer2.endPoint = CGPoint(x: 0.5, y: 1)
         searchBtn.layer.addSublayer(layer2)
 
-        scrollView.isHidden = false
-        maskModeView.isHidden = true
-        bottomView.isHidden = false
-        bottomModeView.isHidden = true
+        scrollView.alpha = 1
+        maskModeView.alpha = 0
+        bottomView.alpha = 1
+        bottomModeView.alpha = 0
         
         modeManageView.addSubview(modeControlView)
         modeControlView.delegate = self
         modeControlBottom.constant = -303+55
-        selectModeView.isHidden = true
+        selectModeView.alpha = 0
+        scrollView.setContentOffset(CGPoint(x: CGFloat(1)*screenWidth, y: 0), animated: false)
+        
         
     }
     
@@ -474,12 +477,8 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     //MARK: - BluetoothDelegate
     
     func didConnectBlueTooth() {
-        scrollView.isHidden = true
-        maskModeView.isHidden = false
-        bottomView.isHidden = true
-        modeControlView.isHidden = false
-        bottomModeView.isHidden = false
-        selectModeView.isHidden = false
+        
+        self.showCircleAnimation()
     }
 
     
@@ -526,5 +525,32 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         }
         BSLShareManager.shareToWechat(link: downloadUrl, title: "蓝天实验室", msg: "", thumb: "", type: 1)
         
+    }
+    
+    func showCircleAnimation() {
+        timer?.invalidate()
+        scrollView.setContentOffset(CGPoint(x: CGFloat(1)*screenWidth, y: 0), animated: false)
+        ovalCircleView.alpha = 0
+        let frame = ovalCircleView.superview?.convert(ovalCircleView.frame, to:                                                                             self.view)
+        let demoView = AwesomeCircleView(frame: frame!)
+        self.view.addSubview(demoView)
+        demoView.startAnimation()
+        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+            
+            UIView.animate(withDuration: 1.0, animations: {
+                demoView.alpha = 0
+                self.scrollView.alpha = 0
+                self.maskModeView.alpha = 1
+                self.bottomView.alpha = 0
+                self.modeControlView.alpha = 1
+                self.selectModeView.alpha = 1
+                self.bottomModeView.alpha = 1
+                
+                
+            }, completion: { (success) in
+                demoView.removeFromSuperview()
+
+            })
+        }
     }
 }

@@ -15,6 +15,21 @@ class StartGuideViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var startGuideImg1: UIImageView!
+    
+    lazy var tipCenter: CGPoint = {
+        if screenWidth < 330 {
+            return CGPoint(x: screenWidth-85, y: 25)
+        }
+        else if screenWidth < 400 {
+            return CGPoint(x: screenWidth-64, y: 30)
+        }
+        else {
+            return CGPoint(x: screenWidth-65, y: 50)
+        }
+    } ()
+    
+    var startGuide1TipView = UIImageView(image: UIImage(named: "start-mask"))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +46,22 @@ class StartGuideViewController: UIViewController, UIScrollViewDelegate {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let _:() = {
+            //一次执行
+            UIView.animate(withDuration: 2.0, delay: 0.2, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.2, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                self.startGuide1TipView.size = CGSize(width: 80, height: 80)
+                self.startGuide1TipView.center = self.tipCenter
+    
+            }, completion: { (success) in
+                
+            })
+            
+        }()
+    }
 
     func setupView() {
         let closeBarItem = UIBarButtonItem(image: UIImage(named: "close-white"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(handleTapCloseBtn(_:)))
@@ -41,6 +72,12 @@ class StartGuideViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
         pageControl.numberOfPages = 3
         pageControl.currentPage = 0
+        
+        startGuide1TipView.size = CGSize(width: 40, height: 40)
+        startGuide1TipView.center = tipCenter
+        startGuideImg1.superview?.addSubview(startGuide1TipView)
+        startGuideImg1.superview?.clipsToBounds = false
+        
     }
     
     

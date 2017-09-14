@@ -73,10 +73,10 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="maskM2-1-1" translatesAutoresizingMaskIntoConstraints="NO" id="ora-eY-Nwb">
-                                                                        <rect key="frame" x="79" y="-7" width="218" height="264"/>
+                                                                        <rect key="frame" x="81" y="30" width="214" height="190"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备未连接" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fan-iJ-VTa">
-                                                                        <rect key="frame" x="142" y="53" width="92" height="21"/>
+                                                                        <rect key="frame" x="142" y="220" width="92" height="21"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
@@ -85,9 +85,9 @@
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstItem="ora-eY-Nwb" firstAttribute="centerX" secondItem="D1l-Ks-hZ3" secondAttribute="centerX" id="5JQ-hH-USo"/>
-                                                                    <constraint firstItem="Fan-iJ-VTa" firstAttribute="top" secondItem="ora-eY-Nwb" secondAttribute="top" constant="60" id="CEf-RL-Fwy"/>
                                                                     <constraint firstItem="Fan-iJ-VTa" firstAttribute="centerX" secondItem="ora-eY-Nwb" secondAttribute="centerX" id="OHq-S9-cSU"/>
                                                                     <constraint firstItem="ora-eY-Nwb" firstAttribute="centerY" secondItem="D1l-Ks-hZ3" secondAttribute="centerY" id="WJO-Q2-ccf"/>
+                                                                    <constraint firstItem="Fan-iJ-VTa" firstAttribute="top" secondItem="ora-eY-Nwb" secondAttribute="bottom" id="lg1-oM-To0"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4IV-1n-1Qo" userLabel="view2">
@@ -323,7 +323,7 @@
                                     <constraint firstItem="4KK-Rs-U21" firstAttribute="centerY" secondItem="Ru7-R9-hqO" secondAttribute="centerY" id="pin-Cg-a6W"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="43E-db-f8l">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="43E-db-f8l">
                                 <rect key="frame" x="0.0" y="612" width="375" height="303"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgWaveM3" translatesAutoresizingMaskIntoConstraints="NO" id="qGg-vu-h3N">
@@ -485,6 +485,7 @@
                         <outlet property="maskModeView" destination="UxF-mP-NM8" id="kXn-wh-QZM"/>
                         <outlet property="modeControlBottom" destination="z0N-Uy-M3e" id="3OA-wi-Q30"/>
                         <outlet property="modeManageView" destination="ATy-Da-jLb" id="pUb-RA-gzk"/>
+                        <outlet property="ovalCircleView" destination="Wed-hU-23p" id="ske-sB-Bmb"/>
                         <outlet property="pollutionLevelLabel" destination="12g-8G-9VX" id="yKh-8g-Wqg"/>
                         <outlet property="scrollView" destination="n82-pD-pJg" id="4Xj-ic-kK0"/>
                         <outlet property="searchBtn" destination="hbY-SA-qLO" id="jnl-wB-aAg"/>
@@ -514,7 +515,7 @@
             <objects>
                 <navigationController storyboardIdentifier="startNavigationVC" automaticallyAdjustsScrollViewInsets="NO" id="vJW-v8-CnU" customClass="BaseNavigationController" customModule="Summer" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CFd-nU-zx5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="CFd-nU-zx5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -542,7 +543,7 @@
         <image name="iconQuestionM2" width="22" height="22"/>
         <image name="icon_net" width="40" height="40"/>
         <image name="main-bg1.png" width="1080" height="1920"/>
-        <image name="maskM2-1-1" width="218" height="264"/>
+        <image name="maskM2-1-1" width="214" height="190"/>
         <image name="mode-setting" width="24" height="24"/>
         <image name="oval-circle" width="210" height="210"/>
     </resources>

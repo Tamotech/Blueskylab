@@ -92,8 +92,8 @@ class SingleDayAQI: HandyJSON {
     var dateStr: String = "01-01"
     
     func mapping(mapper: HelpingMapper) {
-        mapper.specify(property: &aqiMax, name: "aqimax")
-        mapper.specify(property: &aqiMin, name: "aqimin")
+        mapper.specify(property: &aqiMax, name: "max")
+        mapper.specify(property: &aqiMin, name: "min")
         mapper.specify(property: &dateStr, name: "datestr")
     }
     

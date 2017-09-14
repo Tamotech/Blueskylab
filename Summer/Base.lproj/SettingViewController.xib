@@ -687,7 +687,7 @@
                 <constraint firstItem="DNz-wG-cFw" firstAttribute="centerX" secondItem="TfG-zB-tCk" secondAttribute="centerX" id="oBW-Go-2Y2"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="101.5" y="287"/>
+            <point key="canvasLocation" x="137" y="158"/>
         </view>
         <tapGestureRecognizer id="Ztv-fV-gxc">
             <connections>
