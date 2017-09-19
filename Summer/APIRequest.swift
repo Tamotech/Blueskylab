@@ -203,4 +203,47 @@ class APIRequest: NSObject {
             }
         }
     }
+    
+    ///aqi 历史数据
+    /// type: 1 日  2 周  3 月  4 年
+    class func getAQIHistoryData(type: Int, cityID: Int, result: @escaping JSONResult) {
+        var path = ""
+        switch type {
+        case 1:
+            path = "/aqi/getHourHistData.htm?cityid=\(cityID)"
+            break
+        case 2:
+            path = "/aqi/getWeekHistData.htm?cityid=\(cityID)"
+            break
+        case 3:
+            path = "/aqi/getMonthHistData.htm?cityid=\(cityID)"
+            break
+        case 4:
+            path = "/aqi/getYearHistData.htm?cityid=\(cityID)"
+            break
+        default:
+            break
+        }
+        
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                let data = AQIDataList.deserialize(from: JSON?["data"].rawString())
+                result(data)
+            }
+        }
+    }
+    
+    ///分页查询城市 aqi
+    class func getCityAQIHistotyData(page: Int, rows: Int, cityId: Int, result: @escaping JSONResult) {
+        let path = "/aqi/getDayHistPage.htm"
+        let params = ["cityid": cityId,
+                      "page": page,
+                      "rows": rows] as [String: Any]
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                let data = CityAQIDataList.deserialize(from: JSON?["data"].rawString())
+                result(data)
+            }
+        }
+    }
 }

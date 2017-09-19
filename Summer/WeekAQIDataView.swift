@@ -74,7 +74,7 @@ class WeekAQIDataView: UIView {
             
             if (i > 0 && i < 6) {
                 let lb = textLbs[i-1]
-                lb.text = getDateName(index: i-1)
+                lb.text = getDateName(index: i)
             }
             
             var cx: CGFloat = 0
@@ -83,8 +83,8 @@ class WeekAQIDataView: UIView {
             cx = screenWidth*(2*CGFloat(i-1)+1)/10.0
             
             let aqi = data.recentAQIs[i]
-            let cy1 = height - 10 - (height-30)*CGFloat(aqi.aqiMax)/maxAQI
-            let cy2 = height - 10 - (height-30)*CGFloat(aqi.aqiMin)/maxAQI
+            let cy1 = height - 30 - (height-30)*CGFloat(aqi.aqiMax)/maxAQI
+            let cy2 = height - 30 - (height-30)*CGFloat(aqi.aqiMin)/maxAQI
             let p1 = CGPoint(x: cx, y: cy1)
             let p2 = CGPoint(x: cx, y: cy2)
             maxPoints.append(p1)
@@ -106,8 +106,8 @@ class WeekAQIDataView: UIView {
         
         
         //绘制最大与最小位置的数值
-        let cy1 = height - 10 - (height-30)*CGFloat(pkPoint.0)/maxAQI - 10
-        let cy2 = height - 10 - (height-30)*CGFloat(pkPoint.1)/maxAQI + 10
+        let cy1 = height - 30 - (height-30)*CGFloat(pkPoint.0)/maxAQI - 10
+        let cy2 = height - 30 - (height-30)*CGFloat(pkPoint.1)/maxAQI + 10
         var cx1: CGFloat = 0.0
         var cx2: CGFloat = 0.0
         if (pkPoint.2 == 0) {
@@ -154,6 +154,7 @@ class WeekAQIDataView: UIView {
         ctx?.fillEllipse(in: CGRect(x: mpt.x-3, y: mpt.y-3, width: 6, height: 6))
         ctx?.drawPath(using: .fill)
         
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -175,17 +176,14 @@ class WeekAQIDataView: UIView {
         let max = String(format: "%d", aqi?.aqiMax ?? 0)
         var dateName = ""
         switch index {
-        case 0:
+        case 1:
             dateName = NSLocalizedString("Yesterday", comment: "")+"\n"+max+"\n"+min
             break
-        case 1:
-            dateName = NSLocalizedString("Today", comment: "")+"\n"+max+"\n"+max
-            break
         case 2:
-            dateName = NSLocalizedString("Tomorrow", comment: "")+"\n"+max+"\n"+min
+            dateName = NSLocalizedString("Today", comment: "")+"\n"+max+"\n"+min
             break
         case 3:
-            dateName = (aqi?.dateStrWithShort() ?? "")+"\n"+max+"\n"+min
+            dateName = NSLocalizedString("Tomorrow", comment: "")+"\n"+max+"\n"+min
             break
         case 4:
             dateName = (aqi?.dateStrWithShort() ?? "")+"\n"+max+"\n"+min
@@ -193,8 +191,12 @@ class WeekAQIDataView: UIView {
         case 5:
             dateName = (aqi?.dateStrWithShort() ?? "")+"\n"+max+"\n"+min
             break
+        case 6:
+            dateName = (aqi?.dateStrWithShort() ?? "")+"\n"+max+"\n"+min
+            break
         default:
-            dateName = ""
+            dateName = (aqi?.dateStrWithShort() ?? "")+"\n"+max+"\n"+min
+            break
         }
         
         return dateName

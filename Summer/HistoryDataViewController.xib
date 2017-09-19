@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HistoryDataViewController" customModule="Summer" customModuleProvider="target">
             <connections>
+                <outlet property="arrowBtn" destination="heu-yZ-8wY" id="3d5-8k-qH1"/>
                 <outlet property="dataView" destination="iNl-ut-Aaj" id="5rn-KX-i4z"/>
                 <outlet property="dateSegmentView" destination="wMJ-XU-bbS" id="5Iw-9E-9GE"/>
                 <outlet property="segmentSuperView" destination="bLx-zw-ELf" id="VLx-9c-utc"/>
@@ -34,7 +35,7 @@
                                 <constraint firstAttribute="height" constant="44" id="uJm-y2-kCB"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iNl-ut-Aaj" userLabel="dataView">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iNl-ut-Aaj" userLabel="dataView" customClass="HistoryDataView" customModule="Summer" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="108" width="375" height="242"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
@@ -96,8 +97,8 @@
                             <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="空气指数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aS-Jo-OOG">
-                            <rect key="frame" x="99" y="20.5" width="57.5" height="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="平均空气指数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aS-Jo-OOG">
+                            <rect key="frame" x="99" y="20.5" width="86" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -115,6 +116,7 @@
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="oVW-hc-s8f" firstAttribute="leading" secondItem="Vdg-im-V8s" secondAttribute="leading" constant="25" id="78E-Hq-PBn"/>
                         <constraint firstAttribute="height" constant="57" id="7AD-0b-EcM"/>
@@ -141,6 +143,9 @@
                             <color key="value" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="eX4-iC-yMW" appends="YES" id="ndf-IF-hbr"/>
+                    </connections>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VFp-yG-kcd">
                     <rect key="frame" x="0.0" y="57" width="375" height="610"/>
@@ -173,6 +178,11 @@
             </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="-498" y="63"/>
         </view>
+        <tapGestureRecognizer id="eX4-iC-yMW">
+            <connections>
+                <action selector="handleTapTableHeaderView:" destination="-1" id="upB-XS-nzM"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="arrow-down-blue" width="13" height="8"/>

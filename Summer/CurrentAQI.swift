@@ -36,6 +36,8 @@ class CurrentAQI: HandyJSON {
     var aqiLevelName = ""
     var smokeNum = 0        //0-5
     
+    
+    
     func mapping(mapper: HelpingMapper) {
         mapper.specify(property: &cityID, name: "cityid")
         mapper.specify(property: &city, name: "cityname")
@@ -43,8 +45,8 @@ class CurrentAQI: HandyJSON {
         mapper.specify(property: &updateTime, name: "time")
         mapper.specify(property: &temperature, name: "t")
         mapper.specify(property: &windSpeed, name: "w")
-        mapper.specify(property: &aqiLevelCode, name: "aqilevelcode")
-        mapper.specify(property: &aqiLevelName, name: "aqilevelname")
+        mapper.specify(property: &aqiLevelCode, name: "aqilevel​code")
+        mapper.specify(property: &aqiLevelName, name: "aqilevel​name")
         mapper.specify(property: &smokeNum, name: "smokenum")
     }
     

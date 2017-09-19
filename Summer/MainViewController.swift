@@ -208,6 +208,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     func loadAQIData() {
         APIRequest.AQIQueryAPI { [weak self](data) in
             self?.todayAQIData = data as? CurrentAQI
+            SessionManager.sharedInstance.currentAQI  = data as? CurrentAQI
             self?.updateTodayAQIView(data: (self?.todayAQIData)!)
             self?.bgImgView.image = self?.todayAQIData?.aqiBGImg()
             guard let cityID = self?.todayAQIData?.cityID else {
@@ -230,6 +231,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         aqiLevelLabel.text = String(data.aqi)
         temperatureLabel.text = String(format: "%.0lf°C", data.temperature)
         windLevelLabel.text = String(format: "%.0f级风",  data.windSpeed)
+        pollutionLevelLabel.text = data.aqiLevelName
         //cigaretteNumLabel.text = String(format: NSLocalizedString("CirgaretteNum", comment: ""), data.smokeNum)
         //let smokeIconName = String(format: "icon%dc", data.smokeNum)
         //cigaretteIcon.image = UIImage(named: smokeIconName)

@@ -8,7 +8,11 @@
 
 import UIKit
 
+typealias DateSegmentSelect = (Int)->()
+
 class DateSegmentView: BaseView {
+    
+    var selectDateHandler: DateSegmentSelect?
     
     lazy var itemLabels:[UILabel] = {
        
@@ -76,6 +80,9 @@ class DateSegmentView: BaseView {
             }
         }) { (success) in
             
+        }
+        if selectDateHandler != nil {
+            selectDateHandler!(index)
         }
         
         

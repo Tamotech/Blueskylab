@@ -96,8 +96,8 @@ class AwesomeCircleView: UIView {
         }
         
         //随机粒子
-        for _ in 0..<circleNum {
-            let radius = CGFloat(arc4random()%10+5)
+        for _ in 0..<circleNum*2 {
+            let radius = CGFloat(arc4random()%10+5)/2
             //随机半径  1-1.5r
             let r1 = circleLength/2+CGFloat(0.5*CGFloat(arc4random()%UInt32(circleLength/2)))
             //随机角度0-2pi
@@ -113,28 +113,31 @@ class AwesomeCircleView: UIView {
             let op = CGFloat(arc4random()%6+3)/10.0
             
             let pLayer = CALayer()
-            pLayer.frame = CGRect(x: x0, y: y0, width: radius, height: radius)
+            pLayer.frame = CGRect(x: x0, y: y0, width: radius*2, height: radius*2)
             pLayer.position = CGPoint(x: x0, y: y0)
             pLayer.backgroundColor = UIColor.init(white: 1, alpha: op).cgColor
             pLayer.cornerRadius = radius
+            pLayer.masksToBounds = true
             self.layer.addSublayer(pLayer)
             
             let animation5 = CABasicAnimation(keyPath: "position")
             animation5.duration = 3
             animation5.fromValue = CGPoint(x: x0, y: y0)
             animation5.toValue = CGPoint(x: x1, y: y1)
-            animation5.repeatCount = 2
+            animation5.repeatCount = 1
             animation5.autoreverses = false
-            animation5.isRemovedOnCompletion = true
+            animation5.isRemovedOnCompletion = false
+            animation5.fillMode = kCAFillModeForwards
             pLayer.add(animation5, forKey: "position")
             
             let animation6 = CABasicAnimation(keyPath: "opacity")
             animation6.duration = 3
             animation6.fromValue = op
-            animation6.toValue = 0.3
-            animation6.repeatCount = 2
+            animation6.toValue = 0.0
+            animation6.repeatCount = 1
             animation6.autoreverses = false
-            animation6.isRemovedOnCompletion = true
+            animation6.isRemovedOnCompletion = false
+            animation6.fillMode = kCAFillModeForwards
             pLayer.add(animation6, forKey: "opacity")
             
         }

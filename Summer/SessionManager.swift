@@ -50,6 +50,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     
     var token:String = ""       //登录令牌
     var userId: String = ""     //用户 Id
+    var currentAQI: CurrentAQI?
     var userInfo: UserInfo?
     var wxUserInfo: WXUserInfo?
     var pushMessage = PushMessage()

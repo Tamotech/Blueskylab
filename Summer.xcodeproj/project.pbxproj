@@ -97,6 +97,7 @@
 		CC4BA88F1F2DEB3D002B571D /* BottomWechatShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA88E1F2DEB3D002B571D /* BottomWechatShareView.xib */; };
 		CC4BA8921F2DFE53002B571D /* UserHandbookController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA8901F2DFE53002B571D /* UserHandbookController.swift */; };
 		CC4BA8931F2DFE53002B571D /* UserHandbookController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA8911F2DFE53002B571D /* UserHandbookController.xib */; };
+		CC53E5201F6DFF3200870ACE /* HistoryDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC53E51F1F6DFF3200870ACE /* HistoryDataView.swift */; };
 		CC5A10351F2F77E000A73754 /* StartGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5A10331F2F77E000A73754 /* StartGuideViewController.swift */; };
 		CC5A10361F2F77E000A73754 /* StartGuideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC5A10341F2F77E000A73754 /* StartGuideViewController.xib */; };
 		CC5A10391F2F8DD000A73754 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5A10371F2F8DD000A73754 /* LoginViewController.swift */; };
@@ -126,6 +127,7 @@
 		CC9BDCB71F43409A00AF6DB4 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9BDCB21F43409A00AF6DB4 /* SVRadialGradientLayer.m */; };
 		CCA48DC11F58481E0010CF4F /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA48DC01F58481E0010CF4F /* HealthKit.framework */; };
 		CCA48DC41F5849FF0010CF4F /* HealthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA48DC31F5849FF0010CF4F /* HealthDataManager.swift */; };
+		CCAA9B5B1F6B4D900048F4B3 /* AQIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAA9B5A1F6B4D900048F4B3 /* AQIData.swift */; };
 		CCCE01621F52EBC500974F6D /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCE01611F52EBC500974F6D /* UserNotifications.framework */; };
 		CCCE01641F52F0EA00974F6D /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCE01631F52F0EA00974F6D /* UIImageExtension.swift */; };
 		CCCE01661F5331F600974F6D /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCE01651F5331F600974F6D /* BaseWebViewController.swift */; };
@@ -250,6 +252,7 @@
 		CC4BA88E1F2DEB3D002B571D /* BottomWechatShareView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomWechatShareView.xib; sourceTree = "<group>"; };
 		CC4BA8901F2DFE53002B571D /* UserHandbookController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHandbookController.swift; sourceTree = "<group>"; };
 		CC4BA8911F2DFE53002B571D /* UserHandbookController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserHandbookController.xib; sourceTree = "<group>"; };
+		CC53E51F1F6DFF3200870ACE /* HistoryDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDataView.swift; sourceTree = "<group>"; };
 		CC5A10331F2F77E000A73754 /* StartGuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartGuideViewController.swift; sourceTree = "<group>"; };
 		CC5A10341F2F77E000A73754 /* StartGuideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartGuideViewController.xib; sourceTree = "<group>"; };
 		CC5A10371F2F8DD000A73754 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -291,6 +294,7 @@
 		CC9BDCB21F43409A00AF6DB4 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		CCA48DC01F58481E0010CF4F /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CCA48DC31F5849FF0010CF4F /* HealthDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthDataManager.swift; sourceTree = "<group>"; };
+		CCAA9B5A1F6B4D900048F4B3 /* AQIData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AQIData.swift; sourceTree = "<group>"; };
 		CCCE01601F52CA3200974F6D /* Summer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Summer.entitlements; sourceTree = "<group>"; };
 		CCCE01611F52EBC500974F6D /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		CCCE01631F52F0EA00974F6D /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -486,6 +490,7 @@
 				CC0D72D51F53EE66000D647C /* ArticleList.swift */,
 				CC0D72DD1F540D13000D647C /* UserMaskConfig.swift */,
 				CC0D72DF1F541E1C000D647C /* NotificationList.swift */,
+				CCAA9B5A1F6B4D900048F4B3 /* AQIData.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -583,6 +588,7 @@
 				CC0411DC1F37699300884165 /* HistoryDataCell.swift */,
 				CC0411DD1F37699300884165 /* HistoryDataCell.xib */,
 				CC0411DA1F375ADB00884165 /* DateSegmentView.swift */,
+				CC53E51F1F6DFF3200870ACE /* HistoryDataView.swift */,
 				CC0411D51F37567B00884165 /* HistoryDataViewController.swift */,
 				CC0411D61F37567B00884165 /* HistoryDataViewController.xib */,
 			);
@@ -1013,6 +1019,7 @@
 				CC2B99D31F04905700916069 /* DatePickerView.swift in Sources */,
 				CC4BA87D1F2DA2AB002B571D /* EquipmentViewController.swift in Sources */,
 				CC339C101F4C0E7D00EB0516 /* UserWindSpeedConfig.swift in Sources */,
+				CCAA9B5B1F6B4D900048F4B3 /* AQIData.swift in Sources */,
 				CC03D0811EFEBE9D00CC8B20 /* RuleSelectorView.swift in Sources */,
 				CC4BA8801F2DCA0F002B571D /* ConfirmAlertView.swift in Sources */,
 				CC0B719E1F5B9F9C0074D989 /* CircleDemoView.swift in Sources */,
@@ -1047,6 +1054,7 @@
 				CC0664B41EF7C0EB00020415 /* MainMenuView.swift in Sources */,
 				CC05D2CF1F08748600653C71 /* GenderPickerView.swift in Sources */,
 				CC11D6521F30C9BA00B9ADD1 /* StartSetGenderViewController.swift in Sources */,
+				CC53E5201F6DFF3200870ACE /* HistoryDataView.swift in Sources */,
 				CC0664A81EF76A4F00020415 /* BaseView.swift in Sources */,
 				CC0D72E01F541E1C000D647C /* NotificationList.swift in Sources */,
 				CC9BDCB61F43409A00AF6DB4 /* SVProgressHUD.m in Sources */,
