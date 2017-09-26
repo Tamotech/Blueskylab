@@ -7,15 +7,16 @@
 //
 
 import UIKit
-import CoreBluetooth
 
 protocol BluetoothViewDelegate {
     func didConnectBlueTooth()
 }
 
-class OpenBluetoothController: BaseViewController, CBCentralManagerDelegate {
+class OpenBluetoothController: BaseViewController {
 
     
+    
+    let speedServiceID = "6e400001-b5a3-f393-e0a9-e50e24dcca9e"
     
     @IBOutlet weak var connectingView: UIView!
     
@@ -29,12 +30,14 @@ class OpenBluetoothController: BaseViewController, CBCentralManagerDelegate {
     
     @IBOutlet weak var lightTipBtn: UIButton!
     
+    weak var manager: BLSBluetoothManager? = BLSBluetoothManager.shareInstance
+    
     var delegate:BluetoothViewDelegate?
     
-    lazy var centralManager:CBCentralManager = {
-       return CBCentralManager(delegate: self, queue: DispatchQueue.main)
-    }()
     
+    deinit {
+        manager = nil
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,8 +45,44 @@ class OpenBluetoothController: BaseViewController, CBCentralManagerDelegate {
         
         shouldClearNavBar = true
         setupView()
-        centralManager.scanForPeripherals(withServices: nil, options: nil)
         
+        manager!.setupManager()
+        manager!.stateUpdate = {(state: BluetoothState) in
+            switch state {
+            case .Unauthorized:
+                self.unconnectingView.isHidden = false
+                break
+            case .PowerOff:
+                self.unconnectingView.isHidden = false
+                self.showOpenBluetoothAlert()
+                break
+            case .PowerOn:
+                self.unconnectingView.isHidden = true
+                self.connectingView.isHidden = false
+                break
+            case .Connected:
+                self.manager = nil
+                self.dismiss(animated: true, completion: {
+                    if self.delegate != nil {
+                        self.delegate!.didConnectBlueTooth()
+                    }
+                })
+//                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
+////                    BLHUDBarManager.showSuccess(msg: NSLocalizedString("BindSuccess", comment: ""))
+//                    
+//
+//                })
+                break
+                
+            case .ConnectFailed:
+                
+                break
+            case .DisConnected:
+                
+                break
+            
+            }
+        }
     }
     
     
@@ -66,19 +105,23 @@ class OpenBluetoothController: BaseViewController, CBCentralManagerDelegate {
         ovalCircleView.layer.add(animation, forKey: nil)
         
         lightTipBtn.isHidden = true
+        
+        unconnectingView.isHidden = true
     }
 
     
+    
     //MARK: - actions
     
-    
     @IBAction func handleTapOpenBluetoothBtn(_ sender: Any) {
-        centralManager.scanForPeripherals(withServices: nil, options: nil)
+       
         UIView.animate(withDuration: 0.3) { 
-            self.unconnectingView.isHidden = true
-            self.connectingView.isHidden = false
+//            self.unconnectingView.isHidden = true
+//            self.connectingView.isHidden = false
+            self.showOpenBluetoothAlert()
         }
-        showUnfindBluetoothAlert()
+        //showUnfindBluetoothAlert()
+        
     }
     
     @IBAction func handleTapDontBindBtn(_ sender: Any) {
@@ -90,64 +133,13 @@ class OpenBluetoothController: BaseViewController, CBCentralManagerDelegate {
     }
     
     @IBAction func handleTapLightBtn(_ sender: Any) {
-    }
-    
-    //MARK - CBCentralManager
-    
-    func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        print("CentralManager is initialized")
-        if #available(iOS 10.0, *) {
-            switch central.state {
-            case CBManagerState.unauthorized:
-                print("unauthorized")
-                break
-            case CBManagerState.poweredOff:
-                print("poweredOff")
-                break
-            case CBManagerState.poweredOn:
-                print("Bluetooth is currently powered on and available to use.")
-                break
-            default:break
-            }
-        } else {
-            // Fallback on earlier versions
-            switch central.state.rawValue {
-            case 3:
-                print("unauthorized")
-                break
-            case 4:
-                print("poweredOff")
-                break
-            case 5:
-                print("Bluetooth is currently powered on and available to use.")
-                break
-            default:break
-            }
-        }
-    }
-    
-    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        
-    }
-    
-    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        
-    }
-    
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        
-    }
-    
-    func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
-        
-    }
-    
-    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         
     }
     
     
-    //MARK: - private
+    
+    
+    
     
     private func showOpenBluetoothAlert() {
         let alert = UIAlertController(title: NSLocalizedString("OpenBluetoothAlertTitle", comment: ""), message: nil, preferredStyle: .alert)
@@ -158,13 +150,13 @@ class OpenBluetoothController: BaseViewController, CBCentralManagerDelegate {
             
         }))
         present(alert, animated: true, completion: nil)
-
+        
     }
     
     private func showUnfindBluetoothAlert() {
         let alert = UIAlertController(title: NSLocalizedString("UnfindBluetoothAlertTitle", comment: ""), message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: .default, handler: { (action1) in
-            BLHUDBarManager.showSuccess(msg: NSLocalizedString("BindSuccess", comment: ""))
+//            BLHUDBarManager.showSuccess(msg: NSLocalizedString("BindSuccess", comment: ""))
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Help", comment: ""), style: .default, handler: { (action2) in
             

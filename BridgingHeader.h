@@ -9,8 +9,6 @@
 #ifndef BridgingHeader_h
 #define BridgingHeader_h
 
-
-
 #import "WXApi.h"
 #import "WXApiObject.h"
 #import "DES3EncryptUtil.h"
@@ -18,5 +16,6 @@
 #import "SVProgressHUD.h"
 #import "UIBezierPath+LxThroughPointsBezier.h"
 #import "JPUSHService.h"
+#import "BabyBluetooth.h"
 
 #endif /* BridgingHeader_h */

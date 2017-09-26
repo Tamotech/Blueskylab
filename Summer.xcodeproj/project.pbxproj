@@ -103,6 +103,7 @@
 		CC5A10391F2F8DD000A73754 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5A10371F2F8DD000A73754 /* LoginViewController.swift */; };
 		CC5A103A1F2F8DD000A73754 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC5A10381F2F8DD000A73754 /* LoginViewController.xib */; };
 		CC5B32711EFA5D570048FC89 /* WXActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5B32701EFA5D570048FC89 /* WXActionSheetView.swift */; };
+		CC6B4FFE1F77460200B15596 /* BLSBluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B4FFD1F77460200B15596 /* BLSBluetoothManager.swift */; };
 		CC6D342C1EF3731B002C4A36 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6D342B1EF3731B002C4A36 /* DemoViewController.swift */; };
 		CC6D342E1EF3877A002C4A36 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6D342D1EF3877A002C4A36 /* Car.swift */; };
 		CC6D34311EF39E7E002C4A36 /* UIView+Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6D34301EF39E7E002C4A36 /* UIView+Position.swift */; };
@@ -128,6 +129,7 @@
 		CCA48DC11F58481E0010CF4F /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA48DC01F58481E0010CF4F /* HealthKit.framework */; };
 		CCA48DC41F5849FF0010CF4F /* HealthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA48DC31F5849FF0010CF4F /* HealthDataManager.swift */; };
 		CCAA9B5B1F6B4D900048F4B3 /* AQIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAA9B5A1F6B4D900048F4B3 /* AQIData.swift */; };
+		CCB644381F7684AC0012AE04 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCB644371F7684AC0012AE04 /* CoreBluetooth.framework */; };
 		CCCE01621F52EBC500974F6D /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCE01611F52EBC500974F6D /* UserNotifications.framework */; };
 		CCCE01641F52F0EA00974F6D /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCE01631F52F0EA00974F6D /* UIImageExtension.swift */; };
 		CCCE01661F5331F600974F6D /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCE01651F5331F600974F6D /* BaseWebViewController.swift */; };
@@ -258,6 +260,7 @@
 		CC5A10371F2F8DD000A73754 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CC5A10381F2F8DD000A73754 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		CC5B32701EFA5D570048FC89 /* WXActionSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXActionSheetView.swift; sourceTree = "<group>"; };
+		CC6B4FFD1F77460200B15596 /* BLSBluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLSBluetoothManager.swift; sourceTree = "<group>"; };
 		CC6D342B1EF3731B002C4A36 /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		CC6D342D1EF3877A002C4A36 /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		CC6D34301EF39E7E002C4A36 /* UIView+Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Position.swift"; sourceTree = "<group>"; };
@@ -295,6 +298,25 @@
 		CCA48DC01F58481E0010CF4F /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CCA48DC31F5849FF0010CF4F /* HealthDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthDataManager.swift; sourceTree = "<group>"; };
 		CCAA9B5A1F6B4D900048F4B3 /* AQIData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AQIData.swift; sourceTree = "<group>"; };
+		CCB644251F7499370012AE04 /* BabyPeripheralManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BabyPeripheralManager.h; path = "bridging-for-swift/BabyPeripheralManager.h"; sourceTree = "<group>"; };
+		CCB644261F7499370012AE04 /* BabyCallback.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BabyCallback.m; path = "bridging-for-swift/BabyCallback.m"; sourceTree = "<group>"; };
+		CCB644271F7499370012AE04 /* BabyToy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BabyToy.h; path = "bridging-for-swift/BabyToy.h"; sourceTree = "<group>"; };
+		CCB644281F7499370012AE04 /* BabyBluetooth.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BabyBluetooth.m; path = "bridging-for-swift/BabyBluetooth.m"; sourceTree = "<group>"; };
+		CCB644291F7499380012AE04 /* BabyOptions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BabyOptions.m; path = "bridging-for-swift/BabyOptions.m"; sourceTree = "<group>"; };
+		CCB6442A1F7499380012AE04 /* BabyDefine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BabyDefine.m; path = "bridging-for-swift/BabyDefine.m"; sourceTree = "<group>"; };
+		CCB6442B1F7499380012AE04 /* BabyOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BabyOptions.h; path = "bridging-for-swift/BabyOptions.h"; sourceTree = "<group>"; };
+		CCB6442C1F7499380012AE04 /* BabyCentralManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BabyCentralManager.h; path = "bridging-for-swift/BabyCentralManager.h"; sourceTree = "<group>"; };
+		CCB6442D1F7499380012AE04 /* BabyCentralManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BabyCentralManager.m; path = "bridging-for-swift/BabyCentralManager.m"; sourceTree = "<group>"; };
+		CCB6442E1F7499380012AE04 /* BabyBluetooth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BabyBluetooth.h; path = "bridging-for-swift/BabyBluetooth.h"; sourceTree = "<group>"; };
+		CCB6442F1F7499380012AE04 /* BabySpeaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BabySpeaker.m; path = "bridging-for-swift/BabySpeaker.m"; sourceTree = "<group>"; };
+		CCB644301F7499380012AE04 /* BabyToy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BabyToy.m; path = "bridging-for-swift/BabyToy.m"; sourceTree = "<group>"; };
+		CCB644311F7499380012AE04 /* BabyRhythm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BabyRhythm.h; path = "bridging-for-swift/BabyRhythm.h"; sourceTree = "<group>"; };
+		CCB644321F7499380012AE04 /* BabySpeaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BabySpeaker.h; path = "bridging-for-swift/BabySpeaker.h"; sourceTree = "<group>"; };
+		CCB644331F7499380012AE04 /* BabyCallback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BabyCallback.h; path = "bridging-for-swift/BabyCallback.h"; sourceTree = "<group>"; };
+		CCB644341F7499380012AE04 /* BabyPeripheralManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BabyPeripheralManager.m; path = "bridging-for-swift/BabyPeripheralManager.m"; sourceTree = "<group>"; };
+		CCB644351F7499390012AE04 /* BabyRhythm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BabyRhythm.m; path = "bridging-for-swift/BabyRhythm.m"; sourceTree = "<group>"; };
+		CCB644361F7499390012AE04 /* BabyDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BabyDefine.h; path = "bridging-for-swift/BabyDefine.h"; sourceTree = "<group>"; };
+		CCB644371F7684AC0012AE04 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		CCCE01601F52CA3200974F6D /* Summer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Summer.entitlements; sourceTree = "<group>"; };
 		CCCE01611F52EBC500974F6D /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		CCCE01631F52F0EA00974F6D /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -327,6 +349,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCB644381F7684AC0012AE04 /* CoreBluetooth.framework in Frameworks */,
 				CCCE01621F52EBC500974F6D /* UserNotifications.framework in Frameworks */,
 				CCA48DC11F58481E0010CF4F /* HealthKit.framework in Frameworks */,
 				CC12F9F71F4516AB00533783 /* CoreLocation.framework in Frameworks */,
@@ -340,6 +363,7 @@
 		A4DB292F3E62DDC85E32350B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CCB644371F7684AC0012AE04 /* CoreBluetooth.framework */,
 				CCA48DC01F58481E0010CF4F /* HealthKit.framework */,
 				CCCE01611F52EBC500974F6D /* UserNotifications.framework */,
 				CC12F9F61F4516AB00533783 /* CoreLocation.framework */,
@@ -448,6 +472,7 @@
 		CC0664A51EF769B600020415 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				CCB644221F7497D20012AE04 /* Bluetooth */,
 				CC12F9FE1F45DF6000533783 /* AQIData */,
 				CC12F9FD1F45DF2E00533783 /* WindMode */,
 				CC1657B81F3B6F570097FF58 /* PopTip */,
@@ -456,8 +481,6 @@
 				CC0664AB1EF76A8900020415 /* MainViewController.swift */,
 				CC0664B31EF7C0EB00020415 /* MainMenuView.swift */,
 				CCFAC20D1EFFA16500319BB0 /* MainMenuView.xib */,
-				CC36937F1F3612AD00929F24 /* OpenBluetoothController.swift */,
-				CC3693801F3612AD00929F24 /* OpenBluetoothController.xib */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -556,6 +579,7 @@
 		CC3348C91EF368790084642A /* Summer */ = {
 			isa = PBXGroup;
 			children = (
+				CCB644231F7498D00012AE04 /* Framework */,
 				CCCE01601F52CA3200974F6D /* Summer.entitlements */,
 				CC0664A61EF76A3500020415 /* BaseUI */,
 				CC0664A31EF768FD00020415 /* Network */,
@@ -734,6 +758,49 @@
 				CC9BDCB21F43409A00AF6DB4 /* SVRadialGradientLayer.m */,
 			);
 			name = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		CCB644221F7497D20012AE04 /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				CC6B4FFD1F77460200B15596 /* BLSBluetoothManager.swift */,
+				CC36937F1F3612AD00929F24 /* OpenBluetoothController.swift */,
+				CC3693801F3612AD00929F24 /* OpenBluetoothController.xib */,
+			);
+			name = Bluetooth;
+			sourceTree = "<group>";
+		};
+		CCB644231F7498D00012AE04 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				CCB644241F7498DA0012AE04 /* BabyBluetooth */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		CCB644241F7498DA0012AE04 /* BabyBluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				CCB6442E1F7499380012AE04 /* BabyBluetooth.h */,
+				CCB644281F7499370012AE04 /* BabyBluetooth.m */,
+				CCB644331F7499380012AE04 /* BabyCallback.h */,
+				CCB644261F7499370012AE04 /* BabyCallback.m */,
+				CCB6442C1F7499380012AE04 /* BabyCentralManager.h */,
+				CCB6442D1F7499380012AE04 /* BabyCentralManager.m */,
+				CCB644361F7499390012AE04 /* BabyDefine.h */,
+				CCB6442A1F7499380012AE04 /* BabyDefine.m */,
+				CCB6442B1F7499380012AE04 /* BabyOptions.h */,
+				CCB644291F7499380012AE04 /* BabyOptions.m */,
+				CCB644251F7499370012AE04 /* BabyPeripheralManager.h */,
+				CCB644341F7499380012AE04 /* BabyPeripheralManager.m */,
+				CCB644311F7499380012AE04 /* BabyRhythm.h */,
+				CCB644351F7499390012AE04 /* BabyRhythm.m */,
+				CCB644321F7499380012AE04 /* BabySpeaker.h */,
+				CCB6442F1F7499380012AE04 /* BabySpeaker.m */,
+				CCB644271F7499370012AE04 /* BabyToy.h */,
+				CCB644301F7499380012AE04 /* BabyToy.m */,
+			);
+			name = BabyBluetooth;
 			sourceTree = "<group>";
 		};
 		CCE4E2CB1F09266A0085542E /* Resource */ = {
@@ -994,6 +1061,7 @@
 				CC4BA8881F2DDBD7002B571D /* NotificationDetailController.swift in Sources */,
 				CC0E30C51F11E1A900F6AFFB /* NotificationCenterCell.swift in Sources */,
 				CC9BDCB31F43409A00AF6DB4 /* SVIndefiniteAnimatedView.m in Sources */,
+				CC6B4FFE1F77460200B15596 /* BLSBluetoothManager.swift in Sources */,
 				CC0D72D91F53F235000D647C /* AboutQACell.swift in Sources */,
 				CCFAC1FF1EFF5B4900319BB0 /* BaseRulerSelectorActionView.swift in Sources */,
 				CCFBF7201F3DFE300025F330 /* AddModeViewController.swift in Sources */,
@@ -1288,6 +1356,7 @@
 				INFOPLIST_FILE = Summer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = blueskylab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/BridgingHeader.h";

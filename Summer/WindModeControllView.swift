@@ -78,6 +78,9 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
         else {
             refreshItemViews()
         }
+        
+        let value = mode.value
+        BLSBluetoothManager.shareInstance.ajustSpeed(value: CGFloat(value))
     }
     
     func hideItem(item: WindModeAjustor) {

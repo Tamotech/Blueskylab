@@ -326,8 +326,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="43E-db-f8l">
                                 <rect key="frame" x="0.0" y="612" width="375" height="303"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgWaveM3" translatesAutoresizingMaskIntoConstraints="NO" id="qGg-vu-h3N">
-                                        <rect key="frame" x="-0.5" y="-5" width="375" height="313"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgWaveM3" translatesAutoresizingMaskIntoConstraints="NO" id="qGg-vu-h3N">
+                                        <rect key="frame" x="-0.5" y="0.0" width="375" height="303"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvw-ma-I2k">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
@@ -430,7 +430,7 @@
                                     <constraint firstItem="ATy-Da-jLb" firstAttribute="centerX" secondItem="43E-db-f8l" secondAttribute="centerX" id="RjX-dd-4p0"/>
                                     <constraint firstItem="qGg-vu-h3N" firstAttribute="width" secondItem="43E-db-f8l" secondAttribute="width" id="VPx-BL-a7V"/>
                                     <constraint firstItem="dvw-ma-I2k" firstAttribute="top" secondItem="43E-db-f8l" secondAttribute="top" id="Z06-CQ-fGs"/>
-                                    <constraint firstItem="qGg-vu-h3N" firstAttribute="height" secondItem="43E-db-f8l" secondAttribute="height" constant="10" id="c6K-Nl-Hmb"/>
+                                    <constraint firstItem="qGg-vu-h3N" firstAttribute="height" secondItem="43E-db-f8l" secondAttribute="height" id="c6K-Nl-Hmb"/>
                                     <constraint firstAttribute="bottom" secondItem="ATy-Da-jLb" secondAttribute="bottom" id="ccn-W2-oua"/>
                                     <constraint firstItem="qjS-bT-Gr0" firstAttribute="width" secondItem="43E-db-f8l" secondAttribute="width" id="gwS-zk-aoP"/>
                                     <constraint firstItem="qGg-vu-h3N" firstAttribute="centerY" secondItem="43E-db-f8l" secondAttribute="centerY" id="iLg-14-XLa"/>

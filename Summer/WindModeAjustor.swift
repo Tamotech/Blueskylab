@@ -283,6 +283,7 @@ class WindModeAjustor: UIView {
         let level = angleDu/200*maxLevel
         windLevelLabel.text = String(Int(level))
         mode.value = Int(angleDu/200*maxLevel)
+        BLSBluetoothManager.shareInstance.ajustSpeed(value: CGFloat(mode.value))
     }
     
     

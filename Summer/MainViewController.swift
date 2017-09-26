@@ -145,14 +145,14 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     
     func setupView() {
         let layer1 = CAGradientLayer()
-        layer1.frame = bottomView.bounds
+        layer1.frame = CGRect(x: 0, y: 0, width: screenWidth, height: bottomView.height)
         layer1.colors = [UIColor(hexString: "28baf9")!, UIColor(hexString: "0196db")!]
         layer1.startPoint = CGPoint(x: 0.5, y: 0)
         layer1.endPoint = CGPoint(x: 0.5, y: 1)
         bottomView.layer.addSublayer(layer1)
         
         let layer2 = CAGradientLayer()
-        layer2.frame = searchBtn.bounds
+        layer2.frame = CGRect(x: 0, y: 0, width: screenWidth-68*2, height: searchBtn.height)
         layer2.cornerRadius = layer2.bounds.size.height/2
         layer2.masksToBounds = true
         layer2.colors = [UIColor(hexString: "28baf9")!.cgColor, UIColor(hexString: "0196db")!.cgColor]
@@ -479,8 +479,14 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     //MARK: - BluetoothDelegate
     
     func didConnectBlueTooth() {
-        
-        self.showCircleAnimation()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
+            self.showCircleAnimation()
+            
+            //调节至默认的风速
+            if SessionManager.sharedInstance.windModeManager.currentMode != nil {
+                self.modeControlView.selectItem(mode: SessionManager.sharedInstance.windModeManager.currentMode!)
+            }
+        }
     }
 
     
