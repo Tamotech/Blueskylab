@@ -28,16 +28,16 @@ class WindModeManager: NSObject {
         APIRequest.getUserWindSpeedConfig { [weak self](data) in
             self?.windUserConfigList = data as! [UserWindSpeedConfig]
             
-            //常用模式置顶
-            if self?.windUserConfigList.count ?? 0 > 0 {
-                for (i, co) in (self?.windUserConfigList)!.enumerated() {
-                    if i != 0 &&  co.defaultflag == 1 {
-                        let top = self?.windUserConfigList[0]
-                        self?.windUserConfigList[0] = (self?.windUserConfigList[i])!
-                        self?.windUserConfigList[i] = top!
-                    }
-                }
-            }
+            //常用模式置顶  砍掉的需求
+//            if self?.windUserConfigList.count ?? 0 > 0 {
+//                for (i, co) in (self?.windUserConfigList)!.enumerated() {
+//                    if i != 0 &&  co.defaultflag == 1 {
+//                        let top = self?.windUserConfigList[0]
+//                        self?.windUserConfigList[0] = (self?.windUserConfigList[i])!
+//                        self?.windUserConfigList[i] = top!
+//                    }
+//                }
+//            }
             if self?.completeLoadModeConfig != nil {
                 self?.completeLoadModeConfig!()
             }

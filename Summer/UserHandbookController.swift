@@ -141,7 +141,6 @@ class UserHandbookController: BaseViewController, UITableViewDelegate, UITableVi
         let article = self.getCurrentData()?.list[indexPath.row]
         let vc = ArticleDetailController()
         vc.articleId = article?.id ?? ""
-        vc.showCustomTitle(title: article?.title ?? "")
         navigationController?.pushViewController(vc, animated: true)
     }
     

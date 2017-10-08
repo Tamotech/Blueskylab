@@ -7,10 +7,10 @@
 //
 
 import UIKit
-
+import WebKit
 
 /// 文章详情页
-class ArticleDetailController: BaseWebViewController {
+class ArticleDetailController: BaseWKWebViewController {
 
     ///文章 id
     var articleId: String = ""
@@ -18,6 +18,7 @@ class ArticleDetailController: BaseWebViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.showCustomTitle(title: NSLocalizedString("QuestionDetail", comment: ""))
         self.loadArticle()
     }
 
@@ -28,10 +29,16 @@ class ArticleDetailController: BaseWebViewController {
             APIManager.shareInstance.postRequest(urlString: url, params: nil, result: { [weak self] (JSON, code, msg) in
                 MBProgressHUD.hide(for: (self?.view)!, animated: true)
                 if code == 0 {
+                    
                     let title = JSON?["data"]["title"].stringValue ?? ""
-                    self?.showCustomTitle(title: title)
                     let content = JSON?["data"]["content"].stringValue ?? ""
-                    self?.webView.loadHTMLString(content, baseURL: nil)
+                    let htmlPath = Bundle.main.path(forResource: "notification", ofType: "html")
+                    let originContent = try? String.init(contentsOfFile: htmlPath!, encoding: String.Encoding.utf8) as NSString
+                    let replaceTag = "${title}"
+                    var newContent = originContent?.replacingOccurrences(of: replaceTag, with: title)
+                    newContent = newContent?.replacingOccurrences(of: "${contentHtml}", with: content)
+                    self?.webView.loadHTMLString(newContent!, baseURL: nil)
+                    
                 }
                 else {
                     SVProgressHUD.showError(withStatus: msg)

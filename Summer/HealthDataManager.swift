@@ -21,7 +21,8 @@ protocol MotionDataDelegate: class {
     ///   - distance: 距离 m
     ///   - speed:  速度 m/s
     ///   - stepCount:  步数
-    func motionDataUpdate(distance: Float, speed: Float, stepCount: Int)
+    ///   - carlories: 消耗卡路里
+    func motionDataUpdate(distance: Float, speed: Float, stepCount: Int, carlories: Float)
     
     
     /// 时间计数
@@ -41,6 +42,11 @@ class HealthDataManager: NSObject {
     var timer: Timer?
     
     static let sharedInstance = HealthDataManager()
+    
+    
+    ///清零标志 10-08  理论上清零只需要重置计步器即可, 而设计需要单独清零步数和卡路里
+    var zeroStep: Int = 0
+    var zeroDistance: Float = 0
     
     
     // 开始获取步数计数据
@@ -112,9 +118,21 @@ class HealthDataManager: NSObject {
                 // Fallback on earlier versions
             }
             
-            print(text)
+            //print(text)
+            
+            var carlories: Float = 0
+            if self.zeroStep != 0 && steps > self.zeroStep {
+                steps = steps-self.zeroStep
+            }
+            if self.zeroDistance != 0 && dis > self.zeroDistance {
+                let newDis = dis-self.zeroDistance
+                carlories = Float((SessionManager.sharedInstance.userInfo?.getWeight())!*CGFloat(newDis/1000)*1.036)
+            }
+            else {
+                carlories = Float((SessionManager.sharedInstance.userInfo?.getWeight())!*CGFloat(dis/1000)*1.036)
+            }
             if self.delegate != nil {
-                self.delegate?.motionDataUpdate(distance: dis, speed: speed, stepCount: steps)
+                self.delegate?.motionDataUpdate(distance: dis, speed: speed, stepCount: steps, carlories: carlories)
             }
             
         })
@@ -124,6 +142,9 @@ class HealthDataManager: NSObject {
         self.pedometer.stopUpdates()
         timer!.invalidate()
         motioning = false
+        zeroDistance = 0
+        zeroStep = 0
+        seconds = 0
     }
     
     

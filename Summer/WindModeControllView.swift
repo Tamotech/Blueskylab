@@ -25,14 +25,15 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
     let width1: CGFloat = 62
     let width2: CGFloat = 146
     weak var delegate: WindModeSelectDelegate?
-    lazy var addAjustor: WindModeAjustor = {
-        
-        let addConfig = UserWindSpeedConfig()
-        addConfig.id = "addModeId"
-        addConfig.isAdd = true
-        let a = WindModeAjustor(frame: CGRect.init(x: 0, y: 0, width: 62, height: 62), mode: addConfig)
-        return a
-    } ()
+    //10-06砍掉的需求
+//    lazy var addAjustor: WindModeAjustor = {
+//
+//        let addConfig = UserWindSpeedConfig()
+//        addConfig.id = "addModeId"
+//        addConfig.isAdd = true
+//        let a = WindModeAjustor(frame: CGRect.init(x: 0, y: 0, width: 62, height: 62), mode: addConfig)
+//        return a
+//    } ()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,8 +42,8 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
         scrollView.showsVerticalScrollIndicator = false
         self.addSubview(scrollView)
         
-        addAjustor.delegate = self
-        scrollView.addSubview(addAjustor)
+//        addAjustor.delegate = self
+//        scrollView.addSubview(addAjustor)
     
         modeManager.completeLoadModeConfig = {[weak self]() in
             self?.refreshItemViews()
@@ -170,16 +171,16 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
     
     func refreshItemViews() {
         
-        if modeManager.windUserConfigList.count == 0 {
-            addAjustor.snp.remakeConstraints({ (make) in
-                make.left.equalTo(self.scrollView.snp.left).offset(leftSpace)
-                make.centerY.equalTo(self.scrollView.snp.centerY)
-                make.width.height.equalTo(width1)
-                make.right.equalTo(self.scrollView.snp.right).offset(-leftSpace)
-            })
-            addAjustor.transformToSmall(smallMode: true)
-            return
-        }
+//        if modeManager.windUserConfigList.count == 0 {
+//            addAjustor.snp.remakeConstraints({ (make) in
+//                make.left.equalTo(self.scrollView.snp.left).offset(leftSpace)
+//                make.centerY.equalTo(self.scrollView.snp.centerY)
+//                make.width.height.equalTo(width1)
+//                make.right.equalTo(self.scrollView.snp.right).offset(-leftSpace)
+//            })
+//            addAjustor.transformToSmall(smallMode: true)
+//            return
+//        }
         
         //if childCompoents.count == 0 {
             
@@ -245,17 +246,17 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
 
         }
         
-        //addAjustor
-        let lastView = childCompoents.last!
-        addAjustor.snp.remakeConstraints({ (make) in
-            make.left.equalTo(lastView.snp.right).offset(leftSpace)
-            make.centerY.equalTo(self.scrollView.snp.centerY)
-            make.width.height.equalTo(width1)
-            make.right.equalTo(self.scrollView.snp.right).offset(-leftSpace)
-        })
-        addAjustor.transformToSmall(smallMode: true)
+        //addAjustor  10-06 砍掉的需求
+//        let lastView = childCompoents.last!
+//        addAjustor.snp.remakeConstraints({ (make) in
+//            make.left.equalTo(lastView.snp.right).offset(leftSpace)
+//            make.centerY.equalTo(self.scrollView.snp.centerY)
+//            make.width.height.equalTo(width1)
+//            make.right.equalTo(self.scrollView.snp.right).offset(-leftSpace)
+//        })
+//        addAjustor.transformToSmall(smallMode: true)
         
-        let scrollSizeWidth = CGFloat(childCompoents.count)*width1+width2+CGFloat(childCompoents.count+2)*leftSpace
+        let scrollSizeWidth = CGFloat(childCompoents.count-1)*width1+width2+CGFloat(childCompoents.count+2)*leftSpace
         scrollView.contentSize = CGSize(width: scrollSizeWidth, height: frame.size.height)
         
     

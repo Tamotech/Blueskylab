@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		25F4822315621C66772C57FC /* Pods_Summer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C96D22CE689A5323E4BAAB6 /* Pods_Summer.framework */; };
+		5A2341DA1F88E03000BEB06F /* BaseWKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2341D91F88E02F00BEB06F /* BaseWKWebViewController.swift */; };
+		5A7F6F711F88EEAA00F59DCB /* about-banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7F6F701F88EE4F00F59DCB /* about-banner.png */; };
 		CC0237771F08998D00400F7C /* EditPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0237751F08998D00400F7C /* EditPasswordViewController.swift */; };
 		CC0237781F08998D00400F7C /* EditPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0237761F08998D00400F7C /* EditPasswordViewController.xib */; };
 		CC02377B1F08A20400400F7C /* BaseSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02377A1F08A20400400F7C /* BaseSegmentControl.swift */; };
@@ -31,7 +33,6 @@
 		CC0B719C1F5AF7B70074D989 /* AwesomeCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0B719B1F5AF7B70074D989 /* AwesomeCircleView.swift */; };
 		CC0B719E1F5B9F9C0074D989 /* CircleDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0B719D1F5B9F9C0074D989 /* CircleDemoView.swift */; };
 		CC0B71A51F5C08820074D989 /* main-bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = CC0B719F1F5C08820074D989 /* main-bg1.png */; };
-		CC0B71A61F5C08820074D989 /* main-bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = CC0B71A01F5C08820074D989 /* main-bg2.png */; };
 		CC0B71A71F5C08820074D989 /* main-bg3.png in Resources */ = {isa = PBXBuildFile; fileRef = CC0B71A11F5C08820074D989 /* main-bg3.png */; };
 		CC0B71A81F5C08820074D989 /* main-bg4.png in Resources */ = {isa = PBXBuildFile; fileRef = CC0B71A21F5C08820074D989 /* main-bg4.png */; };
 		CC0B71A91F5C08820074D989 /* main-bg5.png in Resources */ = {isa = PBXBuildFile; fileRef = CC0B71A31F5C08820074D989 /* main-bg5.png */; };
@@ -89,7 +90,6 @@
 		CC4BA87D1F2DA2AB002B571D /* EquipmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA87B1F2DA2AB002B571D /* EquipmentViewController.swift */; };
 		CC4BA8801F2DCA0F002B571D /* ConfirmAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA87F1F2DCA0F002B571D /* ConfirmAlertView.swift */; };
 		CC4BA8821F2DCA2D002B571D /* ConfirmAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA8811F2DCA2D002B571D /* ConfirmAlertView.xib */; };
-		CC4BA8841F2DDA03002B571D /* about-banner.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA8831F2DDA03002B571D /* about-banner.png */; };
 		CC4BA8881F2DDBD7002B571D /* NotificationDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA8861F2DDBD7002B571D /* NotificationDetailController.swift */; };
 		CC4BA8891F2DDBD7002B571D /* NotificationDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA8871F2DDBD7002B571D /* NotificationDetailController.xib */; };
 		CC4BA88B1F2DDC54002B571D /* notification.html in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA88A1F2DDC54002B571D /* notification.html */; };
@@ -153,6 +153,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A2341D81F88601C00BEB06F /* main-bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main-bg2.png"; sourceTree = "<group>"; };
+		5A2341D91F88E02F00BEB06F /* BaseWKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWKWebViewController.swift; sourceTree = "<group>"; };
+		5A7F6F701F88EE4F00F59DCB /* about-banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about-banner.png"; sourceTree = "<group>"; };
 		5C96D22CE689A5323E4BAAB6 /* Pods_Summer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Summer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7759AA13FDCD9FF9EA28D118 /* Pods-Summer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Summer/Pods-Summer.debug.xcconfig"; sourceTree = "<group>"; };
 		ACB90229D5AF13058AC07C4C /* Pods-Summer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Summer/Pods-Summer.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,7 +183,6 @@
 		CC0B719B1F5AF7B70074D989 /* AwesomeCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwesomeCircleView.swift; sourceTree = "<group>"; };
 		CC0B719D1F5B9F9C0074D989 /* CircleDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleDemoView.swift; sourceTree = "<group>"; };
 		CC0B719F1F5C08820074D989 /* main-bg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main-bg1.png"; sourceTree = "<group>"; };
-		CC0B71A01F5C08820074D989 /* main-bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main-bg2.png"; sourceTree = "<group>"; };
 		CC0B71A11F5C08820074D989 /* main-bg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main-bg3.png"; sourceTree = "<group>"; };
 		CC0B71A21F5C08820074D989 /* main-bg4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main-bg4.png"; sourceTree = "<group>"; };
 		CC0B71A31F5C08820074D989 /* main-bg5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main-bg5.png"; sourceTree = "<group>"; };
@@ -246,7 +248,6 @@
 		CC4BA87B1F2DA2AB002B571D /* EquipmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipmentViewController.swift; sourceTree = "<group>"; };
 		CC4BA87F1F2DCA0F002B571D /* ConfirmAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmAlertView.swift; sourceTree = "<group>"; };
 		CC4BA8811F2DCA2D002B571D /* ConfirmAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmAlertView.xib; sourceTree = "<group>"; };
-		CC4BA8831F2DDA03002B571D /* about-banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about-banner.png"; sourceTree = "<group>"; };
 		CC4BA8861F2DDBD7002B571D /* NotificationDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationDetailController.swift; sourceTree = "<group>"; };
 		CC4BA8871F2DDBD7002B571D /* NotificationDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationDetailController.xib; sourceTree = "<group>"; };
 		CC4BA88A1F2DDC54002B571D /* notification.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = notification.html; sourceTree = "<group>"; };
@@ -492,6 +493,7 @@
 				CC0664A91EF76A5D00020415 /* BaseViewController.swift */,
 				CC0664AF1EF7BEC800020415 /* BaseNavigationController.swift */,
 				CCCE01651F5331F600974F6D /* BaseWebViewController.swift */,
+				5A2341D91F88E02F00BEB06F /* BaseWKWebViewController.swift */,
 			);
 			name = BaseUI;
 			sourceTree = "<group>";
@@ -707,7 +709,7 @@
 			isa = PBXGroup;
 			children = (
 				CC0B719F1F5C08820074D989 /* main-bg1.png */,
-				CC0B71A01F5C08820074D989 /* main-bg2.png */,
+				5A2341D81F88601C00BEB06F /* main-bg2.png */,
 				CC0B71A11F5C08820074D989 /* main-bg3.png */,
 				CC0B71A21F5C08820074D989 /* main-bg4.png */,
 				CC0B71A31F5C08820074D989 /* main-bg5.png */,
@@ -806,11 +808,11 @@
 		CCE4E2CB1F09266A0085542E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				5A7F6F701F88EE4F00F59DCB /* about-banner.png */,
 				CCE4E2C71F091C350085542E /* Privacy.html */,
 				CCE4E2C91F0925970085542E /* logo.png */,
 				CCE4E2CC1F0932970085542E /* aboutBSL.html */,
 				CCE4E2CE1F0932A50085542E /* qrcode.png */,
-				CC4BA8831F2DDA03002B571D /* about-banner.png */,
 				CCE4E2D21F09380C0085542E /* useItem.html */,
 				CC4BA88A1F2DDC54002B571D /* notification.html */,
 			);
@@ -943,6 +945,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A7F6F711F88EEAA00F59DCB /* about-banner.png in Resources */,
 				CC3693821F3612AD00929F24 /* OpenBluetoothController.xib in Resources */,
 				CC5A10361F2F77E000A73754 /* StartGuideViewController.xib in Resources */,
 				CCE4E2C81F091C350085542E /* Privacy.html in Resources */,
@@ -969,7 +972,6 @@
 				CC3348D71EF368790084642A /* LaunchScreen.storyboard in Resources */,
 				CC3348D41EF368790084642A /* Assets.xcassets in Resources */,
 				CC4BA8751F2D9BE2002B571D /* LanguageListController.xib in Resources */,
-				CC4BA8841F2DDA03002B571D /* about-banner.png in Resources */,
 				CC8B17FB1F30AF1A00FC5EAE /* StartSetUsernameViewController.xib in Resources */,
 				CC3348D21EF368790084642A /* Main.storyboard in Resources */,
 				CC0E30C61F11E1A900F6AFFB /* NotificationCenterCell.xib in Resources */,
@@ -977,7 +979,6 @@
 				CCE4E2D31F09380C0085542E /* useItem.html in Resources */,
 				CC1748A81F2ED8A000CE268C /* WXImagePickerViewController.xib in Resources */,
 				CC339C251F4E3E1600EB0516 /* EquipmentViewController.xib in Resources */,
-				CC0B71A61F5C08820074D989 /* main-bg2.png in Resources */,
 				CC0B71A91F5C08820074D989 /* main-bg5.png in Resources */,
 				CC4BA88B1F2DDC54002B571D /* notification.html in Resources */,
 				CC0B71A51F5C08820074D989 /* main-bg1.png in Resources */,
@@ -1125,6 +1126,7 @@
 				CC53E5201F6DFF3200870ACE /* HistoryDataView.swift in Sources */,
 				CC0664A81EF76A4F00020415 /* BaseView.swift in Sources */,
 				CC0D72E01F541E1C000D647C /* NotificationList.swift in Sources */,
+				5A2341DA1F88E03000BEB06F /* BaseWKWebViewController.swift in Sources */,
 				CC9BDCB61F43409A00AF6DB4 /* SVProgressHUD.m in Sources */,
 				CC0411D71F37567C00884165 /* HistoryDataViewController.swift in Sources */,
 				CC030E911F1BA4160030145C /* BaseAlertView.swift in Sources */,
@@ -1331,6 +1333,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Summer/Summer.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 437FYPNA4H;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1359,6 +1363,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = blueskylab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/BridgingHeader.h";
 				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)";
@@ -1371,6 +1376,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Summer/Summer.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 437FYPNA4H;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1399,6 +1406,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = blueskylab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/BridgingHeader.h";
 				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)";

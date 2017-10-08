@@ -27,6 +27,7 @@ class NotificationItem: HandyJSON {
     var title: String = ""
     var description: String = ""
     var typename: String = ""
+    var content: String = ""
     var publishdate: Int = 0
     var readflag: Int = 0
     var img: String = ""

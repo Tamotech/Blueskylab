@@ -33,11 +33,12 @@ class WindModeAjustor: UIView {
     weak var delegate: WindModeAjustorDelegate?
     
     let minLevel: CGFloat = 0
-    let maxLevel: CGFloat = 100
+    var maxLevel: CGFloat = 100
     
     init(frame: CGRect, mode: UserWindSpeedConfig) {
         super.init(frame: frame)
         self.mode = mode
+        maxLevel = CGFloat(mode.valueMax)
         self.addSubview(ovalOutsideView)
         ovalOutsideView.snp.makeConstraints { (make) in
             make.top.left.bottom.right.equalTo(0)
@@ -138,6 +139,7 @@ class WindModeAjustor: UIView {
     ///更新页面
     func updateView(config: UserWindSpeedConfig) {
         mode = config
+        maxLevel = CGFloat(mode.valueMax)
         if mode.isAdd {
             iconView.image = #imageLiteral(resourceName: "iconAdd_darkblue")
         }
@@ -180,7 +182,7 @@ class WindModeAjustor: UIView {
             iconView.snp.remakeConstraints({ (make) in
                 make.centerX.equalTo(self.snp.centerX)
                 make.centerY.equalTo(self.snp.centerY)
-                make.size.equalTo(CGSize(width: 35, height: 35))
+                make.size.equalTo(CGSize(width: 40, height: 40))
             })
             if mode.icon2.characters.count>0 && mode.type == "fixed"{
                 let rc = ImageResource(downloadURL: URL(string: mode.icon2)!)
@@ -199,25 +201,42 @@ class WindModeAjustor: UIView {
             
         }
         else {
-            iconView.snp.remakeConstraints({ (make) in
-                make.centerX.equalTo(self.snp.centerX)
-                make.centerY.equalTo(self.snp.centerY).offset(-20)
-                make.size.equalTo(CGSize(width: 30, height: 30))
-            })
-            if mode.icon3.characters.count > 0 && mode.type == "fixed" {
+            if mode.name == "智能" {
+                iconView.snp.remakeConstraints({ (make) in
+                    make.centerX.equalTo(self.snp.centerX)
+                    make.centerY.equalTo(self.snp.centerY)
+                    make.size.equalTo(CGSize(width: 35, height: 35))
+                })
                 let rc = ImageResource(downloadURL: URL(string: mode.icon3)!)
                 iconView.kf.setImage(with: rc)
+                self.windLevelLabel.alpha = 0
+                self.leftLb.alpha = 0
+                self.rightLb.alpha = 0
+                self.itemLabel.alpha = 1
+                self.rulerView.alpha = 1
+                self.pointView.alpha = 0
             }
-            else if mode.type == "custom" {
-                let img = mode.customIcon(color: UIColor.white)
-                iconView.image = img
+            else {
+                iconView.snp.remakeConstraints({ (make) in
+                    make.centerX.equalTo(self.snp.centerX)
+                    make.centerY.equalTo(self.snp.centerY).offset(-20)
+                    make.size.equalTo(CGSize(width: 30, height: 30))
+                })
+                if mode.icon3.characters.count > 0 && mode.type == "fixed" {
+                    let rc = ImageResource(downloadURL: URL(string: mode.icon3)!)
+                    iconView.kf.setImage(with: rc)
+                }
+                else if mode.type == "custom" {
+                    let img = mode.customIcon(color: UIColor.white)
+                    iconView.image = img
+                }
+                self.windLevelLabel.alpha = 1
+                self.leftLb.alpha = 1
+                self.rightLb.alpha = 1
+                self.itemLabel.alpha = 1
+                self.rulerView.alpha = 1
+                self.pointView.alpha = 1
             }
-            self.windLevelLabel.alpha = 1
-            self.leftLb.alpha = 1
-            self.rightLb.alpha = 1
-            self.itemLabel.alpha = 1
-            self.rulerView.alpha = 1
-            self.pointView.alpha = 1
             
         }
         

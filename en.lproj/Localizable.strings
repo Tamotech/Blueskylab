@@ -32,7 +32,7 @@
 "UnfindBluetoothAlertTitle" = "未发现设备，请确保大气蓝牙打开且贴近手机";
 "ChangeFilterTip" = "口罩滤芯已耗尽，请立即更换";
 "filterChangeTip" = "当您更换了滤芯，请重制滤芯数据\n系统将重新计算新滤芯的过滤效果";
-"ResetYourFilter" = "我已更换滤芯，请重新计算滤芯的过滤效果\n确认重置滤芯数据?";
+"ResetYourFilter" = "我已更换滤芯，\n请重新计算滤芯的过滤效果\n确认重置滤芯数据?";
 "FilterLevelI" = "优";
 "FilterLevelII" = "中";
 "FilterLevelIII" = "弱";
@@ -64,8 +64,11 @@
 "MyEquipment" = "我的设备";
 "ClearZero" = "清零";
 "ConfirmClearZeroSteps" = "确认清零步数?";
+"ConfirmClearZeroCarlories" = "确认清零卡路里?";
 "DeleteThisMode" = "删除这个模式?";
 "Reset" = "重置";
+"Exit" = "退出";
+"ConfirmDropThis" = "确认放弃本次编辑吗?";
 "Delete" = "删除";
 "Hide" = "隐藏";
 "MyAir" = "我的大气";
@@ -88,6 +91,7 @@
 "NotificationCenter" = "通知中心";
 "LanguageSetting" = "语言偏好设置";
 "NotificationDetail" = "通知详情";
+"QuestionDetail" = "问题详情";
 "UserHandbook" = "用户指南";
 "OK" = "好";
 

@@ -6,6 +6,7 @@
  Copyright © 2017年 wuxi. All rights reserved.
  */
 
+//注册登录
 "Cancel" = "取消";
 "Confirm" = "确定";
 "Save" = "保存";
@@ -18,6 +19,62 @@
 "EditWight" = "编辑体重";
 "Male" = "男";
 "Female" = "女";
+"VertifyCodeHasSent" = "验证码已发送";
+"JumpOver" = "跳过";
+"SendSMS" = "发送验证码";
+"CaptureWrong" = "图形验证码错误";
+"SMSDigitWrong" = "短信验证码无效";
+"returnAndReinput" = "返回，请重新输入";
+"WrongPhoneNum" = "手机号格式错误！";
+
+//首页 AQI
+"OpenBluetoothAlertTitle" = "打开蓝牙允许\"蓝天大气\"连接到配件";
+"UnfindBluetoothAlertTitle" = "未发现设备，请确保大气蓝牙打开且贴近手机";
+"ChangeFilterTip" = "口罩滤芯已耗尽，请立即更换";
+"filterChangeTip" = "当您更换了滤芯，请重制滤芯数据\n系统将重新计算新滤芯的过滤效果";
+"ResetYourFilter" = "我已更换滤芯，\n请重新计算滤芯的过滤效果\n确认重置滤芯数据?";
+"FilterLevelI" = "优";
+"FilterLevelII" = "中";
+"FilterLevelIII" = "弱";
+"Retry" = "重试";
+"Help" = "帮助";
+"DontBind" = "暂不绑定";
+"BindSuccess" = "恭喜您，绑定成功！";
+"HistoryData" = "历史数据";
+"Day" = "日";
+"Week" = "周";
+"Month" = "月";
+"Year" = "年";
+"SendWindAmount" = "送风量";
+"Sport" = "运动";
+"Default" = "默认";
+"Intelligence" = "智能";
+"Walk" = "步行";
+"Drive" = "开车";
+"Rest" = "休息";
+"Add" = "添加";
+"AddMode" = "添加模式";
+"EditMode" = "编辑模式";
+"CirgaretteNum" = "%d支香烟";
+"Yesterday" = "昨天";
+"Today" = "今天";
+"Tomorrow" = "明天";
+"SelectCommenMode" = "点亮星星，置顶常用送风模式";
+"ModeManage" = "模式管理";
+"MyEquipment" = "我的设备";
+"ClearZero" = "清零";
+"ConfirmClearZeroSteps" = "确认清零步数?";
+"ConfirmClearZeroCarlories" = "确认清零卡路里?";
+"DeleteThisMode" = "删除这个模式?";
+"Reset" = "重置";
+"Exit" = "退出";
+"ConfirmDropThis" = "确认放弃本次编辑吗?";
+"Delete" = "删除";
+"Hide" = "隐藏";
+"MyAir" = "我的大气";
+
+
+//设置
 "Settings" = "设置";
 "AccessDenied" = "没有权限";
 "PleaseOpenPhotoLibarayAccess" = "请开启访问相册的权限";
@@ -33,40 +90,12 @@
 "APPUpdate" = "APP更新";
 "NotificationCenter" = "通知中心";
 "LanguageSetting" = "语言偏好设置";
-"MyEquipment" = "我的设备";
-"ClearZero" = "清零";
-"ConfirmClearZeroSteps" = "确认清零步数?";
-"Reset" = "重置";
-"ResetYourFilter" = "当您新更换了滤芯，请重置计时器，\n系统将为您重新计算新滤芯的过滤效果\n确认重置滤芯计时器？";
 "NotificationDetail" = "通知详情";
+"QuestionDetail" = "问题详情";
 "UserHandbook" = "用户指南";
-"VertifyCodeHasSent" = "验证码已发送";
-"JumpOver" = "跳过";
-"OpenBluetoothAlertTitle" = "打开蓝牙允许\"蓝天口罩\"连接配件";
 "OK" = "好";
-"UnfindBluetoothAlertTitle" = "未发现设备，请确保蓝天口罩有点并且贴近设备";
-"Retry" = "重试";
-"Help" = "帮助";
-"DontBind" = "暂不绑定";
-"BindSuccess" = "恭喜您，绑定成功！";
-"HistoryData" = "历史数据";
-"Day" = "日";
-"Week" = "周";
-"Month" = "月";
-"Year" = "年";
-"WrongPhoneNum" = "手机号格式错误！";
-"ChangeFilterTip" = "口罩滤芯已耗尽，请立即更换";
-"SendWindAmount" = "送风量";
-"Sport" = "运动";
-"Default" = "默认";
-"Intelligence" = "智能";
-"Walk" = "步行";
-"Drive" = "开车";
-"Rest" = "休息";
-"Add" = "添加";
-"AddMode" = "添加模式";
-"SendSMS" = "发送验证码";
-"CaptureWrong" = "图形验证码错误";
-"SMSDigitWrong" = "短信验证码无效";
-"returnAndReinput" = "返回，请重新输入";
+
+
+
+
 

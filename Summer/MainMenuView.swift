@@ -35,6 +35,7 @@ class MainMenuView: BaseView {
     /// App下载地址
     var appDownloadUrl: String?
     
+    
     @IBOutlet weak var avatarBtn: UIButton!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -118,6 +119,7 @@ class MainMenuView: BaseView {
             self?.maskBuyUrl = data["u_buy_mask"]["v"].stringValue
             self?.filterBuyUrl = data["u_buy_mask"]["v"].stringValue
             self?.appDownloadUrl = data["u_app_download_page"]["v"].stringValue
+            
         }
     }
     

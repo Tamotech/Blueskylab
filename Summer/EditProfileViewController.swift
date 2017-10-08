@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import Presentr
 
-class EditProfileViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class EditProfileViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     
     @IBOutlet weak var avartarBtn: UIButton!
@@ -21,21 +21,27 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
     @IBOutlet weak var heightField: UITextField!
     @IBOutlet weak var weightField: UITextField!
     
-    
+    ///是否有修改操作
+    var change = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         birthField.isUserInteractionEnabled = false
         genderField.isUserInteractionEnabled = false
         heightField.isUserInteractionEnabled = false
         weightField.isUserInteractionEnabled = false
+        nameField.delegate = self
         
         self.title = NSLocalizedString("ProfileTitle", comment: "")
         let saveItem = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .plain, target: self, action: #selector(handleTapSaveItem(_:)))
         self.navigationItem.rightBarButtonItem = saveItem
         
         self.updateView()
+        
+        let backItem = UIBarButtonItem(image: #imageLiteral(resourceName: "nav-back-dark"), style: .plain, target: self, action: #selector(exitController(sender:)))
+        navigationItem.leftBarButtonItem = backItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -99,6 +105,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
             self?.birthField.text = dateStr
         }
         picker.show()
+        change = true
     }
     
     @IBAction func handleTapGender(_ sender: UITapGestureRecognizer) {
@@ -107,6 +114,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
             self.genderField.text = item
         }
         picker.show()
+        change = true
     }
     @IBAction func handleTapHeight(_ sender: UITapGestureRecognizer) {
         var defaultValue: CGFloat = 170
@@ -122,6 +130,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
             self.heightField.text = "\(value) cm"
         }
         sheet.show()
+        change = true
     }
     @IBAction func handleTapWeight(_ sender: UITapGestureRecognizer) {
         var defaultValue: CGFloat = 60
@@ -137,6 +146,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
             self.weightField.text = "\(value) kg"
         }
         sheet.show()
+        change = true
     }
     
     
@@ -177,7 +187,88 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
     }
     
     func handleTapSaveItem(_:Any) {
+        saveUser()
+    }
+    
+    
+    //MARK: - ImagePickerDelegate
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        change = true
+        picker.dismiss(animated: true) {
+            let img = info[UIImagePickerControllerOriginalImage] as! UIImage?
+            if img != nil {
+            self.avartarBtn.setImage(img!, for: .normal)
+                let data = UIImageJPEGRepresentation(img!, 0.8)!
+                MBProgressHUD.showAdded(to: self.view, animated: true)
+                APIManager.shareInstance.uploadFile(data: data, result: { [weak self](JSON, code, msg) in
+                    MBProgressHUD.hide(for: (self?.view)!, animated: true)
+                    if code == 0 {
+                        let avatarUrl = JSON?["data"]["url"].string ?? ""
+                        SessionManager.sharedInstance.userInfo?.headimg = avatarUrl
+                    }
+                    else {
+                        BLHUDBarManager.showError(msg: msg)
+                    }
+                })
+            }
+        }
+    }
+    
+    //MARK: - textfield delegate
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == nameField {
+            if textField.text!.utf8.count >= 30 && string != "" {
+                
+                return false
+            }
+        }
+        
+        self.change = true
+        return true
+    }
+    
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        if textField == nameField {
+//            if textField.text!.characters.count > 30 {
+//                let endIndex = textField.text!.index(textField.text!.startIndex, offsetBy: 30)
+//                textField.text = textField.text?.substring(to: endIndex)
+//                self.change = true
+//            }
+//        }
+//    }
+    
+    ///退出操作
+    func exitController(sender: UIButton) {
+        
+        if change {
+            let alert = ConfirmAlertView.instanceFromXib() as! ConfirmAlertView
+            alert.titleLabel.text = NSLocalizedString("Exit", comment: "")
+            alert.msgLabel.text = NSLocalizedString("ConfirmDropThis", comment: "")
+            alert.cancelBtn.setTitle(NSLocalizedString("Exit", comment: ""), for: .normal)
+            alert.confirmBtn.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
+            alert.confirmCalback = {
+                self.saveUser()
+            }
+            alert.cancelCalback = {
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.show()
+        }
+        else {
+            self.navigationController?.popViewController(animated: true)
+
+        }
+        
+    }
+    
+    func saveUser() {
         //更新 user
         let userInfo = SessionManager.sharedInstance.userInfo
         userInfo?.name = nameField.text ?? ""
@@ -202,38 +293,5 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
                 SVProgressHUD.showError(withStatus: msg)
             }
         })
-        
     }
-    
-    
-    //MARK: - ImagePickerDelegate
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        picker.dismiss(animated: true) {
-            let img = info[UIImagePickerControllerOriginalImage] as! UIImage?
-            if img != nil {
-            self.avartarBtn.setImage(img!, for: .normal)
-                let data = UIImageJPEGRepresentation(img!, 0.8)!
-                MBProgressHUD.showAdded(to: self.view, animated: true)
-                APIManager.shareInstance.uploadFile(data: data, result: { [weak self](JSON, code, msg) in
-                    MBProgressHUD.hide(for: (self?.view)!, animated: true)
-                    if code == 0 {
-                        let avatarUrl = JSON?["data"]["url"].string ?? ""
-                        SessionManager.sharedInstance.userInfo?.headimg = avatarUrl
-                    }
-                    else {
-                        BLHUDBarManager.showError(msg: msg)
-                    }
-                })
-            }
-        }
-    }
-    
-    
 }

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotificationCenterController" customModule="Summer" customModuleProvider="target">
             <connections>
+                <outlet property="nodataView" destination="d2L-Bb-mYh" id="p7f-Hr-fac"/>
                 <outlet property="tableView" destination="Ghu-8Y-uyQ" id="6QH-7K-cNl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,14 +30,42 @@
                         <outlet property="delegate" destination="-1" id="AQr-dd-5X9"/>
                     </connections>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2L-Bb-mYh">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud_nodata" translatesAutoresizingMaskIntoConstraints="NO" id="dJL-8R-OGS">
+                            <rect key="frame" x="137" y="144" width="100" height="93"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="还没有消息~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kL-NX-cJh">
+                            <rect key="frame" x="138.5" y="265" width="97.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="0kL-NX-cJh" firstAttribute="centerX" secondItem="dJL-8R-OGS" secondAttribute="centerX" id="5N9-bI-4NN"/>
+                        <constraint firstItem="dJL-8R-OGS" firstAttribute="centerX" secondItem="d2L-Bb-mYh" secondAttribute="centerX" id="MoD-yQ-9o8"/>
+                        <constraint firstItem="0kL-NX-cJh" firstAttribute="top" secondItem="dJL-8R-OGS" secondAttribute="bottom" constant="28" id="lSB-8U-lRC"/>
+                        <constraint firstItem="dJL-8R-OGS" firstAttribute="top" secondItem="d2L-Bb-mYh" secondAttribute="top" constant="144" id="pYn-LQ-iC2"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Ghu-8Y-uyQ" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="4pf-6P-fnm"/>
+                <constraint firstItem="d2L-Bb-mYh" firstAttribute="top" secondItem="Ghu-8Y-uyQ" secondAttribute="top" id="DoK-kz-HgZ"/>
                 <constraint firstItem="Ghu-8Y-uyQ" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="ESe-pP-vcO"/>
+                <constraint firstItem="d2L-Bb-mYh" firstAttribute="bottom" secondItem="Ghu-8Y-uyQ" secondAttribute="bottom" id="QUy-xS-LDX"/>
+                <constraint firstItem="d2L-Bb-mYh" firstAttribute="leading" secondItem="Ghu-8Y-uyQ" secondAttribute="leading" id="UCd-zM-WYO"/>
+                <constraint firstItem="d2L-Bb-mYh" firstAttribute="trailing" secondItem="Ghu-8Y-uyQ" secondAttribute="trailing" id="WeI-a3-iik"/>
                 <constraint firstItem="Ghu-8Y-uyQ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="h3E-Vg-YCL"/>
                 <constraint firstItem="Ghu-8Y-uyQ" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="ocR-aV-0IC"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="cloud_nodata" width="100" height="93"/>
+    </resources>
 </document>

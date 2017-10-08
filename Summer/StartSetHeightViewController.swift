@@ -23,7 +23,19 @@ class StartSetHeightViewController: UIViewController {
         
         let totalLength = 200
         let cellLength = 1
-        ruler = RuleSelectorView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 80), cellLength: cellLength, totalLength: totalLength, cellRuleCount: 10, defaultValue:178, tintColor: UIColor.white)
+        
+        if SessionManager.sharedInstance.loginInfo.gender == "male" {
+            ruler = RuleSelectorView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 90), cellLength: cellLength, totalLength: totalLength, cellRuleCount: 10, defaultValue:170, tintColor: UIColor.white)
+            self.heightLabel.text = "170.0"
+            SessionManager.sharedInstance.loginInfo.height=170
+        }
+        else {
+            ruler = RuleSelectorView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 90), cellLength: cellLength, totalLength: totalLength, cellRuleCount: 10, defaultValue:160, tintColor: UIColor.white)
+            self.heightLabel.text = "160.0"
+            SessionManager.sharedInstance.loginInfo.height=160
+            
+        }
+        
         weightContainerView.addSubview(ruler)
         ruler.snp.makeConstraints { (make) in
             make.left.right.top.bottom.equalTo(0)
@@ -32,7 +44,11 @@ class StartSetHeightViewController: UIViewController {
             self?.heightLabel.text = String.init(format: "%.1f", value)
             SessionManager.sharedInstance.loginInfo.height = value
         }
-        
+        ruler.selectedValueAction = {[weak self](value) in
+            
+            self?.heightLabel.text = String.init(format: "%.1f", value)
+            SessionManager.sharedInstance.loginInfo.height = value
+        }
     }
     
     

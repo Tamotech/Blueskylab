@@ -33,6 +33,7 @@ class HistoryDataCell: UITableViewCell {
     func updateCell(data: CityAQIData) {
         
         dateLabel.text = data.dateStr
+        aqiNameLabel.text = "AQI"
         colorDotView.backgroundColor = UIColor(hexString: data.aqilevelcoler)
         aqiLevelLabel.text = "\(Int(data.aqi))"
         aqiLevelLabel.textColor = UIColor(hexString: data.aqilevelcoler)

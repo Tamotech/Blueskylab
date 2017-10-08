@@ -51,6 +51,7 @@ class BLSBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
     
     static let shareInstance = BLSBluetoothManager()
     var manager: CBCentralManager?
+    var state: BluetoothState = BluetoothState.Unauthorized
     
     func setupManager() {
         manager = CBCentralManager(delegate: self, queue: nil)
@@ -98,6 +99,8 @@ class BLSBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
             default:break
             }
         }
+        
+        self.state = state
         if stateUpdate != nil {
             stateUpdate!(state)
         }
@@ -122,6 +125,7 @@ class BLSBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("设备已连接 -- \(peripheral.name ?? "")")
         if stateUpdate != nil {
+            self.state = .Connected
             stateUpdate!(.Connected)
         }
         peripheral.delegate = self
@@ -133,6 +137,7 @@ class BLSBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print("设备连接失败 --- \(error?.localizedDescription ?? "")")
         if stateUpdate != nil {
+            self.state = .ConnectFailed
             stateUpdate!(.ConnectFailed)
         }
     }
@@ -141,6 +146,7 @@ class BLSBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
         
         print("设备已断开 ----")
         if stateUpdate != nil {
+            self.state = .DisConnected
             stateUpdate!(.DisConnected)
         }
     }
@@ -191,5 +197,17 @@ class BLSBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
     ///写数据
     func writeData(peripheral: CBPeripheral, characteristic: CBCharacteristic, data: Data) {
         peripheral.writeValue(data, for: characteristic, type: .withoutResponse)
+    }
+    
+    ///解绑 断开连接
+    func stop() {
+        if peripheral != nil {
+            manager?.cancelPeripheralConnection(peripheral!)
+        }
+        manager?.stopScan()
+        state = .DisConnected
+        if self.stateUpdate != nil {
+            self.stateUpdate!(.DisConnected)
+        }
     }
 }

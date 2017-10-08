@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class SettingViewController: BaseViewController {
 
@@ -16,13 +17,31 @@ class SettingViewController: BaseViewController {
     @IBOutlet weak var airSwitch: UISwitch!
     @IBOutlet weak var productInfoSwitch: UISwitch!
     
-    
+    ///关于我们
+    var aboutUsHTML: String?
+    ///微博
+    var weiboName: String?
+    ///联系方式
+    var contractWay: String?
+    ///email
+    var email: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = NSLocalizedString("Settings", comment: "")
-
+        self.loadConfigData()
+    }
+    
+    func loadConfigData() {
+        APIRequest.getUserConfig(codes: "f_about_us, s_weibo, s_contact_way, s_email") { [weak self](JSONData) in
+            let data = JSONData as! JSON
+            self?.aboutUsHTML = data["f_about_us"]["v"].stringValue
+            self?.contractWay = data["s_contact_way"]["v"].stringValue
+            self?.weiboName = data["s_weibo"]["v"].stringValue
+            self?.email = data["s_email"]["v"].stringValue
+            
+        }
     }
 
     //MARK: - actions
@@ -34,6 +53,10 @@ class SettingViewController: BaseViewController {
     
     @IBAction func handleTapAbout(_ sender: Any) {
         let aboutVc = AboutViewController()
+        aboutVc.contentHTML = aboutUsHTML ?? ""
+        aboutVc.contractWay = contractWay ?? ""
+        aboutVc.email = email ?? ""
+        aboutVc.weibo = weiboName ?? ""
         navigationController?.pushViewController(aboutVc, animated: true)
     }
     

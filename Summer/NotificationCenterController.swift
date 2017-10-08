@@ -13,12 +13,16 @@ class NotificationCenterController: BaseViewController, UITableViewDelegate, UIT
 
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var nodataView: UIView!
+    
     var nData: NotificationList = NotificationList()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = NSLocalizedString("NotificationCenter", comment: "")
+        nodataView.isHidden = true
         tableView.layoutMargins = .zero
         tableView.separatorInset = .zero
         let cellNib = UINib(nibName: "NotificationCenterCell", bundle: nil)
@@ -62,6 +66,7 @@ class NotificationCenterController: BaseViewController, UITableViewDelegate, UIT
             if data != nil && data is NotificationList {
                 self?.nData = data as! NotificationList
                 self?.tableView.reloadData()
+                self?.nodataView.isHidden = self?.nData.list.count != 0
             }
         }
     }

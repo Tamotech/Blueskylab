@@ -17,6 +17,8 @@ class StartGuideViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var startGuideImg1: UIImageView!
     
+    var timer:Timer?
+    
     lazy var tipCenter: CGPoint = {
         if screenWidth < 330 {
             return CGPoint(x: screenWidth-85, y: 25)
@@ -61,6 +63,15 @@ class StartGuideViewController: UIViewController, UIScrollViewDelegate {
             })
             
         }()
+        
+        setupTimer()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        timer?.invalidate()
+        timer = nil
+        scrollView.contentOffset = CGPoint(x: 0, y: 0)
     }
 
     func setupView() {
@@ -168,6 +179,32 @@ class StartGuideViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func handleLoginNowBtn(_ sender: Any) {
         let vc = LoginViewController(nibName: "LoginViewController", bundle: nil)
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    ///MARK: - timer
+    func setupTimer() {
+        
+        if timer == nil {
+            timer = Timer(timeInterval: 3, target: self, selector: #selector(handleTimerEvent(t:)), userInfo: nil, repeats: true)
+            timer?.fire()
+            RunLoop.main.add(timer!, forMode: .commonModes)
+        }
+        
+    }
+    
+    func handleTimerEvent(t:Timer) {
+        gotoNextPage(nil)
+    }
+    
+    func gotoNextPage(_:Any?) {
+        var currentIndex = Int(scrollView.contentOffset.x/screenWidth)
+        currentIndex = currentIndex+1
+        if currentIndex >= 3 {
+            currentIndex = 0
+        }
+        pageControl.currentPage = currentIndex
+        scrollView.setContentOffset(CGPoint(x: CGFloat(currentIndex)*screenWidth, y: 0), animated: true)
     }
     
     

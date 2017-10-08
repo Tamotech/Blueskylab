@@ -125,10 +125,12 @@ class OpenBluetoothController: BaseViewController {
     }
     
     @IBAction func handleTapDontBindBtn(_ sender: Any) {
+        self.manager?.stop()
+        self.manager = nil
         dismiss(animated: true) { 
-            if self.delegate != nil {
-                self.delegate?.didConnectBlueTooth()
-            }
+//            if self.delegate != nil {
+//                self.delegate?.didConnectBlueTooth()
+//            }
         }
     }
     

@@ -15,6 +15,11 @@ class ConfirmAlertView: BaseView {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var msgLabel: UILabel!
+    
+    @IBOutlet weak var cancelBtn: UIButton!
+    
+    @IBOutlet weak var confirmBtn: UIButton!
+    
     var confirmCalback:confirmAlertActionCallback?
     var cancelCalback:confirmAlertActionCallback?
     

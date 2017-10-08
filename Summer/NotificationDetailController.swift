@@ -7,22 +7,22 @@
 //
 
 import UIKit
+import WebKit
 
-class NotificationDetailController: BaseViewController, BottomShareViewDelegate {
+class NotificationDetailController: BaseWKWebViewController, BottomShareViewDelegate {
 
     
     
     var data: NotificationItem?
-    var webView = UIWebView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
     var shareItem: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //self.title = NSLocalizedString("NotificationDetail", comment: "");
+        self.showCustomTitle(title:NSLocalizedString("QuestionDetail", comment: ""))
         shareItem = UIBarButtonItem(image: UIImage(named:"icon-share"), style: .plain, target: self, action: #selector(handleShareAction(_:)))
 //        self.navigationItem.rightBarButtonItem = shareItem
-        self.view.addSubview(webView)
+        
         self.loadData()
     }
     
@@ -32,14 +32,21 @@ class NotificationDetailController: BaseViewController, BottomShareViewDelegate 
         APIRequest.getNotificationDetail(id: data!.id) {[weak self] (result) in
             MBProgressHUD.hide(for: (self?.view)!, animated: true)
             self?.data = result as? NotificationItem
-            self?.showCustomTitle(title: self?.data?.title ?? "")
             if (self?.data?.link.characters.count)! > 0 {
                 self?.navigationItem.rightBarButtonItem = self?.shareItem
             }
             else {
                 self?.navigationItem.rightBarButtonItem = nil
             }
-            self?.webView.loadHTMLString(self?.data?.description ?? "", baseURL: nil)
+            
+            //let path = Bundle.main.bundlePath
+            //let baseURL = URL.init(fileURLWithPath: path)
+            let htmlPath = Bundle.main.path(forResource: "notification", ofType: "html")
+            let content = try? String.init(contentsOfFile: htmlPath!, encoding: String.Encoding.utf8) as NSString
+            let replaceTag = "${title}"
+            var newContent = content?.replacingOccurrences(of: replaceTag, with: self?.data?.description ?? "")
+            newContent = newContent?.replacingOccurrences(of: "${contentHtml}", with: self?.data!.content ?? "")
+            self?.webView.loadHTMLString(newContent!, baseURL: nil)
         }
     }
     
