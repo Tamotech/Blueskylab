@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		25F4822315621C66772C57FC /* Pods_Summer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C96D22CE689A5323E4BAAB6 /* Pods_Summer.framework */; };
 		5A2341DA1F88E03000BEB06F /* BaseWKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2341D91F88E02F00BEB06F /* BaseWKWebViewController.swift */; };
+		5A3925491F8CA2FB00A066B0 /* main-bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2341D81F88601C00BEB06F /* main-bg2.png */; };
 		5A7F6F711F88EEAA00F59DCB /* about-banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7F6F701F88EE4F00F59DCB /* about-banner.png */; };
 		CC0237771F08998D00400F7C /* EditPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0237751F08998D00400F7C /* EditPasswordViewController.swift */; };
 		CC0237781F08998D00400F7C /* EditPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0237761F08998D00400F7C /* EditPasswordViewController.xib */; };
@@ -156,6 +157,8 @@
 		5A2341D81F88601C00BEB06F /* main-bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main-bg2.png"; sourceTree = "<group>"; };
 		5A2341D91F88E02F00BEB06F /* BaseWKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWKWebViewController.swift; sourceTree = "<group>"; };
 		5A7F6F701F88EE4F00F59DCB /* about-banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about-banner.png"; sourceTree = "<group>"; };
+		5A8498DF1F89FDBD002B63C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5ABCF9B51F902C4C00E91962 /* iOSDFULibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDFULibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C96D22CE689A5323E4BAAB6 /* Pods_Summer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Summer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7759AA13FDCD9FF9EA28D118 /* Pods-Summer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Summer/Pods-Summer.debug.xcconfig"; sourceTree = "<group>"; };
 		ACB90229D5AF13058AC07C4C /* Pods-Summer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Summer/Pods-Summer.release.xcconfig"; sourceTree = "<group>"; };
@@ -237,8 +240,6 @@
 		CC339C291F4E3E1B00EB0516 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/EquipmentViewController.strings; sourceTree = "<group>"; };
 		CC36937F1F3612AD00929F24 /* OpenBluetoothController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenBluetoothController.swift; sourceTree = "<group>"; };
 		CC3693801F3612AD00929F24 /* OpenBluetoothController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenBluetoothController.xib; sourceTree = "<group>"; };
-		CC3EF2CE1EFEB9A600CE4919 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		CC3EF2CF1EFEB9A800CE4919 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CC4B66D91F3838B500772738 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		CC4B66DB1F383F2500772738 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		CC4BA8721F2D9BE2002B571D /* LanguageListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageListController.swift; sourceTree = "<group>"; };
@@ -337,9 +338,6 @@
 		CCE9547A1F113260005C755C /* NotificationCenterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCenterController.xib; sourceTree = "<group>"; };
 		CCFAC1FE1EFF5B4900319BB0 /* BaseRulerSelectorActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRulerSelectorActionView.swift; sourceTree = "<group>"; };
 		CCFAC20C1EFFA16500319BB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenuView.xib; sourceTree = "<group>"; };
-		CCFAC20F1EFFA17000319BB0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenuView.strings"; sourceTree = "<group>"; };
-		CCFAC2111EFFA17E00319BB0 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/MainMenuView.strings"; sourceTree = "<group>"; };
-		CCFAC2121EFFA18D00319BB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenuView.strings; sourceTree = "<group>"; };
 		CCFAC2141EFFA19300319BB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		CCFAC2161EFFA23000319BB0 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		CCFBF71E1F3DFE300025F330 /* AddModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddModeViewController.swift; sourceTree = "<group>"; };
@@ -364,6 +362,7 @@
 		A4DB292F3E62DDC85E32350B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5ABCF9B51F902C4C00E91962 /* iOSDFULibrary.framework */,
 				CCB644371F7684AC0012AE04 /* CoreBluetooth.framework */,
 				CCA48DC01F58481E0010CF4F /* HealthKit.framework */,
 				CCCE01611F52EBC500974F6D /* UserNotifications.framework */,
@@ -910,6 +909,9 @@
 						DevelopmentTeam = 437FYPNA4H;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.HealthKit = {
 								enabled = 1;
 							};
@@ -945,6 +947,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A3925491F8CA2FB00A066B0 /* main-bg2.png in Resources */,
 				5A7F6F711F88EEAA00F59DCB /* about-banner.png in Resources */,
 				CC3693821F3612AD00929F24 /* OpenBluetoothController.xib in Resources */,
 				CC5A10361F2F77E000A73754 /* StartGuideViewController.xib in Resources */,
@@ -1004,9 +1007,48 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Summer/Pods-Summer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AMPopTip/AMPopTip.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/CRRefresh/CRRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
+				"${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSDFULibrary/iOSDFULibrary.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMPopTip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CRRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentr.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDFULibrary.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1019,13 +1061,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Summer-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EF7A68E2DBD5033B0AFD41C6 /* [CP] Copy Pods Resources */ = {
@@ -1210,8 +1255,7 @@
 		CC3EF2CD1EFEB99E00CE4919 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CC3EF2CE1EFEB9A600CE4919 /* zh-Hant-HK */,
-				CC3EF2CF1EFEB9A800CE4919 /* en */,
+				5A8498DF1F89FDBD002B63C4 /* Base */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1220,9 +1264,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				CCFAC20C1EFFA16500319BB0 /* Base */,
-				CCFAC20F1EFFA17000319BB0 /* zh-Hans */,
-				CCFAC2111EFFA17E00319BB0 /* zh-Hant-HK */,
-				CCFAC2121EFFA18D00319BB0 /* en */,
 			);
 			name = MainMenuView.xib;
 			sourceTree = "<group>";

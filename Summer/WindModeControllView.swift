@@ -80,8 +80,13 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
             refreshItemViews()
         }
         
-        let value = mode.value
-        BLSBluetoothManager.shareInstance.ajustSpeed(value: CGFloat(value))
+        if mode.name == NSLocalizedString("Intelligence", comment: "") {
+            BLSBluetoothManager.shareInstance.switchToIntelligenceModeForMask()
+        }
+        else {
+            let value = mode.value
+            BLSBluetoothManager.shareInstance.ajustSpeed(value: CGFloat(value))
+        }
     }
     
     func hideItem(item: WindModeAjustor) {

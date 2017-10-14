@@ -246,4 +246,17 @@ class APIRequest: NSObject {
             }
         }
     }
+    
+    ///更新用户配置信息
+    class func updateUserConfig(params: [String:String]) {
+        let path = "/member/updateUserCfg.htm"
+//        MBProgressHUD.showAdded(to: keyWindow!, animated: true)
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+//            MBProgressHUD.hide(for: keyWindow!, animated: true)
+            if code != 0 {
+                SVProgressHUD.showError(withStatus: msg)
+            }
+        }
+    }
+    
 }

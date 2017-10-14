@@ -27,6 +27,7 @@ let kWindModeConfigDidChangeNotify = Notification.Name("wind_mode_config_change_
 let kWindModeConfigDidDeleteNotify = Notification.Name("wind_mode_config_delete_notify_key")
 let kWindModeConfigDidChangeOrderNotify = Notification.Name("wind_mode_config_change_order_notify_key")
 let kUserMaskConfigUpdateNoti = Notification.Name("user_mask_config_update_notify_key")
+let kMaskDidConnectBluetoothNoti = Notification.Name("mask_did_connect_bluetooth_notify_key")
 
 
 

@@ -48,6 +48,11 @@ class HealthDataManager: NSObject {
     var zeroStep: Int = 0
     var zeroDistance: Float = 0
     
+    var totalDistance: Int = 0
+    var totalSteps: Int = 0
+    var totalCarlories: Int = 0
+    
+    
     
     // 开始获取步数计数据
     func startPedometerUpdates() {
@@ -134,6 +139,9 @@ class HealthDataManager: NSObject {
             if self.delegate != nil {
                 self.delegate?.motionDataUpdate(distance: dis, speed: speed, stepCount: steps, carlories: carlories)
             }
+            self.totalDistance = Int(dis)
+            self.totalSteps = steps
+            self.totalCarlories = Int(carlories)
             
         })
     }
@@ -145,6 +153,9 @@ class HealthDataManager: NSObject {
         zeroDistance = 0
         zeroStep = 0
         seconds = 0
+        
+        //保存数据
+        saveMaskUseData()
     }
     
     
@@ -158,5 +169,9 @@ class HealthDataManager: NSObject {
         if self.delegate != nil {
             self.delegate?.timerStrUpdate(timeStr:String.init(format: "%02d:%02d:%02d", hour, minute, second))
         }
+    }
+    
+    func saveMaskUseData() {
+        SessionManager.sharedInstance.userMaskConfig.saveMaskUseHistory(usetime: seconds, distance: totalDistance, step: totalSteps, calories: totalCarlories)
     }
 }

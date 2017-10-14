@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreBluetooth
+import iOSDFULibrary
 
 enum BluetoothState {
     case Unauthorized       //未授权
@@ -21,8 +22,10 @@ enum BluetoothState {
 
 /// 蓝牙状态改变回调
 typealias BluetoothStateUpdateCallback = (BluetoothState)->()
+typealias MaskPowerChangeCallback = (Int)->()
 
-class BLSBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
+class BLSBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate,
+DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     
     let speedServiceID = "6e400001-b5a3-f393-e0a9-e50e24dcca9e"
     let deviceInfoServiceID = "0x180A"
@@ -41,6 +44,11 @@ class BLSBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
     
     ///电量特征值
     var powerChar: CBCharacteristic?
+    /// 固件升级特征值
+    var firewareChar: CBCharacteristic?
+    var firmwarePeriph: CBPeripheral?
+    fileprivate var dfuController : DFUServiceController?
+    
     ///调节风速特征值
     var speedChar: CBCharacteristic?
     
@@ -48,10 +56,19 @@ class BLSBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
     var peripheral: CBPeripheral?
     
     var stateUpdate: BluetoothStateUpdateCallback?
+    var powerChange: MaskPowerChangeCallback?
     
     static let shareInstance = BLSBluetoothManager()
     var manager: CBCentralManager?
     var state: BluetoothState = BluetoothState.Unauthorized
+    
+    ///当前风速
+    var currentWindSpeed: CGFloat = 0
+    ///蓝牙设备的UUID
+    var deviceUUID: String?
+    
+    ///是否需要固件升级
+    var needUpdateFirmware = false
     
     func setupManager() {
         manager = CBCentralManager(delegate: self, queue: nil)
@@ -109,9 +126,11 @@ class BLSBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
     
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        print("发现设备 ---- \(peripheral.name ?? "")   信号强度: \(RSSI)")
+        //print("发现设备 ---- \(peripheral.name ?? "")   信号强度: \(RSSI)")
         if peripheral.name == maskName {
             //开始连接口罩
+            deviceUUID = peripheral.identifier.uuidString
+            self.bindBlueToothDevice()
             manager?.stopScan()
             manager?.connect(peripheral, options: nil)
             self.peripheral = peripheral
@@ -166,10 +185,18 @@ class BLSBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
             if char.uuid.isEqual(CBUUID(string: kBatteryCharacteristicUUID)) {
                 //电池电量
                 powerChar = char
+                var power: Int = 100
                 if let value = char.value {
                     print("电池电量--- \(value)")
+                    power = NSString(data: value, encoding: String.Encoding.utf8.rawValue)!.integerValue
                     
                 }
+                
+                print("电池电量--- \(power)")
+                if powerChange != nil {
+                    powerChange!(power)
+                }
+                
             }
             else if char.uuid.isEqual(CBUUID(string: kSpeedWriteCharacteristicUUID)) {
                 //写风速
@@ -179,6 +206,20 @@ class BLSBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
                     
                 }
             }
+            else if (char.uuid.isEqual(CBUUID(string: self.firmwareCharacteristicUUID))) {
+                print("固件character ---> \(char)")
+                firmwarePeriph = peripheral
+                firewareChar = char
+                //self.updateFireware()
+            }
+            else if (char.uuid.isEqual(CBUUID(string: self.hardwareCharacteristicUUID))) {
+                print("硬件服务特征值 ----> \(char)")
+                print("value--->\(String(describing: char.value))")
+                
+                
+                
+                
+            }
         }
     }
     
@@ -186,6 +227,7 @@ class BLSBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
     ///写风速操作
     ///value vibrate:n;  (n 1-20)  value: 0-100
     func ajustSpeed(value: CGFloat) {
+        currentWindSpeed = value        
         let str = "vibrate:\(Int(value*20.0/100.0));"
         let data = str.data(using: .utf8)!
         if self.peripheral == nil || self.speedChar == nil {
@@ -193,6 +235,17 @@ class BLSBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
         }
         self.writeData(peripheral: self.peripheral!, characteristic: self.speedChar!, data: data)
     }
+    
+    ///口罩切换到智能模式
+    func switchToIntelligenceModeForMask() {
+        let str = "priority:1;"
+        let data = str.data(using: .utf8)!
+        if self.peripheral == nil || self.speedChar == nil {
+            return
+        }
+        self.writeData(peripheral: self.peripheral!, characteristic: self.speedChar!, data: data)
+    }
+    
     
     ///写数据
     func writeData(peripheral: CBPeripheral, characteristic: CBCharacteristic, data: Data) {
@@ -210,4 +263,88 @@ class BLSBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDeleg
             self.stateUpdate!(.DisConnected)
         }
     }
+    
+    
+    //MARK: - DFUServiceDelegate
+    
+    func dfuStateDidChange(to state: DFUState) {
+        print("DFU status changed --> \(state)")
+    }
+    
+    func dfuError(_ error: DFUError, didOccurWithMessage message: String) {
+        print("DFU error---> \(message)")
+    }
+    
+    //MARK: - DFUProgressDelegate
+    
+    func dfuProgressDidChange(for part: Int, outOf totalParts: Int, to progress: Int, currentSpeedBytesPerSecond: Double, avgSpeedBytesPerSecond: Double) {
+        
+        let uploadStatus = String(format: "Part: %d/%d\nSpeed: %.1f KB/s\nAverage Speed: %.1f KB/s",
+                                      part, totalParts, currentSpeedBytesPerSecond/1024, avgSpeedBytesPerSecond/1024)
+        print("upload status---> \(uploadStatus)")
+    }
+    
+    //MARK: - LoggerDelegate
+    
+    func logWith(_ level: LogLevel, message: String) {
+        print("\(level.name()): \(message)")
+    }
+    
+    ///与用户绑定
+    func bindBlueToothDevice() {
+        SessionManager.sharedInstance.userMaskConfig.bindMask()
+    }
+    
+    ///下载最先固件升级
+    func updateFireware() {
+        guard let url = SessionManager.sharedInstance.firewareDownloadUrl else {
+            return
+        }
+        let request = URLRequest(url: URL(string: url)!)
+        let session = URLSession.shared
+        let task = session.downloadTask(with: request) { (locationURL, response, error) in
+            if error != nil {
+                print("下载固件失败--->\(error.debugDescription)")
+            }
+            else if locationURL != nil {
+                print("下载固件成功, 开始写入蓝牙")
+                //下载成功  开始写入蓝牙
+                //location位置转换
+                let locationPath = locationURL!.path
+                //拷贝到用户目录
+                let datestr = String(Date().timeIntervalSince1970)
+                let documnets:String = NSTemporaryDirectory()+datestr+"firmware.zip"
+                //创建文件管理器
+                let fileManager = FileManager.default
+                try! fileManager.moveItem(atPath: locationPath, toPath: documnets)
+                self.startDFUProcess(fileURL: URL(fileURLWithPath: documnets))
+            }
+        }
+        
+        task.resume()
+        
+        
+        
+    }
+    
+    ///开始写入固件
+    func startDFUProcess(fileURL: URL) {
+        let selectedFirmware =  DFUFirmware(urlToZipFile: fileURL)
+        guard peripheral != nil else {
+            print("No DFU peripheral was set")
+            return
+        }
+        
+        let dfuInitiator = DFUServiceInitiator(centralManager: manager!, target: peripheral!)
+        dfuInitiator.delegate = self
+        dfuInitiator.progressDelegate = self
+        dfuInitiator.logger = self
+        
+        // This enables the experimental Buttonless DFU feature from SDK 12.
+        // Please, read the field documentation before use.
+        //dfuInitiator.enableUnsafeExperimentalButtonlessServiceInSecureDfu = true
+        
+        dfuController = dfuInitiator.with(firmware: selectedFirmware!).start()
+    }
+    
 }

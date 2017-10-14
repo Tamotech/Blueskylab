@@ -35,14 +35,9 @@ class MainMenuView: BaseView {
     /// App下载地址
     var appDownloadUrl: String?
     
-    
     @IBOutlet weak var avatarBtn: UIButton!
     
     @IBOutlet weak var nameLabel: UILabel!
-    
-    
-    
-    
     
     override func awakeFromNib() {
         self.frame = UIScreen.main.bounds
@@ -55,14 +50,18 @@ class MainMenuView: BaseView {
     
     ///更新页面
     func updateView() {
-        guard let userInfo = SessionManager.sharedInstance.userInfo else {
-            return
+        let userInfo = SessionManager.sharedInstance.userInfo
+        if userInfo == nil {
+            //未登录
+            avatarBtn.setImage(#imageLiteral(resourceName: "imgProfile-M"), for: .normal)
+            nameLabel.text = NSLocalizedString("PleaseLogin", comment: "")
         }
-        
-        let rc = ImageResource(downloadURL: URL(string: userInfo.headimg.urlStringWithBLS())!)
-        avatarBtn.kf.setImage(with: rc, for: .normal, placeholder: #imageLiteral(resourceName: "imgProfile-M"), options: nil, progressBlock: nil, completionHandler: nil)
-//        nameLabel.text = userInfo.name
-        nameLabel.text = NSLocalizedString("MyAir", comment: "")
+        else {
+            let rc = ImageResource(downloadURL: URL(string: userInfo!.headimg.urlStringWithBLS())!)
+            avatarBtn.kf.setImage(with: rc, for: .normal, placeholder: #imageLiteral(resourceName: "imgProfile-M"), options: nil, progressBlock: nil, completionHandler: nil)
+    //        nameLabel.text = userInfo.name
+            nameLabel.text = NSLocalizedString("MyAir", comment: "")
+        }
     }
     
     
@@ -114,11 +113,13 @@ class MainMenuView: BaseView {
     
     
     func loadConfigData() {
-        APIRequest.getUserConfig(codes: "u_buy_mask,u_buy_filter,u_app_download_page") { [weak self](JSONData) in
+        APIRequest.getUserConfig(codes: "u_buy_mask,u_buy_filter,u_app_download_page,s_firmware_version_no,u_firmware_download") { [weak self](JSONData) in
             let data = JSONData as! JSON
             self?.maskBuyUrl = data["u_buy_mask"]["v"].stringValue
             self?.filterBuyUrl = data["u_buy_mask"]["v"].stringValue
             self?.appDownloadUrl = data["u_app_download_page"]["v"].stringValue
+            SessionManager.sharedInstance.firewareVersion = data["s_firmware_version_no"]["v"].stringValue
+            SessionManager.sharedInstance.firewareDownloadUrl = data["u_firmware_download"]["v"].stringValue
             
         }
     }

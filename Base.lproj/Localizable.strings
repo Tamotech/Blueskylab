@@ -22,6 +22,7 @@
 "VertifyCodeHasSent" = "验证码已发送";
 "JumpOver" = "跳过";
 "SendSMS" = "发送验证码";
+"ReSendSMS" = "重新发送";
 "CaptureWrong" = "图形验证码错误";
 "SMSDigitWrong" = "短信验证码无效";
 "returnAndReinput" = "返回，请重新输入";
@@ -73,6 +74,7 @@
 "Hide" = "隐藏";
 "MyAir" = "我的大气";
 "LowPowerTip" = "电量低, 请尽快为口罩充电";
+"PleaseLogin" = "请登录";
 
 
 //设置

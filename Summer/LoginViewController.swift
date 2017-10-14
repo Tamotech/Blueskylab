@@ -35,11 +35,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     var smsCode: String?
     var captcha: String?
     var seconds = 60
-    lazy var timer: Timer? = {
-        let t = Timer(timeInterval: 1, target: self, selector: #selector(timerValueChanged(t:)), userInfo: nil, repeats: true)
-        RunLoop.main.add(t, forMode: RunLoopMode.commonModes)
-        return t
-    } ()
+    var timer: Timer?
     
     var mode: LoginMode = .login
     
@@ -54,7 +50,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     }
     
     deinit {
-        timer!.invalidate()
+        //timer!.invalidate()
         timer = nil
     }
     
@@ -73,6 +69,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         phoneCheckMark.isHidden = true
         captureCheckMark.isHidden = true
         smsCheckMark.isHidden = true
+        sendSMSBtn.isEnabled = false
         
         nextBtn.isEnabled = false
         phoneField.delegate = self
@@ -81,6 +78,10 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
 
     }
     
+    func setupTimer() {
+        timer = Timer(timeInterval: 1, target: self, selector: #selector(timerValueChanged(t:)), userInfo: nil, repeats: true)
+        RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
+    }
     
     //MARK: - TextfieldDelegate
     
@@ -102,8 +103,10 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
             captureStr = newText
             if captureStr.characters.count > 0 && captureStr.characters.count == captcha?.characters.count {
                 vertifyCapture(captureString: captureStr)
+                sendSMSBtn.isEnabled = true
             }
             else {
+                sendSMSBtn.isEnabled = false
                 captureCheckMark.isHidden = true
                 captureBtn.isHidden = false
             }
@@ -142,8 +145,9 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     func timerValueChanged(t: Timer) {
         seconds = seconds - 1
         if seconds <= 0 {
-            sendSMSBtn.setTitle(NSLocalizedString("SendSMS", comment: ""), for: .normal)
+            sendSMSBtn.setTitle(NSLocalizedString("ReSendSMS", comment: ""), for: .normal)
             t.invalidate()
+            timer = nil
         }
         else {
             sendSMSBtn.setTitle(String.init(format: "%ds", seconds), for: .normal)
@@ -207,6 +211,10 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     
     //发送短信验证码
     func sendSMSCode() {
+        
+        if seconds > 0 && seconds < 60 {
+            return
+        }
         let phone = phoneField.text!
         if !phone.validPhoneNum() {
             
@@ -224,7 +232,9 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                 self?.smsCodeField.text = self?.smsCode!
                 self?.setNextButtonEnable(enable: true)
                 
-                self?.timer!.fire()
+                self?.setupTimer()
+//                self?.timer!.fire()
+                self?.seconds = 60
             }
             else {
                 BLHUDBarManager.showErrorWithClose(msg: msg, descTitle: NSLocalizedString("returnAndReinput", comment: ""))

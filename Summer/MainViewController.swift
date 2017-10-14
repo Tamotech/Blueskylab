@@ -18,7 +18,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     //背景污染等级图
     @IBOutlet weak var bgImgView: UIImageView!
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    //@IBOutlet weak var scrollView: UIScrollView!
     
     ///开启蓝牙连接口罩
     @IBOutlet weak var bottomView: UIView!
@@ -79,6 +79,9 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     
     @IBOutlet weak var batteryLevelLb: UILabel!
     
+    ///aqi 空气数据
+    @IBOutlet weak var aqiView: UIView!
+    
     
     lazy var modeControlView: WindModeControllView = {
         let view = WindModeControllView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 246))
@@ -94,6 +97,14 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     var panGes:UIPanGestureRecognizer!
     var todayAQIData: CurrentAQI?
     var recentAQIData: RecentWeekAQI?
+    ///是否弹窗电量低
+    var hasShowLowPowerTip = false
+    ///是否弹窗换口罩
+    var hasShowChangeFilter = false
+    ///转轮动画是否正在展示
+    var showingCircleAnimation = false
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +118,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         NotificationCenter.default.addObserver(self, selector: #selector(appDidBecomeActiveNotification(notify:)), name: kAppDidBecomeActiveNotify, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userInfoUpdateNotification(noti:)), name: kUserInfoDidUpdateNotify, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userMaskConfigUpdateNoti(noti:)), name: kUserMaskConfigUpdateNoti, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didConnectBluetoothNoti(noti:)), name: kMaskDidConnectBluetoothNoti, object: nil)
         
         if (SessionManager.sharedInstance.token.characters.count == 0) {
             let guideVc = StartGuideViewController(nibName: "StartGuideViewController", bundle: nil)
@@ -133,6 +145,8 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
                 self.navigationController!.view.superview?.insertSubview(self.menuView, at: 0)
             }
         }
+        
+        self.observeBluetoothState()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -140,23 +154,13 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         
         self.changeToConnectMode(connect: BLSBluetoothManager.shareInstance.state == BluetoothState.Connected)
         
-//        let popTip = PopTip()
-//        popTip.padding = 0
-//        popTip.cornerRadius = 8
-//        let tipView = BLTipView(frame: CGRect(x: 0, y: 0, width: 212, height: 44), msg: NSLocalizedString("ChangeFilterTip", comment: ""), icon: UIImage(named: "iconQuestionM2"), textColor: UIColor.white, bgColor: UIColor(hexString: "eb474e")!)
-//        let frame = self.view.convert(stageLabel.frame, from: stageLabel.superview)
-//        popTip.show(customView: tipView, direction: .down, in: self.view, from: frame)
-//        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
-//            popTip.hide()
-//        }
-        
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillDisappear(animated)
         let navVC = self.navigationController as! BaseNavigationController
         navVC.setTintColor(tint: gray72!)
+        showModeControl(show: false)
     }
     
     func setupView() {
@@ -178,6 +182,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
 
         connectBluetoothView.alpha = 1
         maskModeView.alpha = 0
+        aqiView.alpha = 0
         bottomView.alpha = 1
         bottomModeView.alpha = 0
         
@@ -185,7 +190,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         modeControlView.delegate = self
         modeControlBottom.constant = -303+55
         selectModeView.alpha = 0
-        scrollView.setContentOffset(CGPoint(x: CGFloat(1)*screenWidth, y: 0), animated: false)
+        //scrollView.setContentOffset(CGPoint(x: CGFloat(1)*screenWidth, y: 0), animated: false)
         bluetoothUnConnectBtn.isHidden = false
         batteryView.isHidden = true
         
@@ -227,9 +232,23 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
                 break
             case .DisConnected:
                 self.changeToConnectMode(connect: false)
+                HealthDataManager.sharedInstance.saveMaskUseData()
                 break
                 
             }
+        }
+        
+        manager.powerChange = {(power) in
+            var batteryImg = #imageLiteral(resourceName: "battery1")
+            if power < 80 {
+                batteryImg = #imageLiteral(resourceName: "battery2")
+            }
+            else if power < 20 {
+                batteryImg = #imageLiteral(resourceName: "battery3")
+                
+            }
+            self.batteryImageView.image = batteryImg
+            self.batteryLevelLb.text = "\(power)%"
         }
     }
     
@@ -250,6 +269,10 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         self.updateMaskConfigView()
     }
     
+    func didConnectBluetoothNoti(noti: Notification) {
+        self.setCurrentModeWindForMask()
+    }
+    
     //MARK: - AQI
     
     func loadAQIData() {
@@ -266,6 +289,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
                 self?.updateRecentWeekDataView(data: (self?.recentAQIData)!)
                 
             })
+            SessionManager.sharedInstance.userMaskConfig.updateCityID(cityID: cityID)
         }
         
     }
@@ -304,13 +328,38 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     }
     
     func gotoNextPage(_:Any?) {
-        var currentIndex = Int(scrollView.contentOffset.x/screenWidth)
-        currentIndex = currentIndex+1
-        if currentIndex >= 2 {
-            currentIndex = 0
+//        var currentIndex = Int(scrollView.contentOffset.x/screenWidth)
+//        currentIndex = currentIndex+1
+//        if currentIndex >= 2 {
+//            currentIndex = 0
+//        }
+        
+       // scrollView.setContentOffset(CGPoint(x: CGFloat(currentIndex)*screenWidth, y: 0), animated: false)
+        
+        if BLSBluetoothManager.shareInstance.state == .Connected {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.maskModeView.alpha = 1-self.maskModeView.alpha
+                self.aqiView.alpha = 1-self.aqiView.alpha
+            })
+        }
+        else {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.connectBluetoothView.alpha = 1-self.connectBluetoothView.alpha
+                self.aqiView.alpha = 1-self.aqiView.alpha
+            })
         }
         
-        scrollView.setContentOffset(CGPoint(x: CGFloat(currentIndex)*screenWidth, y: 0), animated: true)
+        if maskModeView.alpha == 1 && !hasShowLowPowerTip && !showingCircleAnimation {
+            //let config = SessionManager.sharedInstance.userMaskConfig
+            let power = batteryLevelLb.text?.getIntFromString() ?? 100
+            if power <= 20 {
+                self.lowerPowerAlert()
+            }
+            
+            self.showChangeFilterAlert()
+        }
+        
+        
     }
     
     
@@ -382,9 +431,9 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         maskView.alpha = 0
         maskView.addGestureRecognizer(tapGes)
         
-        scrollView.isUserInteractionEnabled = true
-        let tapscroll = UITapGestureRecognizer(target: self, action: #selector(gotoNextPage(_:)))
-        scrollView.addGestureRecognizer(tapscroll)
+//        scrollView.isUserInteractionEnabled = true
+//        let tapscroll = UITapGestureRecognizer(target: self, action: #selector(gotoNextPage(_:)))
+//        scrollView.addGestureRecognizer(tapscroll)
         
     }
     
@@ -452,7 +501,9 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     @IBAction func handleTapSearchBluetoothBtn(_ sender: Any) {
         let vc = OpenBluetoothController(nibName: "OpenBluetoothController", bundle: nil)
         vc.delegate = self
-        navigationController?.present(vc, animated: true, completion: nil)
+        let navVC = BaseNavigationController(rootViewController: vc)
+        navVC.setNavigationBarHidden(true, animated: false)
+        navigationController?.present(navVC, animated: true, completion: nil)
     }
     
     @IBAction func handleTapQuestionBtn(_ sender: Any) {
@@ -513,6 +564,12 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         
     }
     
+    ///点击中心区域 切换视图
+    @IBAction func handleTapCenterView(_ sender: UITapGestureRecognizer) {
+        
+        gotoNextPage(nil)
+    }
+    
     //MARK: - WindModeSelectDelegate
     
     func clickAddMode() {
@@ -536,17 +593,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     //MARK: - BluetoothDelegate
     
     func didConnectBlueTooth() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
-            self.showCircleAnimation()
-            
-            //调节至默认的风速
-            if SessionManager.sharedInstance.windModeManager.currentMode != nil {
-                self.modeControlView.selectItem(mode: SessionManager.sharedInstance.windModeManager.currentMode!)
-            }
-            self.bluetoothUnConnectBtn.isHidden = true
-            self.batteryView.isHidden = false
-            self.observeBluetoothState()
-        }
+        setCurrentModeWindForMask()
     }
 
     
@@ -577,6 +624,20 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         }
     }
     
+    //调节到当前设置的风速
+    func setCurrentModeWindForMask() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
+            self.showCircleAnimation()
+            
+            //调节至默认的风速
+            if SessionManager.sharedInstance.windModeManager.currentMode != nil {
+                self.modeControlView.selectItem(mode: SessionManager.sharedInstance.windModeManager.currentMode!)
+            }
+            self.bluetoothUnConnectBtn.isHidden = true
+            self.batteryView.isHidden = false
+            
+        }
+    }
     
     ///App 分享
     
@@ -596,8 +657,12 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     }
     
     func showCircleAnimation() {
+        showingCircleAnimation = true
         timer?.invalidate()
-        scrollView.setContentOffset(CGPoint(x: CGFloat(1)*screenWidth, y: 0), animated: false)
+        //scrollView.setContentOffset(CGPoint(x: CGFloat(1)*screenWidth, y: 0), animated: false)
+        aqiView.alpha = 1
+        maskModeView.alpha = 0
+        connectBluetoothView.alpha = 0
         ovalCircleView.alpha = 0
         let frame = ovalCircleView.superview?.convert(ovalCircleView.frame, to:                                                                             self.view)
         let demoView = AwesomeCircleView(frame: frame!)
@@ -607,12 +672,15 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
             
             UIView.animate(withDuration: 1.0, animations: {
                 demoView.alpha = 0
-                self.changeToConnectMode(connect: true)
                 
                 
             }, completion: { (success) in
                 demoView.removeFromSuperview()
-
+                self.showingCircleAnimation = false
+                self.changeToConnectMode(connect: true)
+                self.aqiView.alpha = 0
+                self.maskModeView.alpha = 1
+                
             })
         }
     }
@@ -620,7 +688,8 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     func changeToConnectMode(connect: Bool) {
         if connect {
             self.connectBluetoothView.alpha = 0
-            self.maskModeView.alpha = 1
+            self.aqiView.alpha = 1
+            self.maskModeView.alpha = 0
             self.bottomView.alpha = 0
             self.modeControlView.alpha = 1
             self.selectModeView.alpha = 1
@@ -631,6 +700,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         }
         else {
             self.connectBluetoothView.alpha = 1
+            self.aqiView.alpha = 0
             self.maskModeView.alpha = 0
             self.bottomView.alpha = 1
             self.modeControlView.alpha = 0
@@ -639,6 +709,60 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
             self.ovalCircleView.alpha = 1
             bluetoothUnConnectBtn.isHidden = false
             batteryView.isHidden = true
+            
+        }
+        
+        //模式展开状态
+        if modeControlBottom.constant > -10 {
+            bottomModeView.alpha = 0
+        }
+        else {
+            bottomModeView.alpha = 1
+        }
+    }
+    
+    func lowerPowerAlert() {
+        
+        if hasShowLowPowerTip {
+            return
+        }
+        let maskConfig = SessionManager.sharedInstance.userMaskConfig
+        if maskConfig.lowpowerflag{
+            return
+        }
+        
+        hasShowLowPowerTip = true
+        let popTip = PopTip()
+        popTip.padding = 0
+        popTip.cornerRadius = 8
+        let tipView = BLTipView(frame: CGRect.init(x: 0, y: 0, width: 212, height: 44), msg: NSLocalizedString("LowPowerTip", comment: ""), icon: nil, textColor: UIColor.white, bgColor: UIColor(hexString: "eb474e")!)
+        let frame = self.view.convert(batteryView.frame, from: batteryView.superview)
+        popTip.show(customView: tipView, direction: .down, in: self.view, from: frame)
+        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+            popTip.hide()
+        }
+        
+        
+    }
+    
+    
+    func showChangeFilterAlert() {
+        if hasShowChangeFilter {
+            return
+        }
+        let maskConfig = SessionManager.sharedInstance.userMaskConfig
+        if !maskConfig.filterchangeflag || maskConfig.filtereffect != "l3" {
+            return
+        }
+        hasShowChangeFilter = true
+        let popTip = PopTip()
+        popTip.padding = 0
+        popTip.cornerRadius = 8
+        let tipView = BLTipView(frame: CGRect(x: 0, y: 0, width: 212, height: 44), msg: NSLocalizedString("ChangeFilterTip", comment: ""), icon: UIImage(named: "iconQuestionM2"), textColor: UIColor.white, bgColor: UIColor(hexString: "eb474e")!)
+        let frame = self.view.convert(stageLabel.frame, from: stageLabel.superview)
+        popTip.show(customView: tipView, direction: .down, in: self.view, from: frame)
+        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+            popTip.hide()
         }
     }
 }

@@ -21,7 +21,7 @@ class UserMaskConfig: HandyJSON {
  "bindmaskid": "",
 "filtereffect": "l1"   l1:一级 l2:二级 l3:三级
      */
-    
+    var cityid: Int = -1
     var filterchangeflag = false
     var lowpowerflag = false
     var pollutionwarnflag = false
@@ -64,5 +64,51 @@ class UserMaskConfig: HandyJSON {
         }
     }
     
+    
+    func updateCityID(cityID: Int) {
+        if cityID < 0 {
+            return
+        }
+        APIRequest.updateUserConfig(params: ["cityid": "\(cityID)"])
+    }
+    
+    ///低电量提醒 污染提醒  更换滤芯提醒
+    func updateSettingSwitches() {
+        
+        APIRequest.updateUserConfig(params: ["filterchangeflag": "\(filterchangeflag)", "lowpowerflag":"\(lowpowerflag)", "pollutionwarnflag":"\(pollutionwarnflag)", "productinfoflag":"\(productinfoflag)", "language":"\(language)"])
+    }
+    
+    ///绑定面罩id
+    func bindMask() {
+        guard let deviceId = BLSBluetoothManager.shareInstance.deviceUUID else {
+            return
+        }
+        bindmaskid = deviceId
+        APIRequest.updateUserConfig(params: ["bindmaskid": deviceId])
+    }
+    
+    
+    //保存口罩使用记录
+    func saveMaskUseHistory(usetime: Int, distance: Int, step: Int, calories: Int) {
+        
+        if bindmaskid == "" {
+            return
+        }
+        let path = "/member/saveUseHist.htm?maskid=\(bindmaskid)&usetime=\(usetime)&movedistance=\(distance)&stepnum=\(step)&calorie=\(calories)"
+//        let params = ["maskid": bindmaskid,
+//                      "usertime": usetime,
+//                      "movedistance": distance,
+//                      "stepnum": step,
+//                      "calorie": calories]
+//            as [String : Any]
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                //保存成功
+            }
+            else {
+                SVProgressHUD.showError(withStatus: msg)
+            }
+        }
+    }
     
 }

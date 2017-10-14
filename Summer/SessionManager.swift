@@ -59,6 +59,10 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     var windModeManager: WindModeManager = WindModeManager()
     var userMaskConfig = UserMaskConfig()       //用户口罩配置
     var lock = NSLock()
+    /// 最新固件下载链接
+    var firewareDownloadUrl: String?
+    /// 最新固件版本号
+    var firewareVersion: String?
 
     
     override init() {
@@ -127,8 +131,10 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
         self.token = ""
         self.loginInfo.isLogin = false
         self.loginInfo = LoginInfo()
+        self.userInfo = nil
         APIManager.shareInstance.headers["token"] = ""
         UserDefaults.standard.removeObject(forKey: kLoginInfo)
+        NotificationCenter.default.post(name: kUserInfoDidUpdateNotify, object: nil)
         
     }
     

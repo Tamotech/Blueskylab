@@ -66,8 +66,8 @@ class NotificationCenterController: BaseViewController, UITableViewDelegate, UIT
             if data != nil && data is NotificationList {
                 self?.nData = data as! NotificationList
                 self?.tableView.reloadData()
-                self?.nodataView.isHidden = self?.nData.list.count != 0
             }
+            self?.nodataView.isHidden = self?.nData.list.count != 0
         }
     }
     

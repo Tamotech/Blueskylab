@@ -30,6 +30,14 @@
 				<string>wx5b2c8b3e6df2032d</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>App-Prefs</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>3</string>
@@ -42,20 +50,25 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>need visit your camera</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>location</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>need visit your photo libaray</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>need read your health data</string>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>访问蓝牙</string>
+	<key>NSCameraUsageDescription</key>
+	<string>need visit your camera</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>need read your health data</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>location</string>
 	<key>NSMotionUsageDescription</key>
 	<string>访问运动</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>need visit your photo libaray</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+		<string>remote-notification</string>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

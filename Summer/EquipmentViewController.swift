@@ -30,6 +30,7 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
     var currentSteps: Int = 0
     var currentDistance: Float = 0
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,6 +40,8 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
         filterLevelLabel.text = level.0
         
         HealthDataManager.sharedInstance.delegate = self
+        ///风速
+        windLevelLabel.text = String.init(format: "%.0f", BLSBluetoothManager.shareInstance.currentWindSpeed)
         
         let manager = BLSBluetoothManager.shareInstance
         manager.stateUpdate = {(state: BluetoothState) in
@@ -86,7 +89,7 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
         alert.msgLabel.text = NSLocalizedString("ConfirmClearZeroSteps", comment: "")
         alert.show()
         alert.confirmCalback = {
-            HealthDataManager.sharedInstance.zeroStep = self.currentSteps
+            HealthDataManager.sharedInstance.zeroStep += self.currentSteps
             self.stepCountLabel.text = "0步"
         }
     }
@@ -97,17 +100,21 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
         alert.msgLabel.text = NSLocalizedString("ConfirmClearZeroCarlories", comment: "")
         alert.show()
         alert.confirmCalback = {
-            HealthDataManager.sharedInstance.zeroDistance = self.currentDistance
+            HealthDataManager.sharedInstance.zeroDistance += self.currentDistance
             self.caloriesLabel.text = "0kcal"
         }
     }
     
     @IBAction func handleTapUnbindMaskBtn(_ sender: UIButton) {
         BLSBluetoothManager.shareInstance.stop()
+        HealthDataManager.sharedInstance.saveMaskUseData()
+        self.changeToConnectMode(connect: false)
     }
     
     @IBAction func handleTapChangeBtn(_ sender: UIButton) {
-        
+        let vc = ArticleDetailController()
+        vc.articleId = "filter_change_article"
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func handleTapResetBtn(_ sender: UIButton) {
@@ -137,7 +144,8 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
     @IBAction func handleTapConnectBluetoothBtn(_ sender: UIButton) {
         let vc = OpenBluetoothController(nibName: "OpenBluetoothController", bundle: nil)
         vc.delegate = self
-        navigationController?.present(vc, animated: true, completion: nil)
+        let navVC = BaseNavigationController(rootViewController: vc)
+        navigationController?.present(navVC, animated: true, completion: nil)
     }
     
     @IBAction func handleTapQuestionBtn(_ sender: UIButton) {
@@ -147,7 +155,9 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
     
     
     @IBAction func tapResetFilterQuestionBtn(_ sender: UIButton) {
-        
+        let vc = ArticleDetailController()
+        vc.articleId = "filter_change_article"
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     
@@ -188,8 +198,6 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
     
     func didConnectBlueTooth() {
         changeToConnectMode(connect: true)
-        let modeManager = SessionManager.sharedInstance.windModeManager
-        let value = modeManager.windUserConfigList.first?.value ?? 0
-        BLSBluetoothManager.shareInstance.ajustSpeed(value: CGFloat(value))
+        NotificationCenter.default.post(name: kMaskDidConnectBluetoothNoti, object: nil)
     }
 }

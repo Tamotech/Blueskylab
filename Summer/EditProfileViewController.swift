@@ -272,8 +272,17 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         //更新 user
         let userInfo = SessionManager.sharedInstance.userInfo
         userInfo?.name = nameField.text ?? ""
-        userInfo?.sex = genderField.text ?? "male"
-        userInfo?.birthday = birthField.text ?? ""
+        if genderField.text == "男" {
+            userInfo?.sex = "male"
+        }
+        else {
+            userInfo?.sex = "female"
+        }
+        var birth = (birthField.text ?? "") as NSString
+        birth = birth.replacingOccurrences(of: "年", with: "-") as NSString
+        birth = birth.replacingOccurrences(of: "月", with: "-") as NSString
+        birth = birth.replacingOccurrences(of: "日", with: "") as NSString
+        userInfo?.birthday = (birth as String)
         let w = weightField.text
         let h = heightField.text
         if w != nil {

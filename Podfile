@@ -24,4 +24,5 @@ target 'Summer' do
    pod 'IQKeyboardManagerSwift', '4.0.10'
    pod 'JPush'
    pod 'CRRefresh'
+   pod 'iOSDFULibrary'
 end

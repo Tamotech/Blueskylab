@@ -30,6 +30,10 @@ class OpenBluetoothController: BaseViewController {
     
     @IBOutlet weak var lightTipBtn: UIButton!
     
+    var timer: Timer?
+    let defaultSeconds: Int = 20
+    var seconds: Int = 0
+    
     weak var manager: BLSBluetoothManager? = BLSBluetoothManager.shareInstance
     
     var delegate:BluetoothViewDelegate?
@@ -45,7 +49,7 @@ class OpenBluetoothController: BaseViewController {
         
         shouldClearNavBar = true
         setupView()
-        
+        setupTimer()
         manager!.setupManager()
         manager!.stateUpdate = {(state: BluetoothState) in
             switch state {
@@ -62,7 +66,7 @@ class OpenBluetoothController: BaseViewController {
                 break
             case .Connected:
                 self.manager = nil
-                self.dismiss(animated: true, completion: {
+                self.navigationController!.dismiss(animated: true, completion: {
                     if self.delegate != nil {
                         self.delegate!.didConnectBlueTooth()
                     }
@@ -86,6 +90,17 @@ class OpenBluetoothController: BaseViewController {
     }
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+
+    }
+    
     func setupView() {
         let layer1 = CAGradientLayer()
         layer1.frame = connectingView.bounds
@@ -107,9 +122,25 @@ class OpenBluetoothController: BaseViewController {
         lightTipBtn.isHidden = true
         
         unconnectingView.isHidden = true
+        
+    }
+    
+    func setupTimer() {
+        timer = Timer(timeInterval: 1, target: self, selector: #selector(timerHandler(t:)), userInfo: nil, repeats: true)
+        RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
+        seconds = defaultSeconds
     }
 
     
+    //MARK: - timer
+    func timerHandler(t: Timer) {
+        seconds = seconds - 1
+        if seconds<=0 {
+            timer!.invalidate()
+            timer = nil
+            showUnfindBluetoothAlert()
+        }
+    }
     
     //MARK: - actions
     
@@ -127,7 +158,7 @@ class OpenBluetoothController: BaseViewController {
     @IBAction func handleTapDontBindBtn(_ sender: Any) {
         self.manager?.stop()
         self.manager = nil
-        dismiss(animated: true) { 
+        navigationController!.dismiss(animated: true) {
 //            if self.delegate != nil {
 //                self.delegate?.didConnectBlueTooth()
 //            }
@@ -146,7 +177,10 @@ class OpenBluetoothController: BaseViewController {
     private func showOpenBluetoothAlert() {
         let alert = UIAlertController(title: NSLocalizedString("OpenBluetoothAlertTitle", comment: ""), message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Settings", comment: ""), style: .default, handler: { (setAction) in
-            
+            let url = URL(string: "App-Prefs:root=Bluetooth")
+            if UIApplication.shared.canOpenURL(url!) {
+                UIApplication.shared.openURL(url!)
+            }
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { (okAction) in
             
@@ -159,12 +193,15 @@ class OpenBluetoothController: BaseViewController {
         let alert = UIAlertController(title: NSLocalizedString("UnfindBluetoothAlertTitle", comment: ""), message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: .default, handler: { (action1) in
 //            BLHUDBarManager.showSuccess(msg: NSLocalizedString("BindSuccess", comment: ""))
+            self.setupTimer()
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Help", comment: ""), style: .default, handler: { (action2) in
-            
+            let vc = ArticleDetailController()
+            vc.articleId = "9cc44bd3-3129-4ad5-a634-88c437ae4067"
+            self.navigationController?.pushViewController(vc, animated: true)
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("DontBind", comment: ""), style: .default, handler: { (action3) in
-            self.dismiss(animated: true, completion: nil)
+            self.navigationController!.dismiss(animated: true, completion: nil)
         }))
         present(alert, animated: true, completion: nil)
         
@@ -177,5 +214,6 @@ class OpenBluetoothController: BaseViewController {
     override var prefersStatusBarHidden: Bool {
         return false
     }
+    
     
 }
