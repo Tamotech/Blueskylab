@@ -30,7 +30,7 @@ class NotificationItem: HandyJSON {
     var content: String = ""
     var publishdate: Int = 0
     var readflag: Int = 0
-    var img: String = ""
+    var preimg: String = ""
     //article:产品新闻 pollutionalert:污染预警
     var type: String = ""
     var link: String = ""

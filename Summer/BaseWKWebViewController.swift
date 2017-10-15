@@ -9,12 +9,15 @@
 import UIKit
 import WebKit
 import SnapKit
+import SwiftyJSON
 
 class BaseWKWebViewController: BaseViewController, WKNavigationDelegate {
 
     let webView = WKWebView()
     var urlString: String?
     var htmlString: String?
+    
+    var articleStr: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +33,13 @@ class BaseWKWebViewController: BaseViewController, WKNavigationDelegate {
             }
             let url = URL(string: urlString!)!
             webView.load(URLRequest(url: url))
+        }
+        else if articleStr != nil {
+            APIRequest.getUserConfig(codes: articleStr!) { [weak self](JSONData) in
+                let data = JSONData as! JSON
+                self?.htmlString = data[(self?.articleStr)!]["v"].stringValue
+                self?.webView.loadHTMLString((self?.htmlString)!, baseURL: nil)
+            }
         }
         webView.snp.makeConstraints { (make) in
             make.top.bottom.left.right.equalTo(0)

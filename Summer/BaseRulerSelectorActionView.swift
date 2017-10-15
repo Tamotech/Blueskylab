@@ -43,6 +43,8 @@ class BaseRulerSelectorActionView: UIView {
         self.bgView.snp.makeConstraints { (make) in
             make.left.right.top.bottom.equalTo(0)
         }
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapBgView(_:)))
+        bgView.addGestureRecognizer(tap)
         
         self.containerView = UIView(frame: CGRect(x: 0, y: self.height, width: self.width, height: viewHeight))
         self.containerView.backgroundColor = UIColor.white
@@ -155,6 +157,11 @@ class BaseRulerSelectorActionView: UIView {
     }
     
     //MARK: actions
+    
+    func handleTapBgView(_:UITapGestureRecognizer) {
+        self.dismiss()
+    }
+    
     func handleTapCloseBtn(_:UIButton) {
         self.dismiss()
     }

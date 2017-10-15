@@ -16,7 +16,7 @@ class BLHUDBarManager: NSObject {
     
     
     
-    class func showSuccess(msg: String?) {
+    class func showSuccess(msg: String?, seconds: TimeInterval) {
         
         
         let simpleHUD = SimpleHUDController(nibName: "SimpleHUDController", bundle: nil)
@@ -26,7 +26,6 @@ class BLHUDBarManager: NSObject {
         simpleHUD.modalPresentationStyle = .overCurrentContext
         vc.present(simpleHUD, animated: false) {
             simpleHUD.msgLabel.text = msg
-            let seconds: TimeInterval = 2
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+seconds, execute: { 
                 vc.dismiss(animated: false, completion: nil)
             })

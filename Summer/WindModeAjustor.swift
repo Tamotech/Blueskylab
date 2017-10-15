@@ -247,7 +247,7 @@ class WindModeAjustor: UIView {
     func handlePanGesOnPoint(pan: UIPanGestureRecognizer) {
         if pan.state == .changed {
             let pt = pan.location(in: self)
-            print("pt ---- [\(pt.x), \(pt.y)]")
+            //print("pt ---- [\(pt.x), \(pt.y)]")
             let center = rulerView.center
             let startAngle: CGFloat = CGFloat(190*Double.pi/180)
             //            let endAngle: CGFloat = CGFloat(350*Double.pi/180)

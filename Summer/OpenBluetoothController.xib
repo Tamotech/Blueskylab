@@ -11,10 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OpenBluetoothController" customModule="Summer" customModuleProvider="target">
             <connections>
+                <outlet property="arrowView" destination="TQv-TE-gHB" id="0lu-vo-txm"/>
                 <outlet property="connectingView" destination="NT3-c6-AoW" id="nu6-81-DVK"/>
                 <outlet property="descLabel" destination="eqE-1Q-Ekv" id="tQy-qz-OZm"/>
                 <outlet property="lightTipBtn" destination="9fG-Z6-Kt6" id="PgF-uq-opH"/>
                 <outlet property="mTitleLabel" destination="6tE-zw-nka" id="zLC-Jf-91G"/>
+                <outlet property="notBindBtn" destination="9LS-h0-KqN" id="Hpl-Zz-9C1"/>
                 <outlet property="ovalCircleView" destination="2RW-kd-dB5" id="YkL-0o-Uwf"/>
                 <outlet property="unconnectingView" destination="tEb-Yn-YyM" id="X7X-k1-OXr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

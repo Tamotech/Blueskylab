@@ -165,7 +165,7 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
     
     func motionDataUpdate(distance: Float, speed: Float, stepCount: Int, carlories: Float) {
         DispatchQueue.main.async {
-            self.speedLabel.text = String.init(format: "%.0f", speed*72)
+            self.speedLabel.text = String.init(format: "%.0f", speed*7.2)
             self.moveDistanceLabel.text = String.init(format: "%.1f", distance/1000)
             self.stepCountLabel.text = "\(stepCount)步"
 //            let kcal = (SessionManager.sharedInstance.userInfo?.getWeight())!*CGFloat(distance/1000)*1.036

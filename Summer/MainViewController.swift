@@ -240,12 +240,15 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         
         manager.powerChange = {(power) in
             var batteryImg = #imageLiteral(resourceName: "battery1")
-            if power < 80 {
-                batteryImg = #imageLiteral(resourceName: "battery2")
-            }
-            else if power < 20 {
+            self.batteryLevelLb.textColor = UIColor.white
+            if power < 20 {
                 batteryImg = #imageLiteral(resourceName: "battery3")
+                self.batteryLevelLb.textColor = UIColor.red
                 
+            }
+            else if power < 80 {
+                batteryImg = #imageLiteral(resourceName: "battery2")
+                self.batteryLevelLb.textColor = UIColor.white
             }
             self.batteryImageView.image = batteryImg
             self.batteryLevelLb.text = "\(power)%"
@@ -349,15 +352,15 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
             })
         }
         
-        if maskModeView.alpha == 1 && !hasShowLowPowerTip && !showingCircleAnimation {
-            //let config = SessionManager.sharedInstance.userMaskConfig
-            let power = batteryLevelLb.text?.getIntFromString() ?? 100
-            if power <= 20 {
-                self.lowerPowerAlert()
-            }
-            
-            self.showChangeFilterAlert()
-        }
+//        if maskModeView.alpha == 1 && !hasShowLowPowerTip && !showingCircleAnimation {
+//            //let config = SessionManager.sharedInstance.userMaskConfig
+//            let power = batteryLevelLb.text?.getIntFromString() ?? 100
+//            if power <= 20 {
+//                self.lowerPowerAlert()
+//            }
+//
+//            self.showChangeFilterAlert()
+//        }
         
         
     }
@@ -393,6 +396,11 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
                 self?.navigationController?.pushViewController(vc, animated: true)
                 break
             case .ItemMyEquipment:
+                //如果未登录
+                if SessionManager.sharedInstance.token == "" {
+                    showLoginVC()
+                    return
+                }
                 let vc = EquipmentViewController(nibName: "EquipmentViewController", bundle: nil)
                 self?.navigationController?.pushViewController(vc, animated: true)
                 break
@@ -499,6 +507,10 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     }
     
     @IBAction func handleTapSearchBluetoothBtn(_ sender: Any) {
+        if SessionManager.sharedInstance.token == "" {
+            showLoginVC()
+            return
+        }
         let vc = OpenBluetoothController(nibName: "OpenBluetoothController", bundle: nil)
         vc.delegate = self
         let navVC = BaseNavigationController(rootViewController: vc)
@@ -645,14 +657,14 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         guard let downloadUrl = menuView.appDownloadUrl else {
             return
         }
-        BSLShareManager.shareToWechat(link: downloadUrl, title: "蓝天实验室", msg: "", thumb: "", type: 0)
+        BSLShareManager.shareToWechat(link: downloadUrl, title: "蓝天大气｜便携式智能新风口罩", msg: "为你定制的健康呼吸管家，用智能科技开启人类健康新生态", thumb: "", type: 0)
     }
     
     func didTapWechatCircle() {
         guard let downloadUrl = menuView.appDownloadUrl else {
             return
         }
-        BSLShareManager.shareToWechat(link: downloadUrl, title: "蓝天实验室", msg: "", thumb: "", type: 1)
+        BSLShareManager.shareToWechat(link: downloadUrl, title: "蓝天大气｜便携式智能新风口罩", msg: "", thumb: "", type: 1)
         
     }
     
@@ -680,6 +692,15 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
                 self.changeToConnectMode(connect: true)
                 self.aqiView.alpha = 0
                 self.maskModeView.alpha = 1
+                
+                if !self.hasShowLowPowerTip {
+                    let power = self.batteryLevelLb.text?.getIntFromString() ?? 100
+                    if power <= 20 {
+                        self.lowerPowerAlert()
+                    }
+                    self.showChangeFilterAlert()
+                }
+                self.showModeControl(show: true)
                 
             })
         }
@@ -727,7 +748,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
             return
         }
         let maskConfig = SessionManager.sharedInstance.userMaskConfig
-        if maskConfig.lowpowerflag{
+        if !maskConfig.lowpowerflag{
             return
         }
         

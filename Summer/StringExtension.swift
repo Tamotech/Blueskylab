@@ -64,6 +64,32 @@ extension String {
         
         return CGFloat(number)
     }
+    
+    /// 比较版本号大小
+    static func compareVersionString(first: String, second: String) -> Int {
+        let l1 = first.components(separatedBy: ".")
+        let l2 = second.components(separatedBy: ".")
+        let c1 = l1.count
+        let c2 = l2.count
+        var min = c1
+        if c2 < c1 {
+            min = c2
+        }
+        for i in 0..<min {
+            let j = Int(l1[i])!
+            let k = Int(l2[i])!
+            if j != k {
+                return j - k
+            }
+        }
+        if c1 != c2 {
+            return c1 - c2
+        }
+        else {
+            return 0
+        }
+        
+    }
 }
 
 

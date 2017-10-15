@@ -19,6 +19,7 @@ enum BluetoothState {
     case DisConnected       //设备已断开
 }
 
+let firmwareVersionUserKey = "firmware_version_key_001"
 
 /// 蓝牙状态改变回调
 typealias BluetoothStateUpdateCallback = (BluetoothState)->()
@@ -39,11 +40,16 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     let firmwareCharacteristicUUID = "0x2A26"
     ///调速模式服务
     let kSpeedWriteCharacteristicUUID = "6e400002-b5a3-f393-e0a9-e50e24dcca9e"
+    let kSpeedReadCharacteristicUUID = "6e400004-b5a3-f393-e0a9-e50e24dcca9e"
 //    let firmwareCharacteristicUUID = "0x2A26"
 //    let firmwareCharacteristicUUID = "0x2A26"
     
     ///电量特征值
     var powerChar: CBCharacteristic?
+    ///电量服务ID
+    var powerServiceID = "0x180F"
+    ///电量服务
+    var powerService: CBService?
     /// 固件升级特征值
     var firewareChar: CBCharacteristic?
     var firmwarePeriph: CBPeripheral?
@@ -54,6 +60,7 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     
     var batteryLevel: Int = 100
     var peripheral: CBPeripheral?
+    var DFUPeripheral: CBPeripheral?
     
     var stateUpdate: BluetoothStateUpdateCallback?
     var powerChange: MaskPowerChangeCallback?
@@ -68,12 +75,55 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     var deviceUUID: String?
     
     ///是否需要固件升级
-    var needUpdateFirmware = false
+    /// NOTE: 是否需要升级  是一开始就确定的 为了保证这个效果, 需要记录上一次的固件版本号, 下次直接从本地读取并存入最新的固件版本
+    var shouldUpdateFirmware = false
+    
+    var DFUMode = false
+    
+    //// stop状态   断开模式下重连 0 默认 1 写入DFU后重连  2 DFU升级完成后重连蓝牙调节风速 3 完成蓝牙连接
+    var stopMode: Int = 0
+    
+    
+    /// 固件版本号
+    var firmwareVersion: String?
+    
+    var timer: Timer?
+    var onceToken = false
+    
+    override init() {
+        super.init()
+        firmwareVersion = UserDefaults.standard.object(forKey: firmwareVersionUserKey) as? String
+    }
     
     func setupManager() {
+        
+        
+        //确定是否需要升级
+        if !onceToken {
+            onceToken = true
+            if firmwareVersion != nil && SessionManager.sharedInstance.firewareVersion != nil {
+                shouldUpdateFirmware = String.compareVersionString(first: SessionManager.sharedInstance.firewareVersion!, second: firmwareVersion!) > 0
+            }
+        }
+        
         manager = CBCentralManager(delegate: self, queue: nil)
         manager?.delegate = self
         manager?.scanForPeripherals(withServices: nil, options: nil)
+        print("开始扫描设备...")
+        if !shouldUpdateFirmware {
+            setupTimer()
+        }
+    }
+    
+    func setupTimer() {
+        timer = Timer(timeInterval: 60, target: self, selector: #selector(timerHandle(t:)), userInfo: nil, repeats: true)
+        RunLoop.main.add(timer!, forMode: .commonModes)
+    }
+    
+    func timerHandle(t: Timer) {
+        if powerService != nil && peripheral != nil {
+            peripheral!.discoverCharacteristics(nil, for: powerService!)
+        }
     }
     
     
@@ -90,6 +140,7 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
             case CBManagerState.poweredOff:
                 print("poweredOff")
                 state = .PowerOff
+                self.stop()
                 break
             case CBManagerState.poweredOn:
                 print("Bluetooth is currently powered on and available to use.")
@@ -108,6 +159,7 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
             case 4:
                 print("poweredOff")
                 state = .PowerOff
+                self.stop()
                 break
             case 5:
                 print("Bluetooth is currently powered on and available to use.")
@@ -126,8 +178,20 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        //print("发现设备 ---- \(peripheral.name ?? "")   信号强度: \(RSSI)")
-        if peripheral.name == maskName {
+        print("发现设备 ---- \(peripheral.name ?? "")   信号强度: \(RSSI)")
+        
+        
+//        guard let name = peripheral.name else {
+//            return
+//        }
+        if peripheral.name == "DfuTarg" {
+            
+            self.DFUPeripheral = peripheral
+            manager?.stopScan()
+            manager?.connect(peripheral, options: nil)
+        }
+        
+        else if peripheral.name == maskName {
             //开始连接口罩
             deviceUUID = peripheral.identifier.uuidString
             self.bindBlueToothDevice()
@@ -143,9 +207,16 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("设备已连接 -- \(peripheral.name ?? "")")
-        if stateUpdate != nil {
-            self.state = .Connected
-            stateUpdate!(.Connected)
+        
+        if peripheral.name == "DfuTarg" {
+            print("开始下载固件...")
+            self.updateFireware()
+        }
+        if !self.shouldUpdateFirmware {
+            if stateUpdate != nil {
+                self.state = .Connected
+                stateUpdate!(.Connected)
+            }
         }
         peripheral.delegate = self
         manager?.stopScan()
@@ -164,6 +235,16 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         
         print("设备已断开 ----")
+//        if !shouldUpdateFirmware {
+        
+//        }
+        
+        //这两种情况都是临时断开 需要重连
+        if stopMode == 1 {
+            self.setupManager()
+            stopMode = 0
+        }
+        
         if stateUpdate != nil {
             self.state = .DisConnected
             stateUpdate!(.DisConnected)
@@ -173,6 +254,9 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         print("发现服务 --- \(peripheral.services ?? [])")
         for service in peripheral.services ?? [] {
+            if service.uuid.isEqual(CBUUID(string: powerServiceID)) {
+                powerService = service
+            }
             peripheral.discoverCharacteristics(nil, for: service)
         }
     }
@@ -187,9 +271,13 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
                 powerChar = char
                 var power: Int = 100
                 if let value = char.value {
-                    print("电池电量--- \(value)")
-                    power = NSString(data: value, encoding: String.Encoding.utf8.rawValue)!.integerValue
                     
+                    let str = NSString(data: value, encoding: String.Encoding.utf8.rawValue)!
+                    print("power str ---> \(str)")
+                    power = Int(str.cString(using: String.Encoding.ascii.rawValue)!.pointee)
+                    
+                    //power = NSString(data: value, encoding: String.Encoding.utf8.rawValue)!.integerValue
+                    print("电池电量--- \(power)")
                 }
                 
                 print("电池电量--- \(power)")
@@ -206,18 +294,45 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
                     
                 }
             }
+            else if char.uuid.isEqual(CBUUID(string: kSpeedReadCharacteristicUUID)) {
+                if char.value != nil {
+                    let str = NSString(data: char.value!, encoding: String.Encoding.utf8.rawValue)!
+                    print("读风速---\(str)")
+                }
+                
+            }
             else if (char.uuid.isEqual(CBUUID(string: self.firmwareCharacteristicUUID))) {
-                print("固件character ---> \(char)")
-                firmwarePeriph = peripheral
-                firewareChar = char
-                //self.updateFireware()
+                
+                if char.value != nil && SessionManager.sharedInstance.firewareVersion != nil {
+                    let str = NSString(data: char.value!, encoding: String.Encoding.utf8.rawValue)!
+                    print("固件character ---> \(str)")
+                    firmwarePeriph = peripheral
+                    firewareChar = char
+                    UserDefaults.standard.set(String(str), forKey: firmwareVersionUserKey)
+                    
+//                    //判断需不需要固件升级
+//                    let remoteVersion = SessionManager.sharedInstance.firewareVersion
+//                    if remoteVersion == nil || firmwareVersion == nil {
+//                        continue
+//                    }
+//                    print("当前版本--\(firmwareVersion!), 云端版本--\(remoteVersion!)")
+//                    shouldUpdateFirmware = String.compareVersionString(first: remoteVersion!, second: firmwareVersion!) < 0
+                    if shouldUpdateFirmware {
+                        self.switchToDFUMode()
+                        
+                    }
+                    //当前固件版本写入磁盘
+//                    UserDefaults.standard.set(String.init(str), forKey: firmwareVersionUserKey)
+                    //self.updateFireware()
+                }
+                
             }
             else if (char.uuid.isEqual(CBUUID(string: self.hardwareCharacteristicUUID))) {
-                print("硬件服务特征值 ----> \(char)")
-                print("value--->\(String(describing: char.value))")
-                
-                
-                
+                if char.value != nil {
+                    let str = NSString(data: char.value!, encoding: String.Encoding.utf8.rawValue)!
+                    print("硬件服务特征值 ----> \(str)")
+                    
+                }
                 
             }
         }
@@ -246,20 +361,52 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
         self.writeData(peripheral: self.peripheral!, characteristic: self.speedChar!, data: data)
     }
     
+    ///DFU升级模式
+    func switchToDFUMode() {
+        print("切换到DFU模式")
+        if DFUMode {
+            return
+        }
+        let str = "DFU;"
+        let data = str.data(using: .utf8)!
+        if self.peripheral == nil || self.speedChar == nil {
+            print("peripheral为空或者speedChar为空")
+            return
+        }
+        self.writeData(peripheral: self.peripheral!, characteristic: self.speedChar!, data: data)
+        stopMode = 1
+        print("成功写入 DFU;, 断开重连...")
+        DFUMode = true
+        //此时BM-1断开  需要重新扫描连接DFU的设备
+        // NOTE: 此时物理层断开有几秒的延迟  所以不能立即重连
+        //self.stop()
+        
+        //self.setupManager()
+    }
+    
     
     ///写数据
     func writeData(peripheral: CBPeripheral, characteristic: CBCharacteristic, data: Data) {
-        peripheral.writeValue(data, for: characteristic, type: .withoutResponse)
+        print("写入数据---> \(data.description)")
+//        peripheral.writeValue(data, for: characteristic, type: .withoutResponse)
+        peripheral.writeValue(data, for: characteristic, type: .withResponse)
     }
     
     ///解绑 断开连接
     func stop() {
+        if timer != nil {
+            timer!.invalidate()
+            timer = nil
+        }
         if peripheral != nil {
+            print("cancel peripheral")
             manager?.cancelPeripheralConnection(peripheral!)
         }
         manager?.stopScan()
         state = .DisConnected
+        DFUMode = false
         if self.stateUpdate != nil {
+            print("断开")
             self.stateUpdate!(.DisConnected)
         }
     }
@@ -269,6 +416,32 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     
     func dfuStateDidChange(to state: DFUState) {
         print("DFU status changed --> \(state)")
+        if state == .completed {
+            SVProgressHUD.dismiss()
+//            SVProgressHUD.showSuccess(withStatus: "固件升级完成!")
+            SVProgressHUD.dismiss()
+            shouldUpdateFirmware = false
+            DFUMode = false
+            if DFUPeripheral != nil {
+                print("cancel peripheral")
+                manager?.cancelPeripheralConnection(DFUPeripheral!)
+            }
+            manager?.stopScan()
+            
+            //升级固件完毕  重新连接扫描设备
+            DFUPeripheral = nil
+            stopMode = 0
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
+                self.setupManager()
+                
+            })
+            
+            
+        }
+        else if state == .aborted || state == .disconnecting {
+            SVProgressHUD.dismiss()
+            
+        }
     }
     
     func dfuError(_ error: DFUError, didOccurWithMessage message: String) {
@@ -300,6 +473,9 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
         guard let url = SessionManager.sharedInstance.firewareDownloadUrl else {
             return
         }
+        if !shouldUpdateFirmware {
+            return
+        }
         let request = URLRequest(url: URL(string: url)!)
         let session = URLSession.shared
         let task = session.downloadTask(with: request) { (locationURL, response, error) in
@@ -309,6 +485,8 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
             else if locationURL != nil {
                 print("下载固件成功, 开始写入蓝牙")
                 //下载成功  开始写入蓝牙
+                
+                SVProgressHUD.show(withStatus: "固件升级中...")
                 //location位置转换
                 let locationPath = locationURL!.path
                 //拷贝到用户目录
@@ -330,12 +508,12 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     ///开始写入固件
     func startDFUProcess(fileURL: URL) {
         let selectedFirmware =  DFUFirmware(urlToZipFile: fileURL)
-        guard peripheral != nil else {
+        guard DFUPeripheral != nil else {
             print("No DFU peripheral was set")
             return
         }
         
-        let dfuInitiator = DFUServiceInitiator(centralManager: manager!, target: peripheral!)
+        let dfuInitiator = DFUServiceInitiator(centralManager: manager!, target: DFUPeripheral!)
         dfuInitiator.delegate = self
         dfuInitiator.progressDelegate = self
         dfuInitiator.logger = self
@@ -346,5 +524,6 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
         
         dfuController = dfuInitiator.with(firmware: selectedFirmware!).start()
     }
+    
     
 }

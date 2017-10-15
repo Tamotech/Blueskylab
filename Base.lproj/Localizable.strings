@@ -30,6 +30,10 @@
 
 //首页 AQI
 "OpenBluetoothAlertTitle" = "打开蓝牙允许\"蓝天大气\"连接到配件";
+"SearchMask" = "正在搜索蓝天大气";
+"OpenBluetoothAndCloseEar" = "请将大气的蓝牙模式打开并贴近手机";
+"HasFindMask" = "已找到蓝天大气";
+"MaskLightTip" = "当蓝天大气有灯光闪烁时，将会自动与App连接，请稍候";
 "UnfindBluetoothAlertTitle" = "未发现设备，请确保大气蓝牙打开且贴近手机";
 "ChangeFilterTip" = "口罩滤芯已耗尽，请立即更换";
 "filterChangeTip" = "当您更换了滤芯，请重制滤芯数据\n系统将重新计算新滤芯的过滤效果";

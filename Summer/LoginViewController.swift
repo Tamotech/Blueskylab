@@ -226,7 +226,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                 
                 let smsCodeStr = result?["memo"].string!
                 self?.smsCode = DES3EncryptUtil.decrypt(smsCodeStr)
-                BLHUDBarManager.showSuccess(msg: NSLocalizedString("VertifyCodeHasSent", comment: ""))
+                BLHUDBarManager.showSuccess(msg: NSLocalizedString("VertifyCodeHasSent", comment: ""), seconds: 2)
                 
                 //TEST
                 self?.smsCodeField.text = self?.smsCode!

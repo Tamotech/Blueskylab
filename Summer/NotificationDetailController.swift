@@ -59,11 +59,11 @@ class NotificationDetailController: BaseWKWebViewController, BottomShareViewDele
     }
 
     func didTapWechat() {
-        BSLShareManager.shareToWechat(link: data!.link, title: data!.title, msg: data!.description, thumb: data!.img, type: 0)
+        BSLShareManager.shareToWechat(link: data!.link, title: data!.title, msg: data!.description, thumb: data!.preimg, type: 0)
     }
     
     func didTapWechatCircle() {
-        BSLShareManager.shareToWechat(link: data!.link, title: data!.title, msg: data!.description, thumb: data!.img, type: 1)
+        BSLShareManager.shareToWechat(link: data!.link, title: data!.title, msg: data!.description, thumb: data!.preimg, type: 1)
 
     }
 }

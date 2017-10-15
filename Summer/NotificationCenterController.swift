@@ -25,6 +25,7 @@ class NotificationCenterController: BaseViewController, UITableViewDelegate, UIT
         nodataView.isHidden = true
         tableView.layoutMargins = .zero
         tableView.separatorInset = .zero
+        
         let cellNib = UINib(nibName: "NotificationCenterCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "Cell")
         tableView.cr.addHeadRefresh(animator: NormalHeaderAnimator()) { 
@@ -91,6 +92,10 @@ class NotificationCenterController: BaseViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.1
     }
     

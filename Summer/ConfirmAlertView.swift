@@ -26,6 +26,9 @@ class ConfirmAlertView: BaseView {
     public func show() {
         keyWindow?.addSubview(self)
         self.frame = keyWindow?.bounds ?? CGRect.zero
+        self.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapCancelBtn(_:)))
+        self.addGestureRecognizer(tap)
     }
     
     public func dismiss() {

@@ -94,13 +94,20 @@ class SettingViewController: BaseViewController {
     }
     
     @IBAction func handleTapPrivacy(_ sender: Any) {
-        let vc = PrivacyViewController()
+        
+        let vc = BaseWKWebViewController()
+        vc.articleStr = "f_privacy_policy"
+        vc.showCustomTitle(title: NSLocalizedString("PrivacyPolicy", comment: ""))
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func handleTapProtocol(_ sender: Any) {
-        let vc = TermsOfUseController()
+        let vc = BaseWKWebViewController()
+        vc.articleStr = NSLocalizedString("f_terms_of_use", comment: "")
+        vc.showCustomTitle(title: NSLocalizedString("TermsOfUse", comment: ""))
         navigationController?.pushViewController(vc, animated: true)
+//        let vc = TermsOfUseController()
+//        navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func handleTapUpdate(_ sender: Any) {
         let vc = CheckUpdateViewController()

@@ -30,8 +30,8 @@ class NotificationCenterCell: UITableViewCell {
     
     func updateCell(data: NotificationItem) {
         titleLb.text = data.title
-        if data.img.characters.count > 0 {
-            let rc = ImageResource(downloadURL: URL(string: data.img)!)
+        if data.preimg.characters.count > 0 {
+            let rc = ImageResource(downloadURL: URL(string: data.preimg)!)
             iv.kf.setImage(with: rc)
         }
         contentLb.text = data.description

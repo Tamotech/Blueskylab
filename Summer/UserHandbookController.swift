@@ -145,6 +145,11 @@ class UserHandbookController: BaseViewController, UITableViewDelegate, UITableVi
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        ///防止抖动
+//        if scrollView.height-scrollView.contentSize.height > -20 {
+//            return;
+//        }
         let offset = scrollView.contentOffset
         if offset.y > 0 && offset.y < bannerView.height {
             //banner 上划
