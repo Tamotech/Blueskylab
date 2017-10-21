@@ -44,9 +44,11 @@ class NotificationItem: HandyJSON {
     /// - Returns: 17-08-22 14:00 星期一
     func dateStr() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yy-MM-dd HH:mm"
-        let date = Date(timeIntervalSince1970: TimeInterval(publishdate))
-        return formatter.string(from: date)
+        formatter.dateFormat = "YY-MM-dd HH:mm"
+        let date = Date(timeIntervalSince1970: TimeInterval(publishdate/1000))
+        let dateStr = formatter.string(from: date)
+        return dateStr;
+//        return dateStr.substring(from: dateStr.index(dateStr.startIndex, offsetBy: 2))
     }
 }
 

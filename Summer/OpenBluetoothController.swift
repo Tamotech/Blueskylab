@@ -28,7 +28,7 @@ class OpenBluetoothController: BaseViewController {
     
     @IBOutlet weak var descLabel: UILabel!
     
-    @IBOutlet weak var lightTipBtn: UIButton!
+    //@IBOutlet weak var lightTipBtn: UIButton!
     
     @IBOutlet weak var notBindBtn: UIButton!
     
@@ -58,33 +58,8 @@ class OpenBluetoothController: BaseViewController {
         setupView()
         setupTimer()
         manager!.setupManager()
-        manager!.stateUpdate = {(state: BluetoothState) in
-            switch state {
-            case .Unauthorized:
-                self.unconnectingView.isHidden = false
-                break
-            case .PowerOff:
-                self.unconnectingView.isHidden = false
-                self.showOpenBluetoothAlert()
-                break
-            case .PowerOn:
-                self.unconnectingView.isHidden = true
-                self.connectingView.isHidden = false
-                break
-            case .Connected:
-                self.manager = nil
-                self.switchToMode(mode: 2)
-                break
-                
-            case .ConnectFailed:
-                
-                break
-            case .DisConnected:
-                
-                break
-            
-            }
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(bluetoothStateChangeNotification(noti:)), name: kMaskStateChangeNotifi, object: nil)
+
     }
     
     
@@ -124,10 +99,6 @@ class OpenBluetoothController: BaseViewController {
         animation.isRemovedOnCompletion = false
         ovalCircleView.layer.add(animation, forKey: nil)
         
-        lightTipBtn.isHidden = true
-        
-//        unconnectingView.isHidden = true
-        
     }
     
     func setupTimer() {
@@ -144,6 +115,42 @@ class OpenBluetoothController: BaseViewController {
             timer!.invalidate()
             timer = nil
             showUnfindBluetoothAlert()
+        }
+    }
+    
+    
+    //MARK: notification
+    func bluetoothStateChangeNotification(noti: Notification) {
+        guard let userInfo = noti.userInfo as? [String: Any] else {
+            return
+        }
+        if userInfo["key"] as! String == "state" {
+            let state = userInfo["value"] as! BluetoothState
+            switch state {
+            case .Unauthorized:
+                self.unconnectingView.isHidden = false
+                break
+            case .PowerOff:
+                self.unconnectingView.isHidden = false
+                self.showOpenBluetoothAlert()
+                break
+            case .PowerOn:
+                self.unconnectingView.isHidden = true
+                self.connectingView.isHidden = false
+                break
+            case .Connected:
+                self.manager = nil
+                self.switchToMode(mode: 2)
+                break
+                
+            case .ConnectFailed:
+                
+                break
+            case .DisConnected:
+                
+                break
+                
+            }
         }
     }
     
@@ -243,7 +250,6 @@ class OpenBluetoothController: BaseViewController {
             unconnectingView.isHidden = true
             notBindBtn.isHidden = false
             arrowView.isHidden = false
-            lightTipBtn.isHidden = true
             mTitleLabel.text = NSLocalizedString("SearchMask", comment: "")
             descLabel.text = NSLocalizedString("OpenBluetoothAndCloseEar", comment: "")
             
@@ -252,7 +258,6 @@ class OpenBluetoothController: BaseViewController {
             unconnectingView.isHidden = true
             notBindBtn.isHidden = true
             arrowView.isHidden = true
-            lightTipBtn.isHidden = false
             mTitleLabel.text = NSLocalizedString("HasFindMask", comment: "")
             descLabel.text = NSLocalizedString("MaskLightTip", comment: "")
             
@@ -261,11 +266,13 @@ class OpenBluetoothController: BaseViewController {
             BLHUDBarManager.showSuccess(msg: NSLocalizedString("BindSuccess", comment: ""), seconds: 2)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2, execute: {
                 
-                self.navigationController!.dismiss(animated: true, completion: {
-                    if self.delegate != nil {
-                        self.delegate!.didConnectBlueTooth()
-                    }
-                })
+                if self.navigationController != nil {
+                    self.navigationController!.dismiss(animated: true, completion: {
+                        if self.delegate != nil {
+                            self.delegate!.didConnectBlueTooth()
+                        }
+                    })
+                }
 
             })
             

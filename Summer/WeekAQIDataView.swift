@@ -20,7 +20,7 @@ class WeekAQIDataView: UIView {
     let minAQILb = UILabel()
     
     ///当前选中的天
-    var currentIndex = 1
+    var currentIndex = 2
     
     override func awakeFromNib() {
         super.awakeFromNib()

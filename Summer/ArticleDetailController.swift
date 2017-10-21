@@ -41,7 +41,7 @@ class ArticleDetailController: BaseWKWebViewController {
                     
                 }
                 else {
-                    SVProgressHUD.showError(withStatus: msg)
+                    BLHUDBarManager.showError(msg: msg)
                 }
             })
         }

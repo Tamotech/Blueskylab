@@ -21,6 +21,7 @@
                 <outlet property="connectStatusLabel" destination="PyY-H1-t4o" id="G78-UL-gqE"/>
                 <outlet property="filterLevelLabel" destination="IY0-ll-2Q3" id="192-JC-AHj"/>
                 <outlet property="moveDistanceLabel" destination="aj3-UM-ltm" id="5aN-52-6bo"/>
+                <outlet property="resetFilterBtn" destination="b3p-yq-KlV" id="EB5-V6-AcC"/>
                 <outlet property="speedLabel" destination="WCZ-qh-8vf" id="byf-4b-SZi"/>
                 <outlet property="stepCountLabel" destination="Z3r-T0-oJV" id="PnE-hv-UkG"/>
                 <outlet property="unconnectView" destination="wYV-4z-JQc" id="tQ5-2o-Dp1"/>

@@ -38,6 +38,7 @@
 "ChangeFilterTip" = "口罩滤芯已耗尽，请立即更换";
 "filterChangeTip" = "当您更换了滤芯，请重制滤芯数据\n系统将重新计算新滤芯的过滤效果";
 "ResetYourFilter" = "我已更换滤芯，\n请重新计算滤芯的过滤效果\n确认重置滤芯数据?";
+"ResetFilterTimerTip" = "当您新更换了滤芯，请点重置计时器，\n系统将重新计算当前滤芯的过滤效果";
 "FilterLevelI" = "优";
 "FilterLevelII" = "中";
 "FilterLevelIII" = "弱";

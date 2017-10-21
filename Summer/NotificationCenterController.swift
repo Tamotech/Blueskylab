@@ -18,6 +18,8 @@ class NotificationCenterController: BaseViewController, UITableViewDelegate, UIT
     
     var nData: NotificationList = NotificationList()
     
+    var first: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -63,7 +65,13 @@ class NotificationCenterController: BaseViewController, UITableViewDelegate, UIT
     //MARK: - load data
     
     func reloadData() {
+        
+        if !first {
+            BSLAnimationActivityView.showAddToView(view: self.view)
+            first = true
+        }
         APIRequest.getNotificationList(page: 1, rows: 20) {[weak self] (data) in
+            BSLAnimationActivityView.dismiss(view: (self?.view)!)
             if data != nil && data is NotificationList {
                 self?.nData = data as! NotificationList
                 self?.tableView.reloadData()

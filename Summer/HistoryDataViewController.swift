@@ -16,6 +16,7 @@ class HistoryDataViewController: BaseViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var dateSegmentView: DateSegmentView!
     
+    @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet var tableSuperView: UIView!
     
     @IBOutlet weak var tableView: UITableView!
@@ -63,7 +64,7 @@ class HistoryDataViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     func setupView() {
-        let aqItems = ["PM2.5", "PM10", "NO2", "O3", "SO2", "CO"]
+        let aqItems = ["PM2.5", "PM10", "NO₂", "O₃", "SO₂", "CO"]
         let segment = BaseSegmentControl(items: aqItems, defaultIndex: 0)
         segment.selectItemAction = {
             [weak self](index, content) in
@@ -98,7 +99,11 @@ class HistoryDataViewController: BaseViewController, UITableViewDelegate, UITabl
             return
         }
         let cityID = currentAQI.cityID
+        cityLabel.text = currentAQI.city
+        BSLAnimationActivityView.showAddToView(view: keyWindow!)
+        
         APIRequest.getAQIHistoryData(type: 1, cityID:  cityID) { [weak self](data) in
+            BSLAnimationActivityView.dismiss(view: keyWindow!)
             self?.dayData = data as? AQIDataList
             self?.updateView()
         }

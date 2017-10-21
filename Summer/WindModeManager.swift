@@ -59,6 +59,12 @@ class WindModeManager: NSObject {
         if currentMode == nil {
             currentMode = windUserConfigList.first
         }
+        for mode in windUserConfigList {
+            if mode.name == currentMode?.name {
+                currentMode = mode
+            }
+        }
+        
         return currentMode!
     }
     

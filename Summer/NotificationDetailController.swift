@@ -19,7 +19,7 @@ class NotificationDetailController: BaseWKWebViewController, BottomShareViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.showCustomTitle(title:NSLocalizedString("QuestionDetail", comment: ""))
+        self.showCustomTitle(title:NSLocalizedString("NotificationDetail", comment: ""))
         shareItem = UIBarButtonItem(image: UIImage(named:"icon-share"), style: .plain, target: self, action: #selector(handleShareAction(_:)))
 //        self.navigationItem.rightBarButtonItem = shareItem
         
@@ -44,7 +44,7 @@ class NotificationDetailController: BaseWKWebViewController, BottomShareViewDele
             let htmlPath = Bundle.main.path(forResource: "notification", ofType: "html")
             let content = try? String.init(contentsOfFile: htmlPath!, encoding: String.Encoding.utf8) as NSString
             let replaceTag = "${title}"
-            var newContent = content?.replacingOccurrences(of: replaceTag, with: self?.data?.description ?? "")
+            var newContent = content?.replacingOccurrences(of: replaceTag, with: self?.data?.title ?? "")
             newContent = newContent?.replacingOccurrences(of: "${contentHtml}", with: self?.data!.content ?? "")
             self?.webView.loadHTMLString(newContent!, baseURL: nil)
         }

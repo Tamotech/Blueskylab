@@ -17,7 +17,7 @@ protocol WindModeSelectDelegate: class {
 
 class WindModeControllView: UIView, WindModeAjustorDelegate {
     
-    var modeManager: WindModeManager = WindModeManager()
+    var modeManager: WindModeManager = SessionManager.sharedInstance.windModeManager
     var scrollView: UIScrollView = UIScrollView()
     var childCompoents: [WindModeAjustor] = []
     //var currentMode: UserWindSpeedConfig = UserWindSpeedConfig()
@@ -48,7 +48,9 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
         modeManager.completeLoadModeConfig = {[weak self]() in
             self?.refreshItemViews()
             if self?.delegate != nil {
-                self?.delegate?.defaultModeDidChange(mode: (self?.modeManager.getCurrentMode())!)
+                self?.delegate?.defaultModeDidChange(mode:
+                    (self?.modeManager.getCurrentMode())!)
+                self?.selectItem(mode: (self?.modeManager.getCurrentMode())!)
             }
         }
         
@@ -84,8 +86,7 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
             BLSBluetoothManager.shareInstance.switchToIntelligenceModeForMask()
         }
         else {
-            let value = mode.value
-            BLSBluetoothManager.shareInstance.ajustSpeed(value: CGFloat(value))
+            BLSBluetoothManager.shareInstance.ajustSpeed(mode: mode)
         }
     }
     
@@ -191,6 +192,9 @@ class WindModeControllView: UIView, WindModeAjustorDelegate {
             
         for mode in modeManager.windUserConfigList {
           
+            if mode.valueMax<mode.value {
+                mode.value = mode.valueMax
+            }
             if mode.hideflag != 1 && !self.containsMode(mode: mode) {
                 let ajustor = WindModeAjustor(frame: .zero, mode: mode)
                 ajustor.delegate = self

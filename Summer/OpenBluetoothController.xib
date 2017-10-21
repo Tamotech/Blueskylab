@@ -14,7 +14,6 @@
                 <outlet property="arrowView" destination="TQv-TE-gHB" id="0lu-vo-txm"/>
                 <outlet property="connectingView" destination="NT3-c6-AoW" id="nu6-81-DVK"/>
                 <outlet property="descLabel" destination="eqE-1Q-Ekv" id="tQy-qz-OZm"/>
-                <outlet property="lightTipBtn" destination="9fG-Z6-Kt6" id="PgF-uq-opH"/>
                 <outlet property="mTitleLabel" destination="6tE-zw-nka" id="zLC-Jf-91G"/>
                 <outlet property="notBindBtn" destination="9LS-h0-KqN" id="Hpl-Zz-9C1"/>
                 <outlet property="ovalCircleView" destination="2RW-kd-dB5" id="YkL-0o-Uwf"/>
@@ -44,7 +43,7 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9LS-h0-KqN">
                             <rect key="frame" x="144" y="607" width="86" height="30"/>
-                            <state key="normal" title="暂无绑定      ">
+                            <state key="normal" title="暂不绑定      ">
                                 <color key="titleColor" white="1" alpha="0.69999999999999996" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -60,45 +59,18 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oval_circl_gray" translatesAutoresizingMaskIntoConstraints="NO" id="2RW-kd-dB5">
                             <rect key="frame" x="97" y="213.5" width="180" height="180"/>
                         </imageView>
-                        <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fG-Z6-Kt6">
-                            <rect key="frame" x="25" y="593" width="325" height="44"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="44" id="R1y-Xd-rKH"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <state key="normal" title="我的设备没有灯光闪烁">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="22"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                    <real key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="handleTapLightBtn:" destination="-1" eventType="touchUpInside" id="FWp-me-F1I"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.61176470589999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="TQv-TE-gHB" firstAttribute="centerY" secondItem="9LS-h0-KqN" secondAttribute="centerY" id="3jt-TX-soc"/>
                         <constraint firstItem="eqE-1Q-Ekv" firstAttribute="centerX" secondItem="6tE-zw-nka" secondAttribute="centerX" id="8B0-gR-UZn"/>
                         <constraint firstItem="TQv-TE-gHB" firstAttribute="trailing" secondItem="9LS-h0-KqN" secondAttribute="trailing" id="Mv2-Oa-53n"/>
-                        <constraint firstItem="9fG-Z6-Kt6" firstAttribute="leading" secondItem="NT3-c6-AoW" secondAttribute="leading" constant="25" id="Nlk-IC-UWV"/>
                         <constraint firstItem="9LS-h0-KqN" firstAttribute="centerX" secondItem="NT3-c6-AoW" secondAttribute="centerX" id="OgZ-Bl-bDX"/>
                         <constraint firstItem="6tE-zw-nka" firstAttribute="centerX" secondItem="NT3-c6-AoW" secondAttribute="centerX" id="SLI-Ao-ZM2"/>
                         <constraint firstAttribute="bottom" secondItem="9LS-h0-KqN" secondAttribute="bottom" constant="30" id="YGc-vh-S1P"/>
                         <constraint firstItem="k8h-TR-ZxC" firstAttribute="centerY" secondItem="NT3-c6-AoW" secondAttribute="centerY" constant="-30" id="eBT-eO-LTZ"/>
-                        <constraint firstAttribute="bottom" secondItem="9fG-Z6-Kt6" secondAttribute="bottom" constant="30" id="f7n-4y-GB1"/>
                         <constraint firstItem="2RW-kd-dB5" firstAttribute="centerX" secondItem="k8h-TR-ZxC" secondAttribute="centerX" id="fDM-gq-0WI"/>
                         <constraint firstItem="eqE-1Q-Ekv" firstAttribute="top" secondItem="6tE-zw-nka" secondAttribute="bottom" constant="12" id="kOl-HF-8im"/>
-                        <constraint firstAttribute="trailing" secondItem="9fG-Z6-Kt6" secondAttribute="trailing" constant="25" id="mwM-bW-GJn"/>
                         <constraint firstItem="k8h-TR-ZxC" firstAttribute="centerX" secondItem="NT3-c6-AoW" secondAttribute="centerX" id="qJA-pJ-b7d"/>
                         <constraint firstItem="2RW-kd-dB5" firstAttribute="centerY" secondItem="k8h-TR-ZxC" secondAttribute="centerY" id="wuM-ME-ofk"/>
                         <constraint firstItem="6tE-zw-nka" firstAttribute="top" secondItem="NT3-c6-AoW" secondAttribute="top" constant="58" id="zwR-UM-9CZ"/>

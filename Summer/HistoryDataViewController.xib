@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HistoryDataViewController" customModule="Summer" customModuleProvider="target">
             <connections>
                 <outlet property="arrowBtn" destination="heu-yZ-8wY" id="3d5-8k-qH1"/>
+                <outlet property="cityLabel" destination="GVT-iN-52O" id="Pqo-a0-Qsg"/>
                 <outlet property="dataView" destination="iNl-ut-Aaj" id="5rn-KX-i4z"/>
                 <outlet property="dateSegmentView" destination="wMJ-XU-bbS" id="5Iw-9E-9GE"/>
                 <outlet property="segmentSuperView" destination="bLx-zw-ELf" id="VLx-9c-utc"/>

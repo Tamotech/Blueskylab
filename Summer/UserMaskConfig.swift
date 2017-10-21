@@ -69,13 +69,34 @@ class UserMaskConfig: HandyJSON {
         if cityID < 0 {
             return
         }
-        APIRequest.updateUserConfig(params: ["cityid": "\(cityID)"])
     }
     
     ///低电量提醒 污染提醒  更换滤芯提醒
     func updateSettingSwitches() {
         
         APIRequest.updateUserConfig(params: ["filterchangeflag": "\(filterchangeflag)", "lowpowerflag":"\(lowpowerflag)", "pollutionwarnflag":"\(pollutionwarnflag)", "productinfoflag":"\(productinfoflag)", "language":"\(language)"])
+        
+        
+        guard (SessionManager.sharedInstance.currentAQI?.cityID) != nil  else {
+            return
+        }
+        var tags = ["\(SessionManager.sharedInstance.currentAQI?.cityID  ?? -1)"]
+        if filterchangeflag {
+            tags.append("changefilter")
+        }
+        if lowpowerflag {
+            tags.append("lowbattery")
+        }
+        if pollutionwarnflag {
+            tags.append("pollutionalert")
+        }
+        if productinfoflag {
+            tags.append("article")
+        }
+        tags.append(language)
+        
+        SessionManager.sharedInstance.pushTags = tags
+        SessionManager.sharedInstance.bindPushTags()
     }
     
     ///绑定面罩id
@@ -106,7 +127,7 @@ class UserMaskConfig: HandyJSON {
                 //保存成功
             }
             else {
-                SVProgressHUD.showError(withStatus: msg)
+                BLHUDBarManager.showError(msg: msg)
             }
         }
     }

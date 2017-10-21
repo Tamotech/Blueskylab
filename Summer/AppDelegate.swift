@@ -85,6 +85,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         
         SessionManager.sharedInstance.saveLoginInfo()
         HealthDataManager.sharedInstance.saveMaskUseData()
+        if BLSBluetoothManager.shareInstance.state == .Connected {
+            UserDefaults.standard.set(true, forKey: kBluetoothConnectFlag)
+            UserDefaults.standard.synchronize()
+        }
     }
     
     
@@ -94,7 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         JPUSHService.registerDeviceToken(deviceToken)
         if (SessionManager.sharedInstance.userId.characters.count > 0) {
             //绑定别名
-            JPUSHService.setTags(Set(["DefaultTag"]), aliasInbackground: SessionManager.sharedInstance.userId)
+            JPUSHService.setTags(Set(SessionManager.sharedInstance.pushTags), aliasInbackground: SessionManager.sharedInstance.userId)
         }
     }
     
@@ -160,18 +164,37 @@ extension AppDelegate: JPUSHRegisterDelegate {
         let badge = aps["badge"] ?? ""
         
         //extra 信息
-        if userInfo["language"] != nil {
-            SessionManager.sharedInstance.pushMessage.language = userInfo["language"] as! String
-        }
+
         if userInfo["type"] != nil {
-            SessionManager.sharedInstance.pushMessage.type = userInfo["type"] as! String
+            let type = userInfo["type"] as! String
+            let value = userInfo["pid"] as! String
+            
+            let rootVC = self.window?.rootViewController
+            if rootVC is BaseNavigationController {
+                let navVC = rootVC as! BaseNavigationController
+                if navVC.childViewControllers.count > 1 {
+                    navVC.popToRootViewController(animated: false)
+                }
+                
+                let mainVC = navVC.childViewControllers.first as! MainViewController
+                
+                if type == "article" {
+                    let vc = ArticleDetailController()
+                    vc.articleId = value
+                    navVC.pushViewController(vc, animated: true)
+                }
+                else if type == "pollutionalert" {
+                    
+                }
+                else if type == "changefilter" {
+                    mainVC.showChangeFilterAlert()
+                }
+            }
+            
+            
+            
         }
-        if userInfo["pid"] != nil {
-            SessionManager.sharedInstance.pushMessage.pid = userInfo["pid"] as! Int
-        }
-        if userInfo["cityid"] != nil {
-            SessionManager.sharedInstance.pushMessage.cityid = userInfo["cityid"] as! Int
-        }
+        
         print("content: \(String(describing: content)), badge: \(String(describing: badge))")
         
         

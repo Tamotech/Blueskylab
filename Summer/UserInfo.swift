@@ -67,6 +67,7 @@ class UserInfo: HandyJSON {
                       "weight": weight] as [String : Any]
         APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
             if code == 0 {
+                NotificationCenter.default.post(name: kUserInfoDidUpdateNotify, object: nil)
                 result(true, msg)
             }
             else {

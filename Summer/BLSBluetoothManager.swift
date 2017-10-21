@@ -24,6 +24,7 @@ let firmwareVersionUserKey = "firmware_version_key_001"
 /// 蓝牙状态改变回调
 typealias BluetoothStateUpdateCallback = (BluetoothState)->()
 typealias MaskPowerChangeCallback = (Int)->()
+typealias MaskWindSpeedChangeCallback = (CGFloat)->()
 
 class BLSBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate,
 DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
@@ -31,7 +32,7 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     let speedServiceID = "6e400001-b5a3-f393-e0a9-e50e24dcca9e"
     let deviceInfoServiceID = "0x180A"
     let batteryServiceID = "0x180F"
-    let maskName = "BSL-M1"
+    let maskName = ["BSL-M1", "ATMOBLUE-1"]
     ///电池服务
     let kBatteryCharacteristicUUID = "0x2A19"
     ///硬件信息服务
@@ -44,6 +45,8 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
 //    let firmwareCharacteristicUUID = "0x2A26"
 //    let firmwareCharacteristicUUID = "0x2A26"
     
+    ///风速服务
+    var speedService: CBService?
     ///电量特征值
     var powerChar: CBCharacteristic?
     ///电量服务ID
@@ -62,8 +65,9 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     var peripheral: CBPeripheral?
     var DFUPeripheral: CBPeripheral?
     
-    var stateUpdate: BluetoothStateUpdateCallback?
-    var powerChange: MaskPowerChangeCallback?
+//    var stateUpdate: BluetoothStateUpdateCallback?
+//    var powerChange: MaskPowerChangeCallback?
+//    var speedChange: MaskWindSpeedChangeCallback?
     
     static let shareInstance = BLSBluetoothManager()
     var manager: CBCentralManager?
@@ -116,13 +120,16 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     }
     
     func setupTimer() {
-        timer = Timer(timeInterval: 60, target: self, selector: #selector(timerHandle(t:)), userInfo: nil, repeats: true)
+        timer = Timer(timeInterval: 10, target: self, selector: #selector(timerHandle(t:)), userInfo: nil, repeats: true)
         RunLoop.main.add(timer!, forMode: .commonModes)
     }
     
     func timerHandle(t: Timer) {
         if powerService != nil && peripheral != nil {
             peripheral!.discoverCharacteristics(nil, for: powerService!)
+        }
+        if speedService != nil && peripheral != nil {
+            peripheral!.discoverCharacteristics(nil, for: speedService!)
         }
     }
     
@@ -170,9 +177,7 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
         }
         
         self.state = state
-        if stateUpdate != nil {
-            stateUpdate!(state)
-        }
+        NotificationCenter.default.post(name: kMaskStateChangeNotifi, object: nil, userInfo: ["key": "state", "value": state])
     }
     
     
@@ -191,7 +196,7 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
             manager?.connect(peripheral, options: nil)
         }
         
-        else if peripheral.name == maskName {
+        else if maskName.contains(peripheral.name ?? "") {
             //开始连接口罩
             deviceUUID = peripheral.identifier.uuidString
             self.bindBlueToothDevice()
@@ -213,10 +218,12 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
             self.updateFireware()
         }
         if !self.shouldUpdateFirmware {
-            if stateUpdate != nil {
-                self.state = .Connected
-                stateUpdate!(.Connected)
-            }
+            self.state = .Connected
+            NotificationCenter.default.post(name: kMaskStateChangeNotifi, object: nil, userInfo: ["key": "state", "value": state])
+            //蓝牙连接成功
+            HealthDataManager.sharedInstance.startPedometerUpdates()
+            //NotificationCenter.default.post(name: kMaskDidDisConnectBluetoothNoti, object: nil)
+            
         }
         peripheral.delegate = self
         manager?.stopScan()
@@ -226,10 +233,8 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print("设备连接失败 --- \(error?.localizedDescription ?? "")")
-        if stateUpdate != nil {
-            self.state = .ConnectFailed
-            stateUpdate!(.ConnectFailed)
-        }
+        self.state = .ConnectFailed
+        NotificationCenter.default.post(name: kMaskStateChangeNotifi, object: nil, userInfo: ["key": "state", "value": state])
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
@@ -245,10 +250,8 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
             stopMode = 0
         }
         
-        if stateUpdate != nil {
-            self.state = .DisConnected
-            stateUpdate!(.DisConnected)
-        }
+        self.state = .DisConnected
+        NotificationCenter.default.post(name: kMaskStateChangeNotifi, object: nil, userInfo: ["key": "state", "value": state])
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
@@ -256,6 +259,9 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
         for service in peripheral.services ?? [] {
             if service.uuid.isEqual(CBUUID(string: powerServiceID)) {
                 powerService = service
+            }
+            else if service.uuid.isEqual(CBUUID(string: speedServiceID)) {
+                speedService = service
             }
             peripheral.discoverCharacteristics(nil, for: service)
         }
@@ -281,9 +287,7 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
                 }
                 
                 print("电池电量--- \(power)")
-                if powerChange != nil {
-                    powerChange!(power)
-                }
+                NotificationCenter.default.post(name: kMaskStateChangeNotifi, object: nil, userInfo: ["key": "power", "value": power])
                 
             }
             else if char.uuid.isEqual(CBUUID(string: kSpeedWriteCharacteristicUUID)) {
@@ -298,6 +302,7 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
                 if char.value != nil {
                     let str = NSString(data: char.value!, encoding: String.Encoding.utf8.rawValue)!
                     print("读风速---\(str)")
+                    NotificationCenter.default.post(name: kMaskStateChangeNotifi, object: nil, userInfo: ["key": "speed", "value": CGFloat(str.floatValue)])
                 }
                 
             }
@@ -310,20 +315,11 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
                     firewareChar = char
                     UserDefaults.standard.set(String(str), forKey: firmwareVersionUserKey)
                     
-//                    //判断需不需要固件升级
-//                    let remoteVersion = SessionManager.sharedInstance.firewareVersion
-//                    if remoteVersion == nil || firmwareVersion == nil {
-//                        continue
-//                    }
-//                    print("当前版本--\(firmwareVersion!), 云端版本--\(remoteVersion!)")
-//                    shouldUpdateFirmware = String.compareVersionString(first: remoteVersion!, second: firmwareVersion!) < 0
                     if shouldUpdateFirmware {
                         self.switchToDFUMode()
                         
                     }
-                    //当前固件版本写入磁盘
-//                    UserDefaults.standard.set(String.init(str), forKey: firmwareVersionUserKey)
-                    //self.updateFireware()
+
                 }
                 
             }
@@ -341,9 +337,9 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     
     ///写风速操作
     ///value vibrate:n;  (n 1-20)  value: 0-100
-    func ajustSpeed(value: CGFloat) {
-        currentWindSpeed = value        
-        let str = "vibrate:\(Int(value*20.0/100.0));"
+    func ajustSpeed(mode: UserWindSpeedConfig) {
+        currentWindSpeed = CGFloat(mode.value)
+        let str = "vibrate:\(Int(currentWindSpeed*20.0/CGFloat(mode.valueMax)));"
         let data = str.data(using: .utf8)!
         if self.peripheral == nil || self.speedChar == nil {
             return
@@ -402,13 +398,10 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
             print("cancel peripheral")
             manager?.cancelPeripheralConnection(peripheral!)
         }
+        HealthDataManager.sharedInstance.stopPedometerUpdate()
         manager?.stopScan()
         state = .DisConnected
         DFUMode = false
-        if self.stateUpdate != nil {
-            print("断开")
-            self.stateUpdate!(.DisConnected)
-        }
     }
     
     
@@ -417,8 +410,6 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     func dfuStateDidChange(to state: DFUState) {
         print("DFU status changed --> \(state)")
         if state == .completed {
-            SVProgressHUD.dismiss()
-//            SVProgressHUD.showSuccess(withStatus: "固件升级完成!")
             SVProgressHUD.dismiss()
             shouldUpdateFirmware = false
             DFUMode = false

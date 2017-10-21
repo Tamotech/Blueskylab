@@ -43,7 +43,7 @@ class MainMenuView: BaseView {
         self.frame = UIScreen.main.bounds
         avatarBtn.imageView?.cornerRadius = 45
         avatarBtn.imageView?.clipsToBounds = true
-        
+        updateView()
         self.loadConfigData()
     }
     

@@ -120,7 +120,7 @@ class AddModeViewController: BaseViewController {
                     self?.dismiss(animated: true, completion: nil)
                 }
                 else {
-                    SVProgressHUD.showError(withStatus: msg)
+                    BLHUDBarManager.showError(msg: msg)
                 }
             }
 
@@ -148,7 +148,7 @@ class AddModeViewController: BaseViewController {
                     NotificationCenter.default.post(name: kWindModeConfigDidChangeNotify, object: nil)
                 }
                 else {
-                    SVProgressHUD.showError(withStatus: msg)
+                    BLHUDBarManager.showError(msg: msg)
                 }
             }
         }
@@ -163,7 +163,7 @@ class AddModeViewController: BaseViewController {
                     NotificationCenter.default.post(name: kWindModeConfigDidChangeNotify, object: nil)
                 }
                 else {
-                    SVProgressHUD.showError(withStatus: msg)
+                    BLHUDBarManager.showError(msg: msg)
                 }
             }
         }

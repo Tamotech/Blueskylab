@@ -295,11 +295,11 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         userInfo?.updateUserInfo(result: { [weak self](success, msg) in
             MBProgressHUD.hide(for: (self?.view)!, animated: true)
             if success {
-                SVProgressHUD.showSuccess(withStatus: msg)
+                BLHUDBarManager.showSuccess(msg: msg, seconds: 1)
                 self?.navigationController?.popViewController(animated: true)
             }
             else {
-                SVProgressHUD.showError(withStatus: msg)
+                BLHUDBarManager.showError(msg: msg)
             }
         })
     }

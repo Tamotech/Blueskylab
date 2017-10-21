@@ -14,6 +14,8 @@ class LanguageListController: BaseViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tableView: UITableView!
     let data:[String] = ["简体中文", "繁体中文", "English"]
     
+    var selectIndex = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +30,7 @@ class LanguageListController: BaseViewController, UITableViewDelegate, UITableVi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     // MARK: - TableView
@@ -56,13 +59,18 @@ class LanguageListController: BaseViewController, UITableViewDelegate, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! LanguageCell
         let content = data[indexPath.row]
         cell.nameLabel.text = content
-        if indexPath.row == 0 {
-            cell.isSelected = true
+        if selectIndex == indexPath.row {
+            cell.markIcon.isHidden = false
         }
         else {
-            cell.isSelected = false
+            cell.markIcon.isHidden = true
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectIndex = indexPath.row
+        tableView.reloadData()
     }
 
 }

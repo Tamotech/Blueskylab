@@ -10,6 +10,8 @@
 		25F4822315621C66772C57FC /* Pods_Summer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C96D22CE689A5323E4BAAB6 /* Pods_Summer.framework */; };
 		5A2341DA1F88E03000BEB06F /* BaseWKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2341D91F88E02F00BEB06F /* BaseWKWebViewController.swift */; };
 		5A3925491F8CA2FB00A066B0 /* main-bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2341D81F88601C00BEB06F /* main-bg2.png */; };
+		5A53F5A71F97834D00E46282 /* BSLAnimationActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53F5A61F97834D00E46282 /* BSLAnimationActivityView.swift */; };
+		5A53F5AA1F978C3A00E46282 /* loadingBSL.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5A53F5A91F9784D600E46282 /* loadingBSL.gif */; };
 		5A7F6F711F88EEAA00F59DCB /* about-banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7F6F701F88EE4F00F59DCB /* about-banner.png */; };
 		CC0237771F08998D00400F7C /* EditPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0237751F08998D00400F7C /* EditPasswordViewController.swift */; };
 		CC0237781F08998D00400F7C /* EditPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0237761F08998D00400F7C /* EditPasswordViewController.xib */; };
@@ -156,6 +158,8 @@
 /* Begin PBXFileReference section */
 		5A2341D81F88601C00BEB06F /* main-bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main-bg2.png"; sourceTree = "<group>"; };
 		5A2341D91F88E02F00BEB06F /* BaseWKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWKWebViewController.swift; sourceTree = "<group>"; };
+		5A53F5A61F97834D00E46282 /* BSLAnimationActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSLAnimationActivityView.swift; sourceTree = "<group>"; };
+		5A53F5A91F9784D600E46282 /* loadingBSL.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loadingBSL.gif; sourceTree = "<group>"; };
 		5A7F6F701F88EE4F00F59DCB /* about-banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about-banner.png"; sourceTree = "<group>"; };
 		5A8498DF1F89FDBD002B63C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5ABCF9B51F902C4C00E91962 /* iOSDFULibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDFULibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -359,6 +363,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A53F5A81F97842000E46282 /* BSLAnimationResource */ = {
+			isa = PBXGroup;
+			children = (
+				5A53F5A91F9784D600E46282 /* loadingBSL.gif */,
+			);
+			name = BSLAnimationResource;
+			sourceTree = "<group>";
+		};
 		A4DB292F3E62DDC85E32350B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -731,7 +743,9 @@
 		CC8D04131F40A57000F9B7FF /* HUD */ = {
 			isa = PBXGroup;
 			children = (
+				5A53F5A81F97842000E46282 /* BSLAnimationResource */,
 				CC8D04181F40A5F100F9B7FF /* WXPregressHUD.swift */,
+				5A53F5A61F97834D00E46282 /* BSLAnimationActivityView.swift */,
 			);
 			name = HUD;
 			sourceTree = "<group>";
@@ -901,7 +915,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = wuxi;
 				TargetAttributes = {
 					CC3348C61EF368790084642A = {
@@ -947,6 +961,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A53F5AA1F978C3A00E46282 /* loadingBSL.gif in Resources */,
 				5A3925491F8CA2FB00A066B0 /* main-bg2.png in Resources */,
 				5A7F6F711F88EEAA00F59DCB /* about-banner.png in Resources */,
 				CC3693821F3612AD00929F24 /* OpenBluetoothController.xib in Resources */,
@@ -1121,6 +1136,7 @@
 				CCCE01661F5331F600974F6D /* BaseWebViewController.swift in Sources */,
 				CC6D342E1EF3877A002C4A36 /* Car.swift in Sources */,
 				CC8D040B1F3FDCF700F9B7FF /* WindModeAjustor.swift in Sources */,
+				5A53F5A71F97834D00E46282 /* BSLAnimationActivityView.swift in Sources */,
 				CC339C0D1F4A546E00EB0516 /* ModeSettingCell.swift in Sources */,
 				CCE954741F11122D005C755C /* CheckUpdateViewController.swift in Sources */,
 				CC5B32711EFA5D570048FC89 /* WXActionSheetView.swift in Sources */,

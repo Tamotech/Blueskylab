@@ -119,6 +119,8 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         NotificationCenter.default.addObserver(self, selector: #selector(userInfoUpdateNotification(noti:)), name: kUserInfoDidUpdateNotify, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userMaskConfigUpdateNoti(noti:)), name: kUserMaskConfigUpdateNoti, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didConnectBluetoothNoti(noti:)), name: kMaskDidConnectBluetoothNoti, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(bluetoothStateChangeNotification(noti:)), name: kMaskStateChangeNotifi, object: nil)
+        
         
         if (SessionManager.sharedInstance.token.characters.count == 0) {
             let guideVc = StartGuideViewController(nibName: "StartGuideViewController", bundle: nil)
@@ -129,7 +131,13 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
                 
             })
         }
-        
+        else {
+            if UserDefaults.standard.bool(forKey: kBluetoothConnectFlag) {
+                handleTapSearchBluetoothBtn(searchBtn)
+                UserDefaults.standard.set(false, forKey: kBluetoothConnectFlag)
+                UserDefaults.standard.synchronize()
+            }
+        }
         
         
     }
@@ -146,7 +154,6 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
             }
         }
         
-        self.observeBluetoothState()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -210,9 +217,14 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     }
     
     
-    func observeBluetoothState() {
-        let manager = BLSBluetoothManager.shareInstance
-        manager.stateUpdate = {(state: BluetoothState) in
+    //MARK: - 通知
+    func bluetoothStateChangeNotification(noti: Notification) {
+        guard let userInfo = noti.userInfo as? [String: Any] else {
+            return
+        }
+        if userInfo["key"] as! String == "state" {
+            let state = userInfo["value"] as! BluetoothState
+            let manager = BLSBluetoothManager.shareInstance
             switch state {
             case .Unauthorized:
                 self.changeToConnectMode(connect: false)
@@ -237,8 +249,8 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
                 
             }
         }
-        
-        manager.powerChange = {(power) in
+        else if userInfo["key"] as! String == "power" {
+            let power = userInfo["value"] as! Int
             var batteryImg = #imageLiteral(resourceName: "battery1")
             self.batteryLevelLb.textColor = UIColor.white
             if power < 20 {
@@ -253,10 +265,10 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
             self.batteryImageView.image = batteryImg
             self.batteryLevelLb.text = "\(power)%"
         }
+        
     }
     
     
-    //MARK: - 通知
     func appDidBecomeActiveNotification(notify: Notification) {
         
         self.loadAQIData()
@@ -276,9 +288,15 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         self.setCurrentModeWindForMask()
     }
     
+    func didDisconnectBluetoothNoti(noti: Notification) {
+        
+    }
+    
     //MARK: - AQI
     
     func loadAQIData() {
+        BSLAnimationActivityView.showAddToView(view: self.view)
+        
         APIRequest.AQIQueryAPI { [weak self](data) in
             self?.todayAQIData = data as? CurrentAQI
             SessionManager.sharedInstance.currentAQI  = data as? CurrentAQI
@@ -287,12 +305,18 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
             guard let cityID = self?.todayAQIData?.cityID else {
                 return
             }
+            
+            if !SessionManager.sharedInstance.pushTags.contains("\(cityID)") {
+                SessionManager.sharedInstance.pushTags.append("\(cityID)")
+                SessionManager.sharedInstance.bindPushTags()
+            }
             APIRequest.recentWeekAQIAPI(cityID: cityID, result: { [weak self](recentData) in
                 self?.recentAQIData = recentData as? RecentWeekAQI
                 self?.updateRecentWeekDataView(data: (self?.recentAQIData)!)
+                BSLAnimationActivityView.dismiss(view: (self?.view)!)
                 
             })
-            SessionManager.sharedInstance.userMaskConfig.updateCityID(cityID: cityID)
+//            SessionManager.sharedInstance.userMaskConfig.updateCityID(cityID: cityID)
         }
         
     }
@@ -331,13 +355,6 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     }
     
     func gotoNextPage(_:Any?) {
-//        var currentIndex = Int(scrollView.contentOffset.x/screenWidth)
-//        currentIndex = currentIndex+1
-//        if currentIndex >= 2 {
-//            currentIndex = 0
-//        }
-        
-       // scrollView.setContentOffset(CGPoint(x: CGFloat(currentIndex)*screenWidth, y: 0), animated: false)
         
         if BLSBluetoothManager.shareInstance.state == .Connected {
             UIView.animate(withDuration: 0.3, animations: {
@@ -351,18 +368,6 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
                 self.aqiView.alpha = 1-self.aqiView.alpha
             })
         }
-        
-//        if maskModeView.alpha == 1 && !hasShowLowPowerTip && !showingCircleAnimation {
-//            //let config = SessionManager.sharedInstance.userMaskConfig
-//            let power = batteryLevelLb.text?.getIntFromString() ?? 100
-//            if power <= 20 {
-//                self.lowerPowerAlert()
-//            }
-//
-//            self.showChangeFilterAlert()
-//        }
-        
-        
     }
     
     
@@ -383,7 +388,10 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
             self?.dismissMenu()
             switch type {
             case .ItemUser:
-                
+                if SessionManager.sharedInstance.token == "" {
+                    showLoginVC()
+                    return
+                }
                 let editUserVc = EditProfileViewController(nibName: "EditProfileViewController", bundle: nil)
                 self?.navigationController?.pushViewController(editUserVc, animated: true)
                 break
@@ -408,17 +416,23 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
                 guard let url = self?.menuView.maskBuyUrl else {
                     break
                 }
-                let vc = BaseWebViewController()
-                vc.urlString = url
-                self?.navigationController?.pushViewController(vc, animated: true)
+                if UIApplication.shared.canOpenURL(URL(string: url)!) {
+                    UIApplication.shared.openURL(URL(string: url)!)
+                }
+//                let vc = BaseWebViewController()
+//                vc.urlString = url
+//                self?.navigationController?.pushViewController(vc, animated: true)
                 break
             case .ItemBuyFilter:
                 guard let url = self?.menuView.filterBuyUrl else {
                     break
                 }
-                let vc = BaseWebViewController()
-                vc.urlString = url
-                self?.navigationController?.pushViewController(vc, animated: true)
+                if UIApplication.shared.canOpenURL(URL(string: url)!) {
+                    UIApplication.shared.openURL(URL(string: url)!)
+                }
+//                let vc = BaseWebViewController()
+//                vc.urlString = url
+//                self?.navigationController?.pushViewController(vc, animated: true)
                 break
             case .ItemShare:
                 let sheet = BottomWechatShareView.instanceFromXib() as! BottomWechatShareView
@@ -439,13 +453,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         maskView.alpha = 0
         maskView.addGestureRecognizer(tapGes)
         
-//        scrollView.isUserInteractionEnabled = true
-//        let tapscroll = UITapGestureRecognizer(target: self, action: #selector(gotoNextPage(_:)))
-//        scrollView.addGestureRecognizer(tapscroll)
-        
     }
-    
-    ///
     
     
     //Mark: 侧滑手势

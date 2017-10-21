@@ -39,7 +39,7 @@ class APIRequest: NSObject {
                 result(data)
             }
             else {
-                SVProgressHUD.showError(withStatus: msg)
+                BLHUDBarManager.showError(msg: msg)
             }
         }
     }
@@ -61,7 +61,7 @@ class APIRequest: NSObject {
                 result(data)
             }
             else {
-                SVProgressHUD.showError(withStatus: msg)
+                BLHUDBarManager.showError(msg: msg)
             }
         }
     }
@@ -80,7 +80,7 @@ class APIRequest: NSObject {
                 result(data)
             }
             else {
-                SVProgressHUD.showError(withStatus: msg)
+                BLHUDBarManager.showError(msg: msg)
             }
         }
     }
@@ -117,7 +117,7 @@ class APIRequest: NSObject {
                 result(cfgList)
             }
             else {
-                SVProgressHUD.showError(withStatus: msg)
+                BLHUDBarManager.showError(msg: msg)
             }
         }
     }
@@ -254,7 +254,7 @@ class APIRequest: NSObject {
         APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
 //            MBProgressHUD.hide(for: keyWindow!, animated: true)
             if code != 0 {
-                SVProgressHUD.showError(withStatus: msg)
+                BLHUDBarManager.showError(msg: msg)
             }
         }
     }

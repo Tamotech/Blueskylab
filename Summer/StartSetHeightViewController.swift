@@ -57,18 +57,18 @@ class StartSetHeightViewController: UIViewController {
     @IBAction func handleTapNextBtn(_ sender: Any) {
         
         //注册
-        SVProgressHUD.show()
+        BSLAnimationActivityView.showAddToView(view: self.view)
         SessionManager.sharedInstance.regist { [weak self](JSON, code, msg) in
             if code == 0 {
                 //注册成功 登录成功
                 DispatchQueue.main.async {
-                    SVProgressHUD.dismiss()
+                    BSLAnimationActivityView.dismiss(view: (self?.view)!)
                     self?.navigationController?.dismiss(animated: true, completion: nil)
                 }
                 
             }
             else {
-                SVProgressHUD.showError(withStatus: msg)
+                BLHUDBarManager.showError(msg: msg)
             }
         }
     }

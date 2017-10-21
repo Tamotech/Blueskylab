@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AMPopTip
 
 class EquipmentViewController: BaseViewController, MotionDataDelegate, BluetoothViewDelegate {
 
@@ -26,6 +27,8 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
     @IBOutlet weak var filterLevelLabel: UILabel!
     
     @IBOutlet weak var unconnectView: UIView!
+  
+    @IBOutlet weak var resetFilterBtn: UIButton!
     
     var currentSteps: Int = 0
     var currentDistance: Float = 0
@@ -44,7 +47,32 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
         windLevelLabel.text = String.init(format: "%.0f", BLSBluetoothManager.shareInstance.currentWindSpeed)
         
         let manager = BLSBluetoothManager.shareInstance
-        manager.stateUpdate = {(state: BluetoothState) in
+        if manager.state == BluetoothState.Connected {
+            unconnectView.isHidden = true
+            //HealthDataManager.sharedInstance.startPedometerUpdates()
+        }
+        else {
+            unconnectView.isHidden = false
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(bluetoothStateChangeNotification(noti:)), name: kMaskStateChangeNotifi, object: nil)
+    
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showResetFilterAlert()
+    }
+    
+    //MARK: notification
+    func bluetoothStateChangeNotification(noti: Notification) {
+        guard let userInfo = noti.userInfo as? [String: Any] else {
+            return
+        }
+        if userInfo["key"] as! String == "state" {
+            let state = userInfo["value"] as! BluetoothState
+            let manager = BLSBluetoothManager.shareInstance
             switch state {
             case .Unauthorized:
                 self.changeToConnectMode(connect: false)
@@ -68,15 +96,11 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
                 
             }
         }
-        
-        if manager.state == BluetoothState.Connected {
-            unconnectView.isHidden = true
-            HealthDataManager.sharedInstance.startPedometerUpdates()
+        else if userInfo["key"] as! String == "speed" {
+            let speed = (userInfo["value"] as! CGFloat)*5
+            
+            self.windLevelLabel.text = String.init(format: "%.0f", speed)
         }
-        else {
-            unconnectView.isHidden = false
-        }
-        
     }
     
 
@@ -106,8 +130,13 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
     }
     
     @IBAction func handleTapUnbindMaskBtn(_ sender: UIButton) {
-        BLSBluetoothManager.shareInstance.stop()
-        HealthDataManager.sharedInstance.saveMaskUseData()
+        
+        let mode = UserWindSpeedConfig()
+        mode.value = 0
+        mode.gear = 0
+        mode.valueMax = 100
+        mode.gearMax = 20
+        BLSBluetoothManager.shareInstance.ajustSpeed(mode: mode)
         self.changeToConnectMode(connect: false)
     }
     
@@ -190,6 +219,8 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
         }
         else {
             unconnectView.isHidden = false
+            BLSBluetoothManager.shareInstance.stop()
+            
             
         }
     }
@@ -199,5 +230,28 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
     func didConnectBlueTooth() {
         changeToConnectMode(connect: true)
         NotificationCenter.default.post(name: kMaskDidConnectBluetoothNoti, object: nil)
+    }
+    
+    func showResetFilterAlert() {
+        
+        if (self.view.tag == 12) {
+            return
+        }
+        self.view.tag = 12
+        let popTip = PopTip()
+        popTip.padding = 0
+        popTip.cornerRadius = 8
+        popTip.bubbleColor = UIColor(hexString: "ffb83e")!
+        popTip.shadowColor = UIColor.black
+        popTip.shadowOffset = CGSize(width: 0, height: 2)
+        popTip.shadowRadius = 4
+        popTip.shadowOpacity = 0.3
+        popTip.borderColor = UIColor(hexString: "ffb83e")!
+        let tipView = BLTipView(frame: CGRect(x: 0, y: 0, width: 222, height: 44), msg: NSLocalizedString("ResetFilterTimerTip", comment: ""), icon: nil, textColor: UIColor.white, bgColor: UIColor(hexString: "ffb83e")!)
+        let frame = self.view.convert(resetFilterBtn.frame, from: resetFilterBtn.superview)
+        popTip.show(customView: tipView, direction: .up, in: self.view, from: frame)
+        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+            popTip.hide()
+        }
     }
 }

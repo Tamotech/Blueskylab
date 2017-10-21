@@ -79,7 +79,7 @@ class HealthDataManager: NSObject {
         comps.second = 0
 //        let midnightOfToday = cal.date(from: comps)!
         let now = Date()
-        
+        seconds = 0
         //初始化并开始实时获取数据
         self.pedometer.startUpdates (from: now, withHandler: { pedometerData, error in
             //错误处理

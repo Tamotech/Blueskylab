@@ -63,6 +63,9 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     var firewareDownloadUrl: String?
     /// 最新固件版本号
     var firewareVersion: String?
+    
+    ///推送tags
+    var pushTags = ["changefilter", "zh_CN", "lowbattery", "pollutionalert", "article"]
 
     
     override init() {
@@ -192,5 +195,13 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
         currentLocation = locations.last!
         lock.unlock()
         print("---------->获取最新位置")
+    }
+    
+    ///绑定推送tags
+    func bindPushTags() {
+        if userId.characters.count > 0 {
+            //绑定别名
+            JPUSHService.setTags(Set(pushTags), aliasInbackground: userId)
+        }
     }
 }

@@ -45,6 +45,7 @@ class UserHandbookController: BaseViewController, UITableViewDelegate, UITableVi
         playerLayer.player = player
         playerLayer.frame = bannerView.bounds
         bannerView.layer.addSublayer(playerLayer)
+        playerLayer.isHidden = true
         loadData()
         
         let nib = UINib(nibName: "AboutQACell", bundle: nil)
@@ -166,6 +167,7 @@ class UserHandbookController: BaseViewController, UITableViewDelegate, UITableVi
     @IBAction func handleTapPlayButton(_ sender: UIButton) {
         
         if player.currentItem != nil {
+            playerLayer.isHidden = false
             playButton.isHidden = true
             player.play()
         }
