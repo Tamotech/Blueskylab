@@ -148,7 +148,9 @@ class HealthDataManager: NSObject {
     
     func stopPedometerUpdate() {
         self.pedometer.stopUpdates()
-        timer!.invalidate()
+        if timer != nil {
+            timer!.invalidate()
+        }
         motioning = false
         zeroDistance = 0
         zeroStep = 0
@@ -168,6 +170,20 @@ class HealthDataManager: NSObject {
         let second = seconds%60
         if self.delegate != nil {
             self.delegate?.timerStrUpdate(timeStr:String.init(format: "%02d:%02d:%02d", hour, minute, second))
+        }
+        
+        ///TEST: 测试
+        if minute%7 == 1 && second == 0 {
+            SessionManager.sharedInstance.userMaskConfig.filtereffect = "l2"
+            NotificationCenter.default.post(name: kUserMaskConfigUpdateNoti, object: nil)
+        }
+        else if minute%7 == 3 && second == 0 {
+            SessionManager.sharedInstance.userMaskConfig.filtereffect = "l3"
+            NotificationCenter.default.post(name: kUserMaskConfigUpdateNoti, object: nil)
+        }
+        else if minute%7 == 6 && second == 0 {
+            SessionManager.sharedInstance.userMaskConfig.filtereffect = "l1"
+            NotificationCenter.default.post(name: kUserMaskConfigUpdateNoti, object: nil)
         }
     }
     

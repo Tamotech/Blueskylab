@@ -206,6 +206,8 @@ class HistoryDataViewController: BaseViewController, UITableViewDelegate, UITabl
                 self.navigationController?.setNavigationBarHidden(true, animated: true)
                 self.barView.isHidden = true
             })
+            
+            loadMoreAQIList()
         }
         else {
             UIView.animate(withDuration: 0.4, animations: {

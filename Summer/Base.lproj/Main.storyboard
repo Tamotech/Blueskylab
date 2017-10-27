@@ -498,9 +498,10 @@
                         <outlet property="defaultModeLabel" destination="biF-04-wsM" id="YaX-0o-IJN"/>
                         <outlet property="faceIcon" destination="uMZ-xH-f0c" id="TY6-W8-xOH"/>
                         <outlet property="maskModeView" destination="UxF-mP-NM8" id="kXn-wh-QZM"/>
+                        <outlet property="modeCircleView" destination="vkJ-Jl-ge1" id="AiG-tz-rte"/>
                         <outlet property="modeControlBottom" destination="z0N-Uy-M3e" id="3OA-wi-Q30"/>
                         <outlet property="modeManageView" destination="ATy-Da-jLb" id="pUb-RA-gzk"/>
-                        <outlet property="ovalCircleView" destination="Wed-hU-23p" id="ske-sB-Bmb"/>
+                        <outlet property="ovalCircleView" destination="Wed-hU-23p" id="ZOW-kf-XEF"/>
                         <outlet property="pollutionLevelLabel" destination="12g-8G-9VX" id="yKh-8g-Wqg"/>
                         <outlet property="searchBtn" destination="hbY-SA-qLO" id="jnl-wB-aAg"/>
                         <outlet property="selectModeView" destination="43E-db-f8l" id="nHk-4J-HhI"/>

@@ -35,14 +35,11 @@ class MainMenuView: BaseView {
     /// App下载地址
     var appDownloadUrl: String?
     
-    @IBOutlet weak var avatarBtn: UIButton!
-    
+    @IBOutlet weak var avatarImg: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
     override func awakeFromNib() {
         self.frame = UIScreen.main.bounds
-        avatarBtn.imageView?.cornerRadius = 45
-        avatarBtn.imageView?.clipsToBounds = true
         updateView()
         self.loadConfigData()
     }
@@ -53,12 +50,12 @@ class MainMenuView: BaseView {
         let userInfo = SessionManager.sharedInstance.userInfo
         if userInfo == nil {
             //未登录
-            avatarBtn.setImage(#imageLiteral(resourceName: "imgProfile-M"), for: .normal)
+            avatarImg.image = #imageLiteral(resourceName: "imgProfile")
             nameLabel.text = NSLocalizedString("PleaseLogin", comment: "")
         }
         else {
             let rc = ImageResource(downloadURL: URL(string: userInfo!.headimg.urlStringWithBLS())!)
-            avatarBtn.kf.setImage(with: rc, for: .normal, placeholder: #imageLiteral(resourceName: "imgProfile-M"), options: nil, progressBlock: nil, completionHandler: nil)
+            avatarImg.kf.setImage(with: rc)
     //        nameLabel.text = userInfo.name
             nameLabel.text = NSLocalizedString("MyAir", comment: "")
         }
@@ -98,12 +95,11 @@ class MainMenuView: BaseView {
         }
     }
     
-    @IBAction func handleTapAvatarButton(_ sender: UIButton) {
+    @IBAction func handleTapAvatar(_ sender: UITapGestureRecognizer) {
         if self.tapMunueCallback != nil {
             self.tapMunueCallback!(.ItemMyEquipment)
         }
     }
-    
     @IBAction func handleTapEquipmentBtn(_ sender: Any) {
         
         if self.tapMunueCallback != nil {

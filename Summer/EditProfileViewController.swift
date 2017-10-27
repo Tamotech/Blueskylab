@@ -204,13 +204,17 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
             let img = info[UIImagePickerControllerOriginalImage] as! UIImage?
             if img != nil {
             self.avartarBtn.setImage(img!, for: .normal)
-                let data = UIImageJPEGRepresentation(img!, 0.8)!
+                
+                let data = img!.compressImage(maxLength: 2*1024*1024)
+                
                 MBProgressHUD.showAdded(to: self.view, animated: true)
                 APIManager.shareInstance.uploadFile(data: data, result: { [weak self](JSON, code, msg) in
                     MBProgressHUD.hide(for: (self?.view)!, animated: true)
                     if code == 0 {
                         let avatarUrl = JSON?["data"]["url"].string ?? ""
                         SessionManager.sharedInstance.userInfo?.headimg = avatarUrl
+                        self?.saveUser()
+                        self?.change = false
                     }
                     else {
                         BLHUDBarManager.showError(msg: msg)

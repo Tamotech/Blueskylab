@@ -15,6 +15,9 @@ import Kingfisher
 
 class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSelectDelegate, BottomShareViewDelegate {
 
+    let kShowGuideFlag = "show_guide_flag"
+    let kShowModeControlGuideFlag = "show_mode_control_guide_flag"
+    
     //背景污染等级图
     @IBOutlet weak var bgImgView: UIImageView!
     
@@ -82,6 +85,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     ///aqi 空气数据
     @IBOutlet weak var aqiView: UIView!
     
+    @IBOutlet weak var modeCircleView: UIImageView!
     
     lazy var modeControlView: WindModeControllView = {
         let view = WindModeControllView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 246))
@@ -139,7 +143,6 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
             }
         }
         
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -147,6 +150,8 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         let navVC = self.navigationController as! BaseNavigationController
         navVC.setTintColor(tint: .white)
         
+        //TEST: 测试
+        //SessionManager.sharedInstance.getUserMaskConfig()
         
         if self.menuView.superview == nil && self.navigationController?.presentingViewController == nil {
              DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -160,6 +165,8 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         super.viewDidAppear(animated)
         
         self.changeToConnectMode(connect: BLSBluetoothManager.shareInstance.state == BluetoothState.Connected)
+        
+        showConnectMaskGuide()
         
     }
     
@@ -210,9 +217,6 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         stageLabel.text = levelData.0
         if levelData.1 != nil {
             faceIcon.image = levelData.1!
-        }
-        if levelData.2 != nil {
-            bgImgView.image = levelData.2!
         }
     }
     
@@ -505,6 +509,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     }
     
     @IBAction func handleTapMenu(_:Any) {
+        self.showModeControl(show: false)
         self.showMenu()
     }
     
@@ -701,14 +706,15 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
                 self.aqiView.alpha = 0
                 self.maskModeView.alpha = 1
                 
-                if !self.hasShowLowPowerTip {
-                    let power = self.batteryLevelLb.text?.getIntFromString() ?? 100
-                    if power <= 20 {
-                        self.lowerPowerAlert()
-                    }
-                    self.showChangeFilterAlert()
+                let power = self.batteryLevelLb.text?.getIntFromString() ?? 100
+                if power <= 20 {
+                    self.lowerPowerAlert()
                 }
-                self.showModeControl(show: true)
+                self.showChangeFilterAlert()
+                
+                if !UserDefaults.standard.bool(forKey: self.kShowModeControlGuideFlag) {
+                    self.showMaskModeGuide()
+                }
                 
             })
         }
@@ -793,5 +799,203 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         DispatchQueue.main.asyncAfter(deadline: .now()+3) {
             popTip.hide()
         }
+    }
+    
+    
+    //MARK: - 引导
+    
+    func showConnectMaskGuide() {
+        
+        if UserDefaults.standard.bool(forKey: kShowGuideFlag) {
+            return
+        }
+        if bottomView.alpha < 1 {
+            return
+        }
+        
+        if navigationController?.presentedViewController != nil ||
+            self.presentedViewController != nil {
+            return
+        }
+            
+        guard let bottomCopy = bottomView.snapshotView(afterScreenUpdates: false) else {
+            return
+        }
+        timer?.invalidate()
+        timer = nil
+        aqiView.alpha = 1
+        connectBluetoothView.alpha = 0
+        let frame = keyWindow?.convert(bottomView.frame, from: self.view)
+        bottomCopy.frame = frame!
+
+        guard let connectBtnCopy = searchBtn.snapshotView(afterScreenUpdates: false) else {
+            return
+        }
+        connectBtnCopy.layer.cornerRadius = searchBtn.height/2
+        connectBtnCopy.clipsToBounds = true
+        connectBtnCopy.frame = searchBtn.frame
+        bottomCopy.addSubview(connectBtnCopy)
+        
+        
+        let guide = UIView(frame: UIScreen.main.bounds)
+        guide.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        guide.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapConnectMaskGuide(sender:)))
+        guide.addGestureRecognizer(tap)
+        keyWindow?.addSubview(guide)
+        
+        guide.addSubview(bottomCopy)
+        
+        let line = UIImageView(image: #imageLiteral(resourceName: "cur-line-1"))
+        line.contentMode = .scaleAspectFit
+        guide.addSubview(line)
+        line.snp.makeConstraints({ (make) in
+            make.size.equalTo(CGSize(width: 47, height: 70))
+            make.bottom.equalTo(-86)
+            make.centerX.equalTo(guide.snp.centerX)
+        })
+        
+        let tip = UIImageView(image: #imageLiteral(resourceName: "aqi-tip-word"))
+        tip.contentMode = .scaleAspectFit
+        guide.addSubview(tip)
+        tip.snp.makeConstraints({ (make) in
+            make.size.equalTo(CGSize(width: 266, height: 60))
+            make.bottom.equalTo(line.snp.top).offset(-20)
+            make.centerX.equalTo(guide.snp.centerX)
+        })
+        UserDefaults.standard.set(true, forKey: kShowGuideFlag)
+        UserDefaults.standard.synchronize()
+    }
+    
+    func handleTapConnectMaskGuide(sender: UIGestureRecognizer) {
+        let guide = sender.view
+        guide!.removeFromSuperview()
+        showAQIGuideView()
+    }
+    
+    func showAQIGuideView() {
+        
+        let aqiCopy = aqiView.snapshotView(afterScreenUpdates: false)
+        aqiCopy?.frame = keyWindow!.convert(aqiView.frame, from: aqiView!.superview)
+        
+        let guide = UIView(frame: UIScreen.main.bounds)
+        guide.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        guide.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapAQIGuide(sender:)))
+        guide.addGestureRecognizer(tap)
+        keyWindow?.addSubview(guide)
+        
+        guide.addSubview(aqiCopy!)
+        
+        let tip = UIImageView(image: #imageLiteral(resourceName: "connect-mask-tip-word"))
+        tip.contentMode = .scaleAspectFit
+        guide.addSubview(tip)
+        tip.snp.makeConstraints({ (make) in
+            make.size.equalTo(CGSize(width: 314, height: 60))
+            make.top.equalTo(aqiCopy!.snp.bottom).offset(50)
+            make.centerX.equalTo(guide.snp.centerX)
+        })
+        
+        let handTip = UIImageView(image: #imageLiteral(resourceName: "HandM2-1-2"))
+        handTip.contentMode = .scaleAspectFit
+        guide.addSubview(handTip)
+        handTip.snp.makeConstraints { (make) in
+            make.centerX.equalTo(aqiCopy!.snp.centerX).offset(50)
+            make.centerY.equalTo(aqiCopy!.snp.bottom).offset(-30)
+        }
+        
+    }
+    
+    func handleTapAQIGuide(sender: UIGestureRecognizer) {
+        let guide = sender.view!
+        guide.removeFromSuperview()
+        setupTimer()
+    }
+    
+    func showMaskModeGuide() {
+        
+        
+        if bottomModeView.alpha < 1 {
+            return
+        }
+        
+        if navigationController?.presentedViewController != nil ||
+            self.presentedViewController != nil {
+            return
+        }
+        
+        guard let bottomCopy = bottomModeView.snapshotView(afterScreenUpdates: false) else {
+            return
+        }
+        let frame = keyWindow?.convert(bottomModeView.frame, from: bottomModeView.superview)
+        bottomCopy.frame = frame!
+        
+        guard let modeCircleCopy = modeCircleView.snapshotView(afterScreenUpdates: false) else {
+            return
+        }
+        modeCircleCopy.layer.cornerRadius = modeCircleView.height/2
+        modeCircleCopy.clipsToBounds = true
+        modeCircleCopy.frame = keyWindow!.convert(modeCircleView.frame, from: modeCircleView.superview)
+
+        let guide = UIView(frame: UIScreen.main.bounds)
+        guide.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        guide.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapMaskModeGuide(sender:)))
+        guide.addGestureRecognizer(tap)
+        keyWindow?.addSubview(guide)
+        
+        guide.addSubview(modeCircleCopy)
+        guide.addSubview(bottomCopy)
+        
+        let line = UIImageView(image: #imageLiteral(resourceName: "cur-line-2"))
+        line.contentMode = .scaleAspectFit
+        guide.addSubview(line)
+        line.snp.makeConstraints({ (make) in
+            make.size.equalTo(CGSize(width: 47, height: 70))
+            make.bottom.equalTo(-76)
+            make.left.equalTo(97)
+        })
+        
+        let handTip = UIImageView(image: #imageLiteral(resourceName: "Hand-2"))
+        handTip.contentMode = .scaleAspectFit
+        guide.addSubview(handTip)
+        handTip.snp.makeConstraints { (make) in
+            make.bottom.equalTo(-72)
+            make.right.equalTo(-120)
+        }
+        
+        let line2 = UIImageView(image: #imageLiteral(resourceName: "ArrowDownM3-1-2"))
+        line2.contentMode = .scaleAspectFit
+        guide.addSubview(line2)
+        line2.snp.makeConstraints({ (make) in
+            make.size.equalTo(CGSize(width: 30, height: 36))
+            make.bottom.equalTo(-76)
+            make.right.equalTo(-50)
+        })
+        
+        let tip1 = UIImageView(image: #imageLiteral(resourceName: "mode-tip-word"))
+        tip1.contentMode = .scaleAspectFit
+        guide.addSubview(tip1)
+        tip1.snp.makeConstraints({ (make) in
+            make.size.equalTo(CGSize(width: 110, height: 60))
+            make.left.equalTo(42)
+            make.bottom.equalTo(line.snp.top).offset(-20)
+        })
+        
+        let tip2 = UIImageView(image: #imageLiteral(resourceName: "mode-tip-word"))
+        tip2.contentMode = .scaleAspectFit
+        guide.addSubview(tip2)
+        tip2.snp.makeConstraints({ (make) in
+            make.size.equalTo(CGSize(width: 129, height: 60))
+            make.right.equalTo(-32)
+            make.bottom.equalTo(line2.snp.top).offset(-20)
+        })
+        UserDefaults.standard.set(true, forKey: kShowModeControlGuideFlag)
+        UserDefaults.standard.synchronize()
+    }
+    
+    func handleTapMaskModeGuide(sender: UIGestureRecognizer) {
+        let guide = sender.view!
+        guide.removeFromSuperview()
     }
 }

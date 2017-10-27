@@ -216,6 +216,7 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
         if connect {
             unconnectView.isHidden = true
             HealthDataManager.sharedInstance.startPedometerUpdates()
+            showResetFilterAlert()
         }
         else {
             unconnectView.isHidden = false
@@ -233,7 +234,9 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
     }
     
     func showResetFilterAlert() {
-        
+        if !unconnectView.isHidden {
+            return
+        }
         if (self.view.tag == 12) {
             return
         }

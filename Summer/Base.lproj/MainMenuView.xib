@@ -24,22 +24,22 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77a-MJ-8Zl" userLabel="avatar">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="211"/>
                             <subviews>
-                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLB-qv-5kP">
-                                    <rect key="frame" x="74.5" y="60.5" width="90" height="90"/>
+                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgProfile" translatesAutoresizingMaskIntoConstraints="NO" id="sxB-ui-PLE">
+                                    <rect key="frame" x="75" y="60" width="90" height="90"/>
+                                    <gestureRecognizers/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="90" id="0Ot-Yy-oSb"/>
-                                        <constraint firstAttribute="height" constant="90" id="3oc-n6-CAN"/>
+                                        <constraint firstAttribute="height" constant="90" id="V8k-rn-jeu"/>
+                                        <constraint firstAttribute="width" constant="90" id="wsW-aE-R8O"/>
                                     </constraints>
-                                    <state key="normal" image="imgProfile-M"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                             <real key="value" value="45"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
-                                        <action selector="handleTapAvatarButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="i2k-ks-A4M"/>
+                                        <outletCollection property="gestureRecognizers" destination="fIf-3l-1Ax" appends="YES" id="b6S-xY-sTa"/>
                                     </connections>
-                                </button>
+                                </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请登录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCl-Hl-Iem">
                                     <rect key="frame" x="86" y="175.5" width="67" height="27"/>
                                     <constraints>
@@ -62,12 +62,12 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="sxB-ui-PLE" firstAttribute="centerY" secondItem="77a-MJ-8Zl" secondAttribute="centerY" id="1Qd-PS-0c9"/>
                                 <constraint firstItem="I4v-pS-sEg" firstAttribute="centerY" secondItem="YCl-Hl-Iem" secondAttribute="centerY" id="8Y7-TM-FtB"/>
-                                <constraint firstItem="YCl-Hl-Iem" firstAttribute="top" secondItem="uLB-qv-5kP" secondAttribute="bottom" constant="25" id="8wb-6T-dEe"/>
-                                <constraint firstItem="uLB-qv-5kP" firstAttribute="centerY" secondItem="77a-MJ-8Zl" secondAttribute="centerY" id="A6s-EH-o3C"/>
-                                <constraint firstItem="YCl-Hl-Iem" firstAttribute="centerX" secondItem="uLB-qv-5kP" secondAttribute="centerX" id="E1P-Fq-2vW"/>
+                                <constraint firstItem="YCl-Hl-Iem" firstAttribute="top" secondItem="sxB-ui-PLE" secondAttribute="bottom" constant="25" id="EeU-lD-Umw"/>
                                 <constraint firstItem="I4v-pS-sEg" firstAttribute="leading" secondItem="YCl-Hl-Iem" secondAttribute="leading" id="GqT-zr-S2l"/>
-                                <constraint firstItem="uLB-qv-5kP" firstAttribute="centerX" secondItem="77a-MJ-8Zl" secondAttribute="centerX" id="NiU-cG-k5J"/>
+                                <constraint firstItem="YCl-Hl-Iem" firstAttribute="centerX" secondItem="sxB-ui-PLE" secondAttribute="centerX" id="Jxo-qT-z3i"/>
+                                <constraint firstItem="sxB-ui-PLE" firstAttribute="centerX" secondItem="77a-MJ-8Zl" secondAttribute="centerX" id="fRf-jo-ubi"/>
                                 <constraint firstItem="I4v-pS-sEg" firstAttribute="trailing" secondItem="YCl-Hl-Iem" secondAttribute="trailing" constant="20" id="hME-7x-PEs"/>
                             </constraints>
                         </view>
@@ -362,7 +362,7 @@
                 <constraint firstItem="3SU-dH-rOt" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="3:4" id="jUO-yB-0yf"/>
             </constraints>
             <connections>
-                <outlet property="avatarBtn" destination="uLB-qv-5kP" id="ZO0-DV-yAe"/>
+                <outlet property="avatarImg" destination="sxB-ui-PLE" id="YKU-1f-Wf5"/>
                 <outlet property="nameLabel" destination="YCl-Hl-Iem" id="bLD-ma-4Nh"/>
             </connections>
             <point key="canvasLocation" x="40" y="80"/>
@@ -397,6 +397,11 @@
                 <action selector="handleTapItem:" destination="iN0-l3-epB" id="TSv-Wb-ydl"/>
             </connections>
         </tapGestureRecognizer>
+        <tapGestureRecognizer id="fIf-3l-1Ax">
+            <connections>
+                <action selector="handleTapAvatar:" destination="iN0-l3-epB" id="bBV-OS-JVb"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="arrow-right-menu" width="16" height="14"/>
@@ -406,7 +411,7 @@
         <image name="iconSetting" width="30" height="30"/>
         <image name="iconShare" width="30" height="30"/>
         <image name="iconUser" width="30" height="30"/>
-        <image name="imgProfile-M" width="90" height="90"/>
+        <image name="imgProfile" width="50" height="50"/>
         <image name="tagBuy" width="22" height="9"/>
     </resources>
 </document>

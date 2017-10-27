@@ -144,6 +144,9 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     
     ///读取用户配置
     func getUserMaskConfig() {
+        if userInfo == nil {
+            return
+        }
         APIRequest.getUserMaskConfig {[weak self] (result) in
             if result != nil {
                 self?.userMaskConfig = result as! UserMaskConfig
