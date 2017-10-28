@@ -364,6 +364,12 @@
             <connections>
                 <outlet property="avatarImg" destination="sxB-ui-PLE" id="YKU-1f-Wf5"/>
                 <outlet property="nameLabel" destination="YCl-Hl-Iem" id="bLD-ma-4Nh"/>
+                <outletCollection property="itemLabels" destination="pXq-bm-qR4" collectionClass="NSMutableArray" id="GrK-BY-0q1"/>
+                <outletCollection property="itemLabels" destination="EdP-kD-zOr" collectionClass="NSMutableArray" id="wBT-Lh-o1K"/>
+                <outletCollection property="itemLabels" destination="00L-r7-Kqz" collectionClass="NSMutableArray" id="bZ4-xp-sFM"/>
+                <outletCollection property="itemLabels" destination="fOC-wH-NBi" collectionClass="NSMutableArray" id="oF9-Yb-1kq"/>
+                <outletCollection property="itemLabels" destination="kJP-M2-Rv5" collectionClass="NSMutableArray" id="Xks-En-nue"/>
+                <outletCollection property="itemLabels" destination="bDC-kL-MyT" collectionClass="NSMutableArray" id="51Q-JT-crE"/>
             </connections>
             <point key="canvasLocation" x="40" y="80"/>
         </view>

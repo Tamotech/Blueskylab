@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "345"; ObjectID = "Lyr-tO-RON"; */
+"Lyr-tO-RON.text" = "345";
+
+/* Class = "UILabel"; text = "29 4级风"; ObjectID = "cgO-e3-qkN"; */
+"cgO-e3-qkN.text" = "29 4级风";
+
+/* Class = "UILabel"; text = "PM2.5"; ObjectID = "qSh-VO-mp9"; */
+"qSh-VO-mp9.text" = "PM2.5";
+
+/* Class = "UILabel"; text = "重度污染"; ObjectID = "up4-La-ZlJ"; */
+"up4-La-ZlJ.text" = "重度污染";
+
+/* Class = "UILabel"; text = "今天"; ObjectID = "yOs-e5-jCL"; */
+"yOs-e5-jCL.text" = "今天";

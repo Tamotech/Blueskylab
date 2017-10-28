@@ -97,7 +97,7 @@ class SettingViewController: BaseViewController {
         
         let vc = BaseWKWebViewController()
         vc.articleStr = "f_privacy_policy"
-        vc.showCustomTitle(title: NSLocalizedString("PrivacyPolicy", comment: ""))
+        vc.showCustomTitle(title: LanguageHelper.shareInstance.getAppStr(key: "PrivacyPolicy"))
         navigationController?.pushViewController(vc, animated: true)
     }
     

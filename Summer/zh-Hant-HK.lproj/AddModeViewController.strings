@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "送风量"; ObjectID = "5Nl-g3-Ewc"; */
+"5Nl-g3-Ewc.text" = "送风量";
+
+/* Class = "UILabel"; text = "L/min"; ObjectID = "7Y5-jI-dcF"; */
+"7Y5-jI-dcF.text" = "L/min";
+
+/* Class = "UILabel"; text = "模式名称"; ObjectID = "Jzy-bx-0DK"; */
+"Jzy-bx-0DK.text" = "模式名称";
+
+/* Class = "UILabel"; text = "低"; ObjectID = "TrV-VP-2lO"; */
+"TrV-VP-2lO.text" = "低";
+
+/* Class = "UILabel"; text = "60"; ObjectID = "Vc6-Ov-mjG"; */
+"Vc6-Ov-mjG.text" = "60";
+
+/* Class = "UILabel"; text = "是否显示"; ObjectID = "Z1D-sT-N8B"; */
+"Z1D-sT-N8B.text" = "是否显示";
+
+/* Class = "UITextField"; placeholder = "请输入送风模式的名称"; ObjectID = "btZ-Dr-fip"; */
+"btZ-Dr-fip.placeholder" = "请输入送风模式的名称";
+
+/* Class = "UILabel"; text = "高"; ObjectID = "c7e-cF-Rap"; */
+"c7e-cF-Rap.text" = "高";
+
+/* Class = "UIButton"; normalTitle = "保存"; ObjectID = "dGf-0h-ijh"; */
+"dGf-0h-ijh.normalTitle" = "保存";
+
+/* Class = "UIButton"; normalTitle = "删除"; ObjectID = "dKh-lY-RaS"; */
+"dKh-lY-RaS.normalTitle" = "删除";
+
+/* Class = "UIButton"; normalTitle = "重置"; ObjectID = "ho6-Vu-CtE"; */
+"ho6-Vu-CtE.normalTitle" = "重置";

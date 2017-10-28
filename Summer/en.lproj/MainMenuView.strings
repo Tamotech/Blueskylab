@@ -1,21 +1,21 @@
 
 /* Class = "UILabel"; text = "APP分享"; ObjectID = "00L-r7-Kqz"; */
-"00L-r7-Kqz.text" = "APP分享";
+"00L-r7-Kqz.text" = "Share App";
 
 /* Class = "UILabel"; text = "用户指南"; ObjectID = "EdP-kD-zOr"; */
-"EdP-kD-zOr.text" = "用户指南";
+"EdP-kD-zOr.text" = "User Guide";
 
-/* Class = "UILabel"; text = "Name"; ObjectID = "YCl-Hl-Iem"; */
-"YCl-Hl-Iem.text" = "Name";
+/* Class = "UILabel"; text = "请登录"; ObjectID = "YCl-Hl-Iem"; */
+"YCl-Hl-Iem.text" = "Please Log In";
 
 /* Class = "UILabel"; text = "购买新品"; ObjectID = "bDC-kL-MyT"; */
-"bDC-kL-MyT.text" = "购买新品";
+"bDC-kL-MyT.text" = "Purchase new product";
 
 /* Class = "UILabel"; text = "设置"; ObjectID = "fOC-wH-NBi"; */
-"fOC-wH-NBi.text" = "设置";
+"fOC-wH-NBi.text" = "Settings";
 
 /* Class = "UILabel"; text = "购买滤芯"; ObjectID = "kJP-M2-Rv5"; */
-"kJP-M2-Rv5.text" = "购买滤芯";
+"kJP-M2-Rv5.text" = "Purchase new filters";
 
 /* Class = "UILabel"; text = "个人资料"; ObjectID = "pXq-bm-qR4"; */
-"pXq-bm-qR4.text" = "个人资料";
+"pXq-bm-qR4.text" = "Personal Info";

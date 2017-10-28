@@ -1,6 +1,39 @@
 
-/* Class = "UILabel"; text = "Main"; ObjectID = "gX0-ee-VtO"; */
-"gX0-ee-VtO.text" = "Main";
+/* Class = "UILabel"; text = "优"; ObjectID = "12g-8G-9VX"; */
+"12g-8G-9VX.text" = "优";
 
-/* Class = "UINavigationItem"; title = "天气"; ObjectID = "ypc-70-LhW"; */
+/* Class = "UILabel"; text = "选择模式"; ObjectID = "2ph-jn-ea2"; */
+"2ph-jn-ea2.text" = "选择模式";
+
+/* Class = "UILabel"; text = "AQI"; ObjectID = "6NG-6s-qIj"; */
+"6NG-6s-qIj.text" = "AQI";
+
+/* Class = "UILabel"; text = "当前过滤效果"; ObjectID = "CvS-z7-NT9"; */
+"CvS-z7-NT9.text" = "当前过滤效果";
+
+/* Class = "UILabel"; text = "设备未连接"; ObjectID = "Fan-iJ-VTa"; */
+"Fan-iJ-VTa.text" = "设备未连接";
+
+/* Class = "UILabel"; text = "50%"; ObjectID = "Y33-x0-lVa"; */
+"Y33-x0-lVa.text" = "50%";
+
+/* Class = "UILabel"; text = "智能模式"; ObjectID = "biF-04-wsM"; */
+"biF-04-wsM.text" = "智能模式";
+
+/* Class = "UIButton"; normalTitle = "开始连接蓝天大气"; ObjectID = "hbY-SA-qLO"; */
+"hbY-SA-qLO.normalTitle" = "开始连接蓝天大气";
+
+/* Class = "UILabel"; text = "城市空气"; ObjectID = "hev-VM-3XI"; */
+"hev-VM-3XI.text" = "城市空气";
+
+/* Class = "UIButton"; normalTitle = " 北京"; ObjectID = "imI-CV-l3M"; */
+"imI-CV-l3M.normalTitle" = " 北京";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "kUf-Ol-ebU"; */
+"kUf-Ol-ebU.text" = "0";
+
+/* Class = "UILabel"; text = "优"; ObjectID = "vcR-hb-39j"; */
+"vcR-hb-39j.text" = "优";
+
+/* Class = "UINavigationItem"; title = "蓝天实验室"; ObjectID = "ypc-70-LhW"; */
 "ypc-70-LhW.title" = "蓝天实验室";

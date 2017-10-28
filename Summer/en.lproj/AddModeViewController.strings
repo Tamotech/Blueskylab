@@ -1,33 +1,33 @@
 
 /* Class = "UILabel"; text = "送风量"; ObjectID = "5Nl-g3-Ewc"; */
-"5Nl-g3-Ewc.text" = "送风量";
+"5Nl-g3-Ewc.text" = "Airflow (Amount of airflow delivered)";
 
 /* Class = "UILabel"; text = "L/min"; ObjectID = "7Y5-jI-dcF"; */
 "7Y5-jI-dcF.text" = "L/min";
 
 /* Class = "UILabel"; text = "模式名称"; ObjectID = "Jzy-bx-0DK"; */
-"Jzy-bx-0DK.text" = "模式名称";
+"Jzy-bx-0DK.text" = "Manage Settings";
 
 /* Class = "UILabel"; text = "低"; ObjectID = "TrV-VP-2lO"; */
-"TrV-VP-2lO.text" = "低";
+"TrV-VP-2lO.text" = "Low";
 
 /* Class = "UILabel"; text = "60"; ObjectID = "Vc6-Ov-mjG"; */
 "Vc6-Ov-mjG.text" = "60";
 
 /* Class = "UILabel"; text = "是否显示"; ObjectID = "Z1D-sT-N8B"; */
-"Z1D-sT-N8B.text" = "是否显示";
+"Z1D-sT-N8B.text" = "Display on main screen?";
 
 /* Class = "UITextField"; placeholder = "请输入活动名称"; ObjectID = "btZ-Dr-fip"; */
-"btZ-Dr-fip.placeholder" = "请输入活动名称";
+"btZ-Dr-fip.placeholder" = "Please enter a name for this airflow setting";
 
 /* Class = "UITextField"; text = "请输入送风模式的名称"; ObjectID = "btZ-Dr-fip"; */
-"btZ-Dr-fip.text" = "请输入送风模式的名称";
+"btZ-Dr-fip.text" = "Please enter a name for this airflow setting";
 
 /* Class = "UILabel"; text = "高"; ObjectID = "c7e-cF-Rap"; */
-"c7e-cF-Rap.text" = "高";
+"c7e-cF-Rap.text" = "High";
 
 /* Class = "UIButton"; normalTitle = "保存"; ObjectID = "dGf-0h-ijh"; */
-"dGf-0h-ijh.normalTitle" = "保存";
+"dGf-0h-ijh.normalTitle" = "Save";
 
 /* Class = "UIButton"; normalTitle = "删除"; ObjectID = "dKh-lY-RaS"; */
-"dKh-lY-RaS.normalTitle" = "删除";
+"dKh-lY-RaS.normalTitle" = "Delete";

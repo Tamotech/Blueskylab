@@ -38,6 +38,9 @@ class MainMenuView: BaseView {
     @IBOutlet weak var avatarImg: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
+    @IBOutlet var itemLabels: [UILabel]!
+    
+    
     override func awakeFromNib() {
         self.frame = UIScreen.main.bounds
         updateView()
@@ -118,6 +121,26 @@ class MainMenuView: BaseView {
             SessionManager.sharedInstance.firewareDownloadUrl = data["u_firmware_download"]["v"].stringValue
             
         }
+    }
+    
+    
+    func changeLanguage() {
+        
+        let items =
+            [NSLocalizedString("PersonalInfo", comment: ""),
+             NSLocalizedString("UserGuide", comment: ""),
+             NSLocalizedString("ShareApp", comment: ""),
+             NSLocalizedString("Settings", comment: ""),
+             NSLocalizedString("PurchaseNewFilters", comment: ""),
+             NSLocalizedString("PurchaseNewProduct", comment: "")]
+        
+        for i in 0..<items.count {
+            let lb = itemLabels[i]
+            lb.text = items[i]
+        }
+        updateView()
+        
+
     }
     
 }

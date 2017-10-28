@@ -1,0 +1,78 @@
+
+/* Class = "UIButton"; normalTitle = "清零"; ObjectID = "00Q-IN-Nf9"; */
+"00Q-IN-Nf9.normalTitle" = "清零";
+
+/* Class = "UIButton"; normalTitle = "清零"; ObjectID = "2xL-7y-JM0"; */
+"2xL-7y-JM0.normalTitle" = "清零";
+
+/* Class = "UILabel"; text = "00:00:00"; ObjectID = "4I2-Ql-QmG"; */
+"4I2-Ql-QmG.text" = "00:00:00";
+
+/* Class = "UILabel"; text = "km/h"; ObjectID = "Avi-HF-nV9"; */
+"Avi-HF-nV9.text" = "km/h";
+
+/* Class = "UILabel"; text = "优"; ObjectID = "IY0-ll-2Q3"; */
+"IY0-ll-2Q3.text" = "优";
+
+/* Class = "UILabel"; text = "消耗卡路里"; ObjectID = "IxZ-7l-Jss"; */
+"IxZ-7l-Jss.text" = "消耗卡路里";
+
+/* Class = "UILabel"; text = "L/min"; ObjectID = "Mgj-RZ-TbN"; */
+"Mgj-RZ-TbN.text" = "L/min";
+
+/* Class = "UILabel"; text = "已连接"; ObjectID = "PyY-H1-t4o"; */
+"PyY-H1-t4o.text" = "已连接";
+
+/* Class = "UILabel"; text = "km"; ObjectID = "Q4Y-xz-nUJ"; */
+"Q4Y-xz-nUJ.text" = "km";
+
+/* Class = "UILabel"; text = "运动速度"; ObjectID = "S1c-qR-0ib"; */
+"S1c-qR-0ib.text" = "运动速度";
+
+/* Class = "UILabel"; text = "0cal"; ObjectID = "U6C-zU-vGB"; */
+"U6C-zU-vGB.text" = "0cal";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "WCZ-qh-8vf"; */
+"WCZ-qh-8vf.text" = "0";
+
+/* Class = "UILabel"; text = "0步"; ObjectID = "Z3r-T0-oJV"; */
+"Z3r-T0-oJV.text" = "0步";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "aj3-UM-ltm"; */
+"aj3-UM-ltm.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "新滤芯数据重置"; ObjectID = "b3p-yq-KlV"; */
+"b3p-yq-KlV.normalTitle" = "新滤芯数据重置";
+
+/* Class = "UILabel"; text = "移动距离"; ObjectID = "bAk-Hl-M1x"; */
+"bAk-Hl-M1x.text" = "移动距离";
+
+/* Class = "UILabel"; text = "步数"; ObjectID = "bVx-z7-vRz"; */
+"bVx-z7-vRz.text" = "步数";
+
+/* Class = "UIButton"; normalTitle = "开始连接蓝天大气"; ObjectID = "df8-qk-Nzl"; */
+"df8-qk-Nzl.normalTitle" = "开始连接蓝天大气";
+
+/* Class = "UILabel"; text = "送风量"; ObjectID = "dgi-Hp-5go"; */
+"dgi-Hp-5go.text" = "送风量";
+
+/* Class = "UIButton"; normalTitle = "更换"; ObjectID = "e2H-06-6Ne"; */
+"e2H-06-6Ne.normalTitle" = "更换";
+
+/* Class = "UILabel"; text = "过滤效果"; ObjectID = "ewM-oS-5Ik"; */
+"ewM-oS-5Ik.text" = "过滤效果";
+
+/* Class = "UILabel"; text = "蓝天大气"; ObjectID = "i6y-lk-irp"; */
+"i6y-lk-irp.text" = "蓝天大气";
+
+/* Class = "UILabel"; text = "请连接设备"; ObjectID = "ibc-02-58z"; */
+"ibc-02-58z.text" = "请连接设备";
+
+/* Class = "UIButton"; normalTitle = "解绑 "; ObjectID = "icp-wa-D0M"; */
+"icp-wa-D0M.normalTitle" = "解绑 ";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "wWT-ru-Vnz"; */
+"wWT-ru-Vnz.text" = "0";
+
+/* Class = "UILabel"; text = "净化时间"; ObjectID = "zwc-5v-fv3"; */
+"zwc-5v-fv3.text" = "净化时间";

@@ -1,0 +1,30 @@
+
+/* Class = "UILabel"; text = "滤芯更换提醒"; ObjectID = "5kP-bX-HrG"; */
+"5kP-bX-HrG.text" = "滤芯更换提醒";
+
+/* Class = "UIButton"; normalTitle = "其他方式注册"; ObjectID = "GNh-Bu-fL2"; */
+"GNh-Bu-fL2.normalTitle" = "其他方式注册";
+
+/* Class = "UILabel"; text = "在严重污染天获取佩戴提醒\n了解空气污染对你健康的损害\n以及大气是如何保护到你"; ObjectID = "HkF-ZQ-rA5"; */
+"HkF-ZQ-rA5.text" = "在严重污染天获取佩戴提醒\n了解空气污染对你健康的损害\n以及大气是如何保护到你";
+
+/* Class = "UIButton"; normalTitle = "跳过"; ObjectID = "Qja-yF-7vB"; */
+"Qja-yF-7vB.normalTitle" = "跳过";
+
+/* Class = "UILabel"; text = "智能送风"; ObjectID = "bMg-js-pTE"; */
+"bMg-js-pTE.text" = "智能送风";
+
+/* Class = "UIButton"; normalTitle = "已有账号?现在登录"; ObjectID = "dbu-gG-igC"; */
+"dbu-gG-igC.normalTitle" = "已有账号?现在登录";
+
+/* Class = "UILabel"; text = "通过计算你身体所需供氧量\n实现蓝天大气自动调节送风"; ObjectID = "fgo-xo-Cat"; */
+"fgo-xo-Cat.text" = "通过计算你身体所需供氧量\n实现蓝天大气自动调节送风";
+
+/* Class = "UIButton"; normalTitle = "  微信快速登录"; ObjectID = "gEP-YF-7o5"; */
+"gEP-YF-7o5.normalTitle" = "  微信快速登录";
+
+/* Class = "UILabel"; text = "利用特殊算法监测滤芯效率\n收到滤芯更换的提醒"; ObjectID = "sks-aC-GN4"; */
+"sks-aC-GN4.text" = "利用特殊算法监测滤芯效率\n收到滤芯更换的提醒";
+
+/* Class = "UILabel"; text = "严重污染提醒"; ObjectID = "wyL-Sf-aGZ"; */
+"wyL-Sf-aGZ.text" = "严重污染提醒";

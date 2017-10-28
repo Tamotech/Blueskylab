@@ -1,0 +1,15 @@
+
+/* Class = "UIButton"; normalTitle = "1990 年 01 月 01日"; ObjectID = "Dnw-Yw-mcS"; */
+"Dnw-Yw-mcS.normalTitle" = "1990 年 01 月 01日";
+
+/* Class = "UILabel"; text = "请选择生日"; ObjectID = "Kox-CE-wG6"; */
+"Kox-CE-wG6.text" = "请选择生日";
+
+/* Class = "UIButton"; normalTitle = "确定"; ObjectID = "MTm-DC-Jhh"; */
+"MTm-DC-Jhh.normalTitle" = "确定";
+
+/* Class = "UILabel"; text = "请选择生日"; ObjectID = "U3g-SH-Mmd"; */
+"U3g-SH-Mmd.text" = "请选择生日";
+
+/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "dfA-gW-6qU"; */
+"dfA-gW-6qU.normalTitle" = "取消";

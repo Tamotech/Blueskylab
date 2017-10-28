@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "正在搜索蓝天大气"; ObjectID = "6tE-zw-nka"; */
+"6tE-zw-nka.text" = "正在搜索蓝天大气";
+
+/* Class = "UIButton"; normalTitle = "暂不绑定      "; ObjectID = "9LS-h0-KqN"; */
+"9LS-h0-KqN.normalTitle" = "暂不绑定      ";
+
+/* Class = "UILabel"; text = "蓝牙未开启"; ObjectID = "GIe-Yr-ndu"; */
+"GIe-Yr-ndu.text" = "蓝牙未开启";
+
+/* Class = "UILabel"; text = "在弹出的对话框中点击“设置”"; ObjectID = "W3l-Md-p5D"; */
+"W3l-Md-p5D.text" = "在弹出的对话框中点击“设置”";
+
+/* Class = "UILabel"; text = "点击开启"; ObjectID = "ZOE-R2-e5u"; */
+"ZOE-R2-e5u.text" = "点击开启";
+
+/* Class = "UIButton"; normalTitle = "暂无绑定      "; ObjectID = "cel-K2-Am1"; */
+"cel-K2-Am1.normalTitle" = "暂无绑定      ";
+
+/* Class = "UILabel"; text = "请将大气的蓝牙模式打开并贴近手机"; ObjectID = "eqE-1Q-Ekv"; */
+"eqE-1Q-Ekv.text" = "请将大气的蓝牙模式打开并贴近手机";

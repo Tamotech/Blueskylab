@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "Copyright © 2017 BlueSkyLab. All Rights Reserved."; ObjectID = "6MZ-Av-UAB"; */
+"6MZ-Av-UAB.text" = "Copyright © 2017 BlueSkyLab. All Rights Reserved.";
+
+/* Class = "UILabel"; text = "V1.0"; ObjectID = "J1p-rK-vY2"; */
+"J1p-rK-vY2.text" = "V1.0";
+
+/* Class = "UIButton"; normalTitle = "检查更新"; ObjectID = "Ldk-tT-rUx"; */
+"Ldk-tT-rUx.normalTitle" = "Check for updates";
+
+/* Class = "UILabel"; text = "当前版本"; ObjectID = "vfA-Cg-bvl"; */
+"vfA-Cg-bvl.text" = "Current Version";
+
+/* Class = "UILabel"; text = "已是最新版本"; ObjectID = "wll-V9-NOE"; */
+"wll-V9-NOE.text" = "Latest Version";

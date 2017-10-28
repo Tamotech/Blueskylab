@@ -12,8 +12,8 @@ import UserNotifications
 
 let wxAppId = "wx5b2c8b3e6df2032d"
 let wxSecretKey = "85b511d48ec0ec0ff6da59baf200f4e9"
-let jPushKey = "589e0a3a6fd517b5ea57d081"
-let jPushSecret = "bf3d33eabb679de6cd0e5246"
+let jPushKey = "1c5b0bf1379cf38b6a436146"
+let jPushSecret = "02348df4cadd5293af3e7c0a"
 
 
 @UIApplicationMain
@@ -27,7 +27,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-
+        ///初始化语言
+        var language:String="zh-Hans"
+        if  (UserDefaults.standard.value(forKey: "language")) != nil {
+            language=UserDefaults.standard.value(forKey: "language") as! String
+        }
+        LanguageHelper.shareInstance.setLanguage(langeuage: language)
+        NotificationCenter.default.addObserver(self, selector: #selector(languageChanged), name: NSNotification.Name(rawValue: "LanguageChanged"), object: nil)
+        
+        
         //keyboard
         IQKeyboardManager.sharedManager().enable = true
         
@@ -82,7 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        
+        NotificationCenter.default.removeObserver(self)
         SessionManager.sharedInstance.saveLoginInfo()
         HealthDataManager.sharedInstance.saveMaskUseData()
         if BLSBluetoothManager.shareInstance.state == .Connected {
@@ -206,5 +214,13 @@ extension AppDelegate: JPUSHRegisterDelegate {
         completionHandler()
     }
 
+    
+    func languageChanged() {
+        //语言切换 重新加载页面
+//        let sb = UIStoryboard(name: "Main", bundle: nil)
+//        let rootVC = sb.instantiateInitialViewController()
+//        window!.rootViewController = rootVC
+
+    }
 }
 

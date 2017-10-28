@@ -26,6 +26,13 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     ///开启蓝牙连接口罩
     @IBOutlet weak var bottomView: UIView!
     
+    ///设备连接状态
+    @IBOutlet weak var maskConnectStateLabel: UILabel!
+    //当前过滤效果
+    @IBOutlet weak var filterEffectTitleLabel: UILabel!
+    
+    @IBOutlet weak var cityAirTitleLabel: UILabel!
+    
     ///设置-我的设备
     @IBOutlet weak var bottomModeView: UIView!
     
@@ -124,7 +131,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         NotificationCenter.default.addObserver(self, selector: #selector(userMaskConfigUpdateNoti(noti:)), name: kUserMaskConfigUpdateNoti, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didConnectBluetoothNoti(noti:)), name: kMaskDidConnectBluetoothNoti, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(bluetoothStateChangeNotification(noti:)), name: kMaskStateChangeNotifi, object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(languageChanged), name: NSNotification.Name(rawValue: "LanguageChanged"), object: nil)
         
         if (SessionManager.sharedInstance.token.characters.count == 0) {
             let guideVc = StartGuideViewController(nibName: "StartGuideViewController", bundle: nil)
@@ -178,6 +185,8 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     }
     
     func setupView() {
+        
+        self.title = NSLocalizedString("BSLTitle", comment: "")
         let layer1 = CAGradientLayer()
         layer1.frame = CGRect(x: 0, y: 0, width: screenWidth, height: bottomView.height)
         layer1.colors = [UIColor(hexString: "28baf9")!, UIColor(hexString: "0196db")!]
@@ -296,6 +305,17 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         
     }
     
+    func languageChanged() {
+        self.title = NSLocalizedString("BSLTitle", comment: "")
+            filterEffectTitleLabel.text = NSLocalizedString("CurrentFilterEffect", comment: "")
+        searchBtn.setTitle(NSLocalizedString("StartConnectMask", comment: ""), for: .normal)
+        cityAirTitleLabel.text = NSLocalizedString("CityAirQuality", comment: "")
+        maskConnectStateLabel.text = NSLocalizedString("DeviceNotConnected", comment: "")
+        loadAQIData()
+        menuView.changeLanguage()
+    }
+    
+    
     //MARK: - AQI
     
     func loadAQIData() {
@@ -332,7 +352,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         cityButton.setTitle("  " + data.city, for: .normal)
         aqiLevelLabel.text = String(data.aqi)
         temperatureLabel.text = String(format: "%.0lf°C", data.temperature)
-        windLevelLabel.text = String(format: "%.0f级风",  data.windSpeed)
+        windLevelLabel.text = String(format: NSLocalizedString("WindLevel", comment: ""),  data.windSpeed)
         pollutionLevelLabel.text = data.aqiLevelName
         //cigaretteNumLabel.text = String(format: NSLocalizedString("CirgaretteNum", comment: ""), data.smokeNum)
         //let smokeIconName = String(format: "icon%dc", data.smokeNum)

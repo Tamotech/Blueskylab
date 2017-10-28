@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "通知内容"; ObjectID = "CHF-vO-bVE"; */
+"CHF-vO-bVE.text" = "通知内容";
+
+/* Class = "UILabel"; text = "通知标题"; ObjectID = "FkF-CJ-2b1"; */
+"FkF-CJ-2b1.text" = "通知标题";
+
+/* Class = "UILabel"; text = "17-02-03 星期三 14:00"; ObjectID = "NkN-rC-q3d"; */
+"NkN-rC-q3d.text" = "17-02-03 星期三 14:00";
+
+/* Class = "UIButton"; normalTitle = "阅读全文 >"; ObjectID = "cUh-07-1gi"; */
+"cUh-07-1gi.normalTitle" = "阅读全文 >";

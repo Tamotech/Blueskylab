@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "智能"; ObjectID = "7iU-Wq-ls7"; */
+"7iU-Wq-ls7.text" = "智能";
+
+/* Class = "UILabel"; text = "送风量"; ObjectID = "KbY-sU-EOP"; */
+"KbY-sU-EOP.text" = "送风量";
+
+/* Class = "UILabel"; text = "L/min"; ObjectID = "PiH-b1-gOP"; */
+"PiH-b1-gOP.text" = "L/min";
+
+/* Class = "UILabel"; text = "当前模式"; ObjectID = "lHH-Km-h1e"; */
+"lHH-Km-h1e.text" = "当前模式";
+
+/* Class = "UILabel"; text = "30"; ObjectID = "zdY-DK-lbM"; */
+"zdY-DK-lbM.text" = "30";

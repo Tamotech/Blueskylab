@@ -207,4 +207,15 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
             JPUSHService.setTags(Set(pushTags), aliasInbackground: userId)
         }
     }
+    
+    func changeLanguage(language: String) {
+        
+        let index = pushTags.index(of: language)
+        if index == nil {
+            pushTags.append(language)
+        }
+        pushTags[index!] = language
+        bindPushTags()
+        
+    }
 }

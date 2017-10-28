@@ -22,17 +22,26 @@
 "VertifyCodeHasSent" = "验证码已发送";
 "JumpOver" = "跳过";
 "SendSMS" = "发送验证码";
+"ReSendSMS" = "重新发送";
 "CaptureWrong" = "图形验证码错误";
 "SMSDigitWrong" = "短信验证码无效";
 "returnAndReinput" = "返回，请重新输入";
 "WrongPhoneNum" = "手机号格式错误！";
 
 //首页 AQI
+"BSLTitle" = "蓝天实验室";
+"CurrentFilterEffect" = "当前过滤效果";
+"StartConnectMask" = "开始连接大气";
 "OpenBluetoothAlertTitle" = "打开蓝牙允许\"蓝天大气\"连接到配件";
+"SearchMask" = "正在搜索蓝天大气";
+"OpenBluetoothAndCloseEar" = "请将大气的蓝牙模式打开并贴近手机";
+"HasFindMask" = "已找到蓝天大气";
+"MaskLightTip" = "当蓝天大气有灯光闪烁时，将会自动与App连接，请稍候";
 "UnfindBluetoothAlertTitle" = "未发现设备，请确保大气蓝牙打开且贴近手机";
 "ChangeFilterTip" = "口罩滤芯已耗尽，请立即更换";
 "filterChangeTip" = "当您更换了滤芯，请重制滤芯数据\n系统将重新计算新滤芯的过滤效果";
 "ResetYourFilter" = "我已更换滤芯，\n请重新计算滤芯的过滤效果\n确认重置滤芯数据?";
+"ResetFilterTimerTip" = "当您新更换了滤芯，请点重置计时器，\n系统将重新计算当前滤芯的过滤效果";
 "FilterLevelI" = "优";
 "FilterLevelII" = "中";
 "FilterLevelIII" = "弱";
@@ -73,7 +82,27 @@
 "Hide" = "隐藏";
 "MyAir" = "我的大气";
 "LowPowerTip" = "电量低, 请尽快为口罩充电";
+"PleaseLogin" = "请登录";
+"WindLevel" = "%.0f级风";
+"CityAirQuality" = "城市空气质量";
+"DeviceNotConnected" = "设备未连接";
+/* Class = "UILabel"; text = "APP分享"; ObjectID = "00L-r7-Kqz"; */
+"ShareApp" = "App分享";
 
+/* Class = "UILabel"; text = "用户指南"; ObjectID = "EdP-kD-zOr"; */
+"UserGuide" = "用户指南";
+
+/* Class = "UILabel"; text = "请登录"; ObjectID = "YCl-Hl-Iem"; */
+"PleaseLogIn" = "请登录";
+
+/* Class = "UILabel"; text = "购买新品"; ObjectID = "bDC-kL-MyT"; */
+"PurchaseNewProduct" = "购买新品";
+
+/* Class = "UILabel"; text = "购买滤芯"; ObjectID = "kJP-M2-Rv5"; */
+"PurchaseNewFilters" = "购买滤芯";
+
+/* Class = "UILabel"; text = "个人资料"; ObjectID = "pXq-bm-qR4"; */
+"PersonalInfo" = "个人资料";
 
 //设置
 "Settings" = "设置";

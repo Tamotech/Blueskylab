@@ -13,8 +13,27 @@
 		5A53F5A71F97834D00E46282 /* BSLAnimationActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53F5A61F97834D00E46282 /* BSLAnimationActivityView.swift */; };
 		5A53F5AA1F978C3A00E46282 /* loadingBSL.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5A53F5A91F9784D600E46282 /* loadingBSL.gif */; };
 		5A7F6F711F88EEAA00F59DCB /* about-banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7F6F701F88EE4F00F59DCB /* about-banner.png */; };
+		5AF9CA031FA37C6F0071285D /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CA051FA37C6F0071285D /* LoginViewController.xib */; };
+		5AF9CA081FA37C780071285D /* StartSetUsernameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CA0A1FA37C780071285D /* StartSetUsernameViewController.xib */; };
+		5AF9CA0D1FA37CA10071285D /* StartSetGenderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CA0F1FA37CA10071285D /* StartSetGenderViewController.xib */; };
+		5AF9CA121FA37CA70071285D /* StartSetBirthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CA141FA37CA70071285D /* StartSetBirthViewController.xib */; };
+		5AF9CA171FA37CAE0071285D /* StartSetWeightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CA191FA37CAE0071285D /* StartSetWeightViewController.xib */; };
+		5AF9CA1C1FA37CB50071285D /* StartSetHeightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CA1E1FA37CB50071285D /* StartSetHeightViewController.xib */; };
+		5AF9CA211FA37CBE0071285D /* StartGuideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CA231FA37CBE0071285D /* StartGuideViewController.xib */; };
+		5AF9CA261FA37CC70071285D /* OpenBluetoothController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CA281FA37CC70071285D /* OpenBluetoothController.xib */; };
+		5AF9CA2B1FA37CD80071285D /* ModeSettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CA2D1FA37CD80071285D /* ModeSettingCell.xib */; };
+		5AF9CA301FA37CE30071285D /* HistoryDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CA321FA37CE30071285D /* HistoryDataCell.xib */; };
+		5AF9CA351FA37CEE0071285D /* HistoryDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CA371FA37CEE0071285D /* HistoryDataViewController.xib */; };
+		5AF9CA3C1FA37D0A0071285D /* EditPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CA3E1FA37D0A0071285D /* EditPasswordViewController.xib */; };
+		5AF9CA411FA37D160071285D /* CheckUpdateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CA431FA37D160071285D /* CheckUpdateViewController.xib */; };
+		5AF9CA461FA37D1D0071285D /* LanguageListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CA481FA37D1D0071285D /* LanguageListController.xib */; };
+		5AF9CA4B1FA37D240071285D /* LanguageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CA4D1FA37D240071285D /* LanguageCell.xib */; };
+		5AF9CA501FA37D310071285D /* NotificationCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CA521FA37D310071285D /* NotificationCenterController.xib */; };
+		5AF9CA551FA37D3B0071285D /* NotificationCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CA571FA37D3B0071285D /* NotificationCenterCell.xib */; };
+		5AF9CA5A1FA37D410071285D /* NotificationDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CA5C1FA37D410071285D /* NotificationDetailController.xib */; };
+		5AF9CA671FA383AA0071285D /* LanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF9CA661FA383AA0071285D /* LanguageHelper.swift */; };
+		5AF9CACF1FA420CD0071285D /* NSBundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF9CACE1FA420CD0071285D /* NSBundleExtension.swift */; };
 		CC0237771F08998D00400F7C /* EditPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0237751F08998D00400F7C /* EditPasswordViewController.swift */; };
-		CC0237781F08998D00400F7C /* EditPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0237761F08998D00400F7C /* EditPasswordViewController.xib */; };
 		CC02377B1F08A20400400F7C /* BaseSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02377A1F08A20400400F7C /* BaseSegmentControl.swift */; };
 		CC02377F1F08ABDC00400F7C /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02377D1F08ABDC00400F7C /* SettingViewController.swift */; };
 		CC030B6F1F4145760069634C /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC030B6E1F4145760069634C /* SessionManager.swift */; };
@@ -22,10 +41,8 @@
 		CC030E931F1BA42A0030145C /* BaseAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC030E921F1BA42A0030145C /* BaseAlertView.xib */; };
 		CC03D0811EFEBE9D00CC8B20 /* RuleSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC03D0801EFEBE9D00CC8B20 /* RuleSelectorView.swift */; };
 		CC0411D71F37567C00884165 /* HistoryDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0411D51F37567B00884165 /* HistoryDataViewController.swift */; };
-		CC0411D81F37567C00884165 /* HistoryDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0411D61F37567B00884165 /* HistoryDataViewController.xib */; };
 		CC0411DB1F375ADB00884165 /* DateSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0411DA1F375ADB00884165 /* DateSegmentView.swift */; };
 		CC0411DE1F37699300884165 /* HistoryDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0411DC1F37699300884165 /* HistoryDataCell.swift */; };
-		CC0411DF1F37699300884165 /* HistoryDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0411DD1F37699300884165 /* HistoryDataCell.xib */; };
 		CC05D2CF1F08748600653C71 /* GenderPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05D2CE1F08748600653C71 /* GenderPickerView.swift */; };
 		CC0664A81EF76A4F00020415 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0664A71EF76A4F00020415 /* BaseView.swift */; };
 		CC0664AA1EF76A5D00020415 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0664A91EF76A5D00020415 /* BaseViewController.swift */; };
@@ -47,16 +64,11 @@
 		CC0D72DE1F540D13000D647C /* UserMaskConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0D72DD1F540D13000D647C /* UserMaskConfig.swift */; };
 		CC0D72E01F541E1C000D647C /* NotificationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0D72DF1F541E1C000D647C /* NotificationList.swift */; };
 		CC0E30C51F11E1A900F6AFFB /* NotificationCenterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0E30C31F11E1A900F6AFFB /* NotificationCenterCell.swift */; };
-		CC0E30C61F11E1A900F6AFFB /* NotificationCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0E30C41F11E1A900F6AFFB /* NotificationCenterCell.xib */; };
 		CC11D6221F41F11D001E153F /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11D6211F41F11D001E153F /* DateExtension.swift */; };
 		CC11D6521F30C9BA00B9ADD1 /* StartSetGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11D6501F30C9BA00B9ADD1 /* StartSetGenderViewController.swift */; };
-		CC11D6531F30C9BA00B9ADD1 /* StartSetGenderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC11D6511F30C9BA00B9ADD1 /* StartSetGenderViewController.xib */; };
 		CC11D6561F30D3CE00B9ADD1 /* StartSetBirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11D6541F30D3CE00B9ADD1 /* StartSetBirthViewController.swift */; };
-		CC11D6571F30D3CE00B9ADD1 /* StartSetBirthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC11D6551F30D3CE00B9ADD1 /* StartSetBirthViewController.xib */; };
 		CC11D65A1F30D7D300B9ADD1 /* StartSetWeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11D6581F30D7D300B9ADD1 /* StartSetWeightViewController.swift */; };
-		CC11D65B1F30D7D300B9ADD1 /* StartSetWeightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC11D6591F30D7D300B9ADD1 /* StartSetWeightViewController.xib */; };
 		CC11D65E1F30DE8000B9ADD1 /* StartSetHeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11D65C1F30DE8000B9ADD1 /* StartSetHeightViewController.swift */; };
-		CC11D65F1F30DE8000B9ADD1 /* StartSetHeightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC11D65D1F30DE8000B9ADD1 /* StartSetHeightViewController.xib */; };
 		CC12F9F71F4516AB00533783 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC12F9F61F4516AB00533783 /* CoreLocation.framework */; };
 		CC12F9F91F4519F600533783 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC12F9F81F4519F600533783 /* APIRequest.swift */; };
 		CC12F9FC1F451CC000533783 /* CurrentAQI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC12F9FB1F451CC000533783 /* CurrentAQI.swift */; };
@@ -74,7 +86,6 @@
 		CC339C061F48951D00EB0516 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC339C051F48951D00EB0516 /* UserInfo.swift */; };
 		CC339C091F4A532B00EB0516 /* ModeSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC339C071F4A532B00EB0516 /* ModeSettingController.swift */; };
 		CC339C0D1F4A546E00EB0516 /* ModeSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC339C0B1F4A546E00EB0516 /* ModeSettingCell.swift */; };
-		CC339C0E1F4A546E00EB0516 /* ModeSettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC339C0C1F4A546E00EB0516 /* ModeSettingCell.xib */; };
 		CC339C101F4C0E7D00EB0516 /* UserWindSpeedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC339C0F1F4C0E7D00EB0516 /* UserWindSpeedConfig.swift */; };
 		CC339C121F4C12FB00EB0516 /* WindModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC339C111F4C12FB00EB0516 /* WindModeManager.swift */; };
 		CC339C131F4E386C00EB0516 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC339C151F4E386C00EB0516 /* SettingViewController.xib */; };
@@ -82,19 +93,15 @@
 		CC339C201F4E3DBF00EB0516 /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC339C221F4E3DBF00EB0516 /* EditProfileViewController.xib */; };
 		CC339C251F4E3E1600EB0516 /* EquipmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC339C271F4E3E1600EB0516 /* EquipmentViewController.xib */; };
 		CC3693811F3612AD00929F24 /* OpenBluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC36937F1F3612AD00929F24 /* OpenBluetoothController.swift */; };
-		CC3693821F3612AD00929F24 /* OpenBluetoothController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC3693801F3612AD00929F24 /* OpenBluetoothController.xib */; };
 		CC3EF2CB1EFEB99E00CE4919 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC3EF2CD1EFEB99E00CE4919 /* Localizable.strings */; };
 		CC4B66DA1F3838B500772738 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4B66D91F3838B500772738 /* APIManager.swift */; };
 		CC4B66DC1F383F2500772738 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4B66DB1F383F2500772738 /* StringExtension.swift */; };
 		CC4BA8741F2D9BE2002B571D /* LanguageListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA8721F2D9BE2002B571D /* LanguageListController.swift */; };
-		CC4BA8751F2D9BE2002B571D /* LanguageListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA8731F2D9BE2002B571D /* LanguageListController.xib */; };
 		CC4BA8781F2D9C25002B571D /* LanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA8761F2D9C25002B571D /* LanguageCell.swift */; };
-		CC4BA8791F2D9C25002B571D /* LanguageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA8771F2D9C25002B571D /* LanguageCell.xib */; };
 		CC4BA87D1F2DA2AB002B571D /* EquipmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA87B1F2DA2AB002B571D /* EquipmentViewController.swift */; };
 		CC4BA8801F2DCA0F002B571D /* ConfirmAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA87F1F2DCA0F002B571D /* ConfirmAlertView.swift */; };
 		CC4BA8821F2DCA2D002B571D /* ConfirmAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA8811F2DCA2D002B571D /* ConfirmAlertView.xib */; };
 		CC4BA8881F2DDBD7002B571D /* NotificationDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA8861F2DDBD7002B571D /* NotificationDetailController.swift */; };
-		CC4BA8891F2DDBD7002B571D /* NotificationDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA8871F2DDBD7002B571D /* NotificationDetailController.xib */; };
 		CC4BA88B1F2DDC54002B571D /* notification.html in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA88A1F2DDC54002B571D /* notification.html */; };
 		CC4BA88D1F2DE0F8002B571D /* BottomWechatShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA88C1F2DE0F8002B571D /* BottomWechatShareView.swift */; };
 		CC4BA88F1F2DEB3D002B571D /* BottomWechatShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA88E1F2DEB3D002B571D /* BottomWechatShareView.xib */; };
@@ -102,9 +109,7 @@
 		CC4BA8931F2DFE53002B571D /* UserHandbookController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA8911F2DFE53002B571D /* UserHandbookController.xib */; };
 		CC53E5201F6DFF3200870ACE /* HistoryDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC53E51F1F6DFF3200870ACE /* HistoryDataView.swift */; };
 		CC5A10351F2F77E000A73754 /* StartGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5A10331F2F77E000A73754 /* StartGuideViewController.swift */; };
-		CC5A10361F2F77E000A73754 /* StartGuideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC5A10341F2F77E000A73754 /* StartGuideViewController.xib */; };
 		CC5A10391F2F8DD000A73754 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5A10371F2F8DD000A73754 /* LoginViewController.swift */; };
-		CC5A103A1F2F8DD000A73754 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC5A10381F2F8DD000A73754 /* LoginViewController.xib */; };
 		CC5B32711EFA5D570048FC89 /* WXActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5B32701EFA5D570048FC89 /* WXActionSheetView.swift */; };
 		CC6B4FFE1F77460200B15596 /* BLSBluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B4FFD1F77460200B15596 /* BLSBluetoothManager.swift */; };
 		CC6D342C1EF3731B002C4A36 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6D342B1EF3731B002C4A36 /* DemoViewController.swift */; };
@@ -118,7 +123,6 @@
 		CC8B17F51F30532300FC5EAE /* SimpleHUDController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC8B17F31F30532300FC5EAE /* SimpleHUDController.xib */; };
 		CC8B17F71F30587F00FC5EAE /* Tookit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8B17F61F30587F00FC5EAE /* Tookit.swift */; };
 		CC8B17FA1F30AF1A00FC5EAE /* StartSetUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8B17F81F30AF1A00FC5EAE /* StartSetUsernameViewController.swift */; };
-		CC8B17FB1F30AF1A00FC5EAE /* StartSetUsernameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC8B17F91F30AF1A00FC5EAE /* StartSetUsernameViewController.xib */; };
 		CC8D040B1F3FDCF700F9B7FF /* WindModeAjustor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8D040A1F3FDCF700F9B7FF /* WindModeAjustor.swift */; };
 		CC8D040F1F40052C00F9B7FF /* DES3EncryptUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8D040E1F40052C00F9B7FF /* DES3EncryptUtil.m */; };
 		CC8D04121F40058E00F9B7FF /* MyBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8D04111F40058E00F9B7FF /* MyBase64.m */; };
@@ -145,10 +149,8 @@
 		CCE4E2D31F09380C0085542E /* useItem.html in Resources */ = {isa = PBXBuildFile; fileRef = CCE4E2D21F09380C0085542E /* useItem.html */; };
 		CCE4E2D51F0938940085542E /* TermsOfUseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE4E2D41F0938940085542E /* TermsOfUseController.swift */; };
 		CCE954741F11122D005C755C /* CheckUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE954721F11122D005C755C /* CheckUpdateViewController.swift */; };
-		CCE954751F11122D005C755C /* CheckUpdateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCE954731F11122D005C755C /* CheckUpdateViewController.xib */; };
 		CCE954771F1120FA005C755C /* UIView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE954761F1120FA005C755C /* UIView+IBInspectable.swift */; };
 		CCE9547B1F113260005C755C /* NotificationCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE954791F113260005C755C /* NotificationCenterController.swift */; };
-		CCE9547C1F113260005C755C /* NotificationCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCE9547A1F113260005C755C /* NotificationCenterController.xib */; };
 		CCFAC1FF1EFF5B4900319BB0 /* BaseRulerSelectorActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFAC1FE1EFF5B4900319BB0 /* BaseRulerSelectorActionView.swift */; };
 		CCFAC20B1EFFA16500319BB0 /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCFAC20D1EFFA16500319BB0 /* MainMenuView.xib */; };
 		CCFAC2181EFFA23000319BB0 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFAC2161EFFA23000319BB0 /* EditProfileViewController.swift */; };
@@ -163,12 +165,103 @@
 		5A7F6F701F88EE4F00F59DCB /* about-banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about-banner.png"; sourceTree = "<group>"; };
 		5A8498DF1F89FDBD002B63C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5ABCF9B51F902C4C00E91962 /* iOSDFULibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDFULibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AF9CA041FA37C6F0071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LoginViewController.xib; sourceTree = "<group>"; };
+		5AF9CA071FA37C720071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LoginViewController.strings; sourceTree = "<group>"; };
+		5AF9CA091FA37C780071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/StartSetUsernameViewController.xib; sourceTree = "<group>"; };
+		5AF9CA0C1FA37C9A0071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/StartSetUsernameViewController.strings; sourceTree = "<group>"; };
+		5AF9CA0E1FA37CA10071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/StartSetGenderViewController.xib; sourceTree = "<group>"; };
+		5AF9CA111FA37CA30071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/StartSetGenderViewController.strings; sourceTree = "<group>"; };
+		5AF9CA131FA37CA70071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/StartSetBirthViewController.xib; sourceTree = "<group>"; };
+		5AF9CA161FA37CA90071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/StartSetBirthViewController.strings; sourceTree = "<group>"; };
+		5AF9CA181FA37CAE0071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/StartSetWeightViewController.xib; sourceTree = "<group>"; };
+		5AF9CA1B1FA37CB10071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/StartSetWeightViewController.strings; sourceTree = "<group>"; };
+		5AF9CA1D1FA37CB50071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/StartSetHeightViewController.xib; sourceTree = "<group>"; };
+		5AF9CA201FA37CB70071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/StartSetHeightViewController.strings; sourceTree = "<group>"; };
+		5AF9CA221FA37CBE0071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/StartGuideViewController.xib; sourceTree = "<group>"; };
+		5AF9CA251FA37CC00071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/StartGuideViewController.strings; sourceTree = "<group>"; };
+		5AF9CA271FA37CC70071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OpenBluetoothController.xib; sourceTree = "<group>"; };
+		5AF9CA2C1FA37CD80071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ModeSettingCell.xib; sourceTree = "<group>"; };
+		5AF9CA311FA37CE30071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HistoryDataCell.xib; sourceTree = "<group>"; };
+		5AF9CA341FA37CE50071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/HistoryDataCell.strings; sourceTree = "<group>"; };
+		5AF9CA361FA37CEE0071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HistoryDataViewController.xib; sourceTree = "<group>"; };
+		5AF9CA391FA37CF20071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/HistoryDataViewController.strings; sourceTree = "<group>"; };
+		5AF9CA3B1FA37CFD0071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenuView.strings; sourceTree = "<group>"; };
+		5AF9CA3D1FA37D0A0071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EditPasswordViewController.xib; sourceTree = "<group>"; };
+		5AF9CA421FA37D160071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CheckUpdateViewController.xib; sourceTree = "<group>"; };
+		5AF9CA451FA37D180071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CheckUpdateViewController.strings; sourceTree = "<group>"; };
+		5AF9CA471FA37D1D0071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LanguageListController.xib; sourceTree = "<group>"; };
+		5AF9CA4A1FA37D1F0071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LanguageListController.strings; sourceTree = "<group>"; };
+		5AF9CA4C1FA37D240071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LanguageCell.xib; sourceTree = "<group>"; };
+		5AF9CA511FA37D310071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NotificationCenterController.xib; sourceTree = "<group>"; };
+		5AF9CA541FA37D330071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NotificationCenterController.strings; sourceTree = "<group>"; };
+		5AF9CA561FA37D3B0071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NotificationCenterCell.xib; sourceTree = "<group>"; };
+		5AF9CA591FA37D3D0071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NotificationCenterCell.strings; sourceTree = "<group>"; };
+		5AF9CA5B1FA37D410071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NotificationDetailController.xib; sourceTree = "<group>"; };
+		5AF9CA5E1FA37D430071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NotificationDetailController.strings; sourceTree = "<group>"; };
+		5AF9CA601FA37D570071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		5AF9CA621FA37DD90071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SettingViewController.strings; sourceTree = "<group>"; };
+		5AF9CA631FA37E520071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5AF9CA651FA37F0F0071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ModeSettingCell.strings; sourceTree = "<group>"; };
+		5AF9CA661FA383AA0071285D /* LanguageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageHelper.swift; sourceTree = "<group>"; };
+		5AF9CA691FA411E60071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/LoginViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA6B1FA411E80071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LoginViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA6D1FA411EF0071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/StartSetUsernameViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA6F1FA411F60071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/StartSetUsernameViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA711FA411FC0071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/StartSetGenderViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA731FA411FD0071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/StartSetGenderViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA751FA412020071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/StartSetBirthViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA771FA412040071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/StartSetBirthViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA791FA412090071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/StartSetWeightViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA7B1FA412090071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/StartSetWeightViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA7D1FA4120C0071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/StartSetHeightViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA7F1FA4120D0071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/StartSetHeightViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA811FA412140071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/StartGuideViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA831FA412150071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/StartGuideViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA851FA412190071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/OpenBluetoothController.strings"; sourceTree = "<group>"; };
+		5AF9CA871FA4121D0071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/OpenBluetoothController.strings"; sourceTree = "<group>"; };
+		5AF9CA891FA412220071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/AddModeViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA8B1FA412230071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AddModeViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA8D1FA412270071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/ModeSettingCell.strings"; sourceTree = "<group>"; };
+		5AF9CA8F1FA412270071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ModeSettingCell.strings"; sourceTree = "<group>"; };
+		5AF9CA911FA4122B0071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/HistoryDataCell.strings"; sourceTree = "<group>"; };
+		5AF9CA931FA4122C0071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/HistoryDataCell.strings"; sourceTree = "<group>"; };
+		5AF9CA951FA412300071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/HistoryDataViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA971FA412310071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/HistoryDataViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA991FA4123C0071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/MainMenuView.strings"; sourceTree = "<group>"; };
+		5AF9CA9B1FA412400071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenuView.strings"; sourceTree = "<group>"; };
+		5AF9CA9D1FA412450071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/EditProfileViewController.strings"; sourceTree = "<group>"; };
+		5AF9CA9F1FA412460071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EditProfileViewController.strings"; sourceTree = "<group>"; };
+		5AF9CAA11FA4124C0071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/EditPasswordViewController.strings; sourceTree = "<group>"; };
+		5AF9CAA31FA4124E0071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/EditPasswordViewController.strings"; sourceTree = "<group>"; };
+		5AF9CAA51FA412510071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EditPasswordViewController.strings"; sourceTree = "<group>"; };
+		5AF9CAA71FA4125B0071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/SettingViewController.strings"; sourceTree = "<group>"; };
+		5AF9CAA91FA4125E0071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingViewController.strings"; sourceTree = "<group>"; };
+		5AF9CAAB1FA4126D0071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/CheckUpdateViewController.strings"; sourceTree = "<group>"; };
+		5AF9CAAD1FA4126F0071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CheckUpdateViewController.strings"; sourceTree = "<group>"; };
+		5AF9CAAF1FA412740071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/LanguageListController.strings"; sourceTree = "<group>"; };
+		5AF9CAB11FA412750071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LanguageListController.strings"; sourceTree = "<group>"; };
+		5AF9CAB31FA412790071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LanguageCell.strings; sourceTree = "<group>"; };
+		5AF9CAB51FA4127A0071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/LanguageCell.strings"; sourceTree = "<group>"; };
+		5AF9CAB71FA4127D0071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LanguageCell.strings"; sourceTree = "<group>"; };
+		5AF9CAB91FA4128A0071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/EquipmentViewController.strings"; sourceTree = "<group>"; };
+		5AF9CABB1FA4128C0071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EquipmentViewController.strings"; sourceTree = "<group>"; };
+		5AF9CABD1FA414160071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/NotificationCenterController.strings"; sourceTree = "<group>"; };
+		5AF9CABF1FA414170071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NotificationCenterController.strings"; sourceTree = "<group>"; };
+		5AF9CAC11FA4141B0071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/NotificationCenterCell.strings"; sourceTree = "<group>"; };
+		5AF9CAC31FA4141C0071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NotificationCenterCell.strings"; sourceTree = "<group>"; };
+		5AF9CAC51FA414200071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/NotificationDetailController.strings"; sourceTree = "<group>"; };
+		5AF9CAC71FA414210071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NotificationDetailController.strings"; sourceTree = "<group>"; };
+		5AF9CAC91FA4142A0071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Main.strings"; sourceTree = "<group>"; };
+		5AF9CACB1FA4142F0071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		5AF9CACC1FA41B770071285D /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		5AF9CACD1FA41B7A0071285D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		5AF9CACE1FA420CD0071285D /* NSBundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSBundleExtension.swift; sourceTree = "<group>"; };
+		5AF9CAD11FA449EC0071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/OpenBluetoothController.strings; sourceTree = "<group>"; };
 		5C96D22CE689A5323E4BAAB6 /* Pods_Summer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Summer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7759AA13FDCD9FF9EA28D118 /* Pods-Summer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Summer/Pods-Summer.debug.xcconfig"; sourceTree = "<group>"; };
 		ACB90229D5AF13058AC07C4C /* Pods-Summer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Summer/Pods-Summer.release.xcconfig"; sourceTree = "<group>"; };
 		CC01EA0D1F39EC4F00D2A104 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		CC0237751F08998D00400F7C /* EditPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPasswordViewController.swift; sourceTree = "<group>"; };
-		CC0237761F08998D00400F7C /* EditPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditPasswordViewController.xib; sourceTree = "<group>"; };
 		CC02377A1F08A20400400F7C /* BaseSegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSegmentControl.swift; sourceTree = "<group>"; };
 		CC02377D1F08ABDC00400F7C /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		CC030B6E1F4145760069634C /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
@@ -176,10 +269,8 @@
 		CC030E921F1BA42A0030145C /* BaseAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseAlertView.xib; sourceTree = "<group>"; };
 		CC03D0801EFEBE9D00CC8B20 /* RuleSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleSelectorView.swift; sourceTree = "<group>"; };
 		CC0411D51F37567B00884165 /* HistoryDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDataViewController.swift; sourceTree = "<group>"; };
-		CC0411D61F37567B00884165 /* HistoryDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryDataViewController.xib; sourceTree = "<group>"; };
 		CC0411DA1F375ADB00884165 /* DateSegmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateSegmentView.swift; sourceTree = "<group>"; };
 		CC0411DC1F37699300884165 /* HistoryDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDataCell.swift; sourceTree = "<group>"; };
-		CC0411DD1F37699300884165 /* HistoryDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryDataCell.xib; sourceTree = "<group>"; };
 		CC05D2CE1F08748600653C71 /* GenderPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderPickerView.swift; sourceTree = "<group>"; };
 		CC0664A71EF76A4F00020415 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		CC0664A91EF76A5D00020415 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -201,16 +292,11 @@
 		CC0D72DD1F540D13000D647C /* UserMaskConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMaskConfig.swift; sourceTree = "<group>"; };
 		CC0D72DF1F541E1C000D647C /* NotificationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationList.swift; sourceTree = "<group>"; };
 		CC0E30C31F11E1A900F6AFFB /* NotificationCenterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterCell.swift; sourceTree = "<group>"; };
-		CC0E30C41F11E1A900F6AFFB /* NotificationCenterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCenterCell.xib; sourceTree = "<group>"; };
 		CC11D6211F41F11D001E153F /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		CC11D6501F30C9BA00B9ADD1 /* StartSetGenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSetGenderViewController.swift; sourceTree = "<group>"; };
-		CC11D6511F30C9BA00B9ADD1 /* StartSetGenderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartSetGenderViewController.xib; sourceTree = "<group>"; };
 		CC11D6541F30D3CE00B9ADD1 /* StartSetBirthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSetBirthViewController.swift; sourceTree = "<group>"; };
-		CC11D6551F30D3CE00B9ADD1 /* StartSetBirthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartSetBirthViewController.xib; sourceTree = "<group>"; };
 		CC11D6581F30D7D300B9ADD1 /* StartSetWeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSetWeightViewController.swift; sourceTree = "<group>"; };
-		CC11D6591F30D7D300B9ADD1 /* StartSetWeightViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartSetWeightViewController.xib; sourceTree = "<group>"; };
 		CC11D65C1F30DE8000B9ADD1 /* StartSetHeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSetHeightViewController.swift; sourceTree = "<group>"; };
-		CC11D65D1F30DE8000B9ADD1 /* StartSetHeightViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartSetHeightViewController.xib; sourceTree = "<group>"; };
 		CC12F9F61F4516AB00533783 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CC12F9F81F4519F600533783 /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		CC12F9FB1F451CC000533783 /* CurrentAQI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentAQI.swift; sourceTree = "<group>"; };
@@ -230,12 +316,9 @@
 		CC339C051F48951D00EB0516 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		CC339C071F4A532B00EB0516 /* ModeSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeSettingController.swift; sourceTree = "<group>"; };
 		CC339C0B1F4A546E00EB0516 /* ModeSettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeSettingCell.swift; sourceTree = "<group>"; };
-		CC339C0C1F4A546E00EB0516 /* ModeSettingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModeSettingCell.xib; sourceTree = "<group>"; };
 		CC339C0F1F4C0E7D00EB0516 /* UserWindSpeedConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWindSpeedConfig.swift; sourceTree = "<group>"; };
 		CC339C111F4C12FB00EB0516 /* WindModeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindModeManager.swift; sourceTree = "<group>"; };
 		CC339C161F4E387000EB0516 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SettingViewController.xib; sourceTree = "<group>"; };
-		CC339C181F4E38B700EB0516 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/SettingViewController.strings"; sourceTree = "<group>"; };
-		CC339C1A1F4E38BD00EB0516 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingViewController.strings"; sourceTree = "<group>"; };
 		CC339C1C1F4E3B6200EB0516 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddModeViewController.xib; sourceTree = "<group>"; };
 		CC339C1F1F4E3B6600EB0516 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AddModeViewController.strings; sourceTree = "<group>"; };
 		CC339C211F4E3DBF00EB0516 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EditProfileViewController.xib; sourceTree = "<group>"; };
@@ -243,18 +326,14 @@
 		CC339C261F4E3E1600EB0516 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EquipmentViewController.xib; sourceTree = "<group>"; };
 		CC339C291F4E3E1B00EB0516 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/EquipmentViewController.strings; sourceTree = "<group>"; };
 		CC36937F1F3612AD00929F24 /* OpenBluetoothController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenBluetoothController.swift; sourceTree = "<group>"; };
-		CC3693801F3612AD00929F24 /* OpenBluetoothController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenBluetoothController.xib; sourceTree = "<group>"; };
 		CC4B66D91F3838B500772738 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		CC4B66DB1F383F2500772738 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		CC4BA8721F2D9BE2002B571D /* LanguageListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageListController.swift; sourceTree = "<group>"; };
-		CC4BA8731F2D9BE2002B571D /* LanguageListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LanguageListController.xib; sourceTree = "<group>"; };
 		CC4BA8761F2D9C25002B571D /* LanguageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageCell.swift; sourceTree = "<group>"; };
-		CC4BA8771F2D9C25002B571D /* LanguageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LanguageCell.xib; sourceTree = "<group>"; };
 		CC4BA87B1F2DA2AB002B571D /* EquipmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipmentViewController.swift; sourceTree = "<group>"; };
 		CC4BA87F1F2DCA0F002B571D /* ConfirmAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmAlertView.swift; sourceTree = "<group>"; };
 		CC4BA8811F2DCA2D002B571D /* ConfirmAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmAlertView.xib; sourceTree = "<group>"; };
 		CC4BA8861F2DDBD7002B571D /* NotificationDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationDetailController.swift; sourceTree = "<group>"; };
-		CC4BA8871F2DDBD7002B571D /* NotificationDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationDetailController.xib; sourceTree = "<group>"; };
 		CC4BA88A1F2DDC54002B571D /* notification.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = notification.html; sourceTree = "<group>"; };
 		CC4BA88C1F2DE0F8002B571D /* BottomWechatShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomWechatShareView.swift; sourceTree = "<group>"; };
 		CC4BA88E1F2DEB3D002B571D /* BottomWechatShareView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomWechatShareView.xib; sourceTree = "<group>"; };
@@ -262,9 +341,7 @@
 		CC4BA8911F2DFE53002B571D /* UserHandbookController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserHandbookController.xib; sourceTree = "<group>"; };
 		CC53E51F1F6DFF3200870ACE /* HistoryDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDataView.swift; sourceTree = "<group>"; };
 		CC5A10331F2F77E000A73754 /* StartGuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartGuideViewController.swift; sourceTree = "<group>"; };
-		CC5A10341F2F77E000A73754 /* StartGuideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartGuideViewController.xib; sourceTree = "<group>"; };
 		CC5A10371F2F8DD000A73754 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		CC5A10381F2F8DD000A73754 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		CC5B32701EFA5D570048FC89 /* WXActionSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXActionSheetView.swift; sourceTree = "<group>"; };
 		CC6B4FFD1F77460200B15596 /* BLSBluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLSBluetoothManager.swift; sourceTree = "<group>"; };
 		CC6D342B1EF3731B002C4A36 /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
@@ -272,9 +349,7 @@
 		CC6D34301EF39E7E002C4A36 /* UIView+Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Position.swift"; sourceTree = "<group>"; };
 		CC6D34321EF3A29A002C4A36 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		CC6D34341EF3A669002C4A36 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
-		CC7821C41EFEB2860067F4A5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		CC7821C51EFEB2860067F4A5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		CC7821C61EFEB2AE0067F4A5 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Main.strings"; sourceTree = "<group>"; };
 		CC7821C71EFEB2AF0067F4A5 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		CC807F131F46E33C00C2FE87 /* UIBezierPath+LxThroughPointsBezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+LxThroughPointsBezier.h"; sourceTree = "<group>"; };
 		CC807F141F46E33C00C2FE87 /* UIBezierPath+LxThroughPointsBezier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+LxThroughPointsBezier.m"; sourceTree = "<group>"; };
@@ -283,7 +358,6 @@
 		CC8B17F31F30532300FC5EAE /* SimpleHUDController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleHUDController.xib; sourceTree = "<group>"; };
 		CC8B17F61F30587F00FC5EAE /* Tookit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tookit.swift; sourceTree = "<group>"; };
 		CC8B17F81F30AF1A00FC5EAE /* StartSetUsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSetUsernameViewController.swift; sourceTree = "<group>"; };
-		CC8B17F91F30AF1A00FC5EAE /* StartSetUsernameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartSetUsernameViewController.xib; sourceTree = "<group>"; };
 		CC8D040A1F3FDCF700F9B7FF /* WindModeAjustor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindModeAjustor.swift; sourceTree = "<group>"; };
 		CC8D040D1F40052C00F9B7FF /* DES3EncryptUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DES3EncryptUtil.h; sourceTree = "<group>"; };
 		CC8D040E1F40052C00F9B7FF /* DES3EncryptUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DES3EncryptUtil.m; sourceTree = "<group>"; };
@@ -336,13 +410,10 @@
 		CCE4E2D21F09380C0085542E /* useItem.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = useItem.html; sourceTree = "<group>"; };
 		CCE4E2D41F0938940085542E /* TermsOfUseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsOfUseController.swift; sourceTree = "<group>"; };
 		CCE954721F11122D005C755C /* CheckUpdateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckUpdateViewController.swift; sourceTree = "<group>"; };
-		CCE954731F11122D005C755C /* CheckUpdateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckUpdateViewController.xib; sourceTree = "<group>"; };
 		CCE954761F1120FA005C755C /* UIView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectable.swift"; sourceTree = "<group>"; };
 		CCE954791F113260005C755C /* NotificationCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterController.swift; sourceTree = "<group>"; };
-		CCE9547A1F113260005C755C /* NotificationCenterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCenterController.xib; sourceTree = "<group>"; };
 		CCFAC1FE1EFF5B4900319BB0 /* BaseRulerSelectorActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRulerSelectorActionView.swift; sourceTree = "<group>"; };
 		CCFAC20C1EFFA16500319BB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenuView.xib; sourceTree = "<group>"; };
-		CCFAC2141EFFA19300319BB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		CCFAC2161EFFA23000319BB0 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		CCFBF71E1F3DFE300025F330 /* AddModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddModeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -402,11 +473,11 @@
 				CCE4E2C31F0909800085542E /* PrivacyViewController.swift */,
 				CCE4E2D41F0938940085542E /* TermsOfUseController.swift */,
 				CCE954721F11122D005C755C /* CheckUpdateViewController.swift */,
-				CCE954731F11122D005C755C /* CheckUpdateViewController.xib */,
+				5AF9CA431FA37D160071285D /* CheckUpdateViewController.xib */,
 				CC4BA8721F2D9BE2002B571D /* LanguageListController.swift */,
-				CC4BA8731F2D9BE2002B571D /* LanguageListController.xib */,
+				5AF9CA481FA37D1D0071285D /* LanguageListController.xib */,
 				CC4BA8761F2D9C25002B571D /* LanguageCell.swift */,
-				CC4BA8771F2D9C25002B571D /* LanguageCell.xib */,
+				5AF9CA4D1FA37D240071285D /* LanguageCell.xib */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -539,7 +610,7 @@
 				CC339C1D1F4E3B6200EB0516 /* AddModeViewController.xib */,
 				CC339C071F4A532B00EB0516 /* ModeSettingController.swift */,
 				CC339C0B1F4A546E00EB0516 /* ModeSettingCell.swift */,
-				CC339C0C1F4A546E00EB0516 /* ModeSettingCell.xib */,
+				5AF9CA2D1FA37CD80071285D /* ModeSettingCell.xib */,
 			);
 			name = WindMode;
 			sourceTree = "<group>";
@@ -614,6 +685,7 @@
 				CC6D34341EF3A669002C4A36 /* Common.swift */,
 				CC3EF2CD1EFEB99E00CE4919 /* Localizable.strings */,
 				CC01EA0D1F39EC4F00D2A104 /* BridgingHeader.h */,
+				5AF9CA661FA383AA0071285D /* LanguageHelper.swift */,
 			);
 			name = Support;
 			path = ..;
@@ -623,11 +695,11 @@
 			isa = PBXGroup;
 			children = (
 				CC0411DC1F37699300884165 /* HistoryDataCell.swift */,
-				CC0411DD1F37699300884165 /* HistoryDataCell.xib */,
+				5AF9CA321FA37CE30071285D /* HistoryDataCell.xib */,
 				CC0411DA1F375ADB00884165 /* DateSegmentView.swift */,
 				CC53E51F1F6DFF3200870ACE /* HistoryDataView.swift */,
 				CC0411D51F37567B00884165 /* HistoryDataViewController.swift */,
-				CC0411D61F37567B00884165 /* HistoryDataViewController.xib */,
+				5AF9CA371FA37CEE0071285D /* HistoryDataViewController.xib */,
 			);
 			name = HistoryData;
 			sourceTree = "<group>";
@@ -667,7 +739,7 @@
 			isa = PBXGroup;
 			children = (
 				CC5A10331F2F77E000A73754 /* StartGuideViewController.swift */,
-				CC5A10341F2F77E000A73754 /* StartGuideViewController.xib */,
+				5AF9CA231FA37CBE0071285D /* StartGuideViewController.xib */,
 			);
 			name = StartGuide;
 			sourceTree = "<group>";
@@ -676,17 +748,17 @@
 			isa = PBXGroup;
 			children = (
 				CC5A10371F2F8DD000A73754 /* LoginViewController.swift */,
-				CC5A10381F2F8DD000A73754 /* LoginViewController.xib */,
+				5AF9CA051FA37C6F0071285D /* LoginViewController.xib */,
 				CC8B17F81F30AF1A00FC5EAE /* StartSetUsernameViewController.swift */,
-				CC8B17F91F30AF1A00FC5EAE /* StartSetUsernameViewController.xib */,
+				5AF9CA0A1FA37C780071285D /* StartSetUsernameViewController.xib */,
 				CC11D6501F30C9BA00B9ADD1 /* StartSetGenderViewController.swift */,
-				CC11D6511F30C9BA00B9ADD1 /* StartSetGenderViewController.xib */,
+				5AF9CA0F1FA37CA10071285D /* StartSetGenderViewController.xib */,
 				CC11D6541F30D3CE00B9ADD1 /* StartSetBirthViewController.swift */,
-				CC11D6551F30D3CE00B9ADD1 /* StartSetBirthViewController.xib */,
+				5AF9CA141FA37CA70071285D /* StartSetBirthViewController.xib */,
 				CC11D6581F30D7D300B9ADD1 /* StartSetWeightViewController.swift */,
-				CC11D6591F30D7D300B9ADD1 /* StartSetWeightViewController.xib */,
+				5AF9CA191FA37CAE0071285D /* StartSetWeightViewController.xib */,
 				CC11D65C1F30DE8000B9ADD1 /* StartSetHeightViewController.swift */,
-				CC11D65D1F30DE8000B9ADD1 /* StartSetHeightViewController.xib */,
+				5AF9CA1E1FA37CB50071285D /* StartSetHeightViewController.xib */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -712,6 +784,7 @@
 				CC4B66DB1F383F2500772738 /* StringExtension.swift */,
 				CC11D6211F41F11D001E153F /* DateExtension.swift */,
 				CCCE01631F52F0EA00974F6D /* UIImageExtension.swift */,
+				5AF9CACE1FA420CD0071285D /* NSBundleExtension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -780,7 +853,7 @@
 			children = (
 				CC6B4FFD1F77460200B15596 /* BLSBluetoothManager.swift */,
 				CC36937F1F3612AD00929F24 /* OpenBluetoothController.swift */,
-				CC3693801F3612AD00929F24 /* OpenBluetoothController.xib */,
+				5AF9CA281FA37CC70071285D /* OpenBluetoothController.xib */,
 			);
 			name = Bluetooth;
 			sourceTree = "<group>";
@@ -836,11 +909,11 @@
 			isa = PBXGroup;
 			children = (
 				CCE954791F113260005C755C /* NotificationCenterController.swift */,
-				CCE9547A1F113260005C755C /* NotificationCenterController.xib */,
+				5AF9CA521FA37D310071285D /* NotificationCenterController.xib */,
 				CC0E30C31F11E1A900F6AFFB /* NotificationCenterCell.swift */,
-				CC0E30C41F11E1A900F6AFFB /* NotificationCenterCell.xib */,
+				5AF9CA571FA37D3B0071285D /* NotificationCenterCell.xib */,
 				CC4BA8861F2DDBD7002B571D /* NotificationDetailController.swift */,
-				CC4BA8871F2DDBD7002B571D /* NotificationDetailController.xib */,
+				5AF9CA5C1FA37D410071285D /* NotificationDetailController.xib */,
 			);
 			name = Notification;
 			sourceTree = "<group>";
@@ -871,7 +944,7 @@
 				CCFAC2161EFFA23000319BB0 /* EditProfileViewController.swift */,
 				CC339C221F4E3DBF00EB0516 /* EditProfileViewController.xib */,
 				CC0237751F08998D00400F7C /* EditPasswordViewController.swift */,
-				CC0237761F08998D00400F7C /* EditPasswordViewController.xib */,
+				5AF9CA3E1FA37D0A0071285D /* EditPasswordViewController.xib */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -964,36 +1037,36 @@
 				5A53F5AA1F978C3A00E46282 /* loadingBSL.gif in Resources */,
 				5A3925491F8CA2FB00A066B0 /* main-bg2.png in Resources */,
 				5A7F6F711F88EEAA00F59DCB /* about-banner.png in Resources */,
-				CC3693821F3612AD00929F24 /* OpenBluetoothController.xib in Resources */,
-				CC5A10361F2F77E000A73754 /* StartGuideViewController.xib in Resources */,
+				5AF9CA261FA37CC70071285D /* OpenBluetoothController.xib in Resources */,
+				5AF9CA211FA37CBE0071285D /* StartGuideViewController.xib in Resources */,
 				CCE4E2C81F091C350085542E /* Privacy.html in Resources */,
 				CCFAC20B1EFFA16500319BB0 /* MainMenuView.xib in Resources */,
-				CC5A103A1F2F8DD000A73754 /* LoginViewController.xib in Resources */,
+				5AF9CA031FA37C6F0071285D /* LoginViewController.xib in Resources */,
 				CC339C1B1F4E3B6200EB0516 /* AddModeViewController.xib in Resources */,
-				CC11D6531F30C9BA00B9ADD1 /* StartSetGenderViewController.xib in Resources */,
+				5AF9CA0D1FA37CA10071285D /* StartSetGenderViewController.xib in Resources */,
 				CC4BA88F1F2DEB3D002B571D /* BottomWechatShareView.xib in Resources */,
 				CC030E931F1BA42A0030145C /* BaseAlertView.xib in Resources */,
 				CC3EF2CB1EFEB99E00CE4919 /* Localizable.strings in Resources */,
-				CC11D6571F30D3CE00B9ADD1 /* StartSetBirthViewController.xib in Resources */,
-				CC0237781F08998D00400F7C /* EditPasswordViewController.xib in Resources */,
-				CC11D65B1F30D7D300B9ADD1 /* StartSetWeightViewController.xib in Resources */,
-				CC4BA8791F2D9C25002B571D /* LanguageCell.xib in Resources */,
+				5AF9CA121FA37CA70071285D /* StartSetBirthViewController.xib in Resources */,
+				5AF9CA3C1FA37D0A0071285D /* EditPasswordViewController.xib in Resources */,
+				5AF9CA171FA37CAE0071285D /* StartSetWeightViewController.xib in Resources */,
+				5AF9CA4B1FA37D240071285D /* LanguageCell.xib in Resources */,
 				CC8B17F51F30532300FC5EAE /* SimpleHUDController.xib in Resources */,
-				CC11D65F1F30DE8000B9ADD1 /* StartSetHeightViewController.xib in Resources */,
+				5AF9CA1C1FA37CB50071285D /* StartSetHeightViewController.xib in Resources */,
 				CC0B71AA1F5C08820074D989 /* main-bg6.png in Resources */,
 				CC0B71A71F5C08820074D989 /* main-bg3.png in Resources */,
 				CC4BA8821F2DCA2D002B571D /* ConfirmAlertView.xib in Resources */,
-				CCE954751F11122D005C755C /* CheckUpdateViewController.xib in Resources */,
-				CC4BA8891F2DDBD7002B571D /* NotificationDetailController.xib in Resources */,
-				CC0411DF1F37699300884165 /* HistoryDataCell.xib in Resources */,
+				5AF9CA411FA37D160071285D /* CheckUpdateViewController.xib in Resources */,
+				5AF9CA5A1FA37D410071285D /* NotificationDetailController.xib in Resources */,
+				5AF9CA301FA37CE30071285D /* HistoryDataCell.xib in Resources */,
 				CC339C201F4E3DBF00EB0516 /* EditProfileViewController.xib in Resources */,
 				CC3348D71EF368790084642A /* LaunchScreen.storyboard in Resources */,
 				CC3348D41EF368790084642A /* Assets.xcassets in Resources */,
-				CC4BA8751F2D9BE2002B571D /* LanguageListController.xib in Resources */,
-				CC8B17FB1F30AF1A00FC5EAE /* StartSetUsernameViewController.xib in Resources */,
+				5AF9CA461FA37D1D0071285D /* LanguageListController.xib in Resources */,
+				5AF9CA081FA37C780071285D /* StartSetUsernameViewController.xib in Resources */,
 				CC3348D21EF368790084642A /* Main.storyboard in Resources */,
-				CC0E30C61F11E1A900F6AFFB /* NotificationCenterCell.xib in Resources */,
-				CCE9547C1F113260005C755C /* NotificationCenterController.xib in Resources */,
+				5AF9CA551FA37D3B0071285D /* NotificationCenterCell.xib in Resources */,
+				5AF9CA501FA37D310071285D /* NotificationCenterController.xib in Resources */,
 				CCE4E2D31F09380C0085542E /* useItem.html in Resources */,
 				CC1748A81F2ED8A000CE268C /* WXImagePickerViewController.xib in Resources */,
 				CC339C251F4E3E1600EB0516 /* EquipmentViewController.xib in Resources */,
@@ -1004,12 +1077,12 @@
 				CC4BA8931F2DFE53002B571D /* UserHandbookController.xib in Resources */,
 				CC0B71A81F5C08820074D989 /* main-bg4.png in Resources */,
 				CCE4E2CA1F0925970085542E /* logo.png in Resources */,
-				CC0411D81F37567C00884165 /* HistoryDataViewController.xib in Resources */,
+				5AF9CA351FA37CEE0071285D /* HistoryDataViewController.xib in Resources */,
 				CCE4E2CF1F0932A50085542E /* qrcode.png in Resources */,
 				CC339C131F4E386C00EB0516 /* SettingViewController.xib in Resources */,
 				CC0D72DA1F53F235000D647C /* AboutQACell.xib in Resources */,
 				CC9BDCB51F43409A00AF6DB4 /* SVProgressHUD.bundle in Resources */,
-				CC339C0E1F4A546E00EB0516 /* ModeSettingCell.xib in Resources */,
+				5AF9CA2B1FA37CD80071285D /* ModeSettingCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1160,6 +1233,7 @@
 				CCA48DC41F5849FF0010CF4F /* HealthDataManager.swift in Sources */,
 				CC02377B1F08A20400400F7C /* BaseSegmentControl.swift in Sources */,
 				CC0411DB1F375ADB00884165 /* DateSegmentView.swift in Sources */,
+				5AF9CACF1FA420CD0071285D /* NSBundleExtension.swift in Sources */,
 				CC8B17F41F30532300FC5EAE /* SimpleHUDController.swift in Sources */,
 				CC6D34351EF3A669002C4A36 /* Common.swift in Sources */,
 				CC9BDCA81F4336EA00AF6DB4 /* MBProgressHUD.m in Sources */,
@@ -1174,6 +1248,7 @@
 				CC8D040F1F40052C00F9B7FF /* DES3EncryptUtil.m in Sources */,
 				CCE954771F1120FA005C755C /* UIView+IBInspectable.swift in Sources */,
 				CC1748A71F2ED8A000CE268C /* WXImagePickerViewController.swift in Sources */,
+				5AF9CA671FA383AA0071285D /* LanguageHelper.swift in Sources */,
 				CC5A10351F2F77E000A73754 /* StartGuideViewController.swift in Sources */,
 				CC9BDCB71F43409A00AF6DB4 /* SVRadialGradientLayer.m in Sources */,
 				CC339C121F4C12FB00EB0516 /* WindModeManager.swift in Sources */,
@@ -1208,13 +1283,211 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		5AF9CA051FA37C6F0071285D /* LoginViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF9CA041FA37C6F0071285D /* Base */,
+				5AF9CA071FA37C720071285D /* en */,
+				5AF9CA691FA411E60071285D /* zh-Hant-HK */,
+				5AF9CA6B1FA411E80071285D /* zh-Hans */,
+			);
+			name = LoginViewController.xib;
+			sourceTree = "<group>";
+		};
+		5AF9CA0A1FA37C780071285D /* StartSetUsernameViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF9CA091FA37C780071285D /* Base */,
+				5AF9CA0C1FA37C9A0071285D /* en */,
+				5AF9CA6D1FA411EF0071285D /* zh-Hant-HK */,
+				5AF9CA6F1FA411F60071285D /* zh-Hans */,
+			);
+			name = StartSetUsernameViewController.xib;
+			sourceTree = "<group>";
+		};
+		5AF9CA0F1FA37CA10071285D /* StartSetGenderViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF9CA0E1FA37CA10071285D /* Base */,
+				5AF9CA111FA37CA30071285D /* en */,
+				5AF9CA711FA411FC0071285D /* zh-Hant-HK */,
+				5AF9CA731FA411FD0071285D /* zh-Hans */,
+			);
+			name = StartSetGenderViewController.xib;
+			sourceTree = "<group>";
+		};
+		5AF9CA141FA37CA70071285D /* StartSetBirthViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF9CA131FA37CA70071285D /* Base */,
+				5AF9CA161FA37CA90071285D /* en */,
+				5AF9CA751FA412020071285D /* zh-Hant-HK */,
+				5AF9CA771FA412040071285D /* zh-Hans */,
+			);
+			name = StartSetBirthViewController.xib;
+			sourceTree = "<group>";
+		};
+		5AF9CA191FA37CAE0071285D /* StartSetWeightViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF9CA181FA37CAE0071285D /* Base */,
+				5AF9CA1B1FA37CB10071285D /* en */,
+				5AF9CA791FA412090071285D /* zh-Hant-HK */,
+				5AF9CA7B1FA412090071285D /* zh-Hans */,
+			);
+			name = StartSetWeightViewController.xib;
+			sourceTree = "<group>";
+		};
+		5AF9CA1E1FA37CB50071285D /* StartSetHeightViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF9CA1D1FA37CB50071285D /* Base */,
+				5AF9CA201FA37CB70071285D /* en */,
+				5AF9CA7D1FA4120C0071285D /* zh-Hant-HK */,
+				5AF9CA7F1FA4120D0071285D /* zh-Hans */,
+			);
+			name = StartSetHeightViewController.xib;
+			sourceTree = "<group>";
+		};
+		5AF9CA231FA37CBE0071285D /* StartGuideViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF9CA221FA37CBE0071285D /* Base */,
+				5AF9CA251FA37CC00071285D /* en */,
+				5AF9CA811FA412140071285D /* zh-Hant-HK */,
+				5AF9CA831FA412150071285D /* zh-Hans */,
+			);
+			name = StartGuideViewController.xib;
+			sourceTree = "<group>";
+		};
+		5AF9CA281FA37CC70071285D /* OpenBluetoothController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF9CA271FA37CC70071285D /* Base */,
+				5AF9CA851FA412190071285D /* zh-Hant-HK */,
+				5AF9CA871FA4121D0071285D /* zh-Hans */,
+				5AF9CAD11FA449EC0071285D /* en */,
+			);
+			name = OpenBluetoothController.xib;
+			sourceTree = "<group>";
+		};
+		5AF9CA2D1FA37CD80071285D /* ModeSettingCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF9CA2C1FA37CD80071285D /* Base */,
+				5AF9CA651FA37F0F0071285D /* en */,
+				5AF9CA8D1FA412270071285D /* zh-Hant-HK */,
+				5AF9CA8F1FA412270071285D /* zh-Hans */,
+			);
+			name = ModeSettingCell.xib;
+			sourceTree = "<group>";
+		};
+		5AF9CA321FA37CE30071285D /* HistoryDataCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF9CA311FA37CE30071285D /* Base */,
+				5AF9CA341FA37CE50071285D /* en */,
+				5AF9CA911FA4122B0071285D /* zh-Hant-HK */,
+				5AF9CA931FA4122C0071285D /* zh-Hans */,
+			);
+			name = HistoryDataCell.xib;
+			sourceTree = "<group>";
+		};
+		5AF9CA371FA37CEE0071285D /* HistoryDataViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF9CA361FA37CEE0071285D /* Base */,
+				5AF9CA391FA37CF20071285D /* en */,
+				5AF9CA951FA412300071285D /* zh-Hant-HK */,
+				5AF9CA971FA412310071285D /* zh-Hans */,
+			);
+			name = HistoryDataViewController.xib;
+			sourceTree = "<group>";
+		};
+		5AF9CA3E1FA37D0A0071285D /* EditPasswordViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF9CA3D1FA37D0A0071285D /* Base */,
+				5AF9CAA11FA4124C0071285D /* en */,
+				5AF9CAA31FA4124E0071285D /* zh-Hant-HK */,
+				5AF9CAA51FA412510071285D /* zh-Hans */,
+			);
+			name = EditPasswordViewController.xib;
+			sourceTree = "<group>";
+		};
+		5AF9CA431FA37D160071285D /* CheckUpdateViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF9CA421FA37D160071285D /* Base */,
+				5AF9CA451FA37D180071285D /* en */,
+				5AF9CAAB1FA4126D0071285D /* zh-Hant-HK */,
+				5AF9CAAD1FA4126F0071285D /* zh-Hans */,
+			);
+			name = CheckUpdateViewController.xib;
+			sourceTree = "<group>";
+		};
+		5AF9CA481FA37D1D0071285D /* LanguageListController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF9CA471FA37D1D0071285D /* Base */,
+				5AF9CA4A1FA37D1F0071285D /* en */,
+				5AF9CAAF1FA412740071285D /* zh-Hant-HK */,
+				5AF9CAB11FA412750071285D /* zh-Hans */,
+			);
+			name = LanguageListController.xib;
+			sourceTree = "<group>";
+		};
+		5AF9CA4D1FA37D240071285D /* LanguageCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF9CA4C1FA37D240071285D /* Base */,
+				5AF9CAB31FA412790071285D /* en */,
+				5AF9CAB51FA4127A0071285D /* zh-Hant-HK */,
+				5AF9CAB71FA4127D0071285D /* zh-Hans */,
+			);
+			name = LanguageCell.xib;
+			sourceTree = "<group>";
+		};
+		5AF9CA521FA37D310071285D /* NotificationCenterController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF9CA511FA37D310071285D /* Base */,
+				5AF9CA541FA37D330071285D /* en */,
+				5AF9CABD1FA414160071285D /* zh-Hant-HK */,
+				5AF9CABF1FA414170071285D /* zh-Hans */,
+			);
+			name = NotificationCenterController.xib;
+			sourceTree = "<group>";
+		};
+		5AF9CA571FA37D3B0071285D /* NotificationCenterCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF9CA561FA37D3B0071285D /* Base */,
+				5AF9CA591FA37D3D0071285D /* en */,
+				5AF9CAC11FA4141B0071285D /* zh-Hant-HK */,
+				5AF9CAC31FA4141C0071285D /* zh-Hans */,
+			);
+			name = NotificationCenterCell.xib;
+			sourceTree = "<group>";
+		};
+		5AF9CA5C1FA37D410071285D /* NotificationDetailController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF9CA5B1FA37D410071285D /* Base */,
+				5AF9CA5E1FA37D430071285D /* en */,
+				5AF9CAC51FA414200071285D /* zh-Hant-HK */,
+				5AF9CAC71FA414210071285D /* zh-Hans */,
+			);
+			name = NotificationDetailController.xib;
+			sourceTree = "<group>";
+		};
 		CC3348D01EF368790084642A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				CC3348D11EF368790084642A /* Base */,
-				CC7821C41EFEB2860067F4A5 /* zh-Hans */,
-				CC7821C61EFEB2AE0067F4A5 /* zh-Hant-HK */,
-				CCFAC2141EFFA19300319BB0 /* en */,
+				5AF9CA601FA37D570071285D /* en */,
+				5AF9CAC91FA4142A0071285D /* zh-Hant-HK */,
+				5AF9CACB1FA4142F0071285D /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			path = Summer;
@@ -1235,8 +1508,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				CC339C161F4E387000EB0516 /* Base */,
-				CC339C181F4E38B700EB0516 /* zh-Hant-HK */,
-				CC339C1A1F4E38BD00EB0516 /* zh-Hans */,
+				5AF9CA621FA37DD90071285D /* en */,
+				5AF9CAA71FA4125B0071285D /* zh-Hant-HK */,
+				5AF9CAA91FA4125E0071285D /* zh-Hans */,
 			);
 			name = SettingViewController.xib;
 			sourceTree = "<group>";
@@ -1246,6 +1520,8 @@
 			children = (
 				CC339C1C1F4E3B6200EB0516 /* Base */,
 				CC339C1F1F4E3B6600EB0516 /* en */,
+				5AF9CA891FA412220071285D /* zh-Hant-HK */,
+				5AF9CA8B1FA412230071285D /* zh-Hans */,
 			);
 			name = AddModeViewController.xib;
 			sourceTree = "<group>";
@@ -1255,6 +1531,8 @@
 			children = (
 				CC339C211F4E3DBF00EB0516 /* Base */,
 				CC339C241F4E3DC200EB0516 /* en */,
+				5AF9CA9D1FA412450071285D /* zh-Hant-HK */,
+				5AF9CA9F1FA412460071285D /* zh-Hans */,
 			);
 			name = EditProfileViewController.xib;
 			sourceTree = "<group>";
@@ -1264,6 +1542,8 @@
 			children = (
 				CC339C261F4E3E1600EB0516 /* Base */,
 				CC339C291F4E3E1B00EB0516 /* en */,
+				5AF9CAB91FA4128A0071285D /* zh-Hant-HK */,
+				5AF9CABB1FA4128C0071285D /* zh-Hans */,
 			);
 			name = EquipmentViewController.xib;
 			sourceTree = "<group>";
@@ -1272,6 +1552,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				5A8498DF1F89FDBD002B63C4 /* Base */,
+				5AF9CA631FA37E520071285D /* en */,
+				5AF9CACC1FA41B770071285D /* zh-Hant-HK */,
+				5AF9CACD1FA41B7A0071285D /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1280,6 +1563,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				CCFAC20C1EFFA16500319BB0 /* Base */,
+				5AF9CA3B1FA37CFD0071285D /* en */,
+				5AF9CA991FA4123C0071285D /* zh-Hant-HK */,
+				5AF9CA9B1FA412400071285D /* zh-Hans */,
 			);
 			name = MainMenuView.xib;
 			sourceTree = "<group>";
@@ -1418,7 +1704,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = blueskylab;
+				PRODUCT_BUNDLE_IDENTIFIER = blueskylab2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/BridgingHeader.h";
@@ -1461,7 +1747,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = blueskylab;
+				PRODUCT_BUNDLE_IDENTIFIER = blueskylab2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/BridgingHeader.h";

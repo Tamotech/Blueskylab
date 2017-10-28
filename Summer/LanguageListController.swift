@@ -21,6 +21,16 @@ class LanguageListController: BaseViewController, UITableViewDelegate, UITableVi
 
         // Do any additional setup after loading the view.
         
+        let language = SessionManager.sharedInstance.userMaskConfig.language
+        if language == "zh_CN" {
+            selectIndex = 0
+        }
+        else if language == "zh_TW" {
+            selectIndex = 1
+        }
+        else if language == "en_US" {
+            selectIndex = 2
+        }
         self.title = NSLocalizedString("LanguageSetting", comment: "")
         let nib = UINib(nibName: "LanguageCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
@@ -71,6 +81,24 @@ class LanguageListController: BaseViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectIndex = indexPath.row
         tableView.reloadData()
+        if selectIndex == 0 {
+            LanguageHelper.shareInstance.setLanguage(langeuage: "zh-Hans")
+            SessionManager.sharedInstance.userMaskConfig.language = "zh_CN"
+        }
+        else if selectIndex == 1 {
+            LanguageHelper.shareInstance.setLanguage(langeuage: "zh-Hant-HK")
+            SessionManager.sharedInstance.userMaskConfig.language = "zh_TW"
+        }
+        else if selectIndex == 2 {
+            LanguageHelper.shareInstance.setLanguage(langeuage: "en")
+            SessionManager.sharedInstance.userMaskConfig.language = "en_US"
+
+        }
+   
+    SessionManager.sharedInstance.userMaskConfig.updateSettingSwitches()
+       navigationController?.popToRootViewController(animated: true)
+        
+        
     }
 
 }

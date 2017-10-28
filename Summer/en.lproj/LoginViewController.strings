@@ -1,0 +1,15 @@
+
+/* Class = "UITextField"; placeholder = "请输入手机号"; ObjectID = "1Em-kt-rCl"; */
+"1Em-kt-rCl.placeholder" = "Please enter your mobile number";
+
+/* Class = "UILabel"; text = "手机号"; ObjectID = "1w5-u3-z4G"; */
+"1w5-u3-z4G.text" = "Mobile Number";
+
+/* Class = "UIButton"; normalTitle = "发送验证码"; ObjectID = "Dcj-bK-9sc"; */
+"Dcj-bK-9sc.normalTitle" = "Sent the verification code";
+
+/* Class = "UITextField"; placeholder = "请输入短信验证码"; ObjectID = "XeC-mK-zpz"; */
+"XeC-mK-zpz.placeholder" = "Please enter the SMS verification code";
+
+/* Class = "UITextField"; placeholder = "请输入图片验证码"; ObjectID = "nYF-dQ-XcP"; */
+"nYF-dQ-XcP.placeholder" = "Please enter the image verification code";

@@ -29,6 +29,9 @@
 "WrongPhoneNum" = "手机号格式错误！";
 
 //首页 AQI
+"BSLTitle" = "蓝天实验室";
+"CurrentFilterEffect" = "当前过滤效果";
+"StartConnectMask" = "开始连接大气";
 "OpenBluetoothAlertTitle" = "打开蓝牙允许\"蓝天大气\"连接到配件";
 "SearchMask" = "正在搜索蓝天大气";
 "OpenBluetoothAndCloseEar" = "请将大气的蓝牙模式打开并贴近手机";
@@ -80,7 +83,27 @@
 "MyAir" = "我的大气";
 "LowPowerTip" = "电量低, 请尽快为口罩充电";
 "PleaseLogin" = "请登录";
+"WindLevel" = "%.0f级风";
+"CityAirQuality" = "城市空气";
+"DeviceNotConnected" = "设备未连接";
 
+/* Class = "UILabel"; text = "APP分享"; ObjectID = "00L-r7-Kqz"; */
+"ShareApp" = "App分享";
+
+/* Class = "UILabel"; text = "用户指南"; ObjectID = "EdP-kD-zOr"; */
+"UserGuide" = "用户指南";
+
+/* Class = "UILabel"; text = "请登录"; ObjectID = "YCl-Hl-Iem"; */
+"PleaseLogIn" = "请登录";
+
+/* Class = "UILabel"; text = "购买新品"; ObjectID = "bDC-kL-MyT"; */
+"PurchaseNewProduct" = "购买新品";
+
+/* Class = "UILabel"; text = "购买滤芯"; ObjectID = "kJP-M2-Rv5"; */
+"PurchaseNewFilters" = "购买滤芯";
+
+/* Class = "UILabel"; text = "个人资料"; ObjectID = "pXq-bm-qR4"; */
+"PersonalInfo" = "个人资料";
 
 //设置
 "Settings" = "设置";

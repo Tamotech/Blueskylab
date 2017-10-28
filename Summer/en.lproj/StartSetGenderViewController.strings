@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "John Smith"; ObjectID = "5X4-R7-HBY"; */
+"5X4-R7-HBY.text" = "John Smith";
+
+/* Class = "UILabel"; text = "请选择您的性别"; ObjectID = "FV5-fm-ZOW"; */
+"FV5-fm-ZOW.text" = "Please select your gender";
+
+/* Class = "UILabel"; text = "完善信息，让我为您定制”空气“"; ObjectID = "Obo-JA-RZW"; */
+"Obo-JA-RZW.text" = "Fill in everything so that I can customize "air" for you";
+
+/* Class = "UIButton"; normalTitle = "男"; ObjectID = "z8y-l4-hcr"; */
+"z8y-l4-hcr.normalTitle" = "Male";
+
+/* Class = "UIButton"; normalTitle = "女"; ObjectID = "zkx-x4-Ge8"; */
+"zkx-x4-Ge8.normalTitle" = "Female";

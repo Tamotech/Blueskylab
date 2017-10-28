@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "欢迎进入蓝天实验室，您是"; ObjectID = "Kc1-m8-nZS"; */
+"Kc1-m8-nZS.text" = "Welcome to Blue Sky Lab XXX";
+
+/* Class = "UITextField"; placeholder = "请输入用户名"; ObjectID = "Ynk-ST-Ty4"; */
+"Ynk-ST-Ty4.placeholder" = "Please enter your username";
+
+/* Class = "UILabel"; text = "Hi 终于等到你！"; ObjectID = "n1N-zh-4bp"; */
+"n1N-zh-4bp.text" = "Hi finally you are here!";

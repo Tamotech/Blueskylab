@@ -7,94 +7,123 @@
  */
 
 //注册登录
-"Cancel" = "取消";
-"Confirm" = "确定";
-"Save" = "保存";
-"EditStature" = "编辑身高";
-"EditWeight" = "编辑体重";
-"ProfileTitle" = "个人资料";
-"SelectBirthday" = "请选择生日";
-"SelectGender" = "请选择性别";
-"EditHeight" = "编辑身高";
-"EditWight" = "编辑体重";
-"Male" = "男";
-"Female" = "女";
-"VertifyCodeHasSent" = "验证码已发送";
-"JumpOver" = "跳过";
-"SendSMS" = "发送验证码";
-"CaptureWrong" = "图形验证码错误";
-"SMSDigitWrong" = "短信验证码无效";
-"returnAndReinput" = "返回，请重新输入";
-"WrongPhoneNum" = "手机号格式错误！";
+"Cancel" = "Cancel";
+"Confirm" = "Confirm";
+"Save" = "Save";
+"EditStature" = "Edit Height";
+"EditWeight" = "Edit Weight";
+"ProfileTitle" = "Personal Info";
+"SelectBirthday" = "Please select your birthday";
+"SelectGender" = "Please select your gender";
+"EditHeight" = "Edit Height";
+"EditWight" = "Edit Weight";
+"Male" = "Male";
+"Female" = "Female";
+"VertifyCodeHasSent" = "Confirmation code sent";
+"JumpOver" = "Skip";
+"SendSMS" = "Send confirmation code";
+"ReSendSMS" = "Send Again";
+"CaptureWrong" = "Image verification incorrect";
+"SMSDigitWrong" = "SMS verification invalid";
+"returnAndReinput" = "Return to previous screen and try again";
+"WrongPhoneNum" = "Incorrect phone number format";
 
 //首页 AQI
-"OpenBluetoothAlertTitle" = "打开蓝牙允许\"蓝天大气\"连接到配件";
-"UnfindBluetoothAlertTitle" = "未发现设备，请确保大气蓝牙打开且贴近手机";
-"ChangeFilterTip" = "口罩滤芯已耗尽，请立即更换";
-"filterChangeTip" = "当您更换了滤芯，请重制滤芯数据\n系统将重新计算新滤芯的过滤效果";
-"ResetYourFilter" = "我已更换滤芯，\n请重新计算滤芯的过滤效果\n确认重置滤芯数据?";
-"FilterLevelI" = "优";
-"FilterLevelII" = "中";
-"FilterLevelIII" = "弱";
-"Retry" = "重试";
-"Help" = "帮助";
-"DontBind" = "暂不绑定";
-"BindSuccess" = "恭喜您，绑定成功！";
-"HistoryData" = "历史数据";
-"Day" = "日";
-"Week" = "周";
-"Month" = "月";
-"Year" = "年";
-"SendWindAmount" = "送风量";
-"Sport" = "运动";
-"Default" = "默认";
-"Intelligence" = "智能";
-"Walk" = "步行";
-"Drive" = "开车";
-"Rest" = "休息";
-"Add" = "添加";
-"AddMode" = "添加模式";
-"EditMode" = "编辑模式";
-"CirgaretteNum" = "%d支香烟";
-"Yesterday" = "昨天";
-"Today" = "今天";
-"Tomorrow" = "明天";
-"SelectCommenMode" = "点亮星星，置顶常用送风模式";
-"ModeManage" = "模式管理";
-"MyEquipment" = "我的设备";
-"ClearZero" = "清零";
-"ConfirmClearZeroSteps" = "确认清零步数?";
-"ConfirmClearZeroCarlories" = "确认清零卡路里?";
-"DeleteThisMode" = "删除这个模式?";
-"Reset" = "重置";
-"Exit" = "退出";
-"ConfirmDropThis" = "确认放弃本次编辑吗?";
-"Delete" = "删除";
-"Hide" = "隐藏";
-"MyAir" = "我的大气";
-"LowPowerTip" = "电量低, 请尽快为口罩充电";
+"BSLTitle" = "BlUE SKY LAB";
+"CurrentFilterEffect" = "Filter efficiency";
+"StartConnectMask" = "Start connecting ATMOBLUE";
+"OpenBluetoothAlertTitle" = "Turn on bluetooth authorization\ATMOBlue\Connected to device";
+"SearchMask" = "Searching ATMOBLUE";
+"OpenBluetoothAndCloseEar" = "Please ensure that your ATMOBlue is near your mobile phone";
+"HasFindMask" = "ATMOBLUE discovered ";
+"MaskLightTip" = "When ATMOBlue's LED light is on, it is busy connecting to the app. Please wait";
+"UnfindBluetoothAlertTitle" = "Could not discover device. Please ensure that your ATMOBlue is near your mobile phone";
+"ChangeFilterTip" = "Your filter is expiring. Please change your filter";
+"filterChangeTip" = "Please reset your filter data after you've changed your filter.\n The system will begin tracking the filter efficiency of your new filter";
+"ResetYourFilter" = "I have changed my filter. Please recalibrate my filter efficiency.\nConfirm reset filter data";
+"ResetFilterTimerTip" = "Please reset your filter data after you've changed your filter.\n The system will begin tracking the filter efficiency of your new filter";
+"FilterLevelI" = "Excellent";
+"FilterLevelII" = "Mediocre";
+"FilterLevelIII" = "Weak";
+"Retry" = "Try again";
+"Help" = "Help";
+"DontBind" = "Do not connect for now";
+"BindSuccess" = "Congratulations! You have successfully connected your device!";
+"HistoryData" = "History Data";
+"Day" = "Date";
+"Week" = "Week";
+"Month" = "Month";
+"Year" = "Year";
+"SendWindAmount" = "Airflow level";
+"Sport" = "Exercise";
+"Default" = "Default";
+"Intelligence" = "Auto";
+"Walk" = "Walk";
+"Drive" = "In Car";
+"Rest" = "Rest";
+"Add" = "Add";
+"AddMode" = "Add setting";
+"EditMode" = "Edit setting";
+"CirgaretteNum" = "%d cigarette(s)";
+"Yesterday" = "Yesterday";
+"Today" = "Today";
+"Tomorrow" = "Tomorrow";
+"SelectCommenMode" = "Tap the star to favorite the airflow setting";
+"ModeManage" = "Manage Settings";
+"MyEquipment" = "My device";
+"ClearZero" = "Clear data";
+"ConfirmClearZeroSteps" = "Reset my Step count to \"0\"？";
+"ConfirmClearZeroCarlories" = "Reset my calories burned to \"0\"？";
+"DeleteThisMode" = "Are you sure you want to delete?";
+"Reset" = "Reset";
+"Exit" = "Log Out";
+"ConfirmDropThis" = "Are you sure you want to give up?";
+"Delete" = "Delete";
+"Hide" = "Hide";
+"MyAir" = "My Air";
+"LowPowerTip" = "Low battery，please recharge soon";
+"PleaseLogin" = "Please Log In";
+"WindLevel" = "%.0f wind";
+"CityAirQuality" = "City Air Quality";
+"DeviceNotConnected" = "Device not connected";
+/* Class = "UILabel"; text = "APP分享"; ObjectID = "00L-r7-Kqz"; */
+"ShareApp" = "Share App";
 
+/* Class = "UILabel"; text = "用户指南"; ObjectID = "EdP-kD-zOr"; */
+"UserGuide" = "User Guide";
+
+/* Class = "UILabel"; text = "请登录"; ObjectID = "YCl-Hl-Iem"; */
+"PleaseLogIn" = "Please Log In";
+
+/* Class = "UILabel"; text = "购买新品"; ObjectID = "bDC-kL-MyT"; */
+"PurchaseNewProduct" = "Purchase new product";
+
+/* Class = "UILabel"; text = "购买滤芯"; ObjectID = "kJP-M2-Rv5"; */
+"PurchaseNewFilters" = "Purchase new filters";
+
+/* Class = "UILabel"; text = "个人资料"; ObjectID = "pXq-bm-qR4"; */
+"PersonalInfo" = "Personal Info";
 
 //设置
-"Settings" = "设置";
-"AccessDenied" = "没有权限";
-"PleaseOpenPhotoLibarayAccess" = "请开启访问相册的权限";
-"CameraNotAvailable" = "相机不可用";
-"NoImagesAvailable" = "暂无图片";
-"EditPassword" = "修改密码";
-"PrivacyPolicy" = "隐私政策";
-"AboutUs" = "关于我们";
-"CommenQuestions" = "常见问题";
-"AboutProduct" = "关于产品";
-"AboutAfterSale" = "关于售后";
-"TermsOfUse" = "使用条款";
-"APPUpdate" = "APP更新";
-"NotificationCenter" = "通知中心";
-"LanguageSetting" = "语言偏好设置";
-"NotificationDetail" = "通知详情";
-"QuestionDetail" = "问题详情";
-"UserHandbook" = "用户指南";
-"OK" = "好";
+"Settings" = "Settings";
+"AccessDenied" = "No Permission";
+"PleaseOpenPhotoLibarayAccess" = "Please authorize access to photo album";
+"CameraNotAvailable" = "Your camera cannot be used";
+"NoImagesAvailable" = "No photo";
+"EditPassword" = "Change password";
+"PrivacyPolicy" = "Privacy Policy";
+"AboutUs" = "About Us";
+"CommenQuestions" = "FAQs";
+"AboutProduct" = "Product Info";
+"AboutAfterSale" = "Customer Care";
+"TermsOfUse" = "Terms of Use";
+"APPUpdate" = "Update App";
+"NotificationCenter" = "Notification Center";
+"LanguageSetting" = "Language Settings";
+"NotificationDetail" = "Notifications";
+"QuestionDetail" = "Question Detail";
+"UserHandbook" = "User Guide";
+"OK" = "OK";
 
 
 

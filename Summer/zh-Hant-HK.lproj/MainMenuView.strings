@@ -5,8 +5,8 @@
 /* Class = "UILabel"; text = "用户指南"; ObjectID = "EdP-kD-zOr"; */
 "EdP-kD-zOr.text" = "用户指南";
 
-/* Class = "UILabel"; text = "Name"; ObjectID = "YCl-Hl-Iem"; */
-"YCl-Hl-Iem.text" = "Name";
+/* Class = "UILabel"; text = "请登录"; ObjectID = "YCl-Hl-Iem"; */
+"YCl-Hl-Iem.text" = "请登录";
 
 /* Class = "UILabel"; text = "购买新品"; ObjectID = "bDC-kL-MyT"; */
 "bDC-kL-MyT.text" = "购买新品";

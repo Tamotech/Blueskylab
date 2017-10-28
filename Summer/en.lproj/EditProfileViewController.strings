@@ -1,33 +1,33 @@
 
 /* Class = "UILabel"; text = "*以上信息有助于APP自动调整最适合您身体情况的设备参数"; ObjectID = "D8g-9Z-ioO"; */
-"D8g-9Z-ioO.text" = "*以上信息有助于APP自动调整最适合您身体情况的设备参数";
+"D8g-9Z-ioO.text" = "*This information will enable ATMOBLUE to personalize your breathing experience";
 
 /* Class = "UILabel"; text = "账户信息"; ObjectID = "aRb-d9-vXW"; */
-"aRb-d9-vXW.text" = "账户信息";
+"aRb-d9-vXW.text" = "Account Information";
 
 /* Class = "UILabel"; text = "编辑头像"; ObjectID = "bP0-1r-2xS"; */
-"bP0-1r-2xS.text" = "编辑头像";
+"bP0-1r-2xS.text" = "Profile Photo";
 
 /* Class = "UILabel"; text = "性别"; ObjectID = "bUO-Ca-v8P"; */
-"bUO-Ca-v8P.text" = "性别";
+"bUO-Ca-v8P.text" = "Gender";
 
 /* Class = "UILabel"; text = "体重"; ObjectID = "dR9-Qf-EKn"; */
-"dR9-Qf-EKn.text" = "体重";
+"dR9-Qf-EKn.text" = "Weight";
 
 /* Class = "UILabel"; text = "身高"; ObjectID = "dim-V2-Ltm"; */
-"dim-V2-Ltm.text" = "身高";
+"dim-V2-Ltm.text" = "Height";
 
 /* Class = "UILabel"; text = "生日"; ObjectID = "eP5-Bo-D6a"; */
-"eP5-Bo-D6a.text" = "生日";
+"eP5-Bo-D6a.text" = "Birthday";
 
 /* Class = "UILabel"; text = "个人信息"; ObjectID = "eQK-2x-3ro"; */
-"eQK-2x-3ro.text" = "个人信息";
+"eQK-2x-3ro.text" = "Personal Information";
 
 /* Class = "UILabel"; text = "用户名"; ObjectID = "iKo-4z-6zi"; */
-"iKo-4z-6zi.text" = "用户名";
+"iKo-4z-6zi.text" = "Username";
 
 /* Class = "UILabel"; text = "手机"; ObjectID = "ocZ-Wh-vPq"; */
-"ocZ-Wh-vPq.text" = "手机";
+"ocZ-Wh-vPq.text" = "Phone number";
 
 /* Class = "UITextField"; text = "Name"; ObjectID = "qrd-Mw-QN8"; */
 "qrd-Mw-QN8.text" = "Name";
