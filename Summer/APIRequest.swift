@@ -259,4 +259,22 @@ class APIRequest: NSObject {
         }
     }
     
+    ///重置滤芯
+    class func resetMaskFilter() {
+        let path = "/member/resetFilter.htm"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            
+        }
+    }
+    
+    ///计算设备信息
+    class func cacuDeviceInfoAPI(result: @escaping JSONResult) {
+        let path = "/member/calcDeviceInfo.htm"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                result(JSON!["data"])
+            }
+        }
+    }
+    
 }

@@ -91,6 +91,10 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     /// 固件版本号
     var firmwareVersion: String?
     
+    
+    ///平均风速
+    var aveWindSpeed: Int = 0
+    
     var timer: Timer?
     var onceToken = false
     
@@ -302,6 +306,7 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
                 if char.value != nil {
                     let str = NSString(data: char.value!, encoding: String.Encoding.utf8.rawValue)!
                     print("读风速---\(str)")
+                    //let speed = str.floatValue
                     NotificationCenter.default.post(name: kMaskStateChangeNotifi, object: nil, userInfo: ["key": "speed", "value": CGFloat(str.floatValue)])
                 }
                 
@@ -338,8 +343,12 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     ///写风速操作
     ///value vibrate:n;  (n 1-20)  value: 0-100
     func ajustSpeed(mode: UserWindSpeedConfig) {
+        if mode.valueMax == 0 {
+            return
+        }
         currentWindSpeed = CGFloat(mode.value)
-        let str = "vibrate:\(Int(currentWindSpeed*20.0/CGFloat(mode.valueMax)));"
+        let gear = mode.value*mode.gearMax/mode.valueMax
+        let str = "vibrate:\(gear);"
         let data = str.data(using: .utf8)!
         if self.peripheral == nil || self.speedChar == nil {
             return

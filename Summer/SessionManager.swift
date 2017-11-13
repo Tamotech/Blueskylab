@@ -214,7 +214,9 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
         if index == nil {
             pushTags.append(language)
         }
-        pushTags[index!] = language
+        else {
+            pushTags[index!] = language
+        }
         bindPushTags()
         
     }

@@ -38,6 +38,7 @@
 "HasFindMask" = "ATMOBLUE discovered ";
 "MaskLightTip" = "When ATMOBlue's LED light is on, it is busy connecting to the app. Please wait";
 "UnfindBluetoothAlertTitle" = "Could not discover device. Please ensure that your ATMOBlue is near your mobile phone";
+"ShouldChangeFilterTip" = "口罩滤芯即将耗尽, 请更换";
 "ChangeFilterTip" = "Your filter is expiring. Please change your filter";
 "filterChangeTip" = "Please reset your filter data after you've changed your filter.\n The system will begin tracking the filter efficiency of your new filter";
 "ResetYourFilter" = "I have changed my filter. Please recalibrate my filter efficiency.\nConfirm reset filter data";
@@ -124,6 +125,7 @@
 "QuestionDetail" = "Question Detail";
 "UserHandbook" = "User Guide";
 "OK" = "OK";
+"Done" = "Done";
 
 
 

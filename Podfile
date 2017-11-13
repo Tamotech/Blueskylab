@@ -21,7 +21,7 @@ target 'Summer' do
    pod 'PopupDialog', '~> 0.5'
    pod 'AMPopTip'
    pod 'WechatOpenSDK'
-   pod 'IQKeyboardManagerSwift', '4.0.10'
+   pod 'IQKeyboardManagerSwift', '5.0.0'
    pod 'JPush'
    pod 'CRRefresh'
    pod 'iOSDFULibrary'

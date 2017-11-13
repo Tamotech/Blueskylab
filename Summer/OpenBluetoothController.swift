@@ -263,7 +263,15 @@ class OpenBluetoothController: BaseViewController {
             
             
             //弹窗1s消失
-            BLHUDBarManager.showSuccess(msg: NSLocalizedString("BindSuccess", comment: ""), seconds: 2)
+            
+            if self.presentedViewController != nil {
+                self.presentedViewController?.dismiss(animated: false, completion: {
+                    BLHUDBarManager.showSuccess(msg: NSLocalizedString("BindSuccess", comment: ""), seconds: 2)
+                })
+            }
+            else {
+                BLHUDBarManager.showSuccess(msg: NSLocalizedString("BindSuccess", comment: ""), seconds: 2)
+            }
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2, execute: {
                 
                 if self.navigationController != nil {

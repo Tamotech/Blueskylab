@@ -28,7 +28,7 @@ protocol MotionDataDelegate: class {
     /// 时间计数
     ///
     /// - Parameter timeStr:  HH:MM:ss
-    func timerStrUpdate(timeStr: String)
+    func timerStrUpdate(seconds: Int)
 }
 
 class HealthDataManager: NSObject {
@@ -151,13 +151,12 @@ class HealthDataManager: NSObject {
         if timer != nil {
             timer!.invalidate()
         }
+        //保存数据
+        saveMaskUseData()
         motioning = false
         zeroDistance = 0
         zeroStep = 0
         seconds = 0
-        
-        //保存数据
-        saveMaskUseData()
     }
     
     
@@ -165,29 +164,29 @@ class HealthDataManager: NSObject {
     
     func handleTimerEvent(t: Timer) {
         seconds = seconds + 1
-        let hour = seconds/3600
+        //let hour = seconds/3600
         let minute = seconds%3600/60
         let second = seconds%60
         if self.delegate != nil {
-            self.delegate?.timerStrUpdate(timeStr:String.init(format: "%02d:%02d:%02d", hour, minute, second))
+            self.delegate?.timerStrUpdate(seconds:seconds)
         }
         
         ///TEST: 测试
-        if minute%7 == 1 && second == 0 {
-            SessionManager.sharedInstance.userMaskConfig.filtereffect = "l2"
-            NotificationCenter.default.post(name: kUserMaskConfigUpdateNoti, object: nil)
-        }
-        else if minute%7 == 3 && second == 0 {
-            SessionManager.sharedInstance.userMaskConfig.filtereffect = "l3"
-            NotificationCenter.default.post(name: kUserMaskConfigUpdateNoti, object: nil)
-        }
-        else if minute%7 == 6 && second == 0 {
-            SessionManager.sharedInstance.userMaskConfig.filtereffect = "l1"
-            NotificationCenter.default.post(name: kUserMaskConfigUpdateNoti, object: nil)
-        }
+//        if minute%7 == 1 && second == 0 {
+//            SessionManager.sharedInstance.userMaskConfig.filtereffect = "l2"
+//            NotificationCenter.default.post(name: kUserMaskConfigUpdateNoti, object: nil)
+//        }
+//        else if minute%7 == 3 && second == 0 {
+//            SessionManager.sharedInstance.userMaskConfig.filtereffect = "l3"
+//            NotificationCenter.default.post(name: kUserMaskConfigUpdateNoti, object: nil)
+//        }
+//        else if minute%7 == 6 && second == 0 {
+//            SessionManager.sharedInstance.userMaskConfig.filtereffect = "l1"
+//            NotificationCenter.default.post(name: kUserMaskConfigUpdateNoti, object: nil)
+//        }
     }
     
     func saveMaskUseData() {
-        SessionManager.sharedInstance.userMaskConfig.saveMaskUseHistory(usetime: seconds, distance: totalDistance, step: totalSteps, calories: totalCarlories)
+        SessionManager.sharedInstance.userMaskConfig.saveMaskUseHistory(usetime: seconds, distance: totalDistance, step: totalSteps, calories: totalCarlories, aveWindSpeed: BLSBluetoothManager.shareInstance.aveWindSpeed)
     }
 }

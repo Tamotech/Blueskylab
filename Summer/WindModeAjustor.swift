@@ -32,13 +32,14 @@ class WindModeAjustor: UIView {
     
     weak var delegate: WindModeAjustorDelegate?
     
-    let minLevel: CGFloat = 0
+    var minLevel: CGFloat = 0
     var maxLevel: CGFloat = 100
     
     init(frame: CGRect, mode: UserWindSpeedConfig) {
         super.init(frame: frame)
         self.mode = mode
         maxLevel = CGFloat(mode.valueMax)
+        minLevel = CGFloat(mode.valueMin)
         self.addSubview(ovalOutsideView)
         ovalOutsideView.snp.makeConstraints { (make) in
             make.top.left.bottom.right.equalTo(0)
@@ -140,6 +141,7 @@ class WindModeAjustor: UIView {
     func updateView(config: UserWindSpeedConfig) {
         mode = config
         maxLevel = CGFloat(mode.valueMax)
+        minLevel = CGFloat(mode.valueMin)
         if mode.isAdd {
             iconView.image = #imageLiteral(resourceName: "iconAdd_darkblue")
         }
@@ -299,16 +301,16 @@ class WindModeAjustor: UIView {
             angleDu = angleDu - 360
         }
         angleDu = angleDu + 10
-        let level = angleDu/200*maxLevel
+        let level = angleDu/200*(maxLevel-minLevel)+minLevel
         windLevelLabel.text = String(Int(level))
-        mode.value = Int(angleDu/200*maxLevel)
+        mode.value = Int(angleDu/200*(maxLevel-minLevel)+minLevel)
         BLSBluetoothManager.shareInstance.ajustSpeed(mode: mode)
     }
     
     
-    ///设置角度  0-max
+    ///设置角度  min-max
     func setAngle(value: Int) {
-        var a = 200.0/maxLevel*CGFloat(value)
+        var a = 200.0/(maxLevel-minLevel)*(CGFloat(value)-minLevel)
         if a < 0 {
             a = a+360.0
         }

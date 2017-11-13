@@ -41,11 +41,13 @@ class UserHandbookController: BaseViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         playerLayer.player = player
         playerLayer.frame = bannerView.bounds
         bannerView.layer.addSublayer(playerLayer)
         playerLayer.isHidden = true
+        bannerView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapBanner(_:)))
+        bannerView.addGestureRecognizer(tap)
         loadData()
         
         let nib = UINib(nibName: "AboutQACell", bundle: nil)
@@ -64,10 +66,14 @@ class UserHandbookController: BaseViewController, UITableViewDelegate, UITableVi
             self?.currentIndex = index
             self?.tableView.reloadData()
         }
+        
+        
     }
     
-    
-    
+    func playItemDidReachEnd(notifacation:NSNotification) {
+        player.seek(to: kCMTimeZero)
+        playButton.isHidden = false
+    }
     
     /// 拉去数据  视频地址  文章列表
     func loadData() {
@@ -84,6 +90,7 @@ class UserHandbookController: BaseViewController, UITableViewDelegate, UITableVi
                 let item = AVPlayerItem(asset: AVURLAsset(url: URL(string: videoUrl)!))
                 self?.player.replaceCurrentItem(with: item)
                 print("complete set player \(videoUrl)")
+                NotificationCenter.default.addObserver(self, selector: #selector(self!.playItemDidReachEnd(notifacation:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: item)
             }
             
             self?.emailLabel.text = email
@@ -169,8 +176,10 @@ class UserHandbookController: BaseViewController, UITableViewDelegate, UITableVi
         if player.currentItem != nil {
             playerLayer.isHidden = false
             playButton.isHidden = true
-            player.play()
+//            player.play()
         }
+        player.play()
+        playButton.isHidden = true
     }
 
     
@@ -186,4 +195,13 @@ class UserHandbookController: BaseViewController, UITableViewDelegate, UITableVi
             return nil
         }
     }
+    
+    func handleTapBanner(_ sender: Any) {
+        if (playButton.isHidden) {
+            player.pause()
+//            playButton.setImage(#imageLiteral(resourceName: "pause-btn"), for: .normal)
+            playButton.isHidden = false
+        }
+    }
+    
 }

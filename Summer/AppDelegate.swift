@@ -104,7 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         JPUSHService.registerDeviceToken(deviceToken)
-        if (SessionManager.sharedInstance.userId.characters.count > 0) {
+        if (SessionManager.sharedInstance.userId.count > 0) {
             //绑定别名
             JPUSHService.setTags(Set(SessionManager.sharedInstance.pushTags), aliasInbackground: SessionManager.sharedInstance.userId)
         }

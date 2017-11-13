@@ -95,6 +95,7 @@ class BaseViewController: UIViewController {
     
     deinit {
         print("deinit ----- \(self.classForCoder)")
+        NotificationCenter.default.removeObserver(self)
     }
 
     /*

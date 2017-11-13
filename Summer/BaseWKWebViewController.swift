@@ -38,7 +38,12 @@ class BaseWKWebViewController: BaseViewController, WKNavigationDelegate {
             APIRequest.getUserConfig(codes: articleStr!) { [weak self](JSONData) in
                 let data = JSONData as! JSON
                 self?.htmlString = data[(self?.articleStr)!]["v"].stringValue
-                self?.webView.loadHTMLString((self?.htmlString)!, baseURL: nil)
+                
+                
+                let htmlPath = Bundle.main.path(forResource: "Privacy", ofType: "html")
+                let originContent = try? String.init(contentsOfFile: htmlPath!, encoding: String.Encoding.utf8) as NSString
+                var newContent = originContent?.replacingOccurrences(of: "${contentHtml}", with: (self?.htmlString)!)
+                self?.webView.loadHTMLString(newContent!, baseURL: nil)
             }
         }
         webView.snp.makeConstraints { (make) in

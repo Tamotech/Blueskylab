@@ -94,6 +94,15 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     
     @IBOutlet weak var modeCircleView: UIImageView!
     
+    lazy var dotView: UIView = {
+       let v = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 8))
+        v.backgroundColor = UIColor.red
+        v.layer.cornerRadius = 4
+        return v
+    }()
+    @IBOutlet weak var notificationItem: UIBarButtonItem!
+    
+    
     lazy var modeControlView: WindModeControllView = {
         let view = WindModeControllView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 246))
         return view
@@ -125,6 +134,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         self.setupGesture()
         self.setupTimer()
         self.loadAQIData()
+        self.loadUserConfig()
         
         NotificationCenter.default.addObserver(self, selector: #selector(appDidBecomeActiveNotification(notify:)), name: kAppDidBecomeActiveNotify, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userInfoUpdateNotification(noti:)), name: kUserInfoDidUpdateNotify, object: nil)
@@ -133,7 +143,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         NotificationCenter.default.addObserver(self, selector: #selector(bluetoothStateChangeNotification(noti:)), name: kMaskStateChangeNotifi, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(languageChanged), name: NSNotification.Name(rawValue: "LanguageChanged"), object: nil)
         
-        if (SessionManager.sharedInstance.token.characters.count == 0) {
+        if (SessionManager.sharedInstance.token.count == 0) {
             let guideVc = StartGuideViewController(nibName: "StartGuideViewController", bundle: nil)
             let navVc = BaseNavigationController(rootViewController: guideVc)
             navVc.setTintColor(tint: .white)
@@ -158,8 +168,8 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         navVC.setTintColor(tint: .white)
         
         //TEST: 测试
-        //SessionManager.sharedInstance.getUserMaskConfig()
-        
+        SessionManager.sharedInstance.getUserMaskConfig()
+        loadNotificationData()
         if self.menuView.superview == nil && self.navigationController?.presentingViewController == nil {
              DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.navigationController!.view.superview?.insertSubview(self.menuView, at: 0)
@@ -216,8 +226,15 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         //scrollView.setContentOffset(CGPoint(x: CGFloat(1)*screenWidth, y: 0), animated: false)
         bluetoothUnConnectBtn.isHidden = false
         batteryView.isHidden = true
-        
-        
+
+        let notificationBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        notificationBtn.addTarget(self, action: #selector(handleTapNotificationBtn(_:)), for: .touchUpInside)
+        notificationBtn.contentMode = .scaleAspectFit
+        notificationBtn.setImage(#imageLiteral(resourceName: "Jingle"), for: .normal)
+        dotView.center = CGPoint(x: notificationBtn.right-4, y: 4)
+        dotView.isHidden = true
+        notificationBtn.addSubview(dotView)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: notificationBtn)
     }
     
     func updateMaskConfigView() {
@@ -359,6 +376,33 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         //cigaretteIcon.image = UIImage(named: smokeIconName)
     }
     
+    
+    ///更新通知列表 是否显示红点
+    func loadNotificationData() {
+        APIRequest.getNotificationList(page: 1, rows: 20) {[weak self] (data) in
+            
+            var showDot = false
+            if data != nil && data is NotificationList {
+                let nlist = data as! NotificationList
+                for item in nlist.list {
+                    if item.readflag == 0 {
+                        showDot = true
+                        break
+                    }
+                }
+            }
+            self?.dotView.isHidden = !showDot
+        }
+    }
+    
+    
+    func loadUserConfig() {
+        APIRequest.getUserMaskConfig {(JSONData) in
+            if let settingData = JSONData as? UserMaskConfig {
+                SessionManager.sharedInstance.userMaskConfig = settingData
+            }
+        }
+    }
     
     /// 更新最近 AQI 数据曲线图
     ///
@@ -528,6 +572,12 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         self.dismissMenu()
     }
     
+    func handleTapNotificationBtn(_ sender: Any) {
+        dotView.isHidden = true
+        let vc = NotificationCenterController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @IBAction func handleTapMenu(_:Any) {
         self.showModeControl(show: false)
         self.showMenu()
@@ -538,6 +588,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         navigationController?.pushViewController(vc, animated: true)
         
     }
+    
     
     @IBAction func handleTapSearchBluetoothBtn(_ sender: Any) {
         if SessionManager.sharedInstance.token == "" {
@@ -625,7 +676,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     
     func defaultModeDidChange(mode: UserWindSpeedConfig) {
 
-        if mode.icon4.characters.count > 0 {
+        if mode.icon4.count > 0 {
             let rc = ImageResource(downloadURL: URL(string: mode.icon4)!)
             defaultModeIconView.kf.setImage(with: rc)
         }
@@ -806,19 +857,27 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
             return
         }
         let maskConfig = SessionManager.sharedInstance.userMaskConfig
-        if !maskConfig.filterchangeflag || maskConfig.filtereffect != "l3" {
+        if !maskConfig.filterchangeflag ||
+            (maskConfig.filtereffect != "l3" && maskConfig.filtereffect != "l2") {
             return
         }
         hasShowChangeFilter = true
         let popTip = PopTip()
         popTip.padding = 0
         popTip.cornerRadius = 8
-        let tipView = BLTipView(frame: CGRect(x: 0, y: 0, width: 212, height: 44), msg: NSLocalizedString("ChangeFilterTip", comment: ""), icon: UIImage(named: "iconQuestionM2"), textColor: UIColor.white, bgColor: UIColor(hexString: "eb474e")!)
-        let frame = self.view.convert(stageLabel.frame, from: stageLabel.superview)
-        popTip.show(customView: tipView, direction: .down, in: self.view, from: frame)
-        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
-            popTip.hide()
+        var tipView: BLTipView?
+        if maskConfig.filtereffect == "l2" {
+            tipView = BLTipView(frame: CGRect(x: 0, y: 0, width: 212, height: 44), msg: NSLocalizedString("ShouldChangeFilterTip", comment: ""), icon: UIImage(named: "iconQuestionM2"), textColor: UIColor.white, bgColor: UIColor.init(ri: 254, gi: 172, bi: 34)!)
         }
+        else {
+            tipView = BLTipView(frame: CGRect(x: 0, y: 0, width: 212, height: 44), msg: NSLocalizedString("ChangeFilterTip", comment: ""), icon: UIImage(named: "iconQuestionM2"), textColor: UIColor.white, bgColor: UIColor(hexString: "eb474e")!)
+        }
+        
+        let frame = self.view.convert(stageLabel.frame, from: stageLabel.superview)
+        popTip.show(customView: tipView!, direction: .down, in: self.view, from: frame)
+//        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+//            popTip.hide()
+//        }
     }
     
     

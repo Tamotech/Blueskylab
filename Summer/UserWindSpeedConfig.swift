@@ -43,8 +43,12 @@ class UserWindSpeedConfig: HandyJSON {
     var gear: Int = 0
     ///风速最大值
     var valueMax: Int = 0
+    
+    var valueMin: Int = 0
     ///风速最大值对应档速
     var gearMax: Int = 0
+    ///风速最小值对应的档速
+    var gearMin: Int = 0
     
     
     /// 是否是添加模式
@@ -57,6 +61,8 @@ class UserWindSpeedConfig: HandyJSON {
         mapper.specify(property: &icon4, name: "icon_wt")
         mapper.specify(property: &valueMax, name: "value_max")
         mapper.specify(property: &gearMax, name: "gear_max")
+        mapper.specify(property: &gearMin, name: "gear_min")
+        mapper.specify(property: &valueMin, name: "value_min")
     }
     
     required init() {}

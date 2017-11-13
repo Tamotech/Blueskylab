@@ -8,14 +8,17 @@
 
 import UIKit
 import AMPopTip
+import SwiftyJSON
 
 class EquipmentViewController: BaseViewController, MotionDataDelegate, BluetoothViewDelegate {
 
     
-    @IBOutlet weak var speedLabel: UILabel!
+//    @IBOutlet weak var speedLabel: UILabel!
     
+    @IBOutlet weak var daysAQI: UILabel!
+    @IBOutlet weak var dayUseTimeLb: UILabel!
     @IBOutlet weak var windLevelLabel: UILabel!
-    @IBOutlet weak var moveDistanceLabel: UILabel!
+//    @IBOutlet weak var moveDistanceLabel: UILabel!
     @IBOutlet weak var clearTimeLabel: UILabel!
     
     @IBOutlet weak var stepCountLabel: UILabel!
@@ -29,6 +32,13 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
     @IBOutlet weak var unconnectView: UIView!
   
     @IBOutlet weak var resetFilterBtn: UIButton!
+    
+    ///累计时间
+    var totalSeconds: Int = 0
+    ///日均AQI
+    var dayAveAQI: Int = 0
+    ///日均使用时间
+    var dayAveUseSeconds: Int = 0
     
     var currentSteps: Int = 0
     var currentDistance: Float = 0
@@ -57,7 +67,7 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
         
         NotificationCenter.default.addObserver(self, selector: #selector(bluetoothStateChangeNotification(noti:)), name: kMaskStateChangeNotifi, object: nil)
     
-        
+        self.loadCaculateData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -84,6 +94,7 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
             case .PowerOn:
                 break
             case .Connected:
+                self.loadCaculateData()
                 self.changeToConnectMode(connect: true)
                 break
                 
@@ -97,9 +108,22 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
             }
         }
         else if userInfo["key"] as! String == "speed" {
-            let speed = (userInfo["value"] as! CGFloat)*5
+            //let speed = (userInfo["value"] as! CGFloat)*5
             
-            self.windLevelLabel.text = String.init(format: "%.0f", speed)
+            //self.windLevelLabel.text = String.init(format: "%.0f", speed)
+        }
+    }
+    
+    
+    //加载口罩计算数据
+    func loadCaculateData() {
+        APIRequest.cacuDeviceInfoAPI { [weak self](JSON) in
+            let data = JSON as! JSON
+            self?.totalSeconds = data["totalTimeSecond"].intValue
+            self?.dayAveAQI = data["dayAgvAqi"].intValue
+            self?.dayAveUseSeconds = data["dayAvgUseTimeSecond"].intValue
+            self?.daysAQI.text = "\(self?.dayAveAQI ?? 0)"
+            self?.dayUseTimeLb.text = String.init(format: "%.1f", Float((self?.dayAveUseSeconds)!)/3600.0)
         }
     }
     
@@ -163,10 +187,13 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
         alert.confirmCalback = {
             HealthDataManager.sharedInstance.stopPedometerUpdate()
             HealthDataManager.sharedInstance.startPedometerUpdates()
-            self.speedLabel.text = "0"
-            self.moveDistanceLabel.text = "0"
+            //self.speedLabel.text = "0"
+            //self.moveDistanceLabel.text = "0"
             self.stepCountLabel.text = "0步"
             self.caloriesLabel.text = "0kcal"
+            self.dayUseTimeLb.text = "0"
+            self.totalSeconds = 0
+            APIRequest.resetMaskFilter()
         }
     }
     
@@ -194,8 +221,8 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
     
     func motionDataUpdate(distance: Float, speed: Float, stepCount: Int, carlories: Float) {
         DispatchQueue.main.async {
-            self.speedLabel.text = String.init(format: "%.0f", speed*7.2)
-            self.moveDistanceLabel.text = String.init(format: "%.1f", distance/1000)
+            //self.speedLabel.text = String.init(format: "%.0f", speed*7.2)
+//            self.moveDistanceLabel.text = String.init(format: "%.1f", distance/1000)
             self.stepCountLabel.text = "\(stepCount)步"
 //            let kcal = (SessionManager.sharedInstance.userInfo?.getWeight())!*CGFloat(distance/1000)*1.036
             self.caloriesLabel.text = String.init(format: "%.0fkcal", carlories)
@@ -205,9 +232,14 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
         }
     }
     
-    func timerStrUpdate(timeStr: String) {
+    func timerStrUpdate(seconds: Int) {
         DispatchQueue.main.async {
-            self.clearTimeLabel.text = timeStr
+            
+            let total = self.totalSeconds+seconds
+            let hour = total/3600
+            let minute = total%3600/60
+            let second = total%60
+            self.clearTimeLabel.text = String.init(format: "%02d:%02d:%02d", hour, minute, second)
         }
         
     }

@@ -22,10 +22,10 @@ class UserMaskConfig: HandyJSON {
 "filtereffect": "l1"   l1:一级 l2:二级 l3:三级
      */
     var cityid: Int = -1
-    var filterchangeflag = false
-    var lowpowerflag = false
-    var pollutionwarnflag = false
-    var productinfoflag = false
+    var filterchangeflag = true
+    var lowpowerflag = true
+    var pollutionwarnflag = true
+    var productinfoflag = true
     var language: String = "zh_CN"
     var bindmaskid: String = ""
     var filtereffect: String = ""
@@ -101,12 +101,12 @@ class UserMaskConfig: HandyJSON {
     
     
     //保存口罩使用记录
-    func saveMaskUseHistory(usetime: Int, distance: Int, step: Int, calories: Int) {
+    func saveMaskUseHistory(usetime: Int, distance: Int, step: Int, calories: Int, aveWindSpeed: Int) {
         
         if bindmaskid == "" {
             return
         }
-        let path = "/member/saveUseHist.htm?maskid=\(bindmaskid)&usetime=\(usetime)&movedistance=\(distance)&stepnum=\(step)&calorie=\(calories)"
+        let path = "/member/saveUseHist.htm?maskid=\(bindmaskid)&usetime=\(usetime)&movedistance=\(distance)&stepnum=\(step)&calorie=\(calories)&windspeed=\(aveWindSpeed)"
 //        let params = ["maskid": bindmaskid,
 //                      "usertime": usetime,
 //                      "movedistance": distance,
@@ -122,5 +122,6 @@ class UserMaskConfig: HandyJSON {
             }
         }
     }
+    
     
 }

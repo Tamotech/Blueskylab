@@ -8,8 +8,8 @@
 /* Class = "UILabel"; text = "00:00:00"; ObjectID = "4I2-Ql-QmG"; */
 "4I2-Ql-QmG.text" = "00:00:00";
 
-/* Class = "UILabel"; text = "km/h"; ObjectID = "Avi-HF-nV9"; */
-"Avi-HF-nV9.text" = "km/h";
+/* Class = "UILabel"; text = "h/天"; ObjectID = "Avi-HF-nV9"; */
+"Avi-HF-nV9.text" = "h/天";
 
 /* Class = "UILabel"; text = "优"; ObjectID = "IY0-ll-2Q3"; */
 "IY0-ll-2Q3.text" = "优";
@@ -23,11 +23,8 @@
 /* Class = "UILabel"; text = "已连接"; ObjectID = "PyY-H1-t4o"; */
 "PyY-H1-t4o.text" = "已连接";
 
-/* Class = "UILabel"; text = "km"; ObjectID = "Q4Y-xz-nUJ"; */
-"Q4Y-xz-nUJ.text" = "km";
-
-/* Class = "UILabel"; text = "运动速度"; ObjectID = "S1c-qR-0ib"; */
-"S1c-qR-0ib.text" = "运动速度";
+/* Class = "UILabel"; text = "日均使用时间"; ObjectID = "S1c-qR-0ib"; */
+"S1c-qR-0ib.text" = "日均使用时间";
 
 /* Class = "UILabel"; text = "0cal"; ObjectID = "U6C-zU-vGB"; */
 "U6C-zU-vGB.text" = "0cal";
@@ -44,8 +41,8 @@
 /* Class = "UIButton"; normalTitle = "新滤芯数据重置"; ObjectID = "b3p-yq-KlV"; */
 "b3p-yq-KlV.normalTitle" = "新滤芯数据重置";
 
-/* Class = "UILabel"; text = "移动距离"; ObjectID = "bAk-Hl-M1x"; */
-"bAk-Hl-M1x.text" = "移动距离";
+/* Class = "UILabel"; text = "日均AQI"; ObjectID = "bAk-Hl-M1x"; */
+"bAk-Hl-M1x.text" = "日均AQI";
 
 /* Class = "UILabel"; text = "步数"; ObjectID = "bVx-z7-vRz"; */
 "bVx-z7-vRz.text" = "步数";
@@ -53,8 +50,8 @@
 /* Class = "UIButton"; normalTitle = "开始连接蓝天大气"; ObjectID = "df8-qk-Nzl"; */
 "df8-qk-Nzl.normalTitle" = "开始连接蓝天大气";
 
-/* Class = "UILabel"; text = "送风量"; ObjectID = "dgi-Hp-5go"; */
-"dgi-Hp-5go.text" = "送风量";
+/* Class = "UILabel"; text = "平均送风量"; ObjectID = "dgi-Hp-5go"; */
+"dgi-Hp-5go.text" = "平均送风量";
 
 /* Class = "UIButton"; normalTitle = "更换"; ObjectID = "e2H-06-6Ne"; */
 "e2H-06-6Ne.normalTitle" = "更换";
@@ -75,4 +72,4 @@
 "wWT-ru-Vnz.text" = "0";
 
 /* Class = "UILabel"; text = "净化时间"; ObjectID = "zwc-5v-fv3"; */
-"zwc-5v-fv3.text" = "净化时间";
+"zwc-5v-fv3.text" = "累计净化时间";

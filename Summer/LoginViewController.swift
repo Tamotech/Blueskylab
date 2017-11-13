@@ -92,7 +92,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         var sms = smsCodeField.text ?? ""
         if textField == phoneField {
             phone = newText
-            if phone.characters.count == 11 {
+            if phone.count == 11 {
                 checkPhoneNum(phone: phone)
             }
             else {
@@ -101,7 +101,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         }
         else if textField == photoVertifyCodeField {
             captureStr = newText
-            if captureStr.characters.count > 0 && captureStr.characters.count == captcha?.characters.count {
+            if captureStr.count > 0 && captureStr.characters.count == captcha?.count {
                 vertifyCapture(captureString: captureStr)
                 sendSMSBtn.isEnabled = true
             }
@@ -113,11 +113,11 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         }
         else if textField == smsCodeField {
             sms = newText
-            if sms.characters.count > 0 && sms == self.smsCode {
+            if sms.count > 0 && sms == self.smsCode {
                 self.smsCheckMark.isHidden = false
                 self.sendSMSBtn.isHidden = true
             }
-            else if sms.characters.count > 0 && sms.characters.count == self.smsCode?.characters.count && sms != self.smsCode {
+            else if sms.count > 0 && sms.characters.count == self.smsCode?.characters.count && sms != self.smsCode {
                 self.smsCheckMark.isHidden = true
                 self.sendSMSBtn.isHidden = false
                 //输入错误

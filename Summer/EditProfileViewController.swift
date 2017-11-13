@@ -187,7 +187,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
     }
     
     func handleTapSaveItem(_:Any) {
-        saveUser()
+        saveUser(exit: true)
     }
     
     
@@ -213,7 +213,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
                     if code == 0 {
                         let avatarUrl = JSON?["data"]["url"].string ?? ""
                         SessionManager.sharedInstance.userInfo?.headimg = avatarUrl
-                        self?.saveUser()
+                        self?.saveUser(exit: false)
                         self?.change = false
                     }
                     else {
@@ -258,7 +258,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
             alert.cancelBtn.setTitle(NSLocalizedString("Exit", comment: ""), for: .normal)
             alert.confirmBtn.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
             alert.confirmCalback = {
-                self.saveUser()
+                self.saveUser(exit: true)
             }
             alert.cancelCalback = {
                 self.navigationController?.popViewController(animated: true)
@@ -272,7 +272,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         
     }
     
-    func saveUser() {
+    func saveUser(exit: Bool) {
         //更新 user
         let userInfo = SessionManager.sharedInstance.userInfo
         userInfo?.name = nameField.text ?? ""
@@ -299,8 +299,10 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         userInfo?.updateUserInfo(result: { [weak self](success, msg) in
             MBProgressHUD.hide(for: (self?.view)!, animated: true)
             if success {
+                
+                if exit { self?.navigationController?.popViewController(animated: true)
+                }
                 BLHUDBarManager.showSuccess(msg: msg, seconds: 1)
-                self?.navigationController?.popViewController(animated: true)
             }
             else {
                 BLHUDBarManager.showError(msg: msg)
