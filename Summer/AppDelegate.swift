@@ -93,10 +93,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         NotificationCenter.default.removeObserver(self)
         SessionManager.sharedInstance.saveLoginInfo()
         HealthDataManager.sharedInstance.saveMaskUseData()
-        if BLSBluetoothManager.shareInstance.state == .Connected {
-            UserDefaults.standard.set(true, forKey: kBluetoothConnectFlag)
-            UserDefaults.standard.synchronize()
-        }
     }
     
     

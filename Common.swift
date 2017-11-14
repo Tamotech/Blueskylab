@@ -34,6 +34,9 @@ let kMaskStateChangeNotifi = Notification.Name("mask_state_did_change_notify_key
 ///蓝牙连接状态的标志  杀掉app  下次自动连接蓝牙
 let kBluetoothConnectFlag = "bluetooth_connected_state_key"
 
+let kFirstLoadAppKey = "first_load_app_key"
+let kBluetoothDidDisconnectKey = "bluetooth_did_disconnect_key"
+
 /// 弹出登录页
 func showLoginVC() {
     

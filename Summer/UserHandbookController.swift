@@ -70,6 +70,11 @@ class UserHandbookController: BaseViewController, UITableViewDelegate, UITableVi
         
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        playerLayer.frame = bannerView.bounds
+    }
+    
     func playItemDidReachEnd(notifacation:NSNotification) {
         player.seek(to: kCMTimeZero)
         playButton.isHidden = false
@@ -82,11 +87,11 @@ class UserHandbookController: BaseViewController, UITableViewDelegate, UITableVi
             let videoUrl = data["u_ug_video"]["v"].stringValue
             let thumUrl = data["u_ug_video_preimg"]["v"].stringValue
             let email = data["s_ug_kefu_email"]["v"].stringValue
-            if thumUrl.characters.count > 0 {
+            if thumUrl.count > 0 {
                 let rc = ImageResource(downloadURL: URL(string:thumUrl)!)
                 self?.bannerView.kf.setImage(with: rc)
             }
-            if videoUrl.characters.count > 0 {
+            if videoUrl.count > 0 {
                 let item = AVPlayerItem(asset: AVURLAsset(url: URL(string: videoUrl)!))
                 self?.player.replaceCurrentItem(with: item)
                 print("complete set player \(videoUrl)")

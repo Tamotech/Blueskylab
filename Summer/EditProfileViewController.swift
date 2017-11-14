@@ -57,7 +57,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         guard let userInfo = SessionManager.sharedInstance.userInfo else {
             return
         }
-        if userInfo.headimg.characters.count>0 {
+        if userInfo.headimg.count>0 {
             let img = ImageResource(downloadURL: URL(string: userInfo.headimg.urlStringWithBLS())!)
             avartarBtn.kf.setImage(with: img, for: .normal)
         }
@@ -251,6 +251,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
     ///退出操作
     func exitController(sender: UIButton) {
         
+        nameField.resignFirstResponder()
         if change {
             let alert = ConfirmAlertView.instanceFromXib() as! ConfirmAlertView
             alert.titleLabel.text = NSLocalizedString("Exit", comment: "")

@@ -101,7 +101,7 @@ class UserMaskConfig: HandyJSON {
     
     
     //保存口罩使用记录
-    func saveMaskUseHistory(usetime: Int, distance: Int, step: Int, calories: Int, aveWindSpeed: Int) {
+    func saveMaskUseHistory(usetime: Int, distance: Int, step: Int, calories: Int, aveWindSpeed: CGFloat) {
         
         if bindmaskid == "" {
             return

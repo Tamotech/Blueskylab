@@ -93,7 +93,7 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     
     
     ///平均风速
-    var aveWindSpeed: Int = 0
+    var aveWindSpeed: CGFloat = 0
     
     var timer: Timer?
     var onceToken = false
@@ -126,9 +126,19 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     func setupTimer() {
         timer = Timer(timeInterval: 10, target: self, selector: #selector(timerHandle(t:)), userInfo: nil, repeats: true)
         RunLoop.main.add(timer!, forMode: .commonModes)
+        currentWindSpeed = CGFloat(SessionManager.sharedInstance.windModeManager.currentMode?.value ?? 0)
     }
     
     func timerHandle(t: Timer) {
+        
+        //同步风速
+        currentWindSpeed = CGFloat(SessionManager.sharedInstance.windModeManager.currentMode?.value ?? 0)
+        if currentWindSpeed == 0 {
+            aveWindSpeed = currentWindSpeed
+        }
+        else {
+            aveWindSpeed = (aveWindSpeed+currentWindSpeed)/2.0
+        }
         if powerService != nil && peripheral != nil {
             peripheral!.discoverCharacteristics(nil, for: powerService!)
         }
@@ -407,6 +417,7 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
             print("cancel peripheral")
             manager?.cancelPeripheralConnection(peripheral!)
         }
+        currentWindSpeed = 0
         HealthDataManager.sharedInstance.stopPedometerUpdate()
         manager?.stopScan()
         state = .DisConnected

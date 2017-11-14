@@ -153,13 +153,16 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
             })
         }
         else {
-            if UserDefaults.standard.bool(forKey: kBluetoothConnectFlag) {
+            if UserDefaults.standard.bool(forKey: kFirstLoadAppKey)
+            && !UserDefaults.standard.bool(forKey: kBluetoothConnectFlag) {
                 handleTapSearchBluetoothBtn(searchBtn)
                 UserDefaults.standard.set(false, forKey: kBluetoothConnectFlag)
                 UserDefaults.standard.synchronize()
             }
         }
         
+        UserDefaults.standard.set(true, forKey: kFirstLoadAppKey)
+        UserDefaults.standard.synchronize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -803,6 +806,8 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
             self.ovalCircleView.alpha = 1
             bluetoothUnConnectBtn.isHidden = true
             batteryView.isHidden = false
+            UserDefaults.standard.set(false, forKey: kBluetoothConnectFlag)
+            UserDefaults.standard.synchronize()
         }
         else {
             self.connectBluetoothView.alpha = 1

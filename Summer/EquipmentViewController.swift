@@ -54,7 +54,7 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
         
         HealthDataManager.sharedInstance.delegate = self
         ///风速
-        windLevelLabel.text = String.init(format: "%.0f", BLSBluetoothManager.shareInstance.currentWindSpeed)
+        windLevelLabel.text = String.init(format: "%.0f", BLSBluetoothManager.shareInstance.aveWindSpeed)
         
         let manager = BLSBluetoothManager.shareInstance
         if manager.state == BluetoothState.Connected {
@@ -162,6 +162,7 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
         mode.gearMax = 20
         BLSBluetoothManager.shareInstance.ajustSpeed(mode: mode)
         self.changeToConnectMode(connect: false)
+        UserDefaults.standard.set(true, forKey: kBluetoothConnectFlag)
     }
     
     @IBAction func handleTapChangeBtn(_ sender: UIButton) {
@@ -240,6 +241,7 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
             let minute = total%3600/60
             let second = total%60
             self.clearTimeLabel.text = String.init(format: "%02d:%02d:%02d", hour, minute, second)
+            self.windLevelLabel.text = String.init(format: "%.0f", BLSBluetoothManager.shareInstance.aveWindSpeed)
         }
         
     }
