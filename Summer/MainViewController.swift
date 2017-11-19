@@ -94,6 +94,9 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     
     @IBOutlet weak var modeCircleView: UIImageView!
     
+    var powerPopTip: PopTip = PopTip()
+    var changeFilterPopTip: PopTip = PopTip()
+    
     lazy var dotView: UIView = {
        let v = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 8))
         v.backgroundColor = UIColor.red
@@ -187,6 +190,12 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         self.changeToConnectMode(connect: BLSBluetoothManager.shareInstance.state == BluetoothState.Connected)
         
         showConnectMaskGuide()
+        lowerPowerAlert()
+        ///第一次showalert 跟 连接蓝牙动画有冲突
+        if maskModeView.tag >= 2 {
+            showChangeFilterAlert()
+        }
+        self.maskModeView.tag = self.maskModeView.tag + 1
         
     }
     
@@ -277,6 +286,8 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
                 break
             case .DisConnected:
                 self.changeToConnectMode(connect: false)
+                hasShowLowPowerTip = false
+                hasShowChangeFilter = false
                 HealthDataManager.sharedInstance.saveMaskUseData()
                 break
                 
@@ -286,10 +297,10 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
             let power = userInfo["value"] as! Int
             var batteryImg = #imageLiteral(resourceName: "battery1")
             self.batteryLevelLb.textColor = UIColor.white
-            if power < 20 {
+            if power <= 20 {
                 batteryImg = #imageLiteral(resourceName: "battery3")
                 self.batteryLevelLb.textColor = UIColor.red
-                
+//                lowerPowerAlert()
             }
             else if power < 80 {
                 batteryImg = #imageLiteral(resourceName: "battery2")
@@ -306,6 +317,13 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         
         self.loadAQIData()
         SessionManager.sharedInstance.getUserInfo()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+            //避开加载
+            if self.maskModeView.tag >= 2 {
+                self.showChangeFilterAlert()
+            }
+        }
+        lowerPowerAlert()
     }
     
     func userInfoUpdateNotification(noti: Notification) {
@@ -756,6 +774,9 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     }
     
     func showCircleAnimation() {
+        
+        powerPopTip.hide()
+        changeFilterPopTip.hide()
         showingCircleAnimation = true
         timer?.invalidate()
         //scrollView.setContentOffset(CGPoint(x: CGFloat(1)*screenWidth, y: 0), animated: false)
@@ -797,8 +818,8 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     func changeToConnectMode(connect: Bool) {
         if connect {
             self.connectBluetoothView.alpha = 0
-            self.aqiView.alpha = 1
-            self.maskModeView.alpha = 0
+            self.aqiView.alpha = 0
+            self.maskModeView.alpha = 1
             self.bottomView.alpha = 0
             self.modeControlView.alpha = 1
             self.selectModeView.alpha = 1
@@ -835,15 +856,22 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     func lowerPowerAlert() {
         
         if hasShowLowPowerTip {
+            //return
+        }
+        if BLSBluetoothManager.shareInstance.state != BluetoothState.Connected {
             return
         }
+        if BLSBluetoothManager.shareInstance.currentPower > 20 {
+            return
+        }
+        
         let maskConfig = SessionManager.sharedInstance.userMaskConfig
         if !maskConfig.lowpowerflag{
             return
         }
         
         hasShowLowPowerTip = true
-        let popTip = PopTip()
+        let popTip = powerPopTip
         popTip.padding = 0
         popTip.cornerRadius = 8
         let tipView = BLTipView(frame: CGRect.init(x: 0, y: 0, width: 212, height: 44), msg: NSLocalizedString("LowPowerTip", comment: ""), icon: nil, textColor: UIColor.white, bgColor: UIColor(hexString: "eb474e")!)
@@ -859,6 +887,16 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     
     func showChangeFilterAlert() {
         if hasShowChangeFilter {
+            //return
+        }
+        if maskModeView.alpha == 0 {
+            return
+        }
+        if showingCircleAnimation {
+            return
+        }
+        
+        if BLSBluetoothManager.shareInstance.state != BluetoothState.Connected {
             return
         }
         let maskConfig = SessionManager.sharedInstance.userMaskConfig
@@ -867,7 +905,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
             return
         }
         hasShowChangeFilter = true
-        let popTip = PopTip()
+        let popTip = changeFilterPopTip
         popTip.padding = 0
         popTip.cornerRadius = 8
         var tipView: BLTipView?
@@ -880,9 +918,9 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         
         let frame = self.view.convert(stageLabel.frame, from: stageLabel.superview)
         popTip.show(customView: tipView!, direction: .down, in: self.view, from: frame)
-//        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
-//            popTip.hide()
-//        }
+        DispatchQueue.main.asyncAfter(deadline: .now()+5) {
+            popTip.hide()
+        }
     }
     
     

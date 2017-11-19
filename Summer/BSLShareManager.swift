@@ -24,7 +24,7 @@ class BSLShareManager: NSObject {
     class func shareToWechat(link: String, title: String, msg: String, thumb: String, type: Int) {
         
         let message = WXMediaMessage()
-        if thumb.characters.count > 0 {
+        if thumb.count > 0 {
             guard let imgData = try? Data.init(contentsOf: URL(string: thumb)!) else {
                 return
             }

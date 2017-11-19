@@ -155,12 +155,12 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
     
     @IBAction func handleTapUnbindMaskBtn(_ sender: UIButton) {
         
-        let mode = UserWindSpeedConfig()
-        mode.value = 0
-        mode.gear = 0
-        mode.valueMax = 100
-        mode.gearMax = 20
-        BLSBluetoothManager.shareInstance.ajustSpeed(mode: mode)
+//        let mode = UserWindSpeedConfig()
+//        mode.value = 0
+//        mode.gear = 0
+//        mode.valueMax = 100
+//        mode.gearMax = 20
+//        BLSBluetoothManager.shareInstance.ajustSpeed(mode: mode)
         self.changeToConnectMode(connect: false)
         UserDefaults.standard.set(true, forKey: kBluetoothConnectFlag)
     }

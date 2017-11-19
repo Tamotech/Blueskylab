@@ -75,6 +75,8 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     
     ///当前风速
     var currentWindSpeed: CGFloat = 0
+    ///当前电量
+    var currentPower: Int = 100
     ///蓝牙设备的UUID
     var deviceUUID: String?
     
@@ -288,6 +290,7 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
         for char in service.characteristics! {
             if char.uuid.isEqual(CBUUID(string: kBatteryCharacteristicUUID)) {
                 //电池电量
+                peripheral.readValue(for: char)
                 powerChar = char
                 var power: Int = 100
                 if let value = char.value {
@@ -301,11 +304,13 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
                 }
                 
                 print("电池电量--- \(power)")
+                currentPower = power
                 NotificationCenter.default.post(name: kMaskStateChangeNotifi, object: nil, userInfo: ["key": "power", "value": power])
                 
             }
             else if char.uuid.isEqual(CBUUID(string: kSpeedWriteCharacteristicUUID)) {
                 //写风速
+                peripheral.readValue(for: char)
                 speedChar = char
                 if let value = char.value {
                     print("写风速--- \(value)")

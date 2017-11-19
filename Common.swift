@@ -30,6 +30,7 @@ let kUserMaskConfigUpdateNoti = Notification.Name("user_mask_config_update_notif
 let kMaskDidConnectBluetoothNoti = Notification.Name("mask_did_connect_bluetooth_notify_key")
 let kMaskDidDisConnectBluetoothNoti = Notification.Name("mask_did_disconnect_bluetooth_notify_key")
 let kMaskStateChangeNotifi = Notification.Name("mask_state_did_change_notify_key")
+let kMaskPowerLowAlertNotification = Notification.Name("mask_power_low_alert_notify_key")
 
 ///蓝牙连接状态的标志  杀掉app  下次自动连接蓝牙
 let kBluetoothConnectFlag = "bluetooth_connected_state_key"
