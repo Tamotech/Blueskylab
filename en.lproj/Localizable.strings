@@ -77,11 +77,11 @@
 "ConfirmClearZeroCarlories" = "Reset my calories burned to \"0\"？";
 "DeleteThisMode" = "Are you sure you want to delete?";
 "Reset" = "Reset";
-"Exit" = "Log Out";
-"ConfirmDropThis" = "Are you sure you want to give up?";
+"Exit" = "Leave";
+"ConfirmDropThis" = "Sure to give up editing？";
 "Delete" = "Delete";
 "Hide" = "Hide";
-"MyAir" = "My Air";
+"MyAir" = "My ATMOBLUE";
 "LowPowerTip" = "Low battery，please recharge soon";
 "PleaseLogin" = "Please Log In";
 "WindLevel" = "%.0f wind";
@@ -114,9 +114,9 @@
 "EditPassword" = "Change password";
 "PrivacyPolicy" = "Privacy Policy";
 "AboutUs" = "About Us";
-"CommenQuestions" = "FAQs";
-"AboutProduct" = "Product Info";
-"AboutAfterSale" = "Customer Care";
+"CommenQuestions" = "FAQ";
+"AboutProduct" = "Product";
+"AboutAfterSale" = "Service";
 "TermsOfUse" = "Terms of Use";
 "APPUpdate" = "Update App";
 "NotificationCenter" = "Notification Center";

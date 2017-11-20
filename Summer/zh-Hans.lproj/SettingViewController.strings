@@ -30,7 +30,7 @@
 "f23-iC-GV4.text" = "当PM2.5达到重度污染以上时收到佩戴提醒";
 
 /* Class = "UILabel"; text = "通用"; ObjectID = "fhg-fL-luK"; */
-"fhg-fL-luK.text" = "通用";
+"fhg-fL-luK.text" = "提醒";
 
 /* Class = "UILabel"; text = "低电量提醒"; ObjectID = "fsN-Ne-ceT"; */
 "fsN-Ne-ceT.text" = "低电量提醒";

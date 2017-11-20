@@ -104,7 +104,6 @@
 		CC4BA8881F2DDBD7002B571D /* NotificationDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA8861F2DDBD7002B571D /* NotificationDetailController.swift */; };
 		CC4BA88B1F2DDC54002B571D /* notification.html in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA88A1F2DDC54002B571D /* notification.html */; };
 		CC4BA88D1F2DE0F8002B571D /* BottomWechatShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA88C1F2DE0F8002B571D /* BottomWechatShareView.swift */; };
-		CC4BA88F1F2DEB3D002B571D /* BottomWechatShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA88E1F2DEB3D002B571D /* BottomWechatShareView.xib */; };
 		CC4BA8921F2DFE53002B571D /* UserHandbookController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA8901F2DFE53002B571D /* UserHandbookController.swift */; };
 		CC4BA8931F2DFE53002B571D /* UserHandbookController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA8911F2DFE53002B571D /* UserHandbookController.xib */; };
 		CC53E5201F6DFF3200870ACE /* HistoryDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC53E51F1F6DFF3200870ACE /* HistoryDataView.swift */; };
@@ -336,7 +335,6 @@
 		CC4BA8861F2DDBD7002B571D /* NotificationDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationDetailController.swift; sourceTree = "<group>"; };
 		CC4BA88A1F2DDC54002B571D /* notification.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = notification.html; sourceTree = "<group>"; };
 		CC4BA88C1F2DE0F8002B571D /* BottomWechatShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomWechatShareView.swift; sourceTree = "<group>"; };
-		CC4BA88E1F2DEB3D002B571D /* BottomWechatShareView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomWechatShareView.xib; sourceTree = "<group>"; };
 		CC4BA8901F2DFE53002B571D /* UserHandbookController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHandbookController.swift; sourceTree = "<group>"; };
 		CC4BA8911F2DFE53002B571D /* UserHandbookController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserHandbookController.xib; sourceTree = "<group>"; };
 		CC53E51F1F6DFF3200870ACE /* HistoryDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDataView.swift; sourceTree = "<group>"; };
@@ -490,7 +488,6 @@
 				CC4BA87F1F2DCA0F002B571D /* ConfirmAlertView.swift */,
 				CC4BA8811F2DCA2D002B571D /* ConfirmAlertView.xib */,
 				CC4BA88C1F2DE0F8002B571D /* BottomWechatShareView.swift */,
-				CC4BA88E1F2DEB3D002B571D /* BottomWechatShareView.xib */,
 				CC8B17EE1F3038BD00FC5EAE /* BLHUDBarManager.swift */,
 				CC8B17F21F30532300FC5EAE /* SimpleHUDController.swift */,
 				CC8B17F31F30532300FC5EAE /* SimpleHUDController.xib */,
@@ -1044,7 +1041,6 @@
 				5AF9CA031FA37C6F0071285D /* LoginViewController.xib in Resources */,
 				CC339C1B1F4E3B6200EB0516 /* AddModeViewController.xib in Resources */,
 				5AF9CA0D1FA37CA10071285D /* StartSetGenderViewController.xib in Resources */,
-				CC4BA88F1F2DEB3D002B571D /* BottomWechatShareView.xib in Resources */,
 				CC030E931F1BA42A0030145C /* BaseAlertView.xib in Resources */,
 				CC3EF2CB1EFEB99E00CE4919 /* Localizable.strings in Resources */,
 				5AF9CA121FA37CA70071285D /* StartSetBirthViewController.xib in Resources */,

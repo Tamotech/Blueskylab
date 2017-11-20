@@ -1,0 +1,9 @@
+
+/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "IRS-YM-A5R"; */
+"IRS-YM-A5R.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "分享给微信好友"; ObjectID = "POR-o7-r6X"; */
+"POR-o7-r6X.text" = "分享给微信好友";
+
+/* Class = "UILabel"; text = "分享到朋友圈"; ObjectID = "Sbj-86-PuJ"; */
+"Sbj-86-PuJ.text" = "分享到朋友圈";

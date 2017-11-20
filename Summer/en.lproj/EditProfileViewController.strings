@@ -24,10 +24,10 @@
 "eQK-2x-3ro.text" = "Personal Information";
 
 /* Class = "UILabel"; text = "用户名"; ObjectID = "iKo-4z-6zi"; */
-"iKo-4z-6zi.text" = "Username";
+"iKo-4z-6zi.text" = "Name";
 
 /* Class = "UILabel"; text = "手机"; ObjectID = "ocZ-Wh-vPq"; */
-"ocZ-Wh-vPq.text" = "Phone number";
+"ocZ-Wh-vPq.text" = "Phone";
 
 /* Class = "UITextField"; text = "Name"; ObjectID = "qrd-Mw-QN8"; */
 "qrd-Mw-QN8.text" = "Name";

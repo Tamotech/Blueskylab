@@ -12,7 +12,7 @@ class LanguageListController: BaseViewController, UITableViewDelegate, UITableVi
 
     
     @IBOutlet weak var tableView: UITableView!
-    let data:[String] = ["简体中文", "繁体中文", "English"]
+    let data:[String] = ["简体中文", "English"]
     
     var selectIndex = 0
     
@@ -21,15 +21,13 @@ class LanguageListController: BaseViewController, UITableViewDelegate, UITableVi
 
         // Do any additional setup after loading the view.
         
-        let language = SessionManager.sharedInstance.userMaskConfig.language
+//        let language = SessionManager.sharedInstance.userMaskConfig.language
+        let language = SessionManager.sharedInstance.language
         if language == "zh_CN" {
             selectIndex = 0
         }
-        else if language == "zh_TW" {
-            selectIndex = 1
-        }
         else if language == "en_US" {
-            selectIndex = 2
+            selectIndex = 1
         }
         self.title = NSLocalizedString("LanguageSetting", comment: "")
         let nib = UINib(nibName: "LanguageCell", bundle: nil)
@@ -86,10 +84,6 @@ class LanguageListController: BaseViewController, UITableViewDelegate, UITableVi
             SessionManager.sharedInstance.userMaskConfig.language = "zh_CN"
         }
         else if selectIndex == 1 {
-            LanguageHelper.shareInstance.setLanguage(langeuage: "zh-Hant-HK")
-            SessionManager.sharedInstance.userMaskConfig.language = "zh_TW"
-        }
-        else if selectIndex == 2 {
             LanguageHelper.shareInstance.setLanguage(langeuage: "en")
             SessionManager.sharedInstance.userMaskConfig.language = "en_US"
 

@@ -9,13 +9,13 @@
 "YCl-Hl-Iem.text" = "Please Log In";
 
 /* Class = "UILabel"; text = "购买新品"; ObjectID = "bDC-kL-MyT"; */
-"bDC-kL-MyT.text" = "Purchase new product";
+"bDC-kL-MyT.text" = "New Product";
 
 /* Class = "UILabel"; text = "设置"; ObjectID = "fOC-wH-NBi"; */
 "fOC-wH-NBi.text" = "Settings";
 
 /* Class = "UILabel"; text = "购买滤芯"; ObjectID = "kJP-M2-Rv5"; */
-"kJP-M2-Rv5.text" = "Purchase new filters";
+"kJP-M2-Rv5.text" = "New Filter";
 
 /* Class = "UILabel"; text = "个人资料"; ObjectID = "pXq-bm-qR4"; */
 "pXq-bm-qR4.text" = "Personal Info";

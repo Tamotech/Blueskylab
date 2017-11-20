@@ -1,7 +1,7 @@
 import UIKit
 
 
-var language = ""
+//var language = ""
 class LanguageHelper: NSObject {
     
     //单例
@@ -9,6 +9,7 @@ class LanguageHelper: NSObject {
     
     let def = UserDefaults.standard
     var bundle : Bundle?
+    var language = "zh_CN"
     
     ///根据用户设置的语言类型获取字符串
     func getUserStr(key: String) -> String
@@ -53,6 +54,7 @@ class LanguageHelper: NSObject {
             
         }
         
+        self.language = appLanguage
         SessionManager.sharedInstance.changeLanguage(language: appLanguage)
         
         //语言设置

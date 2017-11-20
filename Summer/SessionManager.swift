@@ -64,6 +64,8 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     /// 最新固件版本号
     var firewareVersion: String?
     
+    var language: String = "zh_CN"
+    
     ///推送tags
     var pushTags = ["changefilter", "zh_CN", "lowbattery", "pollutionalert", "article"]
 
@@ -107,7 +109,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
                       "birthday": loginInfo.birthday,
                       "weight": loginInfo.weight,
                       "height": loginInfo.height]
-        if loginInfo.wxid.characters.count > 0 {
+        if loginInfo.wxid.count > 0 {
             params["wxid"] = loginInfo.wxid
         }
         APIManager.shareInstance.postRequest(urlString: "/regist/mobileregist.htm", params: params) { [weak self](JSON, code, msg) in
@@ -171,7 +173,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
             token = info!["token"] ?? ""
             userId = info!["userId"] ?? ""
             
-            if (userId.characters.count > 0) {
+            if (userId.count > 0) {
                 //绑定别名
                 JPUSHService.setTags(Set(["DefaultTag"]), aliasInbackground: userId)
             }
@@ -202,7 +204,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     
     ///绑定推送tags
     func bindPushTags() {
-        if userId.characters.count > 0 {
+        if userId.count > 0 {
             //绑定别名
             JPUSHService.setTags(Set(pushTags), aliasInbackground: userId)
         }
@@ -210,6 +212,8 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     
     func changeLanguage(language: String) {
         
+        self.language = language
+        APIManager.shareInstance.headers["language"] = language
         let index = pushTags.index(of: language)
         if index == nil {
             pushTags.append(language)
