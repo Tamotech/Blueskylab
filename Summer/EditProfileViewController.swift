@@ -303,7 +303,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
                 
                 if exit { self?.navigationController?.popViewController(animated: true)
                 }
-                BLHUDBarManager.showSuccess(msg: msg, seconds: 1)
+                BLHUDBarManager.showSuccess(msg: NSLocalizedString("Successfully saved", comment: ""), seconds: 1)
             }
             else {
                 BLHUDBarManager.showError(msg: msg)

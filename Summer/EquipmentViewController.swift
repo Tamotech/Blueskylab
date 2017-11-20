@@ -34,11 +34,11 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
     @IBOutlet weak var resetFilterBtn: UIButton!
     
     ///累计时间
-    var totalSeconds: Int = 0
-    ///日均AQI
-    var dayAveAQI: Int = 0
-    ///日均使用时间
-    var dayAveUseSeconds: Int = 0
+//    var totalSeconds: Int = 0
+//    ///日均AQI
+//    var dayAveAQI: Int = 0
+//    ///日均使用时间
+//    var dayAveUseSeconds: Int = 0
     
     var currentSteps: Int = 0
     var currentDistance: Float = 0
@@ -118,12 +118,11 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
     //加载口罩计算数据
     func loadCaculateData() {
         APIRequest.cacuDeviceInfoAPI { [weak self](JSON) in
-            let data = JSON as! JSON
-            self?.totalSeconds = data["totalTimeSecond"].intValue
-            self?.dayAveAQI = data["dayAgvAqi"].intValue
-            self?.dayAveUseSeconds = data["dayAvgUseTimeSecond"].intValue
-            self?.daysAQI.text = "\(self?.dayAveAQI ?? 0)"
-            self?.dayUseTimeLb.text = String.init(format: "%.1f", Float((self?.dayAveUseSeconds)!)/3600.0)
+            
+            BLSBluetoothManager.shareInstance.calcDeviceInfo = JSON as! CalcDeviceInfo
+            let info =  BLSBluetoothManager.shareInstance.calcDeviceInfo
+            self?.daysAQI.text = "\(info.dayAgvAqi)"
+            self?.dayUseTimeLb.text = String.init(format: "%.1f", Float(info.dayAvgUseTimeSecond)/3600.0)
         }
     }
     
@@ -193,7 +192,7 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
             self.stepCountLabel.text = "0步"
             self.caloriesLabel.text = "0kcal"
             self.dayUseTimeLb.text = "0"
-            self.totalSeconds = 0
+            BLSBluetoothManager.shareInstance.calcDeviceInfo.totalTimeSecond = 0
             APIRequest.resetMaskFilter()
         }
     }
@@ -236,7 +235,8 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
     func timerStrUpdate(seconds: Int) {
         DispatchQueue.main.async {
             
-            let total = self.totalSeconds+seconds
+            let info = BLSBluetoothManager.shareInstance.calcDeviceInfo
+            let total = info.totalTimeSecond+seconds
             let hour = total/3600
             let minute = total%3600/60
             let second = total%60

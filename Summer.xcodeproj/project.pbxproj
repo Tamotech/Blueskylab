@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		25F4822315621C66772C57FC /* Pods_Summer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C96D22CE689A5323E4BAAB6 /* Pods_Summer.framework */; };
 		5A2341DA1F88E03000BEB06F /* BaseWKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2341D91F88E02F00BEB06F /* BaseWKWebViewController.swift */; };
+		5A3298AF1FC312E900F1DB6B /* BottomWechatShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3298B11FC312E900F1DB6B /* BottomWechatShareView.xib */; };
+		5A3298B61FC31D5A00F1DB6B /* CalcDeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3298B51FC31D5A00F1DB6B /* CalcDeviceInfo.swift */; };
 		5A3925491F8CA2FB00A066B0 /* main-bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2341D81F88601C00BEB06F /* main-bg2.png */; };
 		5A53F5A71F97834D00E46282 /* BSLAnimationActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53F5A61F97834D00E46282 /* BSLAnimationActivityView.swift */; };
 		5A53F5AA1F978C3A00E46282 /* loadingBSL.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5A53F5A91F9784D600E46282 /* loadingBSL.gif */; };
@@ -159,6 +161,11 @@
 /* Begin PBXFileReference section */
 		5A2341D81F88601C00BEB06F /* main-bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main-bg2.png"; sourceTree = "<group>"; };
 		5A2341D91F88E02F00BEB06F /* BaseWKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWKWebViewController.swift; sourceTree = "<group>"; };
+		5A3298B01FC312E900F1DB6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BottomWechatShareView.xib; sourceTree = "<group>"; };
+		5A3298B21FC312EE00F1DB6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BottomWechatShareView.strings; sourceTree = "<group>"; };
+		5A3298B31FC312F000F1DB6B /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/BottomWechatShareView.strings"; sourceTree = "<group>"; };
+		5A3298B41FC312F300F1DB6B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BottomWechatShareView.strings"; sourceTree = "<group>"; };
+		5A3298B51FC31D5A00F1DB6B /* CalcDeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcDeviceInfo.swift; sourceTree = "<group>"; };
 		5A51CD831FAF695700F4EC2F /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/EquipmentViewController.strings"; sourceTree = "<group>"; };
 		5A51CD851FAF695D00F4EC2F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/EquipmentViewController.strings"; sourceTree = "<group>"; };
 		5A53F5A61F97834D00E46282 /* BSLAnimationActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSLAnimationActivityView.swift; sourceTree = "<group>"; };
@@ -488,6 +495,7 @@
 				CC4BA87F1F2DCA0F002B571D /* ConfirmAlertView.swift */,
 				CC4BA8811F2DCA2D002B571D /* ConfirmAlertView.xib */,
 				CC4BA88C1F2DE0F8002B571D /* BottomWechatShareView.swift */,
+				5A3298B11FC312E900F1DB6B /* BottomWechatShareView.xib */,
 				CC8B17EE1F3038BD00FC5EAE /* BLHUDBarManager.swift */,
 				CC8B17F21F30532300FC5EAE /* SimpleHUDController.swift */,
 				CC8B17F31F30532300FC5EAE /* SimpleHUDController.xib */,
@@ -595,6 +603,7 @@
 				CC0D72DD1F540D13000D647C /* UserMaskConfig.swift */,
 				CC0D72DF1F541E1C000D647C /* NotificationList.swift */,
 				CCAA9B5A1F6B4D900048F4B3 /* AQIData.swift */,
+				5A3298B51FC31D5A00F1DB6B /* CalcDeviceInfo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1056,6 +1065,7 @@
 				5AF9CA5A1FA37D410071285D /* NotificationDetailController.xib in Resources */,
 				5AF9CA301FA37CE30071285D /* HistoryDataCell.xib in Resources */,
 				CC339C201F4E3DBF00EB0516 /* EditProfileViewController.xib in Resources */,
+				5A3298AF1FC312E900F1DB6B /* BottomWechatShareView.xib in Resources */,
 				CC3348D71EF368790084642A /* LaunchScreen.storyboard in Resources */,
 				CC3348D41EF368790084642A /* Assets.xcassets in Resources */,
 				5AF9CA461FA37D1D0071285D /* LanguageListController.xib in Resources */,
@@ -1256,6 +1266,7 @@
 				CC05D2CF1F08748600653C71 /* GenderPickerView.swift in Sources */,
 				CC11D6521F30C9BA00B9ADD1 /* StartSetGenderViewController.swift in Sources */,
 				CC53E5201F6DFF3200870ACE /* HistoryDataView.swift in Sources */,
+				5A3298B61FC31D5A00F1DB6B /* CalcDeviceInfo.swift in Sources */,
 				CC0664A81EF76A4F00020415 /* BaseView.swift in Sources */,
 				CC0D72E01F541E1C000D647C /* NotificationList.swift in Sources */,
 				5A2341DA1F88E03000BEB06F /* BaseWKWebViewController.swift in Sources */,
@@ -1279,6 +1290,17 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		5A3298B11FC312E900F1DB6B /* BottomWechatShareView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A3298B01FC312E900F1DB6B /* Base */,
+				5A3298B21FC312EE00F1DB6B /* en */,
+				5A3298B31FC312F000F1DB6B /* zh-Hant-HK */,
+				5A3298B41FC312F300F1DB6B /* zh-Hans */,
+			);
+			name = BottomWechatShareView.xib;
+			sourceTree = "<group>";
+		};
 		5AF9CA051FA37C6F0071285D /* LoginViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -272,7 +272,8 @@ class APIRequest: NSObject {
         let path = "/member/calcDeviceInfo.htm"
         APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
             if code == 0 {
-                result(JSON!["data"])
+                let data = CalcDeviceInfo.deserialize(from: JSON!["data"].rawString())
+                result(data)
             }
         }
     }

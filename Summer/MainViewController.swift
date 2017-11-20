@@ -387,7 +387,9 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     ///
     /// - Parameter data: data
     func updateTodayAQIView(data: CurrentAQI) {
-        cityButton.setTitle("  " + data.city, for: .normal)
+        
+        let city = SessionManager.sharedInstance.language == "zh_CN" ? data.city : data.cityname_en
+        cityButton.setTitle("  " + city, for: .normal)
         aqiLevelLabel.text = String(data.aqi)
         temperatureLabel.text = String(format: "%.0lf°C", data.temperature)
         windLevelLabel.text = String(format: NSLocalizedString("WindLevel", comment: ""),  data.windSpeed)

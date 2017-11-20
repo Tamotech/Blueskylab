@@ -53,7 +53,9 @@ class LanguageHelper: NSObject {
             }
             
         }
-        
+        if str == "en" {
+            appLanguage = "en_US"
+        }
         self.language = appLanguage
         SessionManager.sharedInstance.changeLanguage(language: appLanguage)
         

@@ -165,8 +165,8 @@ class HealthDataManager: NSObject {
     func handleTimerEvent(t: Timer) {
         seconds = seconds + 1
         //let hour = seconds/3600
-        let minute = seconds%3600/60
-        let second = seconds%60
+        //let minute = seconds%3600/60
+        //let second = seconds%60
         if self.delegate != nil {
             self.delegate?.timerStrUpdate(seconds:seconds)
         }

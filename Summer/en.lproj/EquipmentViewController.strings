@@ -24,7 +24,7 @@
 "PyY-H1-t4o.text" = "Connected (Your device is connected)";
 
 /* Class = "UILabel"; text = "日均使用时间"; ObjectID = "S1c-qR-0ib"; */
-"S1c-qR-0ib.text" = "日均使用时间";
+"S1c-qR-0ib.text" = "Average Time";
 
 /* Class = "UILabel"; text = "0cal"; ObjectID = "U6C-zU-vGB"; */
 "U6C-zU-vGB.text" = "0cal";
@@ -42,7 +42,7 @@
 "b3p-yq-KlV.normalTitle" = "Reset filter data";
 
 /* Class = "UILabel"; text = "日均AQI"; ObjectID = "bAk-Hl-M1x"; */
-"bAk-Hl-M1x.text" = "日均AQI";
+"bAk-Hl-M1x.text" = "Average AQI";
 
 /* Class = "UILabel"; text = "步数"; ObjectID = "bVx-z7-vRz"; */
 "bVx-z7-vRz.text" = "Steps";
@@ -51,10 +51,10 @@
 "df8-qk-Nzl.normalTitle" = "Start connecting ATMOBLUE";
 
 /* Class = "UILabel"; text = "平均送风量"; ObjectID = "dgi-Hp-5go"; */
-"dgi-Hp-5go.text" = "平均送风量";
+"dgi-Hp-5go.text" = "Average Airflow";
 
 /* Class = "UIButton"; normalTitle = "更换"; ObjectID = "e2H-06-6Ne"; */
-"e2H-06-6Ne.normalTitle" = "更换";
+"e2H-06-6Ne.normalTitle" = "Change";
 
 /* Class = "UILabel"; text = "过滤效果"; ObjectID = "ewM-oS-5Ik"; */
 "ewM-oS-5Ik.text" = "Filter efficiency";

@@ -96,6 +96,7 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
     
     ///平均风速
     var aveWindSpeed: CGFloat = 0
+    var calcDeviceInfo = CalcDeviceInfo()
     
     var timer: Timer?
     var onceToken = false
@@ -135,12 +136,14 @@ DFUServiceDelegate, DFUProgressDelegate, LoggerDelegate {
         
         //同步风速
         currentWindSpeed = CGFloat(SessionManager.sharedInstance.windModeManager.currentMode?.value ?? 0)
-        if currentWindSpeed == 0 {
-            aveWindSpeed = currentWindSpeed
+        
+        if calcDeviceInfo.totalTimeSecond > 0 {
+            aveWindSpeed = CGFloat(calcDeviceInfo.agvWindspeed * calcDeviceInfo.totalTimeSecond + Int(currentWindSpeed) * 10)/CGFloat(calcDeviceInfo.totalTimeSecond + 10)
+            
+            calcDeviceInfo.agvWindspeed = Int(aveWindSpeed)
         }
-        else {
-            aveWindSpeed = (aveWindSpeed+currentWindSpeed)/2.0
-        }
+        calcDeviceInfo.totalTimeSecond = calcDeviceInfo.totalTimeSecond + 10
+        
         if powerService != nil && peripheral != nil {
             peripheral!.discoverCharacteristics(nil, for: powerService!)
         }

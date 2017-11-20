@@ -22,7 +22,7 @@ class WindModeManager: NSObject {
     
     func loadData() {
         
-        if SessionManager.sharedInstance.token.characters.count == 0 {
+        if SessionManager.sharedInstance.token.count == 0 {
             return
         }
         APIRequest.getUserWindSpeedConfig { [weak self](data) in
@@ -54,6 +54,7 @@ class WindModeManager: NSObject {
             config.type = "fixed"
             config.name = "智能模式"
             currentMode = config
+            config.value = 70   //TODO
             return config
         }
         if currentMode == nil {
@@ -64,7 +65,9 @@ class WindModeManager: NSObject {
                 currentMode = mode
             }
         }
-        
+        if currentMode?.name == "智能" {
+            currentMode?.value = 70 //TODO
+        }
         return currentMode!
     }
     

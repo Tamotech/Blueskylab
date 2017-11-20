@@ -103,10 +103,13 @@ class UserMaskConfig: HandyJSON {
     //保存口罩使用记录
     func saveMaskUseHistory(usetime: Int, distance: Int, step: Int, calories: Int, aveWindSpeed: CGFloat) {
         
+        if usetime == 0 {
+            return
+        }
         if bindmaskid == "" {
             return
         }
-        let path = "/member/saveUseHist.htm?maskid=\(bindmaskid)&usetime=\(usetime)&movedistance=\(distance)&stepnum=\(step)&calorie=\(calories)&windspeed=\(aveWindSpeed)"
+        let path = "/member/saveUseHist.htm?maskid=\(bindmaskid)&usetime=\(usetime)&movedistance=\(distance)&stepnum=\(step)&calorie=\(calories)&windspeed=\(Int(aveWindSpeed))"
 //        let params = ["maskid": bindmaskid,
 //                      "usertime": usetime,
 //                      "movedistance": distance,
