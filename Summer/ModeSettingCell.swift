@@ -49,7 +49,7 @@ class ModeSettingCell: UITableViewCell {
             let img = config.customIcon(color: themeColor!)
             iconView.image = img
         }
-        nameLabel.text = config.name
+        nameLabel.text = config.getName()
         valueLabel.text = "\(config.value)"
         let isCurrentMode = SessionManager.sharedInstance.windModeManager.getCurrentMode().id == config.id
         currentModeLabel.isHidden = !isCurrentMode

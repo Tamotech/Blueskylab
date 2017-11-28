@@ -37,7 +37,7 @@ class HistoryDataCell: UITableViewCell {
         colorDotView.backgroundColor = UIColor(hexString: data.aqilevelcoler)
         aqiLevelLabel.text = "\(Int(data.aqi))"
         aqiLevelLabel.textColor = UIColor(hexString: data.aqilevelcoler)
-        temWindLabel.text = "\(Int(data.temp))°C \(Int(data.wse))级风"
+        temWindLabel.text = data.windLevelString()
         temWindLabel.textColor = UIColor(hexString: data.aqilevelcoler)
         levelLabel.text = data.aqilevelname
         levelLabel.textColor = UIColor(hexString: data.aqilevelcoler)

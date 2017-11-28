@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "发现新版本"; ObjectID = "InV-Fc-I0u"; */
+"InV-Fc-I0u.text" = "发现新版本";
+
+/* Class = "UILabel"; text = "更新说明"; ObjectID = "ULt-Is-BMP"; */
+"ULt-Is-BMP.text" = "更新说明";
+
+/* Class = "UIButton"; normalTitle = "马上更新"; ObjectID = "XrW-Jm-3KV"; */
+"XrW-Jm-3KV.normalTitle" = "马上更新";

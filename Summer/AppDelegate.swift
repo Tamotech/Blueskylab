@@ -9,6 +9,8 @@
 import UIKit
 import IQKeyboardManagerSwift
 import UserNotifications
+import Alamofire
+import SwiftyJSON
 
 let wxAppId = "wx5b2c8b3e6df2032d"
 let wxSecretKey = "85b511d48ec0ec0ff6da59baf200f4e9"
@@ -63,6 +65,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         }
         
         JPUSHService.setup(withOption: launchOptions, appKey: jPushKey, channel: "app store", apsForProduction: true)
+        
+        checkAppUpdate()
+        
         return true
     }
 
@@ -218,5 +223,40 @@ extension AppDelegate: JPUSHRegisterDelegate {
 //        window!.rootViewController = rootVC
 
     }
+    
+    
+    ///检查版本更新
+    func checkAppUpdate() {
+       
+        APIRequest.getUserConfig(codes: "s_app_version_no_ios,u_app_download_ios,s_app_version_no_desc_ios") { (JSONData) in
+            let data = JSONData as! JSON
+            let version = data["s_app_version_no_ios"]["v"].stringValue
+            let urlStr = data["u_app_download_ios"]["v"].stringValue
+            let desc = data["s_app_version_no_desc_ios"]["v"].stringValue
+            let localVer = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+            if localVer.compare(version) == ComparisonResult.orderedAscending {
+                //升级
+                DispatchQueue.main.async {
+                    let simpleHUD = UpdateVersionController(nibName: "UpdateVersionController", bundle: nil)
+                    guard let vc = Tookit.getCurrentViewController() else {
+                        return
+                    }
+                    simpleHUD.modalPresentationStyle = .overCurrentContext
+                    vc.present(simpleHUD, animated: false) {
+                        simpleHUD.updateLabel.text = desc
+                    }
+                    simpleHUD.dismissHandler = {
+                        if let url = URL(string: urlStr) {
+                            UIApplication.shared.openURL(url)
+                        }
+                        
+                    }
+                }
+            }
+            
+        }
+        
+    }
+    
 }
 

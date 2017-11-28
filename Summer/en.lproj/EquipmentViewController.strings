@@ -48,7 +48,7 @@
 "bVx-z7-vRz.text" = "Steps";
 
 /* Class = "UIButton"; normalTitle = "开始连接蓝天大气"; ObjectID = "df8-qk-Nzl"; */
-"df8-qk-Nzl.normalTitle" = "Start connecting ATMOBLUE";
+"df8-qk-Nzl.normalTitle" = "Connect ATMOBLUE";
 
 /* Class = "UILabel"; text = "平均送风量"; ObjectID = "dgi-Hp-5go"; */
 "dgi-Hp-5go.text" = "Average Airflow";

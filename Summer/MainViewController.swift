@@ -596,6 +596,10 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     }
     
     func handleTapNotificationBtn(_ sender: Any) {
+        if SessionManager.sharedInstance.token == "" {
+            showLoginVC()
+            return
+        }
         dotView.isHidden = true
         let vc = NotificationCenterController()
         navigationController?.pushViewController(vc, animated: true)
@@ -979,7 +983,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
             make.centerX.equalTo(guide.snp.centerX)
         })
         
-        let tip = UIImageView(image: #imageLiteral(resourceName: "aqi-tip-word"))
+        let tip = UIImageView(image: #imageLiteral(resourceName: "connect-mask-tip-word"))
         tip.contentMode = .scaleAspectFit
         guide.addSubview(tip)
         tip.snp.makeConstraints({ (make) in
@@ -1011,7 +1015,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         
         guide.addSubview(aqiCopy!)
         
-        let tip = UIImageView(image: #imageLiteral(resourceName: "connect-mask-tip-word"))
+        let tip = UIImageView(image: #imageLiteral(resourceName: "aqi-tip-word"))
         tip.contentMode = .scaleAspectFit
         guide.addSubview(tip)
         tip.snp.makeConstraints({ (make) in

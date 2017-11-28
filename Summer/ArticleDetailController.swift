@@ -23,7 +23,7 @@ class ArticleDetailController: BaseWKWebViewController {
     }
 
     func loadArticle() {
-        if articleId.characters.count > 0 {
+        if articleId.count > 0 {
             let url = "/article/detail.htm?id=\(articleId)"
             MBProgressHUD.showAdded(to: self.view, animated: true)
             APIManager.shareInstance.postRequest(urlString: url, params: nil, result: { [weak self] (JSON, code, msg) in

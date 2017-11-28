@@ -36,6 +36,7 @@ class UserWindSpeedConfig: HandyJSON {
     var icon4: String = ""
     var defvalue: Int = 0
     var name: String = ""
+    var name_en: String = ""
     var value: Int = 0
     var type: String = ""
     var defaultflag: Int = 0
@@ -66,6 +67,15 @@ class UserWindSpeedConfig: HandyJSON {
     }
     
     required init() {}
+    
+    ///返回多语言名称
+    func getName() -> String {
+        if SessionManager.sharedInstance.language == "en_US" {
+            return name_en
+        }
+        return name
+        
+    }
     
     
     func add(success: @escaping (Bool, String)->()) {

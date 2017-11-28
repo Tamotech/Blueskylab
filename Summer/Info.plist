@@ -40,7 +40,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>8</string>
+	<string>13</string>
 	<key>LSHasLocalizedDisplayName</key>
 	<true/>
 	<key>LSRequiresIPhoneOS</key>
@@ -51,17 +51,19 @@
 		<true/>
 	</dict>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>访问蓝牙</string>
+	<string>为了保障您的用户体验, 我们需要访问您的蓝牙</string>
 	<key>NSCameraUsageDescription</key>
-	<string>need visit your camera</string>
+	<string>为了保障您的用户体验, 我们需要访问您的相机</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>为了保障您的用户体验, 我们需要共享您的健康数据</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>need read your health data</string>
+	<string>为了保障您的用户体验, 我们需要访问您的健康数据</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>location</string>
+	<string>为了保障您的用户体验, 我们需要访问您的位置</string>
 	<key>NSMotionUsageDescription</key>
-	<string>访问运动</string>
+	<string>为了保障您的用户体验, 我们需要访问您的运动</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>need visit your photo libaray</string>
+	<string>为了保障您的用户体验, 我们需要访问您的相册</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>

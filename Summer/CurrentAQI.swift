@@ -104,7 +104,7 @@ class SingleDayAQI: HandyJSON {
     ///
     /// - Returns: 月日
     func dateStrWithShort() -> String {
-        if dateStr.characters.count > 5 && dateStr.contains("-") {
+        if dateStr.count > 5 && dateStr.contains("-") {
             let arr = dateStr.components(separatedBy: "-")
             if arr.count == 3 {
                 let str = arr[1]+"/"+arr[2]

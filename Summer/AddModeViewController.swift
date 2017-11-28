@@ -49,7 +49,7 @@ class AddModeViewController: BaseViewController {
         super.viewDidLoad()
 
         showCloseBtn()
-        if config.name.characters.count > 0 {
+        if config.name.count > 0 {
             showCustomTitle(title: NSLocalizedString("EditMode", comment: ""))
         }
         else {
@@ -75,7 +75,7 @@ class AddModeViewController: BaseViewController {
             resetButton.isHidden = false
         }
         
-        activityNameField.text = config.name
+        activityNameField.text = config.getName()
         windAcountSlider.value = Float(config.value)
         windAmountLabel.text = "\(Int(config.value))"
         showSwitch.isOn = (config.hideflag == 0)
@@ -133,13 +133,13 @@ class AddModeViewController: BaseViewController {
         config.hideflag = showSwitch.isOn ? 0 : 1
         config.name = activityNameField.text!
         
-        if config.name.characters.count == 0 {
+        if config.name.count == 0 {
             return
         }
         
         MBProgressHUD.showAdded(to: self.view, animated: true)
         
-        if config.id.characters.count > 0 {
+        if config.id.count > 0 {
             //修改
             config.update { [weak self](success, msg) in
                 MBProgressHUD.hide(for: (self?.view)!, animated: true)

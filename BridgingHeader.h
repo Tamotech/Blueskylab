@@ -17,5 +17,6 @@
 #import "UIBezierPath+LxThroughPointsBezier.h"
 #import "JPUSHService.h"
 #import "BabyBluetooth.h"
+#import "UIView+SnapshotView.h"
 
 #endif /* BridgingHeader_h */

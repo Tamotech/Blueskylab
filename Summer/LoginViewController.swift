@@ -39,6 +39,9 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     
     var mode: LoginMode = .login
     
+    //测试账号
+    let testPhone = "15721261417"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,7 +104,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         }
         else if textField == photoVertifyCodeField {
             captureStr = newText
-            if captureStr.count > 0 && captureStr.characters.count == captcha?.count {
+            if captureStr.count > 0 && captureStr.count == captcha?.count {
                 vertifyCapture(captureString: captureStr)
                 sendSMSBtn.isEnabled = true
             }
@@ -117,7 +120,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                 self.smsCheckMark.isHidden = false
                 self.sendSMSBtn.isHidden = true
             }
-            else if sms.count > 0 && sms.characters.count == self.smsCode?.characters.count && sms != self.smsCode {
+            else if sms.count > 0 && sms.count == self.smsCode?.count && sms != self.smsCode {
                 self.smsCheckMark.isHidden = true
                 self.sendSMSBtn.isHidden = false
                 //输入错误
@@ -229,8 +232,11 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                 BLHUDBarManager.showSuccess(msg: NSLocalizedString("VertifyCodeHasSent", comment: ""), seconds: 2)
                 
                 //TEST
-                self?.smsCodeField.text = self?.smsCode!
-                self?.setNextButtonEnable(enable: true)
+                //如果是测试账号自动填充
+                if phone == self?.testPhone {
+                    self?.smsCodeField.text = self?.smsCode!
+                    self?.setNextButtonEnable(enable: true)
+                }
                 
                 self?.setupTimer()
 //                self?.timer!.fire()

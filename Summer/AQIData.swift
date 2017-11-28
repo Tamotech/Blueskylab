@@ -113,6 +113,19 @@ class CityAQIData: HandyJSON {
     
     required init(){}
     
+    ///返回n级风
+    func windLevelString() -> String {
+        let level = Int(wse)
+        if level >= 1 && level <= 6 {
+            let str = NSLocalizedString("Level\(level)Wind", comment: "")
+            return "\(Int(temp))°C  \(str)"
+        }
+        else if SessionManager.sharedInstance.language == "en_US" {
+            return "\(Int(temp))°C  \(level) wind"
+        }
+        return "\(Int(temp))°C  \(level)级风"
+    }
+    
 }
 
 ///城市 AQI 分页查询数据

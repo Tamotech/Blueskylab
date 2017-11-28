@@ -12,7 +12,7 @@ class LanguageListController: BaseViewController, UITableViewDelegate, UITableVi
 
     
     @IBOutlet weak var tableView: UITableView!
-    let data:[String] = ["简体中文", "English"]
+    let data:[String] = ["简体中文"]
     
     var selectIndex = 0
     

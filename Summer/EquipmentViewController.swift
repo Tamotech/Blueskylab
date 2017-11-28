@@ -42,7 +42,8 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
     
     var currentSteps: Int = 0
     var currentDistance: Float = 0
-    
+    ///初始累计时间
+    var totalSeconds: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,6 +122,7 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
             
             BLSBluetoothManager.shareInstance.calcDeviceInfo = JSON as! CalcDeviceInfo
             let info =  BLSBluetoothManager.shareInstance.calcDeviceInfo
+            self?.totalSeconds = info.totalTimeSecond
             self?.daysAQI.text = "\(info.dayAgvAqi)"
             self?.dayUseTimeLb.text = String.init(format: "%.1f", Float(info.dayAvgUseTimeSecond)/3600.0)
         }
@@ -235,8 +237,7 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
     func timerStrUpdate(seconds: Int) {
         DispatchQueue.main.async {
             
-            let info = BLSBluetoothManager.shareInstance.calcDeviceInfo
-            let total = info.totalTimeSecond+seconds
+            let total = self.totalSeconds+seconds
             let hour = total/3600
             let minute = total%3600/60
             let second = total%60

@@ -31,7 +31,7 @@
 //首页 AQI
 "BSLTitle" = "BLUE SKY LAB";
 "CurrentFilterEffect" = "Filter efficiency";
-"StartConnectMask" = "Start connecting ATMOBLUE";
+"StartConnectMask" = "Connect ATMOBLUE";
 "OpenBluetoothAlertTitle" = "Turn on bluetooth authorization\ATMOBlue\Connected to device";
 "SearchMask" = "Searching ATMOBLUE";
 "OpenBluetoothAndCloseEar" = "Please ensure that your ATMOBlue is near your mobile phone";
@@ -97,15 +97,21 @@
 "PleaseLogIn" = "Please Log In";
 
 /* Class = "UILabel"; text = "购买新品"; ObjectID = "bDC-kL-MyT"; */
-"PurchaseNewProduct" = "Purchase new product";
+"PurchaseNewProduct" = "New Product";
 
 /* Class = "UILabel"; text = "购买滤芯"; ObjectID = "kJP-M2-Rv5"; */
-"PurchaseNewFilters" = "Purchase new filters";
+"PurchaseNewFilters" = "New Filter";
 
 /* Class = "UILabel"; text = "个人资料"; ObjectID = "pXq-bm-qR4"; */
 "PersonalInfo" = "Personal Info";
 
 "Successfully saved" = "Successfully saved!";
+"Level1Wind" = "Light Air";
+"Level2Wind" = "Light Breeze";
+"Level3Wind" = "Gentle Breeze";
+"Level4Wind" = "Moderate Breeze";
+"Level5Wind" = "Strong Breeze";
+"Level6Wind" = "Gale";
 
 //设置
 "Settings" = "Settings";

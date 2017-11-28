@@ -25,7 +25,7 @@ class WeekAQIDataView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let lbWidth: CGFloat = 60.0
+        let lbWidth: CGFloat = 90.0
         let lbHeight: CGFloat = 60.0
         let cy: CGFloat = dataViewHeight - lbHeight/2
         for i in 0..<5 {

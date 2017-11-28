@@ -21,7 +21,7 @@
 "biF-04-wsM.text" = "Auto";
 
 /* Class = "UIButton"; normalTitle = "开始连接蓝天大气"; ObjectID = "hbY-SA-qLO"; */
-"hbY-SA-qLO.normalTitle" = "Start connecting ATMOBLUE";
+"hbY-SA-qLO.normalTitle" = "Connect ATMOBLUE";
 
 /* Class = "UILabel"; text = "城市空气"; ObjectID = "hev-VM-3XI"; */
 "hev-VM-3XI.text" = "City Air Quality";

@@ -108,6 +108,13 @@
 
 "Successfully saved" = "用户信息更新成功!";
 
+"Level1Wind" = "1级风";
+"Level2Wind" = "2级风";
+"Level3Wind" = "3级风";
+"Level4Wind" = "4级风";
+"Level5Wind" = "5级风";
+"Level6Wind" = "6级风";
+
 //设置
 "Settings" = "设置";
 "AccessDenied" = "没有权限";

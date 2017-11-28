@@ -28,7 +28,7 @@ class StartSetUsernameViewController: UIViewController {
         placeholderLb1?.textColor = color
         
         nameField.reactive.continuousTextValues.observeValues { (text) in
-            if text?.characters.count ?? 0 > 0 {
+            if text?.count ?? 0 > 0 {
                 self.nextButton.isEnabled = true
                 self.nextButton.setImage(UIImage(named: "login-next-on"), for: .normal)
             }

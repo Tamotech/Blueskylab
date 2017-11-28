@@ -26,6 +26,7 @@ class APIManager: NSObject {
     override init() {
         super.init()
         self.getDeviceID()
+        Alamofire.SessionManager.default.session.configuration.timeoutIntervalForRequest = 30
     }
     
     //MARK: - request
