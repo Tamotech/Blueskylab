@@ -42,7 +42,7 @@ class BaseWKWebViewController: BaseViewController, WKNavigationDelegate {
                 
                 let htmlPath = Bundle.main.path(forResource: "Privacy", ofType: "html")
                 let originContent = try? String.init(contentsOfFile: htmlPath!, encoding: String.Encoding.utf8) as NSString
-                var newContent = originContent?.replacingOccurrences(of: "${contentHtml}", with: (self?.htmlString)!)
+                let newContent = originContent?.replacingOccurrences(of: "${contentHtml}", with: (self?.htmlString)!)
                 self?.webView.loadHTMLString(newContent!, baseURL: nil)
             }
         }

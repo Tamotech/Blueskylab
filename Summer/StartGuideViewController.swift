@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import WatchKit
 
 class StartGuideViewController: UIViewController, UIScrollViewDelegate {
 
@@ -17,6 +18,7 @@ class StartGuideViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var startGuideImg1: UIImageView!
     
+    @IBOutlet weak var wechatLoginBtn: UIButton!
     var timer:Timer?
     
     lazy var tipCenter: CGPoint = {
@@ -39,6 +41,9 @@ class StartGuideViewController: UIViewController, UIScrollViewDelegate {
         // Do any additional setup after loading the view.
         
         setupView()
+        if !UIApplication.shared.canOpenURL(URL(string:"wechat://")!) {
+            wechatLoginBtn.isHidden = true
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(receiveLoginWechatSuccessNoti(noti:)), name: kLoginWechatSuccessNotifi, object: nil)
         

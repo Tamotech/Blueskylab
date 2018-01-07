@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,6 +15,7 @@
                 <outlet property="cityLabel" destination="GVT-iN-52O" id="Pqo-a0-Qsg"/>
                 <outlet property="dataView" destination="iNl-ut-Aaj" id="5rn-KX-i4z"/>
                 <outlet property="dateSegmentView" destination="wMJ-XU-bbS" id="5Iw-9E-9GE"/>
+                <outlet property="segTop" destination="cRP-0i-frg" id="qpl-5A-2g7"/>
                 <outlet property="segmentSuperView" destination="bLx-zw-ELf" id="VLx-9c-utc"/>
                 <outlet property="tableSuperView" destination="9Y7-r2-6Rm" id="THt-Gd-pMe"/>
                 <outlet property="tableView" destination="VFp-yG-kcd" id="nBi-JH-A7f"/>

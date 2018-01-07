@@ -35,7 +35,7 @@ class BSLAnimationActivityView: UIView {
         let data = try! Data.init(contentsOf: URL(fileURLWithPath: path!))
         webView.scalesPageToFit = true
         webView.contentMode = .scaleAspectFill
-        webView.load(data, mimeType: "image/gif", textEncodingName: "utf-8", baseURL: NSURL() as URL)
+        webView.load(data, mimeType: "image/gif", textEncodingName: "utf-8", baseURL: URL.init(string: baseURL)!)
         webView.backgroundColor = UIColor.clear
         webView.isOpaque = false
         instance.addSubview(webView)

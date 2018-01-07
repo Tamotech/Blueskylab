@@ -64,7 +64,7 @@ class BaseViewController: UIViewController {
 //        if self.navigationController != nil && self.navigationController?.childViewControllers.count == 1 {
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 //        }
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,9 +84,19 @@ class BaseViewController: UIViewController {
         if (!titleLabel.isHidden) {
             self.view.bringSubview(toFront: titleLabel)
         }
+        
+        
     }
 
-    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if #available(iOS 11.0, *) {
+            barView.height = self.view.safeAreaInsets.top
+            titleLabel.height = barView.height-20
+        } else {
+            // Fallback on earlier versions
+        }
+    }
     
     
     func handleTapCloseVc(sender: UIButton) {

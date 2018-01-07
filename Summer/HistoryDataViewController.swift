@@ -23,6 +23,7 @@ class HistoryDataViewController: BaseViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var arrowBtn: UIButton!
     
+    @IBOutlet weak var segTop: NSLayoutConstraint!
     
     var dayData: AQIDataList?
     var weekData: AQIDataList?
@@ -61,6 +62,8 @@ class HistoryDataViewController: BaseViewController, UITableViewDelegate, UITabl
                 self?.tableView.cr.endLoadingMore()
             })
         }
+        
+        
     }
     
     func setupView() {
@@ -91,7 +94,11 @@ class HistoryDataViewController: BaseViewController, UITableViewDelegate, UITabl
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         tableSuperView.frame = CGRect(x: 20, y: 400, width: screenWidth-40, height: screenHeight-400)
-
+        if #available(iOS 11.0, *) {
+            segTop.constant = view.safeAreaInsets.top
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     func loadData() {
