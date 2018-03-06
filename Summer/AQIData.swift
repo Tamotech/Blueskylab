@@ -132,7 +132,7 @@ class CityAQIData: HandyJSON {
 class CityAQIDataList: HandyJSON {
 
     var total: Int = 0
-    var page: Int = 0
+    var page: Int = 1
     var list: [CityAQIData] = []
     var rows: Int = 0
     

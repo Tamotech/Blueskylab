@@ -151,6 +151,7 @@ class HistoryDataViewController: BaseViewController, UITableViewDelegate, UITabl
             let list = data as! CityAQIDataList
             if list.list.count > 0 {
                 self?.historyAQIList.list.append(contentsOf: list.list)
+                self?.historyAQIList.page = page
                 self?.tableView.reloadData()
             }
         }

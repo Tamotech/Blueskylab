@@ -329,6 +329,22 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     func userInfoUpdateNotification(noti: Notification) {
         menuView.updateView()
         modeControlView.modeManager.loadData()
+        
+        /// v1.1bug  token过期弹出登录
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            
+            if navigationController?.presentedViewController == nil {
+                let guideVc = StartGuideViewController(nibName: "StartGuideViewController", bundle: nil)
+                let navVc = BaseNavigationController(rootViewController: guideVc)
+                navVc.setTintColor(tint: .white)
+                navVc.setTintColor(tint: UIColor.white)
+                //        UIApplication.shared.keyWindow?.rootViewController = navVc
+                
+                navigationController?.present(navVc, animated: true, completion: {
+                })
+            }
+        }
+        
     }
     
     func userMaskConfigUpdateNoti(noti: Notification) {

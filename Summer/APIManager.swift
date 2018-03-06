@@ -49,9 +49,10 @@ class APIManager: NSObject {
 //                let id = resultDic["id"]
                 let num = resultDic["num"]
                 let info = resultDic["info"]
-                if num.intValue == -1004 {
+                if num.intValue >= -1006 && num.intValue <= -1002 {
                     //token 失效
                     SessionManager.sharedInstance.logoutCurrentUser()
+                    
                 }
                 
                 result(resultDic, num.intValue, info.stringValue)
