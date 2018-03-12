@@ -87,6 +87,7 @@
 "WindLevel" = "%.0f wind";
 "CityAirQuality" = "City Air Quality";
 "DeviceNotConnected" = "Device not connected";
+"SelectSettings" = "Select settings";
 /* Class = "UILabel"; text = "APP分享"; ObjectID = "00L-r7-Kqz"; */
 "ShareApp" = "Share App";
 

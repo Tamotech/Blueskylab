@@ -87,6 +87,8 @@
 "WindLevel" = "%.0f级风";
 "CityAirQuality" = "城市空气质量";
 "DeviceNotConnected" = "设备未连接";
+"SelectSettings" = "选择模式";
+
 /* Class = "UILabel"; text = "APP分享"; ObjectID = "00L-r7-Kqz"; */
 "ShareApp" = "App分享";
 

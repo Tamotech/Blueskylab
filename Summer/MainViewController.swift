@@ -94,6 +94,10 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     
     @IBOutlet weak var modeCircleView: UIImageView!
     
+    //选择模式
+    @IBOutlet weak var selectModeLb: UILabel!
+    
+    
     var powerPopTip: PopTip = PopTip()
     var changeFilterPopTip: PopTip = PopTip()
     
@@ -367,6 +371,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         maskConnectStateLabel.text = NSLocalizedString("DeviceNotConnected", comment: "")
         loadAQIData()
         menuView.changeLanguage()
+        selectModeLb.text = NSLocalizedString("SelectSettings", comment: "")
     }
     
     

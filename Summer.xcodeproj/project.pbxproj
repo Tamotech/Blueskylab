@@ -220,7 +220,6 @@
 		5AF9CA591FA37D3D0071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NotificationCenterCell.strings; sourceTree = "<group>"; };
 		5AF9CA5B1FA37D410071285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NotificationDetailController.xib; sourceTree = "<group>"; };
 		5AF9CA5E1FA37D430071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NotificationDetailController.strings; sourceTree = "<group>"; };
-		5AF9CA601FA37D570071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		5AF9CA621FA37DD90071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SettingViewController.strings; sourceTree = "<group>"; };
 		5AF9CA631FA37E520071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5AF9CA651FA37F0F0071285D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ModeSettingCell.strings; sourceTree = "<group>"; };
@@ -385,6 +384,7 @@
 		CC8D04101F40058E00F9B7FF /* MyBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBase64.h; sourceTree = "<group>"; };
 		CC8D04111F40058E00F9B7FF /* MyBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBase64.m; sourceTree = "<group>"; };
 		CC8D04181F40A5F100F9B7FF /* WXPregressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXPregressHUD.swift; sourceTree = "<group>"; };
+		CC911148205737EB00C47A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		CC9BDCA61F4336EA00AF6DB4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		CC9BDCA71F4336EA00AF6DB4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		CC9BDCAA1F43409A00AF6DB4 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
@@ -1560,9 +1560,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				CC3348D11EF368790084642A /* Base */,
-				5AF9CA601FA37D570071285D /* en */,
 				5AF9CAC91FA4142A0071285D /* zh-Hant-HK */,
 				5AF9CACB1FA4142F0071285D /* zh-Hans */,
+				CC911148205737EB00C47A35 /* en */,
 			);
 			name = Main.storyboard;
 			path = Summer;
