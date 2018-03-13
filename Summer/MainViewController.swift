@@ -201,8 +201,6 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         }
         self.maskModeView.tag = self.maskModeView.tag + 1
         
-        //TEST:测试语言切换
-//        self.changeToConnectMode(connect: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
