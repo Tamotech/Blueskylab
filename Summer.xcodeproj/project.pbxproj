@@ -106,7 +106,6 @@
 		CC4BA8781F2D9C25002B571D /* LanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA8761F2D9C25002B571D /* LanguageCell.swift */; };
 		CC4BA87D1F2DA2AB002B571D /* EquipmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA87B1F2DA2AB002B571D /* EquipmentViewController.swift */; };
 		CC4BA8801F2DCA0F002B571D /* ConfirmAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA87F1F2DCA0F002B571D /* ConfirmAlertView.swift */; };
-		CC4BA8821F2DCA2D002B571D /* ConfirmAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA8811F2DCA2D002B571D /* ConfirmAlertView.xib */; };
 		CC4BA8881F2DDBD7002B571D /* NotificationDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA8861F2DDBD7002B571D /* NotificationDetailController.swift */; };
 		CC4BA88B1F2DDC54002B571D /* notification.html in Resources */ = {isa = PBXBuildFile; fileRef = CC4BA88A1F2DDC54002B571D /* notification.html */; };
 		CC4BA88D1F2DE0F8002B571D /* BottomWechatShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BA88C1F2DE0F8002B571D /* BottomWechatShareView.swift */; };
@@ -137,6 +136,7 @@
 		CC9BDCB51F43409A00AF6DB4 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CC9BDCAE1F43409A00AF6DB4 /* SVProgressHUD.bundle */; };
 		CC9BDCB61F43409A00AF6DB4 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9BDCB01F43409A00AF6DB4 /* SVProgressHUD.m */; };
 		CC9BDCB71F43409A00AF6DB4 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9BDCB21F43409A00AF6DB4 /* SVRadialGradientLayer.m */; };
+		CCA3BB782058966A00BE38A7 /* ConfirmAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCA3BB7A2058966A00BE38A7 /* ConfirmAlertView.xib */; };
 		CCA48DC11F58481E0010CF4F /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA48DC01F58481E0010CF4F /* HealthKit.framework */; };
 		CCA48DC41F5849FF0010CF4F /* HealthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA48DC31F5849FF0010CF4F /* HealthDataManager.swift */; };
 		CCAA9B5B1F6B4D900048F4B3 /* AQIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAA9B5A1F6B4D900048F4B3 /* AQIData.swift */; };
@@ -354,7 +354,6 @@
 		CC4BA8761F2D9C25002B571D /* LanguageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageCell.swift; sourceTree = "<group>"; };
 		CC4BA87B1F2DA2AB002B571D /* EquipmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipmentViewController.swift; sourceTree = "<group>"; };
 		CC4BA87F1F2DCA0F002B571D /* ConfirmAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmAlertView.swift; sourceTree = "<group>"; };
-		CC4BA8811F2DCA2D002B571D /* ConfirmAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmAlertView.xib; sourceTree = "<group>"; };
 		CC4BA8861F2DDBD7002B571D /* NotificationDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationDetailController.swift; sourceTree = "<group>"; };
 		CC4BA88A1F2DDC54002B571D /* notification.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = notification.html; sourceTree = "<group>"; };
 		CC4BA88C1F2DE0F8002B571D /* BottomWechatShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomWechatShareView.swift; sourceTree = "<group>"; };
@@ -396,6 +395,10 @@
 		CC9BDCB01F43409A00AF6DB4 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		CC9BDCB11F43409A00AF6DB4 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		CC9BDCB21F43409A00AF6DB4 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		CCA3BB792058966A00BE38A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ConfirmAlertView.xib; sourceTree = "<group>"; };
+		CCA3BB7C2058966E00BE38A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ConfirmAlertView.strings; sourceTree = "<group>"; };
+		CCA3BB7E2058967000BE38A7 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/ConfirmAlertView.strings"; sourceTree = "<group>"; };
+		CCA3BB802058967100BE38A7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ConfirmAlertView.strings"; sourceTree = "<group>"; };
 		CCA48DC01F58481E0010CF4F /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CCA48DC31F5849FF0010CF4F /* HealthDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthDataManager.swift; sourceTree = "<group>"; };
 		CCAA9B5A1F6B4D900048F4B3 /* AQIData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AQIData.swift; sourceTree = "<group>"; };
@@ -509,7 +512,7 @@
 				CC030E901F1BA4160030145C /* BaseAlertView.swift */,
 				CC030E921F1BA42A0030145C /* BaseAlertView.xib */,
 				CC4BA87F1F2DCA0F002B571D /* ConfirmAlertView.swift */,
-				CC4BA8811F2DCA2D002B571D /* ConfirmAlertView.xib */,
+				CCA3BB7A2058966A00BE38A7 /* ConfirmAlertView.xib */,
 				CC4BA88C1F2DE0F8002B571D /* BottomWechatShareView.swift */,
 				5A3298B11FC312E900F1DB6B /* BottomWechatShareView.xib */,
 				CC8B17EE1F3038BD00FC5EAE /* BLHUDBarManager.swift */,
@@ -1080,7 +1083,7 @@
 				5AF9CA1C1FA37CB50071285D /* StartSetHeightViewController.xib in Resources */,
 				CC0B71AA1F5C08820074D989 /* main-bg6.png in Resources */,
 				CC0B71A71F5C08820074D989 /* main-bg3.png in Resources */,
-				CC4BA8821F2DCA2D002B571D /* ConfirmAlertView.xib in Resources */,
+				CCA3BB782058966A00BE38A7 /* ConfirmAlertView.xib in Resources */,
 				5AF9CA411FA37D160071285D /* CheckUpdateViewController.xib in Resources */,
 				5AF9CA5A1FA37D410071285D /* NotificationDetailController.xib in Resources */,
 				5AADD0B11FC465BC00A56CC2 /* UpdateVersionController.xib in Resources */,
@@ -1632,6 +1635,17 @@
 				5AF9CACD1FA41B7A0071285D /* zh-Hans */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		CCA3BB7A2058966A00BE38A7 /* ConfirmAlertView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CCA3BB792058966A00BE38A7 /* Base */,
+				CCA3BB7C2058966E00BE38A7 /* en */,
+				CCA3BB7E2058967000BE38A7 /* zh-Hant-HK */,
+				CCA3BB802058967100BE38A7 /* zh-Hans */,
+			);
+			name = ConfirmAlertView.xib;
 			sourceTree = "<group>";
 		};
 		CCFAC20D1EFFA16500319BB0 /* MainMenuView.xib */ = {

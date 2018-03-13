@@ -65,7 +65,8 @@ class WindModeManager: NSObject {
                 currentMode = mode
             }
         }
-        if currentMode?.name == "智能" {
+        if currentMode?.name == "智能" ||
+           currentMode?.name == "Smart" {
             currentMode?.value = 70 //TODO
         }
         return currentMode!

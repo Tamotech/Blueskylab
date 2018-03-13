@@ -88,6 +88,9 @@
 "CityAirQuality" = "城市空气质量";
 "DeviceNotConnected" = "设备未连接";
 "SelectSettings" = "选择模式";
+"HasChangeFilterTip" = "我已更换滤芯，\n请重新计算滤芯的过滤效果\n";
+"ConfirmResetFilterTip" = "确认重置滤芯数据?";
+"Step" = "步";
 
 /* Class = "UILabel"; text = "APP分享"; ObjectID = "00L-r7-Kqz"; */
 "ShareApp" = "App分享";

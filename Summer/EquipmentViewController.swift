@@ -139,7 +139,8 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
         alert.show()
         alert.confirmCalback = {
             HealthDataManager.sharedInstance.zeroStep += self.currentSteps
-            self.stepCountLabel.text = "0步"
+            let stepCount = 0
+            self.stepCountLabel.text = "\(stepCount)\(NSLocalizedString("Step", comment: ""))"
         }
     }
 
@@ -176,8 +177,8 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
         let alert = ConfirmAlertView.instanceFromXib() as! ConfirmAlertView
         alert.titleLabel.text = NSLocalizedString("Reset", comment: "")
         
-        let msg1 = "我已更换滤芯，\n请重新计算滤芯的过滤效果\n"
-        let msg2 = "确认重置滤芯数据?"
+        let msg1 = NSLocalizedString("HasChangeFilterTip", comment: "")
+        let msg2 = NSLocalizedString("ConfirmResetFilterTip", comment: "")
         let attrStr1 = NSAttributedString(string: msg1, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: gray72!])
         let attrStr2 = NSAttributedString(string: msg2, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: themeColor!])
         let attrStr3 = NSMutableAttributedString(attributedString: attrStr1)
@@ -191,7 +192,8 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
             HealthDataManager.sharedInstance.startPedometerUpdates()
             //self.speedLabel.text = "0"
             //self.moveDistanceLabel.text = "0"
-            self.stepCountLabel.text = "0步"
+            let stepCount = 0
+            self.stepCountLabel.text = "\(stepCount)\(NSLocalizedString("Step", comment: ""))"
             self.caloriesLabel.text = "0kcal"
             self.dayUseTimeLb.text = "0"
             BLSBluetoothManager.shareInstance.calcDeviceInfo.totalTimeSecond = 0
@@ -225,7 +227,7 @@ class EquipmentViewController: BaseViewController, MotionDataDelegate, Bluetooth
         DispatchQueue.main.async {
             //self.speedLabel.text = String.init(format: "%.0f", speed*7.2)
 //            self.moveDistanceLabel.text = String.init(format: "%.1f", distance/1000)
-            self.stepCountLabel.text = "\(stepCount)步"
+            self.stepCountLabel.text = "\(stepCount)\(NSLocalizedString("Step", comment: ""))"
 //            let kcal = (SessionManager.sharedInstance.userInfo?.getWeight())!*CGFloat(distance/1000)*1.036
             self.caloriesLabel.text = String.init(format: "%.0fkcal", carlories)
             self.currentSteps = stepCount

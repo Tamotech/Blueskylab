@@ -89,6 +89,8 @@ class LanguageListController: BaseViewController, UITableViewDelegate, UITableVi
 
         }
    
+        // 通知更新模式面板
+        
     SessionManager.sharedInstance.userMaskConfig.updateSettingSwitches()
        navigationController?.popToRootViewController(animated: true)
         

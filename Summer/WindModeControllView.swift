@@ -15,6 +15,7 @@ protocol WindModeSelectDelegate: class {
     func defaultModeDidChange(mode: UserWindSpeedConfig)
 }
 
+//模式控制面板
 class WindModeControllView: UIView, WindModeAjustorDelegate {
     
     var modeManager: WindModeManager = SessionManager.sharedInstance.windModeManager

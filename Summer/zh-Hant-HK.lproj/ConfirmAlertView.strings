@@ -1,0 +1,12 @@
+
+/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "44A-0F-mVt"; */
+"44A-0F-mVt.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "清零"; ObjectID = "AOC-7u-cDs"; */
+"AOC-7u-cDs.text" = "清零";
+
+/* Class = "UIButton"; normalTitle = "确定"; ObjectID = "dJE-BE-RM3"; */
+"dJE-BE-RM3.normalTitle" = "确定";
+
+/* Class = "UILabel"; text = "确定清零步数？"; ObjectID = "ivj-Qb-ahP"; */
+"ivj-Qb-ahP.text" = "确定清零步数？";

@@ -88,6 +88,11 @@
 "CityAirQuality" = "City Air Quality";
 "DeviceNotConnected" = "Device not connected";
 "SelectSettings" = "Select settings";
+"HasChangeFilterTip" = "I have changed my filter.\n Please recalibrate my filter efficiency\n";
+"ConfirmResetFilterTip" = "Confirm reset filter data?";
+"Step" = "step";
+
+
 /* Class = "UILabel"; text = "APP分享"; ObjectID = "00L-r7-Kqz"; */
 "ShareApp" = "Share App";
 

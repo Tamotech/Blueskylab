@@ -201,6 +201,8 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         }
         self.maskModeView.tag = self.maskModeView.tag + 1
         
+        //TEST:测试语言切换
+//        self.changeToConnectMode(connect: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -372,6 +374,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
         loadAQIData()
         menuView.changeLanguage()
         selectModeLb.text = NSLocalizedString("SelectSettings", comment: "")
+        modeControlView.modeManager.loadData()
     }
     
     
