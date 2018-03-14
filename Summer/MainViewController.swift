@@ -725,7 +725,7 @@ class MainViewController: BaseViewController, BluetoothViewDelegate,WindModeSele
     
     func defaultModeDidChange(mode: UserWindSpeedConfig) {
 
-        if mode.icon4.count > 0 {
+        if mode.icon4.count > 0 && !mode.icon4.contains("null") {
             let rc = ImageResource(downloadURL: URL(string: mode.icon4)!)
             defaultModeIconView.kf.setImage(with: rc)
         }
